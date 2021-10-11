@@ -1,6 +1,5 @@
 /* Below is the User class which stores users basic information.
  */
-
 public class User {
 
     private final String username;

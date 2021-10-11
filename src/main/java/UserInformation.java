@@ -1,7 +1,6 @@
 /* Below is the UserInformation class which stores user's food preference, exercise preference,
  * risk factor, and personal data
  */
-
 import java.util.HashMap;
 
 public class UserInformation {
