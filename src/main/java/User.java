@@ -3,9 +3,9 @@
 
 public class User {
 
-    public String username;
-    public UserInformation information;
-    public String gender;
+    private final String username;
+    private final UserInformation information;
+    private final String gender;
 
     /**
      * Construct a User, with a username they chose, the information of the user,
@@ -20,6 +20,18 @@ public class User {
         this.username= username;
         this.gender = gender;
         this.information = information;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public UserInformation getInformation() {
+        return information;
     }
 
 }
