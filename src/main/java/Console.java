@@ -19,7 +19,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    public static String[] getBasicUserInfo(Scanner reader){
+    private static String[] getBasicUserInfo(Scanner reader){
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
         System.out.println("Please enter your age:");
@@ -44,7 +44,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some personal data of the user.
      */
-    public static String[] getPersonalUserInfo (Scanner reader){
+    private static String[] getPersonalUserInfo (Scanner reader){
         System.out.println("Please enter your height (in cm):");
         String height = reader.nextLine();
         System.out.println("Please enter your weight (in kg):");
@@ -58,7 +58,7 @@ public class Console {
      * A helper method that calls the controller to do operations based on command given.
      * @param command An integer that represents the option that the user wants to choose.
      */
-    public static void operations(int command){
+    private static void operations(int command){
         if (command == 1){
             // We do something, most likely call the controller to let it call
             // The BMI analyzer.
