@@ -2,8 +2,9 @@
 This file contains UserAnalyzer class, which is the parent class for all analyzers
  */
 package main.java;
+import User.java;
 
-public class UserAnalyzer implements User{
+public class UserAnalyzer{
 
     /*
     Below is the method that all analyzers share, the analyze method.
