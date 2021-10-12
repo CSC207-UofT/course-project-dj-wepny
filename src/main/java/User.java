@@ -1,6 +1,8 @@
 /* Below is the User class which stores user's information.
  */
 
+package main.java;
+
 import java.util.HashMap;
 
 public class User {

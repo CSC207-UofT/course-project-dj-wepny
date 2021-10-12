@@ -2,7 +2,6 @@
 This file contains UserAnalyzer class, which is the parent class for all analyzers
  */
 package main.java;
-import User.java;
 
 public class UserAnalyzer{
 
