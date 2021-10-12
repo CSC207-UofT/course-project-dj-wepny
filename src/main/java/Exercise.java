@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Exercise {
 
-    private ArrayList<String> type;
-    private ArrayList<String> minorMuscleExercised;
-    private ArrayList<String> majorMuscleExercised;
-    private ArrayList<String> equipmentNeeded;
+    private final ArrayList<String> type;
+    private final ArrayList<String> minorMuscleExercised;
+    private final ArrayList<String> majorMuscleExercised;
+    private final ArrayList<String> equipmentNeeded;
 
     /**
      * Constructor for the Exercise moves

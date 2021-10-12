@@ -5,16 +5,16 @@
 
 public class Food {
 
-    private double calories;
-    private double carbohydrate;
-    private double proteins;
-    private double fat;
-    private double sugar;
+    private final double calories;
+    private final double carbohydrate;
+    private final double proteins;
+    private final double fat;
+    private final double sugar;
 
-    private String foodType;
-    private String id;
-    private boolean vegFriendly;
-    private int nutrientScore;
+    private final String foodType;
+    private final String id;
+    private final boolean vegFriendly;
+    private final int nutrientScore;
 
     /**
      * Constructor for the Food Object
@@ -78,5 +78,9 @@ public class Food {
 
     public double getFat() {
         return fat;
+    }
+
+    public boolean getVegFriendly(){
+        return vegFriendly;
     }
 }
