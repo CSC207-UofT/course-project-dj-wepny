@@ -3,7 +3,7 @@ This file contains UserAnalyzer class, which is the parent class for all analyze
  */
 package main.java;
 
-public class UserAnalyzer implements UserInformation{
+public class UserAnalyzer implements User{
 
     /*
     Below is the method that all analyzers share, the analyze method.
