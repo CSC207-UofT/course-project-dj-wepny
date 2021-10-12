@@ -7,12 +7,12 @@ public class UserAnalyzer implements UserInformation{
 
     /*
     Below is the method that all analyzers share, the analyze method.
-    This method takes in any input of UserInformation, and stores it to the variable userInfo.
+    This method takes in any input of User, and stores it to the variable user.
     It then returns the type of output that will be specified in the other analyzers.
     The exact contents will vary then.
      */
 
-    public Object analyze(UserInformation userInfo){
+    public Object analyze(User user){
         return "";
     }
 
