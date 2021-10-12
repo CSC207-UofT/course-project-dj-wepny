@@ -1,5 +1,6 @@
 /* Below is the Disease class which stores Disease object from the database.
  */
+
 import java.util.ArrayList;
 
 public class Disease {
