@@ -82,7 +82,7 @@ public class Console {
 
         Scanner reader = new Scanner(System.in);
         //Instantiate a RunCommand Class here
-        RunCommand commandExecutor = new RunCommand(0);
+        RunCommand commandExecutor = new RunCommand();
 
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
@@ -102,8 +102,8 @@ public class Console {
                            " 5. Generate a meal plan \n");
         int command = Integer.parseInt(reader.nextLine());
 
-        // Update the commandExecutor's commandNumber variable.
-        commandExecutor.setCommandNumber(command);
+        // pass the command number into the commandExecutor
+        // commandExecutor.executeCommands(command);
         // Then we do things in the commandExecutor.
 
 

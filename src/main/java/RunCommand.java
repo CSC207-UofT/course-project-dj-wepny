@@ -1,27 +1,17 @@
 package main.java;
 
-/**
+/*
  * This class executes command appropriately based on command given.
  */
 public class RunCommand {
 
-    private int commandNumber;
+
 
     /**
      * Constructor for the RunCommand class based on the command that the user Choose in the Console.
-     * @param commandNumber An integer that represents the functionality the user chose in the console.
      */
-    public RunCommand(int commandNumber){
-        this.commandNumber = commandNumber;
-    }
+    public RunCommand(){}
 
-    /**
-     * Setter for commandNumber based on the number that user put in the console.
-     * @param commandNumber The integer that the user passed in.
-     */
-    public void setCommandNumber(int commandNumber) {
-        this.commandNumber = commandNumber;
-    }
 
 //    /**
 //     * Executes the provided command line accordingly
@@ -29,7 +19,7 @@ public class RunCommand {
 //     * @return string that is given back as command is executed
 //     * @throws Exception if the provided command is invalid
 //     */
-//    public String executeCommand(String command) throws Exception {
+//    public String executeCommand(int command) throws Exception {
 //
 //        switch(command) {
 //            case "Use Case 1":
