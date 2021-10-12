@@ -7,14 +7,14 @@ public class User {
 
     private final String username;
     private final String gender;
-    private final HashMap<String, Object> foodPreference;
-    private final HashMap<String, Object> exercisePreference;
-    private final HashMap<String, Object> riskFactor;
-    private final HashMap<String, Object> personalData;
+    private HashMap<String, Object> foodPreference;
+    private HashMap<String, Object> exercisePreference;
+    private HashMap<String, Object> riskFactor;
+    private HashMap<String, Object> personalData;
 
     /**
-     * Construct a User, with a username they chose, the information of the user,
-     * and the user's gender
+     * Construct a User, with a username, user's gender, food preference, exercise preference, risk factors,
+     * and personal data
      *
      * @param username Username of the user
      * @param gender  Gender of the user
@@ -60,6 +60,22 @@ public class User {
 
     public HashMap<String, Object> getPersonalData() {
         return personalData;
+    }
+
+    public void setFoodPreference(String key, Object value) {
+        foodPreference.put(key, value);
+    }
+
+    public void setExercisePreference(String key, Object value) {
+        exercisePreference.put(key, value);
+    }
+
+    public void setRiskFactor(String key, Object value) {
+        riskFactor.put(key, value);
+    }
+
+    public void setPersonalData(String key, Object value) {
+        personalData.put(key, value);
     }
 
 }
