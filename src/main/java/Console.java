@@ -89,7 +89,7 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        CreateUser.newUser(basicUserInfo, personalUserInfo);
+        commandExecutor.newUser(basicUserInfo, personalUserInfo);
 
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
@@ -104,8 +104,6 @@ public class Console {
         // pass the command number into the commandExecutor
         // commandExecutor.executeCommands(command);
         // Then we do things in the commandExecutor.
-
-
 
 
 

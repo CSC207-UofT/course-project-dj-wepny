@@ -37,4 +37,7 @@ public class RunCommand {
 //    }
     // I'm commenting this method out for now or else it gives an error in Console.main().
 
+    public void newUser(String[] basicUserInfo, String[] personalUserInfo){
+        User newUser = CreateUser.newUser(basicUserInfo, personalUserInfo);
+    }
 }
