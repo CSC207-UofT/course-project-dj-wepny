@@ -10,9 +10,11 @@ public class BMIAnalyzer extends UserAnalyzer {
     @Override
     public Object analyze(User user) {
         HashMap<String, Object> personalData = user.getPersonalData();
-        double userHeight = (double) personalData.get("height");
-        double userWeight = (double) personalData.get("weight");
-        return (userHeight / (userWeight * userWeight));
+        float userHeight = (float) personalData.get("height");
+        float userWeight = (float) personalData.get("weight");
+        float bmi = (userHeight / (userWeight * userWeight));
+        user.setPersonalData("BMI", bmi);
+        return bmi;
     }
 
 }
