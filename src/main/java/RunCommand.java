@@ -1,5 +1,4 @@
 package main.java;
-
 /*
  * This class executes command appropriately based on command given.
  */
