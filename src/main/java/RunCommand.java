@@ -1,5 +1,4 @@
 package main.java;
-
 /*
  * This class executes command appropriately based on command given.
  */
@@ -38,8 +37,7 @@ public class RunCommand {
 //    }
     // I'm commenting this method out for now or else it gives an error in Console.main().
 
-    public void createUser(String[] basicUserInfo, String[] personalUserInfo){
-        // Assuming that we can create a User Object directly in this class, I will finish this method.
-        // Or else, The basicUserInfo and personalUserInfo will be passed into one of the use cases.
+    public void newUser(String[] basicUserInfo, String[] personalUserInfo){
+        User newUser = CreateUser.newUser(basicUserInfo, personalUserInfo);
     }
 }
