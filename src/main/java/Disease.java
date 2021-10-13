@@ -1,6 +1,5 @@
 /* Below is the Disease class which stores Disease object from the database.
  */
-
 import java.util.ArrayList;
 
 public class Disease {
@@ -9,6 +8,7 @@ public class Disease {
     private final ArrayList<String> symptoms;
 
     /**
+     *Constructor for the disease object
      *
      * @param disease the name of the disease
      * @param symptoms a list of symptoms that the disease have
@@ -26,4 +26,5 @@ public class Disease {
     public ArrayList<String> getSymptoms() {
         return symptoms;
     }
+
 }
