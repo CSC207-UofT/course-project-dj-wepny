@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Exercise {
 
-    public ArrayList<String> type;
-    public ArrayList<String> minorMuscleExercised;
-    public ArrayList<String> majorMuscleExercised;
-    public ArrayList<String> equipmentNeeded;
+    private final ArrayList<String> type;
+    private final ArrayList<String> minorMuscleExercised;
+    private final ArrayList<String> majorMuscleExercised;
+    private final ArrayList<String> equipmentNeeded;
 
     /**
      * Constructor for the Exercise moves
@@ -27,4 +27,19 @@ public class Exercise {
         this.equipmentNeeded = equipmentNeeded;
     }
 
+    public ArrayList<String> getType() {
+        return type;
+    }
+
+    public ArrayList<String> getMinorMuscleExercised() {
+        return minorMuscleExercised;
+    }
+
+    public ArrayList<String> getEquipmentNeeded() {
+        return equipmentNeeded;
+    }
+
+    public ArrayList<String> getMajorMuscleExercised() {
+        return majorMuscleExercised;
+    }
 }
