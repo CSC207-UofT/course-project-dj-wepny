@@ -23,14 +23,6 @@ public class Console {
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
 
-        System.out.println("Please enter your age:");
-        String age = reader.nextLine();
-        while (Integer.parseInt(age) < 0){
-            System.out.println("Invalid input, please try again.");
-            System.out.println("Please enter your age:");
-            age = reader.nextLine();
-        }
-
         System.out.println("Please enter your gender (M/F):");
         String gender = reader.nextLine();
         while (!gender.equals("M") && !gender.equals("F")){
@@ -43,7 +35,7 @@ public class Console {
         // validity of the inputs.
         // e.g age >= 0, Gender must follow the type of M or F, etc.
 
-        return new String[]{name, age, gender};
+        return new String[]{name, gender};
     }
 
     /**
@@ -72,7 +64,15 @@ public class Console {
             weight = reader.nextLine();
         }
 
-        return new String[]{height, weight};
+        System.out.println("Please enter your age:");
+        String age = reader.nextLine();
+        while (Integer.parseInt(age) < 0){
+            System.out.println("Invalid input, please try again.");
+            System.out.println("Please enter your age:");
+            age = reader.nextLine();
+        }
+
+        return new String[]{height, weight, age};
     }
 
 
@@ -90,7 +90,7 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        commandExecutor.createUser(basicUserInfo, personalUserInfo);
+        CreateUser.newUser(basicUserInfo, personalUserInfo);
 
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
