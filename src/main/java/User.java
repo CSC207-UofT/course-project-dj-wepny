@@ -1,5 +1,6 @@
 /* Below is the User class which stores user's information.
  */
+
 import java.util.HashMap;
 
 public class User {
@@ -12,23 +13,14 @@ public class User {
     private HashMap<String, Object> personalData;
 
     /**
-     * Construct a User, with a username, user's gender, food preference, exercise preference, risk factors,
-     * and personal data
+     * Construct a User, with a username, user's gender and personal data
      *
      * @param username Username of the user
      * @param gender  Gender of the user
-     * @param foodPreference contains user's preference on nutritional score, salt, sugar, fat, food processing, and
-     *                       whether the user is vegetarian
-     * @param exercisePreference contains user's preference on the muscle they want to work on, the type of exercise
-     *                           they want to do, and the equipment they have.
-     * @param riskFactor contains the symptoms that the user has
      * @param personalData contains user's height, weight, age, daily activity level, BMI, and EER
      */
 
-    public User(String username, String gender, HashMap<String, Object> foodPreference,
-                HashMap<String, Object> exercisePreference, HashMap<String, Object> riskFactor,
-                HashMap<String, Object> personalData) {
-
+    public User(String username, String gender, HashMap<String, Object> personalData) {
         this.username= username;
         this.gender = gender;
         this.foodPreference = new HashMap<String, Object>();
