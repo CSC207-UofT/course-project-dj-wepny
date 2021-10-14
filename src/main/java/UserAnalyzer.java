@@ -1,11 +1,8 @@
-/*
-This file contains UserAnalyzer class, which is the parent class for all analyzers
+/**
+ *This file contains UserAnalyzer class, which is the parent class for all analyzers
  */
-package main.java;
-
-public class UserAnalyzer{
-
-    /*
+public class UserAnalyzer {
+   /*
     Below is the method that all analyzers share, the analyze method.
     This method takes in any input of User, and stores it to the variable user.
     It then returns the type of output that will be specified in the other analyzers.

@@ -1,7 +1,7 @@
-/* Below is the Disease class which stores Disease object from the database.
- */
 import java.util.ArrayList;
-
+/**
+ * Below is the Disease class which stores Disease object from the database.
+ */
 public class Disease {
 
     private final String disease;
@@ -26,5 +26,4 @@ public class Disease {
     public ArrayList<String> getSymptoms() {
         return symptoms;
     }
-
 }

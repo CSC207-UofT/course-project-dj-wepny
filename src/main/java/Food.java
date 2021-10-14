@@ -2,11 +2,7 @@
  * This class stores a Food Object from the database,
  * describing its nutrient level
  */
-
-package main.java;
-
 public class Food {
-
     private final double calories;
     private final double carbohydrate;
     private final double proteins;

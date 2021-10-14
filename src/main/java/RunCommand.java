@@ -1,16 +1,11 @@
-package main.java;
-/*
+/**
  * This class executes command appropriately based on command given.
  */
 public class RunCommand {
-
-    private User tempUser;
-
     /**
      * Constructor for the RunCommand class based on the command that the user Choose in the Console.
      */
     public RunCommand(){}
-
 
     /**
      * Executes the provided command line accordingly
@@ -26,7 +21,7 @@ public class RunCommand {
             case 1:
                 BMIAnalyzer bmi = new BMIAnalyzer();
 
-               return (String) bmi.analyze(newUser);
+                return (String) bmi.analyze(newUser);
 
             default:
                 throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");

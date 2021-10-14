@@ -1,5 +1,3 @@
-package main.java;
-
 public class Presenter {
     /*
     This is a class that retrieves the results from the use cases, and then called by
@@ -14,5 +12,4 @@ public class Presenter {
      */
     public void retrieveOutput(){
     }
-
 }

@@ -1,11 +1,9 @@
-/* Below is the User class which stores user's information.
+/**
+ *  Below is the User class which stores user's information.
  */
-package main.java;
-
 import java.util.HashMap;
 
 public class User {
-
     private final String username;
     private final String gender;
     private HashMap<String, Object> foodPreference;
@@ -69,5 +67,5 @@ public class User {
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
     }
-
 }
+

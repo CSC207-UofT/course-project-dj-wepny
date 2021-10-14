@@ -1,12 +1,9 @@
 import java.util.ArrayList;
-
 /**
  * This class stores an Exercise Object from the database,
  * describing the characteristics of the workout move
  */
-
 public class Exercise {
-
     private final ArrayList<String> type;
     private final ArrayList<String> minorMuscleExercised;
     private final ArrayList<String> majorMuscleExercised;
