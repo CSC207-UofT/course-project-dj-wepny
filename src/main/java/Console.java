@@ -77,7 +77,6 @@ public class Console {
     }
 
     public static void main(String[] args) throws Exception {
-
         Scanner reader = new Scanner(System.in);
         //Instantiate a RunCommand Class and a Presenter Class here
         RunCommand commandExecutor = new RunCommand();
