@@ -21,6 +21,7 @@ public class BMIAnalyzer extends UserAnalyzer {
                 Math.round(bmi*100)/100;
 
         String health;
+
         if (bmi >= 30){
             health = "Obesity.";
         }

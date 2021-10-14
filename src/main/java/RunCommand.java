@@ -21,7 +21,6 @@ public class RunCommand {
     public String executeCommand(int command, String[] basic, String[] personal) throws Exception {
 
         User newUser = CreateUser.newUser(basic, personal);
-
         switch(command) {
             case 1:
                 BMIAnalyzer bmi = new BMIAnalyzer();
