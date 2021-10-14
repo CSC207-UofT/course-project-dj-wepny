@@ -3,6 +3,8 @@
  * describing its nutrient level
  */
 
+package main.java;
+
 public class Food {
 
     private final double calories;
