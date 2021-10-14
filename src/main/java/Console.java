@@ -61,7 +61,7 @@ public class Console {
         String weight = reader.nextLine();
         while(Float.parseFloat(weight) < 0){
             System.out.println("Invalid input, please try again.");
-            System.out.println("Please enter your weight (in m):");
+            System.out.println("Please enter your weight (in kg):");
             weight = reader.nextLine();
         }
 
