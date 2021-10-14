@@ -4,6 +4,7 @@
 package main.java;
 import java.util.HashMap;
 
+
 public class CreateUser {
     /**
      * A static function that creates and return a new User object
