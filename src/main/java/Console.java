@@ -18,21 +18,21 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    private static String[] getBasicUserInfo(Scanner reader){
+    private static String[] getBasicUserInfo(Scanner reader) throws Exception{
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
 
         System.out.println("Please enter your gender (M/F):");
         String gender = reader.nextLine();
+
         while (!gender.equals("M") && !gender.equals("F")){
-            System.out.println("Invalid input, please try again.");
+            System.out.println("Invalid Input, Please re-enter.");
             System.out.println("Please enter your gender (M/F):");
             gender = reader.nextLine();
         }
 
         // Note: later on we would have to make an error checker for the
         // validity of the inputs.
-        // e.g age >= 0, Gender must follow the type of M or F, etc.
 
         return new String[]{name, gender};
     }
@@ -49,6 +49,8 @@ public class Console {
     private static String[] getPersonalUserInfo (Scanner reader){
         System.out.println("Please enter your height (in m):");
         String height = reader.nextLine();
+
+
         while(Float.parseFloat(height) < 0){
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your height (in m):");
@@ -59,7 +61,7 @@ public class Console {
         String weight = reader.nextLine();
         while(Float.parseFloat(weight) < 0){
             System.out.println("Invalid input, please try again.");
-            System.out.println("Please enter your weight (in m):");
+            System.out.println("Please enter your weight (in kg):");
             weight = reader.nextLine();
         }
 
@@ -74,11 +76,7 @@ public class Console {
         return new String[]{height, weight, age};
     }
 
-
-
-    // I don't know if writing a "main" method here is appropriate.
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
         Scanner reader = new Scanner(System.in);
         //Instantiate a RunCommand Class and a Presenter Class here
         RunCommand commandExecutor = new RunCommand();
@@ -90,8 +88,6 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        commandExecutor.generateUser(basicUserInfo, personalUserInfo);
-
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
         System.out.println(" You may choose the following options: \n" +
@@ -103,8 +99,9 @@ public class Console {
         int command = Integer.parseInt(reader.nextLine());
 
         // pass the command number into the commandExecutor
-         commandExecutor.executeCommand(command);
+         String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
         // Then we do things in the commandExecutor.
+        System.out.println(output);
 
 
 
