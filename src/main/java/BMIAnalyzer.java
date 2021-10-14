@@ -12,7 +12,7 @@ public class BMIAnalyzer extends UserAnalyzer {
         HashMap<String, Object> personalData = user.getPersonalData();
         float userHeight = Float.parseFloat((String)personalData.get("height"));
         float userWeight = Float.parseFloat((String)personalData.get("weight"));
-        float bmi = (userHeight / (userWeight * userWeight));
+        float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
         return bmi;
     }
