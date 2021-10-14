@@ -47,11 +47,11 @@ public class Console {
      * @return an array of strings of some personal data of the user.
      */
     private static String[] getPersonalUserInfo (Scanner reader){
-        System.out.println("Please enter your height (in cm):");
+        System.out.println("Please enter your height (in m):");
         String height = reader.nextLine();
         while(Float.parseFloat(height) < 0){
             System.out.println("Invalid input, please try again.");
-            System.out.println("Please enter your height (in cm):");
+            System.out.println("Please enter your height (in m):");
             height = reader.nextLine();
         }
 
@@ -59,7 +59,7 @@ public class Console {
         String weight = reader.nextLine();
         while(Float.parseFloat(weight) < 0){
             System.out.println("Invalid input, please try again.");
-            System.out.println("Please enter your weight (in cm):");
+            System.out.println("Please enter your weight (in m):");
             weight = reader.nextLine();
         }
 
