@@ -27,7 +27,7 @@ public class User {
         this.foodPreference = new HashMap<String, Object>();
         this.exercisePreference = new HashMap<String, Object>();
         this.riskFactor = new HashMap<String, Object>();
-        this.personalData = new HashMap<String, Object>();
+        this.personalData = personalData;
     }
 
     public String getUsername() {
