@@ -1,8 +1,13 @@
-package main.java;
 import java.util.Scanner;
+/**
+ * This class interact with the users and receives their input, then it sends
+ *       the inputs to the controller class.
+ */
+
+// Maybe implement an interface? If so, what would be the name of it?
+// What would it do?
 
 public class Console {
-
     /*
       This class interact with the users and receives their input, then it sends
       the inputs to the controller class.
@@ -91,15 +96,15 @@ public class Console {
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
         System.out.println(" You may choose the following options: \n" +
-                           " 1. Analyze Body Mass Index (BMI) \n" +
-                           " 2. Analyze Energy Required per day (EER) \n" +
-                           " 3. Analyze Workout \n" +
-                           " 4. Analyze Disease \n" +
-                           " 5. Generate a meal plan \n");
+                " 1. Analyze Body Mass Index (BMI) \n" +
+                " 2. Analyze Energy Required per day (EER) \n" +
+                " 3. Analyze Workout \n" +
+                " 4. Analyze Disease \n" +
+                " 5. Generate a meal plan \n");
         int command = Integer.parseInt(reader.nextLine());
 
         // pass the command number into the commandExecutor
-         String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
+        String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
         // Then we do things in the commandExecutor.
         System.out.println(output);
 
