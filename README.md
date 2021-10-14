@@ -27,7 +27,7 @@ their height and weight, and classifies the user as either underweight, healthy,
 ## EER
 Similar to the BMI function, the EER of the user will be calculated based on their height, weight, and age. The user 
 will also be asked to input their exercise levels. This will be calculated using the equation 
-found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1784117/).
+found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1784117/){:target="_blank"}.
 
 ## Exercise
 The user will be asked to input what specific body part they'd like to target, what type of exercise they like, and 
