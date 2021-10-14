@@ -80,8 +80,9 @@ public class Console {
     public static void main(String[] args) {
 
         Scanner reader = new Scanner(System.in);
-        //Instantiate a RunCommand Class here
+        //Instantiate a RunCommand Class and a Presenter Class here
         RunCommand commandExecutor = new RunCommand();
+        // Presenter displayResult = new Presenter();
 
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
@@ -89,7 +90,7 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        commandExecutor.newUser(basicUserInfo, personalUserInfo);
+        commandExecutor.generateUser(basicUserInfo, personalUserInfo);
 
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
@@ -102,7 +103,7 @@ public class Console {
         int command = Integer.parseInt(reader.nextLine());
 
         // pass the command number into the commandExecutor
-        // commandExecutor.executeCommands(command);
+         commandExecutor.executeCommand(command);
         // Then we do things in the commandExecutor.
 
 
