@@ -48,7 +48,9 @@ public class Food {
 
     }
 
-    public String getFoodName() { return foodName; }
+    public String getFoodName() {
+        return foodName;
+    }
 
     public double getCalories() {
         return calories;
