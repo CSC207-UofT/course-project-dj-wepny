@@ -13,6 +13,11 @@ public class Main {
             System.out.println("\nWould you like to start again? (Y/N):\n");
             String restart = reader.nextLine();
 
+            while(!restart.equals("N") & !restart.equals("Y")){
+                System.out.println("Invalid input, please try again. ");
+                System.out.println("Would you like to start again? (Y/N):");
+                restart = reader.nextLine();
+            }
             if (restart.equals("N")) break;
         }
     }
