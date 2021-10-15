@@ -56,7 +56,7 @@ public class Console {
         String height = reader.nextLine();
 
 
-        while(Float.parseFloat(height) < 0){
+        while(Float.parseFloat(height) <= 0){
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your height (in m):");
             height = reader.nextLine();
@@ -64,7 +64,7 @@ public class Console {
 
         System.out.println("Please enter your weight (in kg):");
         String weight = reader.nextLine();
-        while(Float.parseFloat(weight) < 0){
+        while(Float.parseFloat(weight) <= 0){
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your weight (in kg):");
             weight = reader.nextLine();
