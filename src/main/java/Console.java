@@ -90,8 +90,7 @@ public class Console {
         int command = Integer.parseInt(reader.nextLine());
 
         // pass the command number into the commandExecutor
-        String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
 
-        return output;
+        return commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
     }
 }
