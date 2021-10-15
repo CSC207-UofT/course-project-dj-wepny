@@ -17,7 +17,7 @@ public class Food {
     /**
      * Constructor for the Food Object
      *
-     * @param name  is the name of the food
+     * @param name is the name of the food
      * @param calories is how many calories a serving of this food contains
      * @param carbs is a percentage that describes how much carbohydrate this food contains
      *              as a ratio of recommended carbohydrate/day
