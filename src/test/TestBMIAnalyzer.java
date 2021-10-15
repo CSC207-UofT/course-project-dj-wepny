@@ -1,7 +1,6 @@
 /*
  *This file contains Junit test case for BMIAnalyzer.java
  */
-
 package test;
 import main.java.BMIAnalyzer;
 import main.java.User;
