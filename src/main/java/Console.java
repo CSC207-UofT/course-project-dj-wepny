@@ -4,17 +4,8 @@ import java.util.Scanner;
  *       the inputs to the controller class.
  */
 
-// Maybe implement an interface? If so, what would be the name of it?
-// What would it do?
 
 public class Console {
-    /*
-      This class interact with the users and receives their input, then it sends
-      the inputs to the controller class.
-     */
-
-    // Maybe implement an interface? If so, what would be the name of it?
-    // What would it do?
 
     /**
      * A helper method that prompts the user for their basic information.
@@ -23,7 +14,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    private static String[] getBasicUserInfo(Scanner reader) throws Exception{
+    public static String[] getBasicUserInfo(Scanner reader){
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
 
@@ -51,7 +42,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some personal data of the user.
      */
-    private static String[] getPersonalUserInfo (Scanner reader){
+    public static String[] getPersonalUserInfo (Scanner reader){
         System.out.println("Please enter your height (in m):");
         String height = reader.nextLine();
 
@@ -81,11 +72,8 @@ public class Console {
         return new String[]{height, weight, age};
     }
 
-    public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in);
-        //Instantiate a RunCommand Class and a Presenter Class here
+    public static String inOut(Scanner reader) throws Exception{
         RunCommand commandExecutor = new RunCommand();
-        // Presenter displayResult = new Presenter();
 
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
@@ -95,7 +83,7 @@ public class Console {
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
 
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
-        System.out.println(" You may choose the following options: \n" +
+        System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Analyze Body Mass Index (BMI) \n" +
                 " 2. Analyze Energy Required per day (EER) \n" +
                 " 3. Analyze Workout \n" +
@@ -105,10 +93,39 @@ public class Console {
 
         // pass the command number into the commandExecutor
         String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
-        // Then we do things in the commandExecutor.
-        System.out.println(output);
+//        System.out.println(output);
 
-
-
+        return output;
     }
+//
+//    public static void main(String[] args) throws Exception {
+//        Scanner reader = new Scanner(System.in);
+//        //Instantiate a RunCommand Class and a Presenter Class here
+//        RunCommand commandExecutor = new RunCommand();
+//        // Presenter displayResult = new Presenter();
+//
+//        System.out.println("We will start from some basic information.");
+//        String[] basicUserInfo = getBasicUserInfo(reader);
+//        System.out.println("Now, we would like to know some of your personal data.");
+//        String[] personalUserInfo = getPersonalUserInfo(reader);
+//
+//        // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
+//
+//        System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
+//        System.out.println(" You may choose the following options: \n" +
+//                " 1. Analyze Body Mass Index (BMI) \n" +
+//                " 2. Analyze Energy Required per day (EER) \n" +
+//                " 3. Analyze Workout \n" +
+//                " 4. Analyze Disease \n" +
+//                " 5. Generate a meal plan \n");
+//        int command = Integer.parseInt(reader.nextLine());
+//
+//        // pass the command number into the commandExecutor
+//        String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
+//        // Then we do things in the commandExecutor.
+//        System.out.println(output);
+//
+//
+//
+//    }
 }
