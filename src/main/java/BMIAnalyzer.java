@@ -1,4 +1,3 @@
-import static java.lang.Math.round;
 import java.util.HashMap;
 /**
  * Subclass of UserAnalyzer. Returns user BMI.

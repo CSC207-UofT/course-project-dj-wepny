@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class CreateUser {
     /**
      * A static function that creates and return a new User object
-     * @param basic
-     * @param personal
+     * @param basic is an arraylist of name and gender
+     * @param personal is an arraylist of weight, height, and age
      * @return a new User object
      */
     public static User newUser(String[] basic, String[] personal){
@@ -16,8 +16,6 @@ public class CreateUser {
         userInfo.put("weight", personal[1]);
         userInfo.put("age", personal[2]);
 
-        User newUser = new User(basic[0], basic[1], userInfo);
-
-        return newUser;
+        return new User(basic[0], basic[1], userInfo);
     }
 }
