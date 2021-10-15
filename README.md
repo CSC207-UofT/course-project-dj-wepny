@@ -1,6 +1,6 @@
 # CSC207 Project - Personal Health App
 
-CSC207 Project by DJ WEPNY. This project encodes for a Personal Health app that can create a meal plan, output BMI and EER, suggest workout ideas,
+CSC207 Project by DJ WEPNY. This project encodes for a Personal Health System that can create a meal plan, output BMI and EER, suggest workout ideas,
 and calculate risk factors for certain diseases through based on information provided by the user.
 
 ## Table of contents
@@ -17,13 +17,12 @@ Then, the user will be asked to choose 1 of 5 functionalities: analyze Body Mass
 analyze Energy Required Per Day (EER), provide workout suggestions, analyze disease risk, and generate a meal plan.
 
 ## BMI
-The app provides a description of what BMI is and why it's important. The user's BMI will then be provided based on
+The system will provides a description of what BMI is and why it's important. The user's BMI will then be outputted based on
 their height and weight, and classifies the user as either underweight, healthy, overweight, or obese.
 
 ## EER
-Similar to the BMI function, the EER of the user will be calculated based on their height, weight, and age. The user 
-will also be asked to input their exercise levels. This will be calculated using the equation 
-found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1784117/).
+Similar to the BMI function, the EER, which is the User's Energy Requirement per day (measured in kcal/day) will be calculated based on the user's height, weight, age and their exercise levels. This will be calculated using the equation 
+found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1784117/). The system will output the user's energy requirement per day and explains what this number represents and possibly indicate some beneficial advices for their health.
 
 ## Exercise
 The user will be asked to input what specific body part they'd like to target, what type of exercise they like, and 
