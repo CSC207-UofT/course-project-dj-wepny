@@ -4,17 +4,8 @@ import java.util.Scanner;
  *       the inputs to the controller class.
  */
 
-// Maybe implement an interface? If so, what would be the name of it?
-// What would it do?
 
 public class Console {
-    /*
-      This class interact with the users and receives their input, then it sends
-      the inputs to the controller class.
-     */
-
-    // Maybe implement an interface? If so, what would be the name of it?
-    // What would it do?
 
     /**
      * A helper method that prompts the user for their basic information.
@@ -23,7 +14,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    private static String[] getBasicUserInfo(Scanner reader) throws Exception{
+    private static String[] getBasicUserInfo(Scanner reader){
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
 
@@ -35,7 +26,6 @@ public class Console {
             System.out.println("Please enter your gender (M/F):");
             gender = reader.nextLine();
         }
-
         // Note: later on we would have to make an error checker for the
         // validity of the inputs.
 
@@ -81,11 +71,8 @@ public class Console {
         return new String[]{height, weight, age};
     }
 
-    public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in);
-        //Instantiate a RunCommand Class and a Presenter Class here
+    public static String inOut(Scanner reader) throws Exception{
         RunCommand commandExecutor = new RunCommand();
-        // Presenter displayResult = new Presenter();
 
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
@@ -93,9 +80,8 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-
         System.out.println("Welcome, " + basicUserInfo[0] + ", What would you like to do today?");
-        System.out.println(" You may choose the following options: \n" +
+        System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Analyze Body Mass Index (BMI) \n" +
                 " 2. Analyze Energy Required per day (EER) \n" +
                 " 3. Analyze Workout \n" +
@@ -105,10 +91,7 @@ public class Console {
 
         // pass the command number into the commandExecutor
         String output = commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
-        // Then we do things in the commandExecutor.
-        System.out.println(output);
 
-
-
+        return output;
     }
 }
