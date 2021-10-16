@@ -1,8 +1,8 @@
+import java.util.HashMap;
+
 /**
  *  Below is the User class which stores user's information.
  */
-import java.util.HashMap;
-
 public class User {
     private final String username;
     private final String gender;
