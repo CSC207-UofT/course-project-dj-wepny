@@ -1,3 +1,7 @@
+/*
+* A class to write user information for existing
+*/
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -6,11 +10,11 @@ import java.util.ArrayList;
 
 public class UserParser {
 
-    public static final String USER_FILE = "src/data/UserInfo.csv";
+    public static final String USER_FILE = "src/main/data/UserInfo.csv";
 
-    public static void writeUserInfo(String info) throws IOException {
+    public static void writeUserInfo(String info, boolean append) throws IOException {
         FileWriter writeInfo;
-        writeInfo = new FileWriter(USER_FILE);
+        writeInfo = new FileWriter(USER_FILE, true);
 
         writeInfo.write(info + "\n");
         writeInfo.close();
