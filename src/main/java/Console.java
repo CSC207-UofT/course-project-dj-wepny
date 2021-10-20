@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 /**
  * This class interact with the users and receives their input, then it sends
@@ -89,8 +91,16 @@ public class Console {
                 " 5. Generate a meal plan \n");
         int command = Integer.parseInt(reader.nextLine());
 
-        // pass the command number into the commandExecutor
+        // currently used as a test to debug, please don't delete
+//        HashMap<Integer, User> allLoadedUser = UserManager.getExistingUsers();
+//        User user = allLoadedUser.get(6008);
+//        String[] basic = {user.getUsername(), user.getGender()};
+//        String[] personal = {(String) user.getPersonalData().get("height"), (String) user.getPersonalData().get("weight"),
+//                (String) user.getPersonalData().get("age")};
+//        return commandExecutor.executeCommand(command, basic ,personal);
 
+        // pass the command number into the commandExecutor
         return commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
     }
+
 }

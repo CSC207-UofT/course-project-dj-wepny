@@ -12,7 +12,7 @@ public class BMIAnalyzer extends UserAnalyzer {
         float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
 
-        String intro =  "*****************************************************************************\n " +
+        String intro =  "*****************************************************************************\n" +
                 "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +
                 "High BMI (>25.0) can indicate high body fatness, and considered as overweight. \n" +
                 "BMI can indicate health problems such as obesity and malnutrition.\nYour Body Mass Index is " +
@@ -32,7 +32,7 @@ public class BMIAnalyzer extends UserAnalyzer {
         else{
             health = "Underweight.";
         }
-        return intro + ".\n\nThis is considered: " + health +
+        return intro + ".\n\n"+user.getUsername()+", your bmi is considered: " + health +
                 "\n*****************************************************************************\n";
     }
 

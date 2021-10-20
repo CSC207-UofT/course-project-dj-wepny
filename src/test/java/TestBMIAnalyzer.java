@@ -19,7 +19,7 @@ public class TestBMIAnalyzer {
         userInfo.put("height", "1.70");
         userInfo.put("weight", "58");
         userInfo.put("age", "21");
-        user = new User("Amy", "F", userInfo);
+        user = new User(20, "Amy", "F", userInfo);
 
     }
 

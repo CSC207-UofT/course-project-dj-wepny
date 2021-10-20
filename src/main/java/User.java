@@ -4,6 +4,7 @@ import java.util.HashMap;
  *  Below is the User class which stores user's information.
  */
 public class User {
+    private final int id;
     private final String username;
     private final String gender;
     private HashMap<String, Object> foodPreference;
@@ -19,13 +20,38 @@ public class User {
      * @param personalData contains user's height, weight, age, daily activity level, BMI, and EER
      */
 
-    public User(String username, String gender, HashMap<String, Object> personalData) {
-        this.username= username;
+    public User(int id, String username, String gender, HashMap<String, Object> personalData) {
+        this.id = id;
+        this.username = username;
         this.gender = gender;
         this.foodPreference = new HashMap<String, Object>();
         this.exercisePreference = new HashMap<String, Object>();
         this.riskFactor = new HashMap<String, Object>();
         this.personalData = personalData;
+    }
+
+    /**
+     * @param id
+     * @param name
+     * @param gender
+     * @param personalData
+     * @param food
+     * @param exercise
+     * @param disease
+     */
+    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<String, Object> food,
+                HashMap<String, Object> exercise, HashMap<String, Object> disease){
+        this.id = id;
+        this.username= name;
+        this.gender = gender;
+        this.foodPreference = food;
+        this.exercisePreference = exercise;
+        this.riskFactor = disease;
+        this.personalData = personalData;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getUsername() {

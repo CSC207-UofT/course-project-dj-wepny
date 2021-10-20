@@ -15,7 +15,8 @@ public class RunCommand {
      */
     public String executeCommand(int command, String[] basic, String[] personal) throws Exception {
 
-        User newUser = CreateUser.newUser(basic, personal);
+        User newUser = UserManager.createNewUser(basic, personal);
+        UserManager.addUser(true, newUser);
 
         switch(command) {
             case 1:
@@ -27,6 +28,5 @@ public class RunCommand {
                 throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
         }
     }
-    // I'm commenting this method out for now or else it gives an error in Console.main().
 
 }
