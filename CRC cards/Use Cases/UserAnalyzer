@@ -1,0 +1,17 @@
+*Abstract Parent Class*
+Responsibilities:
+Parent class for all analyzers, which analyzes information from the User class
+
+Methods:
+analyze():
+Takes in inputs of the type User
+Manipulates with different information of the user, and returns the calculated output
+
+Collaborators:
+MealPlanGenerator
+User
+
+Child Classes:
+DiseaseAnalyzer
+BMIAnalyzer
+EERAnalyzer

@@ -1,0 +1,11 @@
+*extends API*
+Responsibilities:
+Read in the Food and nutrition dataset and store each row in the file as a Food Object
+
+Methods:
+ReadItemFromCSV (input: Filename)
+createItem(input: list containing strings)
+
+Collaborators:
+Food
+FoodManager

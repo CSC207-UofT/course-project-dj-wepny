@@ -1,0 +1,14 @@
+*extends UserAnalyzer*
+Responsibilities:
+Calculates a list of workout moves for users based on their preference for exercising and their energy requirement per day
+
+Methods:
+analyze():
+Takes in inputs of the type User, specifically from User.exercisePreference
+Outputs a suggested list of workout moves along with the part of muscles trained and if any equipment is needed
+
+Collaborators:
+User
+Exercise
+RunCommand
+

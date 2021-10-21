@@ -1,0 +1,13 @@
+*extends UserAnalyzer*
+Responsibilities:
+Analyze the BMI of the user to calculate their value
+Give the comparison of the BMI with the typical averages
+
+Methods:
+analyze()
+Takes-in inputs of the type User, specifically from User.personalData
+Outputs the BMI value and compare the results with the health standard
+
+Collaborators:
+User
+RunCommand

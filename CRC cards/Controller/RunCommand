@@ -1,0 +1,13 @@
+Responsibilities:
+Takes in String input that is entered by the user and execute the command if valid
+
+Method
+executeCommand
+call the corresponding analyzer that runs the functionality the user want
+
+Collaborators:
+CreateUser
+BMIAnalyzer
+EERAnalyzer
+DiseaseAnalyzer
+WorkoutAnalyzer
