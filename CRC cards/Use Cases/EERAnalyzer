@@ -1,0 +1,12 @@
+*extends UserAnalyzer*
+Responsibilities:
+Calculate EER (energy requirement per day) using information from UserPersonalData
+
+Methods:
+analyze():
+Takes in inputs of the type User
+Outputs the EER value
+
+Collaborators:
+User
+RunCommand

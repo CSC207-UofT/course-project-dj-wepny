@@ -1,0 +1,15 @@
+Responsibilities:
+Stores disease and its symptoms from the database
+
+Instance Attributes:
+disease
+symptoms
+
+Methods:
+getDisease()
+getSymptoms()
+
+Collaborators:
+DiseaseAnalyzer
+DiseaseAPI
+

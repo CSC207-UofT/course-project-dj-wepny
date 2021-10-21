@@ -1,0 +1,13 @@
+*extends UserAnalyzer*
+
+Responsibilities:
+Takes in a list of symptoms that the user is experiencing and outputs potential diseases they could be at risk for based on our dataset
+
+Methods:
+analyze()
+Takes in inputs of the type User, specifically from User.riskFactor
+Outputs a list of disease the User might potentially be at risk for
+
+Collaborators:
+User
+RunCommand

@@ -1,0 +1,19 @@
+Responsibilities:
+Stores every Workout moves from the database
+
+Instance Attributes:
+type
+majorMuscleExercised (e.g. full body, leg, arm)
+minorMuscleExercised (e.g. glutes, hamstring, biceps)
+equipmentNeeded
+
+Methods:
+getType()
+gerMajorMuscleExercised()
+getMinorMuscleExercised()
+getEquipmentNeeded()
+
+Collaborators:
+WorkoutAnalyzer
+ExerciseManager
+ExerciseAPI
