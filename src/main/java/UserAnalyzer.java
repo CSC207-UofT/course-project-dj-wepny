@@ -1,7 +1,7 @@
 /**
  *This file contains UserAnalyzer class, which is the parent class for all analyzers
  */
-public class UserAnalyzer {
+public interface UserAnalyzer {
    /*
     Below is the method that all analyzers share, the analyze method.
     This method takes in any input of User, and stores it to the variable user.
@@ -9,9 +9,7 @@ public class UserAnalyzer {
     The exact contents will vary then.
      */
 
-    public Object analyze(User user){
-        return "";
-    }
+    String analyze(User user);
 
     //TODO: More methods may be required in the future?
 }
