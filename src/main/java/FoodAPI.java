@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodAPI {
+    /*
+    This class reads the CSV file of all food data, extracts the variables of interest, and create
+    Food objects and List of Food objects.
+     */
 
     private static Food createFood(String[] metadata){
         String id =  metadata[0];
@@ -31,19 +35,18 @@ public class FoodAPI {
 
     private static List<Food> readFoodFromCSV() {
         List<Food> foodList = new ArrayList<>();
-        Path pathToFile = Paths.get("sample.csv");
+        Path pathToFile = Paths.get("GlobalFoodData.csv");
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
 
             // We are going to skip the first four lines because they don't have the date format we are looking for.
-            // Initialize a line, then use loop to skip the next three lines.
-            String line = br.readLine();
+            // Loop through the first 4 lines, then initialize line, so it corresponds to line 5 of the file.
             for (int i = 1; i <= 4; i++){
-                line = br.readLine();
+                br.readLine();
             }
-            // By the end of this loop, line corresponds to line 5 of the Datafile.
+            String line = br.readLine();
 
             // Now we create food objects and append them to the list.
             while (line != null) {

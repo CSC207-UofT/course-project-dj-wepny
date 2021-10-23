@@ -1,8 +1,8 @@
 import java.util.List;
 
-public interface API {
+public interface API<T> {
 
-    Object readFromCSV(String filename);
+    List<T> readFromCSV(String filename);
 
     Object createItem(List<String> item);
 }
