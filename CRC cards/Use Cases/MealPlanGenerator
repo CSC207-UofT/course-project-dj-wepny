@@ -1,0 +1,12 @@
+Responsibilities:
+Generate meal plans for user base on user input on FoodPreference, and based on the Energy requirement
+(measured in calories) of the User
+
+Methods:
+generateMealPlan()
+Take User and FoodManager as input
+Output a list of combinations of food within the desired calorie range and fits the user’s preferences
+
+Collaborators:
+Food
+FoodManager

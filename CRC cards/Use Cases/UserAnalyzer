@@ -1,0 +1,20 @@
+*Interface*
+Responsibilities:
+The interface that is implemented in all analyzers, which analyzes information from the User class
+
+Instance attributes:
+result
+
+Methods:
+analyze():
+Takes in inputs of the type User
+Manipulates with different information of the user, and returns the calculated output
+
+Collaborators:
+MealPlanGenerator
+User
+
+Child Classes:
+DiseaseAnalyzer
+BMIAnalyzer
+EERAnalyzer

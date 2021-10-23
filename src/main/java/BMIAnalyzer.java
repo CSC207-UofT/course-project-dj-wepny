@@ -2,10 +2,14 @@ import java.util.HashMap;
 /**
  * Subclass of UserAnalyzer. Returns user BMI.
  */
-public class BMIAnalyzer extends UserAnalyzer {
+public class BMIAnalyzer implements UserAnalyzer {
 
-    @Override
-    public Object analyze(User user) {
+    public BMIAnalyzer() {
+    }
+
+    public String result;
+
+    public void analyze(User user) {
         HashMap<String, Object> personalData = user.getPersonalData();
         float userHeight = Float.parseFloat((String)personalData.get("height"));
         float userWeight = Float.parseFloat((String)personalData.get("weight"));
@@ -20,6 +24,7 @@ public class BMIAnalyzer extends UserAnalyzer {
 
 
         String health;
+        //TODO: change to constants?
         if (bmi >= 30){
             health = "Obesity.";
         }
@@ -32,8 +37,9 @@ public class BMIAnalyzer extends UserAnalyzer {
         else{
             health = "Underweight.";
         }
-        return intro + ".\n\n"+user.getUsername()+", your bmi is considered: " + health +
+        this.result = intro + ".\n\n"+user.getUsername()+", your bmi is considered: " + health +
                 "\n*****************************************************************************\n";
     }
+
 
 }

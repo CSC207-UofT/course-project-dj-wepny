@@ -1,0 +1,11 @@
+*extends API*
+Responsibilities:
+Retrieves and read the disease data, storing them in a collection that maps the disease to a list of their
+corresponding symptoms
+
+Methods:
+ReadItemFromCSV (input: Filename)
+createItem(input: list containing strings)
+
+Collaborators:
+DiseaseAnalyzer

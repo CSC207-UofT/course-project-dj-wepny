@@ -1,0 +1,17 @@
+Responsibilities:
+A Collection of all food objects
+Passed into MealPlanGenerator to generate Meals
+
+Instance Attributes:
+Food (a collection of all food objects )
+
+Method:
+Vegetarian():  return a collection of all food that falls under the category of vegetarian
+healthyFat(): return a collection of all food that has percentage of fat under 20% of the recommended daily value of intake
+healthySugar(): return a collection of all food that has percentage of sugar under 20% of the recommended daily value of intake
+healthyCarbs(): return a collection of all food that has percentage of carbohydrate under 15% of the recommended daily value of intake
+nutrientScore(): return a collection of food with a nutrient score under a certain number
+
+Collaborators:
+MealPlanGenerator
+Food

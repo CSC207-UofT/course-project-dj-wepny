@@ -1,0 +1,15 @@
+Responsibilities:
+Retrieves the output of the analyzers and returns it to the Console
+
+Instance attributes:
+userAnalyzer
+
+Method
+retrieveOutput
+gets the result of the userAnalyzer
+
+Collaborators:
+BMIAnalyzer
+EERAnalyzer
+DiseaseAnalyzer
+WorkoutAnalyzer
