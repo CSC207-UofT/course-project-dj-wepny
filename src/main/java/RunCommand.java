@@ -34,13 +34,13 @@ public class RunCommand {
 //            default:
 //                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
 //        }
-    public String executeCommand(String[] basic, String[] personal) throws Exception {
+    public void executeCommand(String[] basic, String[] personal) throws Exception {
 
         User newUser = UserManager.createNewUser(basic, personal);
         UserManager.addUser(true, newUser);
 
 
-        return useranalyzer.analyze(newUser);
+        useranalyzer.analyze(newUser);
 
         }
     }

@@ -117,7 +117,9 @@ public class Console {
         }
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
-        return commandExecutor.executeCommand(basicUserInfo, personalUserInfo);
+        commandExecutor.executeCommand(basicUserInfo, personalUserInfo);
 
+        Presenter analyze_results = new Presenter(analyzer);
+        return analyze_results.retrieveOutput();
     }
 }

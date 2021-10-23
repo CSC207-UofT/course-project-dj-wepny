@@ -4,12 +4,18 @@ public class Presenter {
     the console to return the output.
      */
 
-    public Presenter(){}
+    public Presenter(UserAnalyzer analyzer){ this.userAnalyzer = analyzer; }
+
+    private final UserAnalyzer userAnalyzer;
 
     /**
      * This method retrieves the output of one use case and instantiates it into one of the
      * private variable.
      */
-    public void retrieveOutput(){
+    public String retrieveOutput(){
+        if(userAnalyzer instanceof BMIAnalyzer){
+            return ((BMIAnalyzer)userAnalyzer).result;
+        }
+        return "";
     }
 }

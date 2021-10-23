@@ -8,8 +8,8 @@ public interface UserAnalyzer {
     It then returns the type of output that will be specified in the other analyzers.
     The exact contents will vary then.
      */
-
-    String analyze(User user);
+    String result = "";
+    void analyze(User user);
 
     //TODO: More methods may be required in the future?
 }
