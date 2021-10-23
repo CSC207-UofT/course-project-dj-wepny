@@ -1,6 +1,7 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
+
+import static java.util.Objects.isNull;
+
 /**
  * This class interact with the users and receives their input, then it sends
  *       the inputs to the controller class.
@@ -73,7 +74,23 @@ public class Console {
         return new String[]{height, weight, age};
     }
 
-    public static String inOut(Scanner reader) throws Exception{
+    //may have to move this to run command?
+    public static boolean checkExisting (Scanner reader){
+        System.out.println("Are you an existing user? (Y/N)");
+        String exists = reader.nextLine();
+
+
+        while (!exists.equals("Y") && !exists.equals("N")){
+            System.out.println("Invalid Input, Please re-enter.");
+            System.out.println("Are you an existing user? (Y/N)");
+            exists = reader.nextLine();
+        }
+
+        return exists.equals("Y");
+    }
+
+
+    public static String inOut1(Scanner reader) throws Exception{
         RunCommand commandExecutor = new RunCommand();
 
         System.out.println("We will start from some basic information.");
@@ -100,7 +117,52 @@ public class Console {
 //        return commandExecutor.executeCommand(command, basic ,personal);
 
         // pass the command number into the commandExecutor
-        return commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
+        return commandExecutor.executeCommand1(command, basicUserInfo, personalUserInfo);
     }
+    public static void inOut2(Scanner reader) throws Exception{
+        RunCommand commandExecutor2 = new RunCommand();
 
-}
+        System.out.println("Please enter your personal ID");
+        String id = reader.nextLine();
+        while(isNull(UserManager.getExistingUser(Integer.parseInt(id)))){
+            System.out.println("Invalid ID, please enter again");
+            System.out.println("Please enter your personal ID");
+            id = reader.nextLine();
+        }
+        User userInfo = UserManager.getExistingUser(Integer.parseInt(id));
+
+        // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
+        System.out.println("Welcome, " + userInfo.getUsername() + ", What would you like to do today?");
+        System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
+                " 1. Analyze Body Mass Index (BMI) \n" +
+                " 2. Analyze Energy Required per day (EER) \n" +
+                " 3. Analyze Workout \n" +
+                " 4. Analyze Disease \n" +
+                " 5. Generate a meal plan \n" +
+                " 6. Edit Profile");
+        int command = Integer.parseInt(reader.nextLine());
+        if (command == 6){ //special case where user chooses to change their personal info.
+            System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
+                    " 1. Change Username \n" +
+                    " 2. Change Food Preferences \n" +
+                    " 3. Analyze Workout \n" +
+                    " 4. Analyze Disease \n" +
+                    " 5. Generate a meal plan \n" +
+                    " 6. Edit Profile");
+            int secondCommand = Integer.parseInt(reader.nextLine());
+            //Code here may seem to be messy, but to make it better, I would need to place the print messages inside
+            //RunCommand. Not sure if that's allowed.
+            if(secondCommand == 1){
+                System.out.println("Please enter your new Username");
+                String newName = reader.nextLine();
+                System.out.println("Thank you. Currently updating your new username.");
+                commandExecutor2.executeCommand3(secondCommand, userInfo, newName);
+            }
+
+            System.out.println("Your username has been updated");//this can be used for general cases 1-6
+        }
+        else{
+
+            commandExecutor2.executeCommand2(command, userInfo);//regular operations from 1-5
+        }
+}}

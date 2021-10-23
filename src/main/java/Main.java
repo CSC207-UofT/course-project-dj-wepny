@@ -21,13 +21,19 @@ public class Main {
                 System.out.println("Uh oh, an error has occurred! " +
                         "Please check that the files exist and are in the specified position.");
             }
+            if (!Console.checkExisting(reader)){
+                String output = Console.inOut1(reader);
+                System.out.println(output);
+            }
+            else{
+                Console.inOut2(reader);
 
-            String output = Console.inOut(reader);
-            System.out.println(output);
-
+            }
+            //We should probably put this as a separate method in Console? -Jenny, cuz main method needs to be short
             System.out.println("\nWould you like to start again? (Y/N):\n");
             String restart = reader.nextLine();
 
+            //if they don't want to restart, adds its info back into the file
             while(!restart.equals("N") & !restart.equals("Y")){
                 System.out.println("Invalid input, please try again. ");
                 System.out.println("Would you like to start again? (Y/N):");

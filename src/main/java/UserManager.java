@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.lang.Math;
 
+import static java.util.Objects.isNull;
+
 class UserManager {
     private static HashMap<Integer, User> existingUsers = new HashMap<Integer, User>();
     private static HashMap<Integer, User> newUsers =  new HashMap<Integer, User>();
@@ -61,5 +63,16 @@ class UserManager {
 
     public static HashMap<Integer, User> getNewUsers() {
         return newUsers;
+    }
+
+    public static User getExistingUser(int id) {
+        HashMap<Integer, User> users = existingUsers;
+        return users.get(id);
+    }
+
+    public static void changeUserName(User user, String newName) throws Exception {
+        user.changeUserName(newName);
+        UserParser.updateUserInfo();
+
     }
 }

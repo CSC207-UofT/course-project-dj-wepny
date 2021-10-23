@@ -5,7 +5,7 @@ import java.util.HashMap;
  */
 public class User {
     private final int id;
-    private final String username;
+    private String username;
     private final String gender;
     private HashMap<String, Object> foodPreference;
     private HashMap<String, Object> exercisePreference;
@@ -92,6 +92,10 @@ public class User {
 
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
+    }
+
+    public void changeUserName(String newName) {
+        this.username = newName;
     }
 }
 

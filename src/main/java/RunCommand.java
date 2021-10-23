@@ -13,7 +13,7 @@ public class RunCommand {
      * @return string that is given back as command is executed
      * @throws Exception if the provided command is invalid
      */
-    public String executeCommand(int command, String[] basic, String[] personal) throws Exception {
+    public String executeCommand1(int command, String[] basic, String[] personal) throws Exception {
 
         User newUser = UserManager.createNewUser(basic, personal);
         UserManager.addUser(true, newUser);
@@ -29,4 +29,37 @@ public class RunCommand {
         }
     }
 
+    public String executeCommand2(int command, User user) throws Exception {
+
+
+
+        switch(command) {
+            // could probably generalize this to executecommand1 - and only leave 6 here?
+            case 1:
+                BMIAnalyzer bmi = new BMIAnalyzer();
+
+                return (String) bmi.analyze(user);
+
+            default:
+                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
+
+
+        }
+    }
+    public void executeCommand3(int command2, User user, String newItem)
+            throws Exception {
+
+
+
+        switch(command2) {
+            // change username
+            case 1:
+                UserManager.changeUserName(user, newItem);
+                UserParser.updateUserInfo();
+
+
+            case 6:
+
+        }
+    }
 }
