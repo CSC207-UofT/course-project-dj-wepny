@@ -13,17 +13,18 @@ public class Console {
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].
      * Note that this method is subject to change (Maybe ArrayList instead of Array).
+     *
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    private static String[] getBasicUserInfo(Scanner reader){
+    private static String[] getBasicUserInfo(Scanner reader) {
         System.out.println("Please enter your name:");
         String name = reader.nextLine();
 
         System.out.println("Please enter your gender (M/F):");
         String gender = reader.nextLine();
 
-        while (!gender.equals("M") && !gender.equals("F")){
+        while (!gender.equals("M") && !gender.equals("F")) {
             System.out.println("Invalid Input, Please re-enter.");
             System.out.println("Please enter your gender (M/F):");
             gender = reader.nextLine();
@@ -34,21 +35,30 @@ public class Console {
         return new String[]{name, gender};
     }
 
+    // TODO: move this to Constants
+    public static final HashMap<Integer, UserAnalyzer> COMMANDS = new HashMap<Integer, UserAnalyzer>();
+
+    static {
+        COMMANDS.put(1, new BMIAnalyzer());
+        // Add other functionalities here
+    }
+
     /**
      * A helper method that prompts the user for their personal data such as
      * height, weight, etc.
      * Returns an array of strings in the order of [height, weight].
      * Note that the items in this array will be stored in the information entity class,
      * and the method is subject to change (Maybe ArrayList instead of Array).
+     *
      * @param reader The scanner used for the user input.
      * @return an array of strings of some personal data of the user.
      */
-    private static String[] getPersonalUserInfo (Scanner reader){
+    private static String[] getPersonalUserInfo(Scanner reader) {
         System.out.println("Please enter your height (in m):");
         String height = reader.nextLine();
 
 
-        while(Float.parseFloat(height) <= 0){
+        while (Float.parseFloat(height) <= 0) {
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your height (in m):");
             height = reader.nextLine();
@@ -56,7 +66,7 @@ public class Console {
 
         System.out.println("Please enter your weight (in kg):");
         String weight = reader.nextLine();
-        while(Float.parseFloat(weight) <= 0){
+        while (Float.parseFloat(weight) <= 0) {
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your weight (in kg):");
             weight = reader.nextLine();
@@ -64,7 +74,7 @@ public class Console {
 
         System.out.println("Please enter your age:");
         String age = reader.nextLine();
-        while (Integer.parseInt(age) < 0){
+        while (Integer.parseInt(age) < 0) {
             System.out.println("Invalid input, please try again.");
             System.out.println("Please enter your age:");
             age = reader.nextLine();
@@ -73,8 +83,8 @@ public class Console {
         return new String[]{height, weight, age};
     }
 
-    public static String inOut(Scanner reader) throws Exception{
-        RunCommand commandExecutor = new RunCommand();
+    public static String inOut(Scanner reader) throws Exception {
+//        RunCommand commandExecutor = new RunCommand();
 
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
@@ -89,7 +99,7 @@ public class Console {
                 " 3. Analyze Workout \n" +
                 " 4. Analyze Disease \n" +
                 " 5. Generate a meal plan \n");
-        int command = Integer.parseInt(reader.nextLine());
+//        int command = Integer.parseInt(reader.nextLine());
 
         // currently used as a test to debug, please don't delete
 //        HashMap<Integer, User> allLoadedUser = UserManager.getExistingUsers();
@@ -99,8 +109,15 @@ public class Console {
 //                (String) user.getPersonalData().get("age")};
 //        return commandExecutor.executeCommand(command, basic ,personal);
 
-        // pass the command number into the commandExecutor
-        return commandExecutor.executeCommand(command, basicUserInfo, personalUserInfo);
-    }
+        int command = Integer.parseInt(reader.nextLine());
+        while (!COMMANDS.containsKey(command)) {
+            System.out.println("Sorry, your command is invalid. Please try again.");
+            // TODO: Make it print the options again
+            command = Integer.parseInt(reader.nextLine());
+        }
+        UserAnalyzer analyzer = COMMANDS.get(command);
+        RunCommand commandExecutor = new RunCommand(analyzer);
+        return commandExecutor.executeCommand(basicUserInfo, personalUserInfo);
 
+    }
 }
