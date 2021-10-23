@@ -79,7 +79,7 @@ public class ExerciseAPI {
             // Now we create Exercise objects and append them to the list.
 
             while (line != null) {
-                String[] data = line.split(",");
+                String[] data = line.split("\\*");
                 Exercise exerciseItem = createExercise(data);
                 exerciseList.add(exerciseItem);
                 line = br.readLine(); //read next line before looping
