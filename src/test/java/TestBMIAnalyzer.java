@@ -32,10 +32,8 @@ public class TestBMIAnalyzer {
                      "BMI can indicate health problems such as obesity and malnutrition.\n" +
                      "Your Body Mass Index is 20.07.\n" +
                      "\n" +
-                     user.getUsername() +", your bmi is considered: Healthy Weight.\n" +
+                     user.getUsername() +", your BMI is considered: Healthy Weight.\n" +
                      "*****************************************************************************\n",
-                bmi.result);
+                bmi.getResult());
     }
-
-
 }

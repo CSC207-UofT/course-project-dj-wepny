@@ -7,7 +7,7 @@ public class BMIAnalyzer implements UserAnalyzer {
     public BMIAnalyzer() {
     }
 
-    public String result;
+    private String result;
 
     public void analyze(User user) {
         HashMap<String, Object> personalData = user.getPersonalData();
@@ -37,8 +37,12 @@ public class BMIAnalyzer implements UserAnalyzer {
         else{
             health = "Underweight.";
         }
-        this.result = intro + ".\n\n"+user.getUsername()+", your bmi is considered: " + health +
+        this.result = intro + ".\n\n"+user.getUsername()+", your BMI is considered: " + health +
                 "\n*****************************************************************************\n";
+    }
+
+    public String getResult(){
+        return this.result;
     }
 
 
