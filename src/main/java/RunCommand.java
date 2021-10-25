@@ -43,4 +43,26 @@ public class RunCommand {
         useranalyzer.analyze(newUser);
 
         }
+
+    public void executeCommand(int command, User user) throws Exception {
+
+        useranalyzer.analyze(user);
+
     }
+
+    public void executeCommandUpdateInfo(int command2, User user, String newItem)
+            throws Exception {
+
+
+        switch(command2) {
+            // change username
+            case 1:
+                UserManager.changeUserName(user, newItem);
+                UserParser.updateUserInfo();
+
+            case 6:
+
+        }
+    }
+
+}
