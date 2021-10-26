@@ -35,7 +35,7 @@ public class TestBMIAnalyzer {
                      user.getUsername() +", your BMI is considered: Healthy Weight.\n" +
                      "*****************************************************************************\n",
                 bmi.getResult());
-
-
     }
+
+
 }
