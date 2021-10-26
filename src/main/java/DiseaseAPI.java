@@ -4,58 +4,67 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DiseaseAPI {
-    /**
-     * Create a Disease Object based on the inputs in data.
-     * @param data a string array based on each line of the CSV file.
-     * @return a disease object.
-     */
-    private static Disease createDisease(String[] data){
-        // create an ArrayList for the symptoms.
-        ArrayList<String> result = new ArrayList<>();
 
-        String name = data[0];
-
-        // A simple for-loop to iterate through the array and append symptoms to the list.
-        for (int i = 1; i < data.length; i++){
-             if(data[i].equals("")){continue;}
-             result.add(data[i]);
-        }
-        return new Disease(name, result);
-    }
+    private static final String DISEASE_DATASET_PATH = "GlobalDiseaseData.csv";
 
     /**
      * Read from the Disease CSV and create a List of Disease Objects.
      * @return a List of Disease Objects.
      */
-    private static List<Disease> readFromDiseaseCSV(){
-        List<Disease> diseaseList = new ArrayList<>();
+    public static Disease[] readFromDiseaseCSV(){
+        HashMap<String, Set<String>> diseaseMap = new HashMap<>();
+        Path pathToFile = Paths.get(DISEASE_DATASET_PATH);
 
-        Path pathToFile = Paths.get("GlobalDiseaseData.csv");
-
-        // create an instance of BufferedReader
-        // Use a try-catch block for unexpected errors.
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
-            // We are going to skip the first line of the file because it yields no useful information.
+            // Skipping the header.
             br.readLine();
+
             String line = br.readLine();
-
-            // Now we create disease objects and append them to the list.
-
-            // TODO: Wrangle the data somehow to get rid of duplicate names.
+            
             while (line != null) {
-                String[] data = line.split(",");
-                Disease diseaseItem = createDisease(data);
-                diseaseList.add(diseaseItem);
-                line = br.readLine(); //read next line before looping
+                String[] data = line.split(",");       // data contains the disease name and symptoms
+                putDataToMap(diseaseMap, data);
+                line = br.readLine();                       // read next line before looping
             }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+
+        // convert diseaseMap to an array of Disease objects
+        return returnListFromMap(diseaseMap);
+    }
+
+    private static Disease createDiseaseObject(String name, Set<String> symptoms){
+        ArrayList<String> symptomsArrayList = new ArrayList<>(symptoms);
+        return new Disease(name, symptomsArrayList);
+    }
+
+    private static Disease[] returnListFromMap(HashMap<String, Set<String>> map) {
+        Disease[] diseaseList = new Disease[map.keySet().size()];
+        int i = 0;      // index to keep track of where to add new Disease object in diseaseList.
+        for (String diseaseName : map.keySet()) {
+            Disease d = createDiseaseObject(diseaseName, map.get(diseaseName));
+            diseaseList[i] = d;
+        }
         return diseaseList;
+    }
+
+    private static void putDataToMap(HashMap<String, Set<String>> map,String[] data) {
+        String diseaseName = data[0];
+        String[] symptomsList = Arrays.copyOfRange(data, 1, data.length);
+
+        for (String symptom : symptomsList) {
+            if (!map.containsKey(diseaseName)) {
+                map.put(diseaseName, new HashSet<>());      // add disease to map for the first time
+            }
+            if (!symptom.equals("")) {                      // add symptom to map only if it is not ""
+                map.get(diseaseName).add(symptom);
+            }
+        }
+
     }
 
 }
