@@ -13,9 +13,6 @@ public class Presenter {
      * private variable.
      */
     public String retrieveOutput(){
-        if(userAnalyzer instanceof BMIAnalyzer){
-            return ((BMIAnalyzer)userAnalyzer).result;
-        }
-        return "";
+        return userAnalyzer.getResult();
     }
 }
