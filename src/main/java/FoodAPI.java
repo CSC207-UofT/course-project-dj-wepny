@@ -12,6 +12,7 @@ public class FoodAPI {
     This class reads the CSV file of all food data, extracts the variables of interest, and create
     Food objects and List of Food objects.
      */
+    private static final String FOOD_DATASET_PATH = "GlobalFoodData.csv";
 
     private static final double FAT_PER_DAY = 75.0;
     private static final double CARB_PER_DAY = 300.0;
@@ -39,9 +40,13 @@ public class FoodAPI {
 
     }
 
-    private static List<Food> readFoodFromCSV() {
+    /**
+     * Read from the Food CSV and create a List of Food Objects.
+     * @return a List of Food Objects.
+     */
+    public static List<Food> readFoodFromCSV() {
         List<Food> foodList = new ArrayList<>();
-        Path pathToFile = Paths.get("GlobalFoodData.csv");
+        Path pathToFile = Paths.get(FOOD_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.
