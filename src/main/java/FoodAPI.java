@@ -13,15 +13,21 @@ public class FoodAPI {
     Food objects and List of Food objects.
      */
 
+    private static final double FAT_PER_DAY = 75.0;
+    private static final double CARB_PER_DAY = 300.0;
+    private static final double SUGAR_PER_DAY = 100.0;
+    private static final double PROTEIN_PER_DAY = 50.0;
+
+
     private static Food createFood(String[] metadata){
         String id =  metadata[0];
         String name = metadata[1];
         String foodType = metadata[2];
         double calories = Double.parseDouble(metadata[3]);
-        double fat= Double.parseDouble(metadata[4]);
-        double proteins = Double.parseDouble(metadata[5]);
-        double carbohydrates = Double.parseDouble(metadata[6]);
-        double sugar= Double.parseDouble(metadata[7]);
+        double fat= Double.parseDouble(metadata[4]) / FAT_PER_DAY;
+        double proteins = Double.parseDouble(metadata[5]) / PROTEIN_PER_DAY;
+        double carbohydrates = Double.parseDouble(metadata[6]) / CARB_PER_DAY;
+        double sugar= Double.parseDouble(metadata[7]) / SUGAR_PER_DAY;
         boolean vegFriendly = (metadata[2].contains("Vegetable") || metadata[2].contains("Fruits"));
 
         // Note: I can't find a column in the dataset that corresponds to a nutrient score,
