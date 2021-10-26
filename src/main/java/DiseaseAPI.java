@@ -14,7 +14,7 @@ public class DiseaseAPI {
      * Read from the Disease CSV and create a List of Disease Objects.
      * @return a List of Disease Objects.
      */
-    public static Disease[] readFromDiseaseCSV(){
+    public static List<Disease> readFromDiseaseCSV(){
         HashMap<String, Set<String>> diseaseMap = new HashMap<>();
         Path pathToFile = Paths.get(DISEASE_DATASET_PATH);
 
@@ -42,12 +42,11 @@ public class DiseaseAPI {
         return new Disease(name, symptomsArrayList);
     }
 
-    private static Disease[] returnListFromMap(HashMap<String, Set<String>> map) {
-        Disease[] diseaseList = new Disease[map.keySet().size()];
-        int i = 0;      // index to keep track of where to add new Disease object in diseaseList.
+    private static List<Disease> returnListFromMap(HashMap<String, Set<String>> map) {
+        List<Disease> diseaseList = new ArrayList<>(map.keySet().size());
         for (String diseaseName : map.keySet()) {
             Disease d = createDiseaseObject(diseaseName, map.get(diseaseName));
-            diseaseList[i] = d;
+            diseaseList.add(d);
         }
         return diseaseList;
     }
