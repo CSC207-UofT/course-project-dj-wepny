@@ -11,6 +11,7 @@ public class User {
     private HashMap<String, Object> exercisePreference;
     private HashMap<String, Object> riskFactor;
     private HashMap<String, Object> personalData;
+    private String activityRating;
 
     /**
      * Construct a User, with a username, user's gender and personal data
@@ -97,5 +98,9 @@ public class User {
     public void setUserName(String newName) {this.username = newName;}
     // do we need this?
 
+
+    public void setActivityRating(String activityRating) {this.activityRating = activityRating;}
+
+    public String getActivityRating() {return activityRating;}
 }
 
