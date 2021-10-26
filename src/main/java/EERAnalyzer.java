@@ -10,6 +10,8 @@ public class EERAnalyzer implements UserAnalyzer{
 
     @Override
     public void analyze(User user) {
+
+        //Instantiating necessary variables for EER calculation.
         String gender = user.getGender();
         String activityRating = user.getActivityRating();
         double physicalActivity = getPAValueFromActivityRating(gender, activityRating);
@@ -19,8 +21,10 @@ public class EERAnalyzer implements UserAnalyzer{
         float userWeight = Float.parseFloat((String)personalData.get("weight"));
         int age = Integer.parseInt((String)personalData.get("age"));
 
+        //Calculating EER.
         double energyRequirement= calculateEER(gender, physicalActivity, userHeight, userWeight, age);
 
+        //Setting the resulting String.
         result = "Your Energy Requirement (EER) per day is roughly: " + energyRequirement;
     }
 
