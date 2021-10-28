@@ -31,7 +31,8 @@ public class User {
         this.personalData = personalData;
     }
 
-    /**
+    /*
+       An overloaded constructor, but why do we need this? - David
      * @param id
      * @param name
      * @param gender

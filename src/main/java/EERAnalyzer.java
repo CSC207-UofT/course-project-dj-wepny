@@ -28,6 +28,11 @@ public class EERAnalyzer implements UserAnalyzer{
         result = "Your Energy Requirement (EER) per day is roughly: " + energyRequirement;
     }
 
+    @Override
+    public String getResult() {
+        return result;
+    }
+
     /**
      * Helper method to get the related PA value based on the gender of the user and their activity rating.
      * @param gender A string representing the Gender of the user.
@@ -36,22 +41,22 @@ public class EERAnalyzer implements UserAnalyzer{
      */
     private double getPAValueFromActivityRating(String gender, String activityRating){
         if (gender.equals("M")){
-            return switch (activityRating) {
-                case "Sedentary" -> 1.0;
-                case "Low active" -> 1.12;
-                case "Active" -> 1.27;
-                default -> 1.54;
-            };
+            switch (activityRating) {
+                case "Sedentary": return 1.0;
+                case "Low active": return 1.12;
+                case "Active": return 1.27;
+                default: return 1.54;
+            }
 
         }
 
         if (gender.equals("F")){
-            return switch (activityRating) {
-                case "Sedentary" -> 1.0;
-                case "Low active" -> 1.14;
-                case "Active" -> 1.27;
-                default -> 1.45;
-            };
+             switch (activityRating) {
+                 case "Sedentary": return 1.0;
+                 case "Low active": return 1.14;
+                 case "Active": return 1.27;
+                 default: return 1.45;
+            }
         }
 
         return 0.0;
