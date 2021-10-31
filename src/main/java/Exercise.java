@@ -27,6 +27,8 @@ public class Exercise {
         this.equipmentNeeded = equipmentNeeded;
     }
 
+    public String getName() {return name;}
+
     public ArrayList<String> getType() {
         return type;
     }

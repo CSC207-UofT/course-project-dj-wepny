@@ -61,7 +61,7 @@ public class ExerciseAPI {
     }
 
 
-    private static List<Exercise> readFromExerciseCSV(){
+    public static List<Exercise> readFromExerciseCSV(){
 
         List<Exercise> exerciseList = new ArrayList<>();
 
@@ -89,6 +89,7 @@ public class ExerciseAPI {
         }
         return exerciseList;
     }
+
 
 
 }
