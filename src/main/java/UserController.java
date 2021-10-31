@@ -22,4 +22,8 @@ public class UserController {
         }
         return allUser;
     }
+
+    public void updateUser(int newId) throws Exception {
+        UserParser.updateUserInfo();
+    }
 }

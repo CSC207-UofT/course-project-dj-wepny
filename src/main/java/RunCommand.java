@@ -57,9 +57,9 @@ public class RunCommand {
         switch(command2) {
             // change username
             case 1:
-                UserManager.changeUserName(user, newItem);
-                UserParser.updateUserInfo();
-
+                UserParser.updateUserName(user.getId(),newItem);
+            case 2:
+                //change food preferences
             case 6:
 
         }

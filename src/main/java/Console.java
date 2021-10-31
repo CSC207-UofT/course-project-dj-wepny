@@ -169,16 +169,13 @@ public class Console {
         int command = Integer.parseInt(reader.nextLine());
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
-        // It shouldn't ask for basic information like their name again since it's an existing user -Naomi
+        // It shouldn't ask for basic information like their name again since it's an existing user -Naomi (resolved -J)
 
         if (command == 6){ //special case where user chooses to change their personal info.
             System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                     " 1. Change Username \n" +
                     " 2. Change Food Preferences \n" +
-                    " 3. Analyze Workout \n" +
-                    " 4. Analyze Disease \n" +
-                    " 5. Generate a meal plan \n" +
-                    " 6. Edit Profile");
+                    " 3. Return to Main Menu");
             int secondCommand = Integer.parseInt(reader.nextLine());
             //Code here may seem to be messy, but to make it better, I would need to place the print messages inside
             //RunCommand. Not sure if that's allowed.
