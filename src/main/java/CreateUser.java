@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.lang.Math;
 /**
  * Below is the User class which stores user's information.
  */
@@ -16,6 +17,8 @@ public class CreateUser {
         userInfo.put("weight", personal[1]);
         userInfo.put("age", personal[2]);
 
-        return new User(basic[0], basic[1], userInfo);
+        int id = (int)Math.floor(Math.random()*(10000-1+1)+1);
+
+        return new User(id, basic[0], basic[1], userInfo);
     }
 }

@@ -1,0 +1,26 @@
+Responsibilities:
+Store username, gender, food preference, exercise preference, risk factors,
+and personal data
+
+Attributes:
+username
+gender
+foodPreference
+excercisePreference
+riskFactor
+personalData
+
+Methods:
+getUsername()
+getGender()
+getFoodPreference()
+getExcercisePreference()
+getRiskFactor()
+getPersonalData()
+setFoodPreference()
+setExcercisePreference()
+setRiskFactor()
+setPersonalData()
+
+Collaborators:
+UserAnalyzer

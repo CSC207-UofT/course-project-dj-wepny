@@ -1,0 +1,11 @@
+*extends API*
+Responsibilities:
+Retrieves the exercise/workout moves data and stores each move as an Exercise Object
+
+Methods:
+ReadItemFromCSV (input: Filename)
+createItem(input: list containing strings)
+
+Collaborators:
+WorkoutAnalyzer
+ExerciseManager
