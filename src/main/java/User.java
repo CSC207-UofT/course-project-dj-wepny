@@ -94,8 +94,8 @@ public class User {
         personalData.put(key, value);
     }
 
-    public void changeUserName(String newName) {
-        this.username = newName;
-    }
+    public void setUserName(String newName) {this.username = newName;}
+    // do we need this?
+
 }
 

@@ -1,6 +1,9 @@
-*Abstract Parent Class*
+*Interface*
 Responsibilities:
-Parent class for all analyzers, which analyzes information from the User class
+The interface that is implemented in all analyzers, which analyzes information from the User class
+
+Instance attributes:
+result
 
 Methods:
 analyze():

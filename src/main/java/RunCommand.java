@@ -5,50 +5,53 @@ public class RunCommand {
     /**
      * Constructor for the RunCommand class based on the command that the user Choose in the Console.
      */
-    public RunCommand(){}
+    public RunCommand(UserAnalyzer useranalyzer){
+        this.useranalyzer = useranalyzer;
+    }
+
+    /**
+     * Input boundary UserAnalyzer for the use cases.
+     */
+    private final UserAnalyzer useranalyzer;
 
     /**
      * Executes the provided command line accordingly
-     * @param command is the given command
+//     * @param command is the given command
      * @return string that is given back as command is executed
      * @throws Exception if the provided command is invalid
      */
-    public String executeCommand1(int command, String[] basic, String[] personal) throws Exception {
+//    public String executeCommand(int command, String[] basic, String[] personal) throws Exception {
+//
+//        User newUser = UserManager.createNewUser(basic, personal);
+//        UserManager.addUser(true, newUser);
+//
+//        switch(command) {
+//            case 1:
+//                BMIAnalyzer bmi = new BMIAnalyzer();
+//
+//                return (String) bmi.analyze(newUser);
+//
+//            default:
+//                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
+//        }
+    public void executeCommand(String[] basic, String[] personal) throws Exception {
 
         User newUser = UserManager.createNewUser(basic, personal);
         UserManager.addUser(true, newUser);
 
-        switch(command) {
-            case 1:
-                BMIAnalyzer bmi = new BMIAnalyzer();
 
-                return (String) bmi.analyze(newUser);
-
-            default:
-                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
-        }
-    }
-
-    public String executeCommand2(int command, User user) throws Exception {
-
-
-
-        switch(command) {
-            // could probably generalize this to executecommand1 - and only leave 6 here?
-            case 1:
-                BMIAnalyzer bmi = new BMIAnalyzer();
-
-                return (String) bmi.analyze(user);
-
-            default:
-                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
-
+        useranalyzer.analyze(newUser);
 
         }
+
+    public void executeCommand(int command, User user) throws Exception {
+
+        useranalyzer.analyze(user);
+
     }
-    public void executeCommand3(int command2, User user, String newItem)
+
+    public void executeCommandUpdateInfo(int command2, User user, String newItem)
             throws Exception {
-
 
 
         switch(command2) {
@@ -57,9 +60,9 @@ public class RunCommand {
                 UserManager.changeUserName(user, newItem);
                 UserParser.updateUserInfo();
 
-
             case 6:
 
         }
     }
+
 }

@@ -3,6 +3,9 @@ Responsibilities:
 Analyze the BMI of the user to calculate their value
 Give the comparison of the BMI with the typical averages
 
+Instance attribute:
+result
+
 Methods:
 analyze()
 Takes-in inputs of the type User, specifically from User.personalData

@@ -67,12 +67,11 @@ class UserManager {
 
     public static User getExistingUser(int id) {
         HashMap<Integer, User> users = existingUsers;
-        return users.get(id);
+        return users.getOrDefault(id, null);
     }
 
     public static void changeUserName(User user, String newName) throws Exception {
-        user.changeUserName(newName);
+        user.setUserName(newName);
         UserParser.updateUserInfo();
-
     }
 }
