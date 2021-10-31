@@ -6,9 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UserParser {
 
@@ -51,5 +49,48 @@ public class UserParser {
 
         writeInfo.write(info+"\n");
         writeInfo.close();
+    }
+
+    public static void deleteUserInfo(String info) throws IOException {
+        FileWriter writeInfo;
+        writeInfo = new FileWriter(USER_FILE, true);
+
+        writeInfo.write(info+"\n");
+        writeInfo.close();
+    }
+    public static void updateUserName(int id, String newUserName) throws IOException {
+        FileWriter writeInfo;
+
+        ArrayList<String> userInfo = readUserInfo();
+
+        for (int i = 0; i < userInfo.size(); i++) {
+            String individualInfo = userInfo.get(i);
+            List<String> infoList = Arrays.asList(individualInfo.split(","));
+            if (Integer.parseInt(infoList.get(0)) == id) {
+                infoList.set(1, newUserName);
+                individualInfo = infoList.toString();
+                // format the new info into our format
+                String tempStr = individualInfo.replace("[", "");
+                String tempStr2 = tempStr.replace(" ", "");
+                String newIndividualInfo = tempStr2.replace("]", "");
+                // update userInfo with the modified individual info
+                userInfo.set(i, newIndividualInfo);
+            }
+        }
+
+        // userInfo now is a list of strings with the correct info
+        // to update this info back to our csv we need to:
+        // 1. overwrite/clear the existing content
+        // 2. but each sting in this new userInfo back one by one
+        for (int i = 0; i < userInfo.size(); i++) {
+            if (i==0){
+                // first  write needs to be overwrite mode to clear the existing csv content
+                writeInfo = new FileWriter(USER_FILE, false);
+                writeInfo.write(userInfo.get(i)+"\n");
+                writeInfo.close();
+            } else {
+                writeUserInfo(userInfo.get(i));
+            }
+        }
     }
 }

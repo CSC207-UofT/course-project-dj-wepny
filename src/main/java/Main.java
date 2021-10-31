@@ -32,8 +32,6 @@ public class Main {
             }
             //We should probably put this as a separate method in Console? -Jenny, cuz main method needs to be short
 
-            String output = Console.inOutNewUser(reader);
-            System.out.println(output);
 
             System.out.println("\nWould you like to start again? (Y/N):\n");
             String restart = reader.nextLine();
