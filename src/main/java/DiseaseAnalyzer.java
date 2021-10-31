@@ -14,10 +14,10 @@ public class DiseaseAnalyzer implements UserAnalyzer{
     @Override
     public void analyze(User user) {
 
-        // Initializes an result ArrayList.
+        // Initializes a result ArrayList.
         ArrayList<String> possibleDiseaseList = new ArrayList<>();
-        // We first create an API that creates a list of diseases.
-        DiseaseAPI diseaseAPI = new DiseaseAPI();
+        // We first create a list of diseases using DiseaseAPI.
+        // Note that we are directly accessing the API in this use case.
         Disease[] diseases = DiseaseAPI.readFromDiseaseCSV();
 
         // Get the list of symptoms Based on the user input.
