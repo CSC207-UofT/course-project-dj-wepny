@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * This class executes command appropriately based on command given.
  */
@@ -7,6 +9,9 @@ public class RunCommand {
      */
     public RunCommand(UserAnalyzer useranalyzer){
         this.useranalyzer = useranalyzer;
+    }
+    public RunCommand(){
+        this.useranalyzer = null;
     }
 
     /**
@@ -34,15 +39,16 @@ public class RunCommand {
 //            default:
 //                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
 //        }
-    public void executeCommand(String[] basic, String[] personal) throws Exception {
-
+    public static User createUser(String[] basic, String[] personal){
         User newUser = UserManager.createNewUser(basic, personal);
         UserManager.addUser(true, newUser);
+        return newUser;
+    }
 
-
+    public void executeCommand(User newUser) throws Exception {
         useranalyzer.analyze(newUser);
 
-        }
+    }
 
     public void executeCommand(int command, User user) throws Exception {
 
@@ -57,7 +63,9 @@ public class RunCommand {
         switch(command2) {
             // change username
             case 1:
-                UserParser.updateUserName(user.getId(),newItem);
+//                UserParser.updateUserName(user.getId(),newItem);
+                UserManager.changeUserName(user, newItem);
+
             case 2:
                 //change food preferences
             case 6:

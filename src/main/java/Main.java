@@ -1,9 +1,11 @@
+import java.io.FileWriter;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
+    public static final String USER_FILE = "src/main/java/UserInfo.csv";
+
 
     public static void main(String[] args) throws Exception {
 
@@ -22,30 +24,36 @@ public class Main {
                         "Please check that the files exist and are in the specified position.");
             }
 
-            if (!Console.checkExisting(reader)){
-                String output = Console.inOutNewUser(reader);
-                System.out.println(output);
+            boolean logOut = false;
+            // if they are a new user run:
+            if (!Console.checkExisting(reader)) {
+                User userInfo = Console.gatherInfo(reader);
+                while (!logOut) {
+                    String output = Console.NewUserMenu(reader, userInfo);
+                    System.out.println(output);
+                    logOut = Console.logOut(reader);
+                }
+                User user = UserController.getCurrentUser();
+                UserParser.writeUserInfo(user);
+
             }
+            // if they are an existing user, run:
             else{
-                Console.inOutExistingUser(reader);
-
+                int id = Console.loginPage(reader);
+                while (!logOut) {
+                    String output = Console.ExistingUserMenu(reader, id);
+                    System.out.println(output);
+                    logOut = Console.logOut(reader);
+                }
+                HashMap<Integer, User> allUsers = UserController.getExistingUsers();
+                UserParser.updaterUserInfo(allUsers);
             }
-            //We should probably put this as a separate method in Console? -Jenny, cuz main method needs to be short
 
-
-            System.out.println("\nWould you like to start again? (Y/N):\n");
-            String restart = reader.nextLine();
-
-            //if they don't want to restart, adds its info back into the file
-            while(!restart.equals("N") & !restart.equals("Y")){
-                System.out.println("Invalid input, please try again. ");
-                System.out.println("Would you like to start again? (Y/N):");
-                restart = reader.nextLine();
+            boolean restart = Console.reStart(reader);
+            if (restart){
+                break;
             }
-            if (restart.equals("N")){
-               UserParser.updateUserInfo();
-               break;
-            }
+
         }
     }
 
