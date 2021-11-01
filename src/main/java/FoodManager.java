@@ -6,7 +6,7 @@ public class FoodManager {
     This class stores a list of food objects. TODO: write better class description.
      */
 
-    private static final List<Food> foodList = FoodAPI.readFoodFromCSV();   // Could this initialization take too much time?
+    private static final List<Food> foodList = APIController.getFood();
 
     public static List<Food> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
         List<Food> filteredFoodList = new ArrayList<>();
