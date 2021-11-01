@@ -5,12 +5,14 @@ import java.util.HashMap;
  */
 public class User {
     private final int id;
-    private final String username;
+    private String username;
     private final String gender;
-    private HashMap<String, Object> foodPreference;
+    private HashMap<FoodFilterCriterion, Boolean> foodPreference;
     private HashMap<String, Object> exercisePreference;
     private HashMap<String, Object> riskFactor;
     private HashMap<String, Object> personalData;
+    private String activityRating;
+
 
     /**
      * Construct a User, with a username, user's gender and personal data
@@ -24,13 +26,14 @@ public class User {
         this.id = id;
         this.username = username;
         this.gender = gender;
-        this.foodPreference = new HashMap<String, Object>();
+        this.foodPreference = new HashMap<>();
         this.exercisePreference = new HashMap<String, Object>();
         this.riskFactor = new HashMap<String, Object>();
         this.personalData = personalData;
     }
 
-    /**
+    /*
+       An overloaded constructor, but why do we need this? - David
      * @param id
      * @param name
      * @param gender
@@ -39,7 +42,7 @@ public class User {
      * @param exercise
      * @param disease
      */
-    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<String, Object> food,
+    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
                 HashMap<String, Object> exercise, HashMap<String, Object> disease){
         this.id = id;
         this.username= name;
@@ -62,7 +65,7 @@ public class User {
         return gender;
     }
 
-    public HashMap<String, Object> getFoodPreference() {
+    public HashMap<FoodFilterCriterion, Boolean> getFoodPreference() {
         return foodPreference;
     }
 
@@ -78,7 +81,7 @@ public class User {
         return personalData;
     }
 
-    public void setFoodPreference(String key, Object value) {
+    public void setFoodPreference(FoodFilterCriterion key, Boolean value) {
         foodPreference.put(key, value);
     }
 
@@ -93,5 +96,13 @@ public class User {
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
     }
+
+    public void setUserName(String newName) {this.username = newName;}
+    // do we need this?
+
+
+    public void setActivityRating(String activityRating) {this.activityRating = activityRating;}
+
+    public String getActivityRating() {return activityRating;}
 }
 

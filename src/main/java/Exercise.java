@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * describing the characteristics of the workout move
  */
 public class Exercise {
+    private final String name;
     private final ArrayList<String> type;
     private final ArrayList<String> minorMuscleExercised;
     private final ArrayList<String> majorMuscleExercised;
@@ -11,18 +12,22 @@ public class Exercise {
 
     /**
      * Constructor for the Exercise moves
-     * @param type of the exercise
+     * @param name the name of the exercise
+     * @param type the type of the exercise
      * @param minorMuscle is a list of specific muscle this move trains
      * @param majorMuscle is a list of major muscle this moves trains
      * @param equipmentNeeded is a list of equipments this move needs
      */
-    public Exercise(ArrayList<String> type, ArrayList<String> minorMuscle,
-                    ArrayList<String> majorMuscle,  ArrayList<String> equipmentNeeded){
+    public Exercise(String name, ArrayList<String> type, ArrayList<String> minorMuscle,
+                    ArrayList<String> majorMuscle, ArrayList<String> equipmentNeeded){
+        this.name = name;
         this.type = type;
         this.minorMuscleExercised = minorMuscle;
         this.majorMuscleExercised = majorMuscle;
         this.equipmentNeeded = equipmentNeeded;
     }
+
+    public String getName() {return name;}
 
     public ArrayList<String> getType() {
         return type;

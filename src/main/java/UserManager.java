@@ -1,9 +1,11 @@
 import java.util.HashMap;
 import java.lang.Math;
 
+import static java.util.Objects.isNull;
+
 class UserManager {
     private static HashMap<Integer, User> existingUsers = new HashMap<Integer, User>();
-    private static HashMap<Integer, User> newUsers =  new HashMap<Integer, User>();
+    private static User currentUser;
 
 
     public static User createNewUser(String[] basic, String[] personal) {
@@ -22,7 +24,7 @@ class UserManager {
 
 
             int id = (int)Math.floor(Math.random()*(10000)+1);
-            while (newUsers.containsKey(id) || existingUsers.containsKey(id)){
+            while (existingUsers.containsKey(id)){
                 id = (int)Math.floor(Math.random()*(10000)+1);
             }
             return new User(id, basic[0], basic[1], userInfo);
@@ -48,7 +50,7 @@ class UserManager {
      */
     public static void addUser(boolean newUser, User user){
         if (newUser){
-            newUsers.put(user.getId(), user);
+            currentUser = user;
         }
         else{
             existingUsers.put(user.getId(), user);
@@ -59,7 +61,17 @@ class UserManager {
         return existingUsers;
     }
 
-    public static HashMap<Integer, User> getNewUsers() {
-        return newUsers;
+    public static User getNewUsers() {
+        return currentUser;
+    }
+
+//    public static User getExistingUser(int id) {
+//        HashMap<Integer, User> users = existingUsers;
+//        return users.getOrDefault(id, null);
+//    }
+
+    public static void changeUserName(User user, String newName) throws Exception {
+        user.setUserName(newName);
+//        UserParser.updateUserInfo();
     }
 }
