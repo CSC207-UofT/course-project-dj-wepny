@@ -12,18 +12,18 @@ public class UserController {
         }
     }
 
-    public static HashMap<Integer, User> getUsers(boolean newUser){
-        HashMap<Integer, User> allUser;
-        if (newUser){
-            allUser = UserManager.getNewUsers();
-        }
-        else{
-            allUser = UserManager.getExistingUsers();
-        }
-        return allUser;
+    public static User getCurrentUser(){
+        return UserManager.getNewUsers();
     }
 
-    public void updateUser(int newId) throws Exception {
-        UserParser.updateUserInfo();
+    public static HashMap<Integer, User> getExistingUsers(){
+        HashMap<Integer, User> allUser;
+        allUser = UserManager.getExistingUsers();
+
+        return allUser;
     }
+//
+//    public void updateUser(int newId) throws Exception {
+//        UserParser.updateUserInfo();
+//    }
 }
