@@ -45,6 +45,10 @@ public class RunCommand {
         return newUser;
     }
 
+    public void addInfo(User user, Object info, int command){
+        UserManager.addNewInfo(user, info, command);
+    }
+
     public void executeCommand(User newUser) throws Exception {
         useranalyzer.analyze(newUser);
 

@@ -25,7 +25,11 @@ public class DiseaseAPI {
             String line = br.readLine();
             
             while (line != null) {
-                String[] data = line.split(",");       // data contains the disease name and symptoms
+                String[] data = line.split(","); // data contains the disease name and symptoms
+                // can do this if we do not want duplicates?
+//                if (!(diseaseMap.containsKey(data[0]))) {
+//                    putDataToMap(diseaseMap, data);
+//                }
                 putDataToMap(diseaseMap, data);
                 line = br.readLine();                       // read next line before looping
             }
@@ -34,7 +38,12 @@ public class DiseaseAPI {
         }
 
         // convert diseaseMap to an array of Disease objects
+//        System.out.println(diseaseMap);
         return returnListFromMap(diseaseMap);
+    }
+
+    public static void main(String[] args) throws Exception {
+        readFromDiseaseCSV();
     }
 
     private static Disease createDiseaseObject(String name, Set<String> symptoms){

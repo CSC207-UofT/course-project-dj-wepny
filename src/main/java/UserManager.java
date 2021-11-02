@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.Math;
 
@@ -29,7 +30,18 @@ class UserManager {
             }
             return new User(id, basic[0], basic[1], userInfo);
         }
-
+    public static void addNewInfo(User user, Object info, int command){
+        switch(command){
+            case 2: user.setPersonalData("activity level", (String) info);
+            // temporary test diseaseAnalyzer
+            case 3:
+                ArrayList<String> symptoms = new ArrayList<String>();
+                symptoms.add("continuous_sneezing");
+                symptoms.add("shivering");
+                symptoms.add("watering_from_eyes");
+                user.setRiskFactor(symptoms);
+        }
+    }
 
 //    public static User loadExistingUser(String name, String gender, HashMap<String, Object> personalData, HashMap<String, Object> food,
 //                                        HashMap<String, Object> exercise, HashMap<String, Object> disease)

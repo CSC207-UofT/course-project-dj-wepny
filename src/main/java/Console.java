@@ -15,6 +15,8 @@ public class Console {
 
     static {
         COMMANDS.put(1, new BMIAnalyzer());
+        COMMANDS.put(2, new EERAnalyzer());
+        COMMANDS.put(4, new DiseaseAnalyzer());
         // Add other functionalities here
     }
 
@@ -142,11 +144,22 @@ public class Console {
         }
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
+
+        if (command == 2) {
+            String level = activityLevel(reader);
+            commandExecutor.addInfo(user, level, 2);
+        }
+
+        else if (command == 3) {
+            commandExecutor.addInfo(user, "jsdfg", 3);
+        }
+
         commandExecutor.executeCommand(user);
 
         Presenter analyze_results = new Presenter(analyzer);
         return analyze_results.retrieveOutput();
     }
+
 
 //    ********************
 
@@ -169,18 +182,26 @@ public class Console {
         // We probably shouldn't have duplicate code here -Naomi
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
         System.out.println("Welcome, " + userInfo.getUsername() + ", What would you like to do today?");
-        System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
-                " 1. Analyze Body Mass Index (BMI) \n" +
-                " 2. Analyze Energy Required per day (EER) \n" +
-                " 3. Analyze Workout \n" +
-                " 4. Analyze Disease \n" +
-                " 5. Generate a meal plan \n" +
+        System.out.println(" You may choose the following options: (Please enter a number from 1 to 6) \n" +
+                " 1. Check Body Mass Index (BMI) report\n" +
+                " 2. Check Energy Required per day (EER) report\n" +
+                " 3. Check Workout report\n" +
+                " 4. Check Disease report\n" +
+                " 5. Check meal plan \n" +
                 " 6. Edit Profile");
 
         int command = Integer.parseInt(reader.nextLine());
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
         // It shouldn't ask for basic information like their name again since it's an existing user -Naomi (resolved -J)
+        if (command == 2) {
+            if (!checkInfoExist(2, userInfo)){
+                System.out.println("Oh no! Information missing for this report.");
+                String level = activityLevel(reader);
+                commandExecutor.addInfo(userInfo, level, 2);
+            }
+            commandExecutor.executeCommand(userInfo);
+        }
 
 
         if (command == 6){ //special case where user chooses to change their personal info.
@@ -233,4 +254,52 @@ public class Console {
         }
         return restart.equals("Y");
     }
+
+    public static boolean checkInfoExist(int command, User user) {
+        if (command == 2) {
+            if (user.getPersonalData().containsKey("activity level")) {
+                return true;
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static String activityLevel(Scanner reader){
+
+        System.out.println("Please enter your daily activity level: (Please enter a number from 1 to 4) \n" +
+                " 1. Sedentary \n" +
+                " 2. Low Active \n" +
+                " 3. Active \n" +
+                " 4. Very Active \n" );
+        String userActivityLevel = reader.nextLine();
+
+        switch (userActivityLevel) {
+            case "1": return "Sedentary";
+            case "2": return "Low Active";
+            case "3": return "Active";
+            case "4": return "Very Active";
+            default: return "Enter Again";
+        }
+    }
+
+//    public static String diseaseSymptoms(Scanner reader){
+//
+//        System.out.println("Please enter your daily activity level: (Please enter a number from 1 to 4) \n" +
+//                " 1. Sedentary \n" +
+//                " 2. Low Active \n" +
+//                " 3. Active \n" +
+//                " 4. Very Active \n" );
+//        String userActivityLevel = reader.nextLine();
+//
+//        switch (userActivityLevel) {
+//            case "1": return "Sedentary";
+//            case "2": return "Low Active";
+//            case "3": return "Active";
+//            case "4": return "Very Active";
+//            default: return "Enter Again";
+//        }
+//    }
 }

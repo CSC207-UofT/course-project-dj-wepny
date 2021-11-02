@@ -18,13 +18,13 @@ public class DiseaseAnalyzer implements UserAnalyzer{
         ArrayList<String> possibleDiseaseList = new ArrayList<>();
         // We first create a list of diseases using DiseaseAPI.
         // Note that we are directly accessing the API in this use case.
-        Disease[] diseases = APIController.getDisease();
+        Disease[] diseases = DiseaseAPI.readFromDiseaseCSV();
 
         // Get the list of symptoms Based on the user input.
         // Assuming that the key of the Hashmap riskFactor is the username
         // and the value is a list of symptoms that the user has.
-        String username = user.getUsername();
-        ArrayList<String> userSymptoms = (ArrayList<String>) user.getRiskFactor().get(username);
+//        String username = user.getUsername();
+        ArrayList<String> userSymptoms = (ArrayList<String>) user.getRiskFactor();
 
         //check if any of the disease in the diseases list contains all the symptoms in userSymptoms.
         for (Disease d: diseases){
