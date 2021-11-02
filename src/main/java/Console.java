@@ -140,11 +140,11 @@ public class Console {
             // TODO: Make it print the options again
             command = Integer.parseInt(reader.nextLine());
         }
-        UserAnalyzer analyzer = COMMANDS.get(command);
-        RunCommand commandExecutor = new RunCommand(analyzer);
+//        UserAnalyzer analyzer = COMMANDS.get(command);
+        RunCommand commandExecutor = new RunCommand(command);
         commandExecutor.executeCommand(user);
 
-        Presenter analyze_results = new Presenter(analyzer);
+        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
         return analyze_results.retrieveOutput();
     }
 
@@ -179,7 +179,7 @@ public class Console {
 
         int command = Integer.parseInt(reader.nextLine());
         UserAnalyzer analyzer = COMMANDS.get(command);
-        RunCommand commandExecutor = new RunCommand(analyzer);
+        RunCommand commandExecutor = new RunCommand(command);
         // It shouldn't ask for basic information like their name again since it's an existing user -Naomi (resolved -J)
 
 

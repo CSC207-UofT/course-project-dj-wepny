@@ -7,17 +7,25 @@ public class RunCommand {
     /**
      * Constructor for the RunCommand class based on the command that the user Choose in the Console.
      */
-    public RunCommand(UserAnalyzer useranalyzer){
-        this.useranalyzer = useranalyzer;
+
+    public UserAnalyzer useranalyzer;
+
+    public RunCommand(int command){
+        if(command == 1){
+            this.useranalyzer = new BMIAnalyzer();
+        }
     }
-    public RunCommand(){
-        this.useranalyzer = null;
-    }
+
+//    public RunCommand(UserAnalyzer useranalyzer){
+//        this.useranalyzer = useranalyzer;
+//    }
+//    public RunCommand(){
+//        this.useranalyzer = null;
+//    }
 
     /**
      * Input boundary UserAnalyzer for the use cases.
      */
-    private final UserAnalyzer useranalyzer;
 
     /**
      * Executes the provided command line accordingly
@@ -71,6 +79,10 @@ public class RunCommand {
             case 6:
 
         }
+    }
+
+    public UserAnalyzer getAnalyzer(){
+        return this.useranalyzer;
     }
 
 }
