@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
- *  Below is the User class which stores user's information.
+ *  This class stores user's information.
  */
 public class User {
     private final int id;

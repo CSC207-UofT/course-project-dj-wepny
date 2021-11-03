@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiseaseAnalyzer implements UserAnalyzer{
+/**
+This class takes in the list of the symptoms of a user and outputs a list of possible diseases
+that the user may have.
+ */
 
-    /*
-    This class takes in the list of the symptoms of a user and outputs a list of possible diseases
-    that the user may have.
-     */
+public class DiseaseAnalyzer implements UserAnalyzer{
 
     private String result;
 

@@ -1,14 +1,18 @@
 import java.util.List;
 
+/**
+ This class is responsible for getting the data from the APIs.
+*/
+
 public class APIController {
+
+
     public static List<Food> getFood(){
-        List<Food> foodList = FoodAPI.readFoodFromCSV();
-        return foodList;
+        return FoodAPI.readFoodFromCSV();
     }
 
     public static Disease[] getDisease() {
-        Disease[] diseases = DiseaseAPI.readFromDiseaseCSV();
-        return diseases;
+        return DiseaseAPI.readFromDiseaseCSV();
     }
 
 }

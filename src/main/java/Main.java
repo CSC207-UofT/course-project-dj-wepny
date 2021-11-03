@@ -1,8 +1,10 @@
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * This class runs the program.
+ */
 public class Main {
     public static final String USER_FILE = "src/main/java/UserInfo.csv";
 
@@ -46,7 +48,7 @@ public class Main {
                     logOut = Console.logOut(reader);
                 }
                 HashMap<Integer, User> allUsers = UserController.getExistingUsers();
-                UserParser.updaterUserInfo(allUsers);
+                UserParser.updateUserInfo(allUsers);
             }
 
             boolean restart = Console.reStart(reader);

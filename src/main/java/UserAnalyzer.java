@@ -1,5 +1,6 @@
 /**
- *This file contains UserAnalyzer class, which is the parent class for all analyzers
+ * This is an interface of a user analyzer. Analyzers with different functionalities must override
+ * the method in here.
  */
 public interface UserAnalyzer {
    /*
