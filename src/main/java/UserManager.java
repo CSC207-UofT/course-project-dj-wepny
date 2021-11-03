@@ -3,18 +3,21 @@ import java.lang.Math;
 
 import static java.util.Objects.isNull;
 
+/**
+ * This class creates new users, loads data for existing users, and can change user's username.
+ */
 class UserManager {
     private static HashMap<Integer, User> existingUsers = new HashMap<Integer, User>();
     private static User currentUser;
 
 
+    /**
+     * A static function that creates and return a new User object
+     * @param basic is an arraylist of name and gender
+     * @param personal is an arraylist of weight, height, and age
+     * @return a new User object
+     */
     public static User createNewUser(String[] basic, String[] personal) {
-        /**
-         * A static function that creates and return a new User object
-         * @param basic is an arraylist of name and gender
-         * @param personal is an arraylist of weight, height, and age
-         * @return a new User object
-         */
 
             HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
@@ -31,8 +34,21 @@ class UserManager {
         }
 
 
-//    public static User loadExistingUser(String name, String gender, HashMap<String, Object> personalData, HashMap<String, Object> food,
+//    public static User loadExistingUser(String name, String gender, HashMap<String, Object> personalData,
+//                                                                            HashMap<String, Object> food,
 //                                        HashMap<String, Object> exercise, HashMap<String, Object> disease)
+
+
+    /**
+     * Loads the existing user based on the inputs.
+     * @param id A string representing the user's ID.
+     * @param name A string representing the user's name.
+     * @param gender A string representing a user's gender.
+     * @param weight A string representing the weight of the user.
+     * @param height A string representing the height of the user.
+     * @param age A string representing the age of the user.
+     * @return A User object.
+     */
     public static User loadExistingUser(String id, String name, String gender, String weight, String height, String age){
         HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
@@ -57,6 +73,8 @@ class UserManager {
         }
     }
 
+    // getters for the private instance variables.
+
     public static HashMap<Integer, User> getExistingUsers() {
         return existingUsers;
     }
@@ -70,6 +88,12 @@ class UserManager {
 //        return users.getOrDefault(id, null);
 //    }
 
+    /**
+     * changes the username of the user based on the given string.
+     * @param user An User object that we want to modify.
+     * @param newName A string representing the new username for the user.
+     * @throws Exception In case the username string is invalid (?)
+     */
     public static void changeUserName(User user, String newName) throws Exception {
         user.setUserName(newName);
 //        UserParser.updateUserInfo();

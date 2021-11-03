@@ -7,11 +7,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+This class reads the CSV file of all food data, extracts the variables of interest, and create
+Food objects and List of Food objects.
+ */
 public class FoodAPI {
-    /*
-    This class reads the CSV file of all food data, extracts the variables of interest, and create
-    Food objects and List of Food objects.
-     */
+
     private static final String FOOD_DATASET_PATH = "GlobalFoodData.csv";
 
     private static final double FAT_PER_DAY = 75.0;
@@ -30,6 +32,8 @@ public class FoodAPI {
         double carbohydrates = Double.parseDouble(metadata[6]) / CARB_PER_DAY;
         double sugar= Double.parseDouble(metadata[7]) / SUGAR_PER_DAY;
         boolean vegFriendly = (metadata[2].contains("Vegetable") || metadata[2].contains("Fruits"));
+
+        //TODO: Address the issue below.
 
         // Note: I can't find a column in the dataset that corresponds to a nutrient score,
         // so I'm going to set it to default 0 for now.

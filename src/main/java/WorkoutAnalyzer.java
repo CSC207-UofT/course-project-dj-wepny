@@ -3,8 +3,8 @@ import java.util.List;
 
 public class WorkoutAnalyzer implements UserAnalyzer {
 
-    /* This class takes in user's exercise preferences and outputs a string describing what
-       exercises are best suited for them.
+    /** This class takes in user's exercise preferences and outputs a string describing what
+     * exercises are best suited for them.
      */
 
     private String result;

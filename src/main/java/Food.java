@@ -48,6 +48,9 @@ public class Food {
 
     }
 
+
+    // Getters and setters for the private variables:
+
     public String getFoodName() {
         return foodName;
     }
