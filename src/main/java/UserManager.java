@@ -39,9 +39,16 @@ class UserManager {
 //                                        HashMap<String, Object> exercise, HashMap<String, Object> disease)
 
 
-    // long parameter, is there a way for us to fix this code smell?
-    // Also isn't this just making a new user based on the given inputs? Where exactly is
-    // the loading aspect?
+    /**
+     * Loads the existing user based on the inputs.
+     * @param id A string representing the user's ID.
+     * @param name A string representing the user's name.
+     * @param gender A string representing a user's gender.
+     * @param weight A string representing the weight of the user.
+     * @param height A string representing the height of the user.
+     * @param age A string representing the age of the user.
+     * @return A User object.
+     */
     public static User loadExistingUser(String id, String name, String gender, String weight, String height, String age){
         HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
