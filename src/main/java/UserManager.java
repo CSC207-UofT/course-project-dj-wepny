@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.Math;
 
@@ -65,6 +66,15 @@ class UserManager {
         return currentUser;
     }
 
+    public static void addNewInfo(User user, Object info, int command){
+        switch(command){
+            case 2: user.setPersonalData("activity level", (String) info);
+                // temporary test diseaseAnalyzer
+            case 3:
+                user.addRiskFactor((String) info);
+        }
+    }
+
 //    public static User getExistingUser(int id) {
 //        HashMap<Integer, User> users = existingUsers;
 //        return users.getOrDefault(id, null);
@@ -75,3 +85,5 @@ class UserManager {
 //        UserParser.updateUserInfo();
     }
 }
+
+

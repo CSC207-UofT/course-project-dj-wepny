@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class DiseaseAnalyzer implements UserAnalyzer{
 
@@ -9,31 +9,17 @@ public class DiseaseAnalyzer implements UserAnalyzer{
      */
 
     private String result;
+    private  static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
+    // we may have to set this to be the whole hashmap at first
 
 
     @Override
     public void analyze(User user) {
-
-        // Initializes a result ArrayList.
-        ArrayList<String> possibleDiseaseList = new ArrayList<>();
-        // We first create a list of diseases using DiseaseAPI.
-        // Note that we are directly accessing the API in this use case.
-        Disease[] diseases = APIController.getDisease();
-
-        // Get the list of symptoms Based on the user input.
-        // Assuming that the key of the Hashmap riskFactor is the username
-        // and the value is a list of symptoms that the user has.
-        String username = user.getUsername();
-        ArrayList<String> userSymptoms = (ArrayList<String>) user.getRiskFactor().get(username);
-
-        //check if any of the disease in the diseases list contains all the symptoms in userSymptoms.
-        for (Disease d: diseases){
-            if (d.getSymptoms().containsAll(userSymptoms)){
-                possibleDiseaseList.add(d.getDisease());
-            }
-        }
-
-        result = "Based on your symptoms, you may have: " + possibleDiseaseList;
+        ArrayList<String> userInput = user.getRiskFactor(); //what users input
+        HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
+        ArrayList<String> options = generateOptions(newDisease);
+        result = options.toString();
+        potentialDisease = newDisease;
     }
 
     @Override
@@ -41,4 +27,55 @@ public class DiseaseAnalyzer implements UserAnalyzer{
         return result;
     }
 
+
+    private static HashMap<String, Set<String>> newPotentialDiseases(HashMap<String, Set<String>> oldPotentialDisease,
+                                                                     ArrayList<String> chosenSymptoms){
+        //given the chosen symptoms, remove the diseases that don't involve these symptoms and return
+        //the possible new HashMap of diseases.
+
+        for (String disease: oldPotentialDisease.keySet()){
+            if(!oldPotentialDisease.get(disease).containsAll(chosenSymptoms)){
+                oldPotentialDisease.remove(disease);
+            }
+        };
+        return oldPotentialDisease;
+    }
+
+
+
+    private static ArrayList<String> generateOptions(HashMap<String, Set<String>> givenDisease) {
+        ArrayList<String> Symptoms = new ArrayList<String>();
+        // generates the options based on the given hashmap of potential diseases
+//        List<String> potentialDisease = new ArrayList<String>(givenDisease.keySet());
+        List<String> allSymptoms = new ArrayList<>();
+        for(Set<String> symptoms: givenDisease.values()){
+            for(String symptom: symptoms){
+                if (!allSymptoms.contains(symptom)){
+                allSymptoms.add(symptom);};
+            }
+        }
+        int numberOfOptions = numberOfOptions(allSymptoms.size());
+        Random random = new Random();
+        for(int i = 0; i < numberOfOptions; i++){
+            String randomSymptom = allSymptoms.get(random.nextInt(allSymptoms.size()));
+            if(!Symptoms.contains(randomSymptom)){
+                Symptoms.add(randomSymptom);}
+        }
+
+        return Symptoms;
+    }
+
+    private static int numberOfOptions(int numberOfSymptoms){
+        // algorithm for how many options we generate.
+        double optionsAmount = numberOfSymptoms;
+        while (optionsAmount >= 10){
+            numberOfSymptoms = numberOfSymptoms/2;
+            optionsAmount = numberOfSymptoms;
+        }
+        return (int) Math.round(optionsAmount);
+    }
+
+    public static HashMap<String, Set<String>> getPotentialDisease() {
+        return potentialDisease;
+    }
 }

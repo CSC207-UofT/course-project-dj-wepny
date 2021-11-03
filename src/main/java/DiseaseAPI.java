@@ -8,13 +8,19 @@ import java.util.*;
 
 public class DiseaseAPI {
 
-    private static final String DISEASE_DATASET_PATH = "GlobalDiseaseData.csv";
+    private static final String DISEASE_DATASET_PATH =
+            "src/main/java/GlobalDiseaseData.csv";
 
     /**
      * Read from the Disease CSV and create a List of Disease Objects.
      * @return a List of Disease Objects.
      */
-    public static Disease[] readFromDiseaseCSV(){
+
+    public static void main(String[] args) {
+        readFromDiseaseCSV();
+    }
+
+    public static HashMap<String, Set<String>> readFromDiseaseCSV(){
         HashMap<String, Set<String>> diseaseMap = new HashMap<>();
         Path pathToFile = Paths.get(DISEASE_DATASET_PATH);
 
@@ -34,7 +40,7 @@ public class DiseaseAPI {
         }
 
         // convert diseaseMap to an array of Disease objects
-        return returnListFromMap(diseaseMap);
+        return diseaseMap;
     }
 
     private static Disease createDiseaseObject(String name, Set<String> symptoms){
