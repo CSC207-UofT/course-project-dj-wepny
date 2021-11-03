@@ -20,7 +20,7 @@ public class ExerciseAnalyzer implements UserAnalyzer{
 
         HashMap<String, Object> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
-        ArrayList<Exercise> user_exercises = new ArrayList<Exercise>();
+        ArrayList<Exercise> user_exercises = new ArrayList<Exercise>(); // May not be needed
         String exercise_names = "";
 
         for(Exercise exercise: exercises){
@@ -38,10 +38,13 @@ public class ExerciseAnalyzer implements UserAnalyzer{
 
     }
 
+    /**
+     *  A method used to determine if the exercise matches the user's exercise preferences
+     */
     public boolean exercise_match(Exercise exercise, HashMap<String, Object> user_preference){
         boolean has_maj_muscle = user_preference.containsValue(exercise.getMajorMuscleExercised());
         boolean has_min_muscle = user_preference.containsValue(exercise.getMinorMuscleExercised());
-        if(has_maj_muscle == true && has_min_muscle == true){
+        if(has_maj_muscle && has_min_muscle){
             for(String equipment:exercise.getEquipmentNeeded()){
                 if(!user_preference.containsValue(equipment)){
                     return false;
