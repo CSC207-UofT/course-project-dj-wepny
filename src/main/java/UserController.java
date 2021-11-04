@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class UserController {
 
@@ -22,6 +23,10 @@ public class UserController {
 
         return allUser;
     }
+
+//    public static void setPotentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
+//        UserManager.setPontentialDisease(user, potentialDisease);
+//    }
 //
 //    public void updateUser(int newId) throws Exception {
 //        UserParser.updateUserInfo();

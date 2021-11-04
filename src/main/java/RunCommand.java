@@ -55,6 +55,9 @@ public class RunCommand {
         UserManager.addNewInfo(user, info, command);
     }
 
+    public void changeInfo(User user, Object info, int command){
+        UserManager.changeInfo(user,info, command);
+    }
     public int executeCommandDisease(User user, ArrayList<String> responses) throws Exception{
         for (String response: responses){
             addInfo(user, response, 3); //adds the symptoms identified by client into their risk factors
@@ -63,6 +66,9 @@ public class RunCommand {
         return DiseaseAnalyzer.getPotentialDisease().size(); // the amount of diseases the client could potentially have.
     }
 
+    public void resetPotentialDisease(){
+        DiseaseAnalyzer.resetPotentialDisease();
+    }
 
     public void executeCommand(int command, User user) throws Exception {
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *  Below is the User class which stores user's information.
@@ -31,7 +32,7 @@ public class User {
         this.exercisePreference = new HashMap<String, Object>();
         this.riskFactor = new ArrayList<String>();
         this.personalData = personalData;
-    }
+   }
 
     /*
        An overloaded constructor, but why do we need this? - David
@@ -44,7 +45,7 @@ public class User {
      * @param disease
      */
     public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
-                HashMap<String, Object> exercise, ArrayList<String> disease){
+                HashMap<String, Object> exercise, ArrayList<String> disease, HashMap<String, Set<String>> potentialDisease){
         this.id = id;
         this.username= name;
         this.gender = gender;
@@ -52,6 +53,7 @@ public class User {
         this.exercisePreference = exercise;
         this.riskFactor = disease;
         this.personalData = personalData;
+
     }
 
     public int getId() {
@@ -100,7 +102,6 @@ public class User {
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
     }
-
     public void setUserName(String newName) {this.username = newName;}
     // do we need this?
 

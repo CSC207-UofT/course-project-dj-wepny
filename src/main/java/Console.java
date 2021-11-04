@@ -144,32 +144,31 @@ public class Console {
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
         if (command == 4){
+            commandExecutor.resetPotentialDisease();
+            commandExecutor.changeInfo(user, new ArrayList<String>(), 3);
             int potentialDisease = 1000;
             ArrayList<String> currentSymptoms = new ArrayList<>();
             while(potentialDisease > 6) {
-//                    System.out.println("While while while");
                     potentialDisease = commandExecutor.executeCommandDisease(user, currentSymptoms);
                     if(potentialDisease <= 6){
-//                        System.out.println("Breaking");
-//                        System.out.println("blahe:" + potentialDisease);
-
                         break;
                     }
                     //outputs how many potential disease client could have
                     // pass in empty array list if it is first round.
-                    System.out.println("These are your options:");
+                    System.out.println("These are your options. If none of them apply to you, please type in N/A.");
                     Presenter analyze_results = new Presenter(analyzer);
                     System.out.println(analyze_results.retrieveOutput()); //first time giving options
                     String symptoms = reader.nextLine(); //client's input of symptoms
+                    if(symptoms.equals("N/A")){}
+                    else{
                     symptoms.replaceAll("[\\[\\](){}]","");
                     String SymptomsList[] = symptoms.split(",");
                     List<String> finalSymptomsList = new ArrayList<String>();
                     finalSymptomsList = Arrays.asList(SymptomsList);
-                    System.out.println(finalSymptomsList);
                 //convert client symptoms into a list of symptoms;
                     for(String symptom: finalSymptomsList){
                         currentSymptoms.add(symptom); //add those symptoms into the current symptoms that client has
-                    }
+                    }}
             }
             System.out.println("These are your potential diseases");
             commandExecutor.executeCommand(user);
