@@ -32,9 +32,11 @@ public class DiseaseAPI {
             
             while (line != null) {
                 String[] data = line.split(",");       // data contains the disease name and symptoms
+//                System.out.print("data: " + data.toString());
                 putDataToMap(diseaseMap, data);
                 line = br.readLine();                       // read next line before looping
             }
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -61,13 +63,19 @@ public class DiseaseAPI {
     private static void putDataToMap(HashMap<String, Set<String>> map,String[] data) {
         String diseaseName = data[0];
         String[] symptomsList = Arrays.copyOfRange(data, 1, data.length);
+//        System.out.print("symptom LIST:"+symptomsList.toString());
+
 
         for (String symptom : symptomsList) {
             if (!map.containsKey(diseaseName)) {
+
                 map.put(diseaseName, new HashSet<>());      // add disease to map for the first time
             }
             if (!symptom.equals("")) {                      // add symptom to map only if it is not ""
-                map.get(diseaseName).add(symptom);
+                 String mySymptom = symptom.replace(" ", "");
+
+//                System.out.print("symptom:"+mySymptom);
+                map.get(diseaseName).add(mySymptom);
             }
         }
 

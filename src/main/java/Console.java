@@ -147,7 +147,14 @@ public class Console {
             int potentialDisease = 1000;
             ArrayList<String> currentSymptoms = new ArrayList<>();
             while(potentialDisease > 6) {
+//                    System.out.println("While while while");
                     potentialDisease = commandExecutor.executeCommandDisease(user, currentSymptoms);
+                    if(potentialDisease <= 6){
+//                        System.out.println("Breaking");
+//                        System.out.println("blahe:" + potentialDisease);
+
+                        break;
+                    }
                     //outputs how many potential disease client could have
                     // pass in empty array list if it is first round.
                     System.out.println("These are your options:");
@@ -164,7 +171,7 @@ public class Console {
                         currentSymptoms.add(symptom); //add those symptoms into the current symptoms that client has
                     }
             }
-
+            System.out.println("These are your potential diseases");
             commandExecutor.executeCommand(user);
             Presenter analyze_results = new Presenter(analyzer);
             return analyze_results.retrieveOutput();
@@ -176,7 +183,7 @@ public class Console {
             return analyze_results.retrieveOutput();
         }
     }
-
+   
 //    ********************
 
     public static int loginPage(Scanner reader) throws Exception{

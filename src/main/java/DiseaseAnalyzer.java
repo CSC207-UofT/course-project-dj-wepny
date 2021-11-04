@@ -12,14 +12,30 @@ public class DiseaseAnalyzer implements UserAnalyzer{
     private  static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
     // we may have to set this to be the whole hashmap at first
 
+//    public static void main(String[] args) {
+//        ArrayList<String> s= new ArrayList<String>();
+//        s.add(" distention_of_abdomen");
+//        System.out.println(newPotentialDiseases(DiseaseAPI.readFromDiseaseCSV(), s));
+//        System.out.println(DiseaseAPI.readFromDiseaseCSV());
+//        System.out.println(DiseaseAPI.readFromDiseaseCSV().get("Alcoholic hepatitis").contains(" distention_of_abdomen"));
+//
+//    }
 
+    public static void main(String[] args) {
+
+    }
     @Override
     public void analyze(User user) {
+//        System.out.println("potentialDisease" + potentialDisease);
         ArrayList<String> userInput = user.getRiskFactor(); //what users input
+//        System.out.println("userInput" + userInput);
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
+//        System.out.println("newDisease" + newDisease);
         ArrayList<String> options = generateOptions(newDisease);
-        result = options.toString();
+        if (potentialDisease.size() <= 6){result = newDisease.keySet().toString();}
+        else{result = options.toString();}
         potentialDisease = newDisease;
+
     }
 
     @Override
@@ -33,11 +49,15 @@ public class DiseaseAnalyzer implements UserAnalyzer{
         //given the chosen symptoms, remove the diseases that don't involve these symptoms and return
         //the possible new HashMap of diseases.
 
+        ArrayList<String> removeDiseases = new ArrayList<String>();
         for (String disease: oldPotentialDisease.keySet()){
             if(!oldPotentialDisease.get(disease).containsAll(chosenSymptoms)){
-                oldPotentialDisease.remove(disease);
+                removeDiseases.add(disease);
+//                System.out.println(removeDiseases);
             }
-        };
+        }
+
+        oldPotentialDisease.keySet().removeAll(removeDiseases);
         return oldPotentialDisease;
     }
 
