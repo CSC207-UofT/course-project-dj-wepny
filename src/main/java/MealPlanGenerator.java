@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+This class generates meal plans for user base on user input on FoodPreference,
+and based on the Energy requirement (measured in calories) of the User
+ */
 public class MealPlanGenerator {
-    /*
-    This class generates meal plans for user base on user input on FoodPreference,
-    and based on the Energy requirement (measured in calories) of the User
-     */
+
     // TODO: how does Energy requirement play a role here? It's not explicit on the CRC cards.
 
     public List<Food> generateMealPlan(User user) {

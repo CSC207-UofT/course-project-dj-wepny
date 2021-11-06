@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
 /**
- * Below is the Disease class which stores Disease object from the database.
+ * This class stores Disease object from the database.
  */
 public class Disease {
 
     private final String disease;
     private final ArrayList<String> symptoms;
-
     /**
      *Constructor for the disease object
      *

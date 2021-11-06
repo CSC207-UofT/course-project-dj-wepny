@@ -1,19 +1,19 @@
 import java.util.HashMap;
 
+/**
+This Class Analyzes the Energy Requirement per day (EER) for the user.
+ */
 public class EERAnalyzer implements UserAnalyzer{
-
-    /*
-    This Class Analyzes the Energy Requirement per day (EER) for the user.
-     */
 
     String result;
 
     @Override
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
 
         //Instantiating necessary variables for EER calculation.
         String gender = user.getGender();
-        String activityRating = (String) user.getPersonalData().get("activity level");
+        String activityRating = user.getActivityRating();
         double physicalActivity = getPAValueFromActivityRating(gender, activityRating);
 
         HashMap<String, Object> personalData = user.getPersonalData();
@@ -82,7 +82,5 @@ public class EERAnalyzer implements UserAnalyzer{
             return 662 - 9.53 * age + physicalActivity * (15.91 * weight + 539.6 * height);
         }
         return 354 - 6.91 * age + physicalActivity * (9.36 * weight + 726 * height);
-
-
     }
 }
