@@ -10,6 +10,7 @@ public interface UserAnalyzer {
     The exact contents will vary then.
      */
     void analyze();
+
     String getResult();
 
     //TODO: More methods may be required in the future?

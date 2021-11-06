@@ -32,6 +32,7 @@ public class User {
         this.exercisePreference = new HashMap<String, Object>();
         this.riskFactor = new ArrayList<String>();
         this.personalData = personalData;
+        this.activityRating = "";
    }
 
     /*
@@ -44,17 +45,17 @@ public class User {
      * @param exercise
      * @param disease
      */
-    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
-                HashMap<String, Object> exercise, ArrayList<String> disease, HashMap<String, Set<String>> potentialDisease){
-        this.id = id;
-        this.username= name;
-        this.gender = gender;
-        this.foodPreference = food;
-        this.exercisePreference = exercise;
-        this.riskFactor = disease;
-        this.personalData = personalData;
-
-    }
+//    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
+//                HashMap<String, Object> exercise, ArrayList<String> disease, HashMap<String, Set<String>> potentialDisease){
+//        this.id = id;
+//        this.username= name;
+//        this.gender = gender;
+//        this.foodPreference = food;
+//        this.exercisePreference = exercise;
+//        this.riskFactor = disease;
+//        this.personalData = personalData;
+//
+//    }
 
     public int getId() {
         return this.id;

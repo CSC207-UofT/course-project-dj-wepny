@@ -106,12 +106,14 @@ public class Console {
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
         RunCommand.createUser(basicUserInfo, personalUserInfo);
+        RunCommand infoGetter = new RunCommand();
+        System.out.println("Hi there! This is DJ WEPNY Personal Health software,\nyou have now created an account with us." +
+                "\n\nYour Personal Identification Number (PIN) is " + infoGetter.retrieveUser("id"));
+        System.out.println("!!!Please keep this number as you would need it to access your account in the future.\n");
     }
+
     public static String NewUserMenu(Scanner reader) throws Exception {
         RunCommand infoGetter = new RunCommand();
-        System.out.println("Hi there! This is DJ WEPNY Personal Health software, you have now created an account with us, " +
-                        "Your Personal Identification Number (PIN) is " + infoGetter.retrieveUser("id"));
-        // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
         System.out.println("Welcome, " + infoGetter.retrieveUser("name") + ", What would you like to do today?");
         System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Analyze Body Mass Index (BMI) \n" +
@@ -145,6 +147,11 @@ public class Console {
 
         RunCommand commandExecutor = new RunCommand(command);
 
+        if (command == 2) {
+            String level = activityLevel(reader);
+            commandExecutor.addInfo(level, 2);
+        }
+
         if (command == 4){
             commandExecutor.resetPotentialDisease();
             commandExecutor.changeInfo(new ArrayList<String>(), 4);
@@ -162,10 +169,10 @@ public class Console {
                     System.out.println("Hi Welcome to the Disease Predictor, given the lists of potential symptoms,\n" +
                             "please enter the symptoms you are experiencing, and the program will generate potential\n" +
                             "diseases that you may be diagnosed for.");
-                    System.out.println("These are the symptom options. " +
+                    System.out.println("\nThese are the symptom options. " +
                             "If you are currently experiencing more than one, please separate the input using a comma ','\n" +
                             "for example, 'high_fever,back_pain' (notice there is no space in between)\n"+
-                            "If none of them apply to you, please type in N/A.");
+                            "\nIf none of them apply to you, please type in N/A.");
 
                     Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
                     System.out.println(analyze_results.retrieveOutput()); //first time giving options
@@ -213,11 +220,12 @@ public class Console {
 
     public static String ExistingUserMenu(Scanner reader, int id) throws Exception{
 
-        User userInfo = UserManager.getExistingUsers().get(id);
+        RunCommand currentUser = new RunCommand();
+        currentUser.setCurrentUser(id);
 
         // We probably shouldn't have duplicate code here -Naomi
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        System.out.println("Welcome, " + userInfo.getUsername() + ", What would you like to do today?");
+        System.out.println("Welcome, " + currentUser.retrieveUser("name") + ", What would you like to do today?");
         System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Analyze Body Mass Index (BMI) \n" +
                 " 2. Analyze Energy Required per day (EER) \n" +
@@ -230,6 +238,15 @@ public class Console {
 //        UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(command);
 
+        if (command == 2) {
+            if (!checkInfoExist(2)){
+                System.out.println("Oh no! Information missing for this report.");
+                String level = activityLevel(reader);
+                commandExecutor.addInfo(level, 2);
+            }
+            commandExecutor.executeCommand();
+        }
+
         if (command == 6){ //special case where user chooses to change their personal info.
             System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                     " 1. Change Username \n" +
@@ -241,13 +258,13 @@ public class Console {
                 System.out.println("Please enter your new Username");
                 String newName = reader.nextLine();
                 System.out.println("Thank you. Currently updating your new username.");
-                commandExecutor.executeCommandUpdateInfo(secondCommand, userInfo, newName);
+                commandExecutor.executeCommandUpdateInfo(secondCommand, newName);
             }
 
             return "Your profile has been updated"; //this can be used for general cases 1-6
         }
         else{
-            commandExecutor.executeCommand(command, userInfo); //regular operations from 1-5
+            commandExecutor.executeCommand(); //regular operations from 1-5
             Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             return analyze_results.retrieveOutput();
         }
@@ -292,6 +309,35 @@ public class Console {
 
     public static boolean isRange(int i){
         return i > 0 && i < 6;
+    }
+
+    public static boolean checkInfoExist(int command) {
+        RunCommand commandExecutor = new RunCommand();
+        if (command == 2) {
+            HashMap personalData = (HashMap) commandExecutor.retrieveUser("personal data");
+            return personalData.containsKey("activity level");
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static String activityLevel(Scanner reader){
+
+        System.out.println("Please enter your daily activity level: (Please enter a number from 1 to 4) \n" +
+                " 1. Sedentary \n" +
+                " 2. Low Active \n" +
+                " 3. Active \n" +
+                " 4. Very Active \n" );
+        String userActivityLevel = reader.nextLine();
+
+        switch (userActivityLevel) {
+            case "1": return "Sedentary";
+            case "2": return "Low Active";
+            case "3": return "Active";
+            case "4": return "Very Active";
+            default: return "Enter Again";
+        }
     }
 
 }

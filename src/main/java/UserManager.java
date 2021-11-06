@@ -104,12 +104,11 @@ class UserManager {
 
     /**
      * changes the username of the user based on the given string.
-     * @param user An User object that we want to modify.
      * @param newName A string representing the new username for the user.
      * @throws Exception In case the username string is invalid (?)
      */
-    public static void changeUserName(User user, String newName) throws Exception {
-        user.setUserName(newName);
+    public static void changeUserName(String newName) throws Exception {
+        currentUser.setUserName(newName);
 //        UserParser.updateUserInfo();
     }
 
@@ -125,9 +124,10 @@ class UserManager {
     public static User getCurrentUser() {
         return currentUser;
     }
-    //    public static void setPontentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
-//        user.setPotentialDisease(potentialDisease);
-//    }
+
+    public static void setCurrentUser(int id){
+        currentUser = existingUsers.get(id);
+    }
 }
 
 
