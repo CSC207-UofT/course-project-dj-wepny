@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -48,6 +50,24 @@ public class RunCommand {
     public void executeCommand(User newUser) throws Exception {
         useranalyzer.analyze(newUser);
 
+    }
+    public void addInfo(User user, Object info, int command){
+        UserManager.addNewInfo(user, info, command);
+    }
+
+    public void changeInfo(User user, Object info, int command){
+        UserManager.changeInfo(user,info, command);
+    }
+    public int executeCommandDisease(User user, ArrayList<String> responses) throws Exception{
+        for (String response: responses){
+            addInfo(user, response, 3); //adds the symptoms identified by client into their risk factors
+        }
+        useranalyzer.analyze(user); //analyzes what they have
+        return DiseaseAnalyzer.getPotentialDisease().size(); // the amount of diseases the client could potentially have.
+    }
+
+    public void resetPotentialDisease(){
+        DiseaseAnalyzer.resetPotentialDisease();
     }
 
     public void executeCommand(int command, User user) throws Exception {

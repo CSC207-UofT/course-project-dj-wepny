@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
+
 import static java.util.Objects.isNull;
 /**
  * This class interact with the users and receives their input, then it sends
@@ -15,6 +15,7 @@ public class Console {
 
     static {
         COMMANDS.put(1, new BMIAnalyzer());
+        COMMANDS.put(4, new DiseaseAnalyzer());
         // Add other functionalities here
     }
 
@@ -142,12 +143,46 @@ public class Console {
         }
         UserAnalyzer analyzer = COMMANDS.get(command);
         RunCommand commandExecutor = new RunCommand(analyzer);
-        commandExecutor.executeCommand(user);
+        if (command == 4){
+            commandExecutor.resetPotentialDisease();
+            commandExecutor.changeInfo(user, new ArrayList<String>(), 3);
+            int potentialDisease = 1000;
+            ArrayList<String> currentSymptoms = new ArrayList<>();
+            while(potentialDisease > 6) {
+                    potentialDisease = commandExecutor.executeCommandDisease(user, currentSymptoms);
+                    if(potentialDisease <= 6){
+                        break;
+                    }
+                    //outputs how many potential disease client could have
+                    // pass in empty array list if it is first round.
+                    System.out.println("These are your options. If none of them apply to you, please type in N/A.");
+                    Presenter analyze_results = new Presenter(analyzer);
+                    System.out.println(analyze_results.retrieveOutput()); //first time giving options
+                    String symptoms = reader.nextLine(); //client's input of symptoms
+                    if(symptoms.equals("N/A")){}
+                    else{
+                    symptoms.replaceAll("[\\[\\](){}]","");
+                    String SymptomsList[] = symptoms.split(",");
+                    List<String> finalSymptomsList = new ArrayList<String>();
+                    finalSymptomsList = Arrays.asList(SymptomsList);
+                //convert client symptoms into a list of symptoms;
+                    for(String symptom: finalSymptomsList){
+                        currentSymptoms.add(symptom); //add those symptoms into the current symptoms that client has
+                    }}
+            }
+            System.out.println("These are your potential diseases");
+            commandExecutor.executeCommand(user);
+            Presenter analyze_results = new Presenter(analyzer);
+            return analyze_results.retrieveOutput();
+        }
+        else {
+            commandExecutor.executeCommand(user);
 
-        Presenter analyze_results = new Presenter(analyzer);
-        return analyze_results.retrieveOutput();
+            Presenter analyze_results = new Presenter(analyzer);
+            return analyze_results.retrieveOutput();
+        }
     }
-
+   
 //    ********************
 
     public static int loginPage(Scanner reader) throws Exception{

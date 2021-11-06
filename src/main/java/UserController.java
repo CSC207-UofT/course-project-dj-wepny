@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * This class checks for existing users in the local file, and adds users to the file if they are
@@ -26,6 +27,10 @@ public class UserController {
 
         return allUser;
     }
+
+//    public static void setPotentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
+//        UserManager.setPontentialDisease(user, potentialDisease);
+//    }
 //
 //    public void updateUser(int newId) throws Exception {
 //        UserParser.updateUserInfo();

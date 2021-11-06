@@ -1,18 +1,16 @@
+import java.util.HashMap;
 import java.util.List;
-
-/**
- This class is responsible for getting the data from the APIs.
-*/
+import java.util.Set;
 
 public class APIController {
-
-
     public static List<Food> getFood(){
-        return FoodAPI.readFoodFromCSV();
+        List<Food> foodList = FoodAPI.readFoodFromCSV();
+        return foodList;
     }
 
-    public static Disease[] getDisease() {
-        return DiseaseAPI.readFromDiseaseCSV();
+    public static HashMap<String, Set<String>> getDisease() {
+        HashMap<String, Set<String>> diseases = DiseaseAPI.readFromDiseaseCSV();
+        return diseases;
     }
 
 }

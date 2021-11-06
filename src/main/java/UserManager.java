@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.Math;
+import java.util.List;
+import java.util.Set;
 
 import static java.util.Objects.isNull;
 
@@ -83,6 +86,15 @@ class UserManager {
         return currentUser;
     }
 
+    public static void addNewInfo(User user, Object info, int command){
+        switch(command){
+            case 2: user.setPersonalData("activity level", (String) info);
+                // temporary test diseaseAnalyzer
+            case 3:
+                user.addRiskFactor((String) info);
+        }
+    }
+
 //    public static User getExistingUser(int id) {
 //        HashMap<Integer, User> users = existingUsers;
 //        return users.getOrDefault(id, null);
@@ -98,4 +110,21 @@ class UserManager {
         user.setUserName(newName);
 //        UserParser.updateUserInfo();
     }
+
+    public static void changeInfo(User user, Object info, int command){
+        switch(command){
+            case 2: user.setPersonalData("activity level", (String) info);
+                // temporary test diseaseAnalyzer
+            case 3:
+                user.setRiskFactor((ArrayList<String>)info);
+        }
+    }
+
+
+
+//    public static void setPontentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
+//        user.setPotentialDisease(potentialDisease);
+//    }
 }
+
+

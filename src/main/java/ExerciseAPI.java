@@ -65,7 +65,7 @@ public class ExerciseAPI {
 
         List<Exercise> exerciseList = new ArrayList<>();
 
-        Path pathToFile = Paths.get("ExerciseMoveData.csv");
+        Path pathToFile = Paths.get("src/main/java/ExerciseMoveData.csv");
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

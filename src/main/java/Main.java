@@ -31,6 +31,7 @@ public class Main {
             if (!Console.checkExisting(reader)) {
                 User userInfo = Console.gatherInfo(reader);
                 while (!logOut) {
+
                     String output = Console.NewUserMenu(reader, userInfo);
                     System.out.println(output);
                     logOut = Console.logOut(reader);
