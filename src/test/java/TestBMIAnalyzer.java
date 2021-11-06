@@ -25,7 +25,7 @@ public class TestBMIAnalyzer {
 
     @Test(timeout = 500)
      public void testOutput() {
-        bmi.analyze(user);
+        bmi.analyze();
         assertEquals("*****************************************************************************\n" +
                      "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +
                      "High BMI (>25.0) can indicate high body fatness, and considered as overweight. \n" +

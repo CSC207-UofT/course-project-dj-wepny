@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static java.util.Objects.isNull;
 /**
@@ -10,15 +11,7 @@ import static java.util.Objects.isNull;
 
 public class Console {
 
-    // TODO: move this to Constants
-    public static final HashMap<Integer, UserAnalyzer> COMMANDS = new HashMap<Integer, UserAnalyzer>();
-
-    static {
-        COMMANDS.put(1, new BMIAnalyzer());
-        COMMANDS.put(4, new DiseaseAnalyzer());
-        // Add other functionalities here
-    }
-
+    private final static int[] COMMAND = {1,2,3,4,5};
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].
@@ -106,20 +99,20 @@ public class Console {
         return exists.equals("Y");
     }
 
-    public static User gatherInfo(Scanner reader) throws Exception{
+    public static void gatherInfo(Scanner reader) throws Exception{
         System.out.println("We will start from some basic information.");
         String[] basicUserInfo = getBasicUserInfo(reader);
         System.out.println("Now, we would like to know some of your personal data.");
         String[] personalUserInfo = getPersonalUserInfo(reader);
 
-        User user = RunCommand.createUser(basicUserInfo, personalUserInfo);
-
-        return user;
+        RunCommand.createUser(basicUserInfo, personalUserInfo);
     }
-    public static String NewUserMenu(Scanner reader, User user) throws Exception {
-
+    public static String NewUserMenu(Scanner reader) throws Exception {
+        RunCommand infoGetter = new RunCommand();
+        System.out.println("Hi there! This is DJ WEPNY Personal Health software, you have now created an account with us, " +
+                        "Your Personal Identification Number (PIN) is " + infoGetter.retrieveUser("id"));
         // Pass in the two arrays to the commandExecutor, and instantiate the classes accordingly.
-        System.out.println("Welcome, " + user.getUsername() + ", What would you like to do today?");
+        System.out.println("Welcome, " + infoGetter.retrieveUser("name") + ", What would you like to do today?");
         System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Analyze Body Mass Index (BMI) \n" +
                 " 2. Analyze Energy Required per day (EER) \n" +
@@ -127,58 +120,79 @@ public class Console {
                 " 4. Analyze Disease \n" +
                 " 5. Generate a meal plan \n");
 
-        // currently used as a test to debug, please don't delete
-//        HashMap<Integer, User> allLoadedUser = UserManager.getExistingUsers();
-//        User user = allLoadedUser.get(6008);
-//        String[] basic = {user.getUsername(), user.getGender()};
-//        String[] personal = {(String) user.getPersonalData().get("height"), (String) user.getPersonalData().get("weight"),
-//                (String) user.getPersonalData().get("age")};
-//        return commandExecutor.executeCommand(command, basic ,personal);
 
-        int command = Integer.parseInt(reader.nextLine());
-        while (!COMMANDS.containsKey(command)) {
-            System.out.println("Sorry, your command is invalid. Please try again.");
-            // TODO: Make it print the options again
-            command = Integer.parseInt(reader.nextLine());
+//        int command = Integer.parseInt(reader.nextLine());
+        String input = reader.nextLine();
+
+        boolean check = true;
+        while(check){
+            if (isInteger(input) && !isRange(Integer.parseInt(input))){
+                System.out.println("Sorry, your command is invalid. Please enter a number from 1 to 5 only." +
+                        "Try again:");
+                input = reader.nextLine();
+            }
+            else if (!isInteger(input)){
+                System.out.println("Sorry, your command is invalid. Please enter a number only, no other characters." +
+                        "Try again:");
+                input = reader.nextLine();
+            }
+            else{
+                check = false;
+            }
+
         }
-        UserAnalyzer analyzer = COMMANDS.get(command);
-        RunCommand commandExecutor = new RunCommand(analyzer);
+        int command = Integer.parseInt(input);
+
+        RunCommand commandExecutor = new RunCommand(command);
+
         if (command == 4){
             commandExecutor.resetPotentialDisease();
-            commandExecutor.changeInfo(user, new ArrayList<String>(), 3);
-            int potentialDisease = 1000;
+            commandExecutor.changeInfo(new ArrayList<String>(), 4);
+            int potentialDisease;
+
             ArrayList<String> currentSymptoms = new ArrayList<>();
-            while(potentialDisease > 6) {
-                    potentialDisease = commandExecutor.executeCommandDisease(user, currentSymptoms);
+
+            while(true) {
+                    potentialDisease = commandExecutor.executeCommandDisease(currentSymptoms);
                     if(potentialDisease <= 6){
                         break;
                     }
                     //outputs how many potential disease client could have
                     // pass in empty array list if it is first round.
-                    System.out.println("These are your options. If none of them apply to you, please type in N/A.");
-                    Presenter analyze_results = new Presenter(analyzer);
+                    System.out.println("Hi Welcome to the Disease Predictor, given the lists of potential symptoms,\n" +
+                            "please enter the symptoms you are experiencing, and the program will generate potential\n" +
+                            "diseases that you may be diagnosed for.");
+                    System.out.println("These are the symptom options. " +
+                            "If you are currently experiencing more than one, please separate the input using a comma ','\n" +
+                            "for example, 'high_fever,back_pain' (notice there is no space in between)\n"+
+                            "If none of them apply to you, please type in N/A.");
+
+                    Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
                     System.out.println(analyze_results.retrieveOutput()); //first time giving options
+
                     String symptoms = reader.nextLine(); //client's input of symptoms
-                    if(symptoms.equals("N/A")){}
-                    else{
-                    symptoms.replaceAll("[\\[\\](){}]","");
-                    String SymptomsList[] = symptoms.split(",");
-                    List<String> finalSymptomsList = new ArrayList<String>();
-                    finalSymptomsList = Arrays.asList(SymptomsList);
-                //convert client symptoms into a list of symptoms;
-                    for(String symptom: finalSymptomsList){
-                        currentSymptoms.add(symptom); //add those symptoms into the current symptoms that client has
-                    }}
+                    if(!symptoms.equals("N/A")){
+                        symptoms = symptoms.replaceAll("[\\[\\](){}]","");
+                        String[] symptomsList = symptoms.split(",");
+//                        String SymptomsList[] = symptoms.split(",");
+                        List<String> finalSymptomsList;
+                        finalSymptomsList = Arrays.asList(symptomsList);
+                        //convert client symptoms into a list of symptoms;
+                        //add those symptoms into the current symptoms that client has
+                        currentSymptoms.addAll(finalSymptomsList);
+                    }
             }
-            System.out.println("These are your potential diseases");
-            commandExecutor.executeCommand(user);
-            Presenter analyze_results = new Presenter(analyzer);
+            System.out.println("These are your potential diseases: (if output = [], " +
+                    "there is no disease that match the current symptoms you are experiencing)");
+            commandExecutor.executeCommand();
+//            Presenter analyze_results = new Presenter(analyzer);
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             return analyze_results.retrieveOutput();
         }
         else {
-            commandExecutor.executeCommand(user);
+            commandExecutor.executeCommand();
 
-            Presenter analyze_results = new Presenter(analyzer);
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             return analyze_results.retrieveOutput();
         }
     }
@@ -213,10 +227,8 @@ public class Console {
                 " 6. Edit Profile");
 
         int command = Integer.parseInt(reader.nextLine());
-        UserAnalyzer analyzer = COMMANDS.get(command);
-        RunCommand commandExecutor = new RunCommand(analyzer);
-        // It shouldn't ask for basic information like their name again since it's an existing user -Naomi (resolved -J)
-
+//        UserAnalyzer analyzer = COMMANDS.get(command);
+        RunCommand commandExecutor = new RunCommand(command);
 
         if (command == 6){ //special case where user chooses to change their personal info.
             System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
@@ -236,9 +248,8 @@ public class Console {
         }
         else{
             commandExecutor.executeCommand(command, userInfo); //regular operations from 1-5
-            Presenter analyze_results = new Presenter(analyzer);
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             return analyze_results.retrieveOutput();
-
         }
 
     }
@@ -268,4 +279,19 @@ public class Console {
         }
         return restart.equals("Y");
     }
+
+    public static boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+
+        } catch(Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isRange(int i){
+        return i > 0 && i < 6;
+    }
+
 }

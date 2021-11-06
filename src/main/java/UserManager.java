@@ -20,7 +20,7 @@ class UserManager {
      * @param personal is an arraylist of weight, height, and age
      * @return a new User object
      */
-    public static User createNewUser(String[] basic, String[] personal) {
+    public static void createNewUser(String[] basic, String[] personal) {
 
             HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
@@ -33,7 +33,9 @@ class UserManager {
             while (existingUsers.containsKey(id)){
                 id = (int)Math.floor(Math.random()*(10000)+1);
             }
-            return new User(id, basic[0], basic[1], userInfo);
+
+            User user = new User(id, basic[0], basic[1], userInfo);
+            addUser(true, user);
         }
 
 
@@ -86,12 +88,12 @@ class UserManager {
         return currentUser;
     }
 
-    public static void addNewInfo(User user, Object info, int command){
+    public static void addNewInfo(Object info, int command){
         switch(command){
-            case 2: user.setPersonalData("activity level", (String) info);
+            case 2: currentUser.setPersonalData("activity level", (String) info);
                 // temporary test diseaseAnalyzer
-            case 3:
-                user.addRiskFactor((String) info);
+            case 4:
+                currentUser.addRiskFactor((String) info);
         }
     }
 
@@ -111,18 +113,19 @@ class UserManager {
 //        UserParser.updateUserInfo();
     }
 
-    public static void changeInfo(User user, Object info, int command){
+    public static void changeInfo(Object info, int command){
         switch(command){
-            case 2: user.setPersonalData("activity level", (String) info);
+            case 2: currentUser.setPersonalData("activity level", (String) info);
                 // temporary test diseaseAnalyzer
-            case 3:
-                user.setRiskFactor((ArrayList<String>)info);
+            case 4:
+                currentUser.setRiskFactor((ArrayList<String>)info);
         }
     }
 
-
-
-//    public static void setPontentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+    //    public static void setPontentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
 //        user.setPotentialDisease(potentialDisease);
 //    }
 }

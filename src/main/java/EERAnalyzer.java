@@ -8,7 +8,8 @@ public class EERAnalyzer implements UserAnalyzer{
     String result;
 
     @Override
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
 
         //Instantiating necessary variables for EER calculation.
         String gender = user.getGender();

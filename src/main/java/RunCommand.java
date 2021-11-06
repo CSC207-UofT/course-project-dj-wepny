@@ -9,17 +9,21 @@ public class RunCommand {
     /**
      * Constructor for the RunCommand class based on the command that the user Choose in the Console.
      */
-    public RunCommand(UserAnalyzer useranalyzer){
-        this.useranalyzer = useranalyzer;
-    }
-    public RunCommand(){
-        this.useranalyzer = null;
-    }
+    public UserAnalyzer useranalyzer;
 
+    public RunCommand(int command) {
+        if (command == 1) {
+            this.useranalyzer = new BMIAnalyzer();
+        }
+        if (command == 4){
+            this.useranalyzer = new DiseaseAnalyzer();
+        }
+    }
+    public RunCommand(){}
     /**
      * Input boundary UserAnalyzer for the use cases.
      */
-    private final UserAnalyzer useranalyzer;
+//    private final UserAnalyzer useranalyzer;
 
     /**
      * Executes the provided command line accordingly
@@ -41,28 +45,31 @@ public class RunCommand {
 //            default:
 //                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
 //        }
-    public static User createUser(String[] basic, String[] personal){
-        User newUser = UserManager.createNewUser(basic, personal);
-        UserManager.addUser(true, newUser);
-        return newUser;
+    public UserAnalyzer getAnalyzer(){
+        return this.useranalyzer;
     }
 
-    public void executeCommand(User newUser) throws Exception {
-        useranalyzer.analyze(newUser);
-
-    }
-    public void addInfo(User user, Object info, int command){
-        UserManager.addNewInfo(user, info, command);
+    public static void createUser(String[] basic, String[] personal){
+        UserManager.createNewUser(basic, personal);
     }
 
-    public void changeInfo(User user, Object info, int command){
-        UserManager.changeInfo(user,info, command);
+    public void executeCommand() throws Exception {
+        useranalyzer.analyze();
+
     }
-    public int executeCommandDisease(User user, ArrayList<String> responses) throws Exception{
+    public void addInfo(Object info, int command){
+        UserManager.addNewInfo(info, command);
+    }
+
+    public void changeInfo(Object info, int command){
+        UserManager.changeInfo(info, command);
+    }
+
+    public int executeCommandDisease(ArrayList<String> responses) throws Exception{
         for (String response: responses){
-            addInfo(user, response, 3); //adds the symptoms identified by client into their risk factors
+            addInfo(response, 4); //adds the symptoms identified by client into their risk factors
         }
-        useranalyzer.analyze(user); //analyzes what they have
+        useranalyzer.analyze(); //analyzes what they have
         return DiseaseAnalyzer.getPotentialDisease().size(); // the amount of diseases the client could potentially have.
     }
 
@@ -71,9 +78,19 @@ public class RunCommand {
     }
 
     public void executeCommand(int command, User user) throws Exception {
+        useranalyzer.analyze();
 
-        useranalyzer.analyze(user);
+    }
 
+    public String retrieveUser(String typeInfo){
+        String output;
+        if (typeInfo.equals("name")){
+            output = UserManager.getCurrentUser().getUsername();
+        }
+        else {
+            output = String.valueOf(UserManager.getCurrentUser().getId());
+        }
+        return output;
     }
 
     public void executeCommandUpdateInfo(int command2, User user, String newItem)
@@ -83,11 +100,8 @@ public class RunCommand {
         switch(command2) {
             // change username
             case 1:
-//                UserParser.updateUserName(user.getId(),newItem);
                 UserManager.changeUserName(user, newItem);
 
-            case 2:
-                //change food preferences
             case 6:
 
         }

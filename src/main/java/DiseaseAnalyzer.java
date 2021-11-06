@@ -12,9 +12,9 @@ public class DiseaseAnalyzer implements UserAnalyzer{
     private  static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
 
 
-
     @Override
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
         ArrayList<String> userInput = user.getRiskFactor(); //what users input
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         ArrayList<String> options = generateOptions(newDisease);
@@ -28,7 +28,6 @@ public class DiseaseAnalyzer implements UserAnalyzer{
     public String getResult() {
         return result;
     }
-
 
     private static HashMap<String, Set<String>> newPotentialDiseases(HashMap<String, Set<String>> oldPotentialDisease,
                                                                      ArrayList<String> chosenSymptoms){
