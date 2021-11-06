@@ -12,13 +12,19 @@ import java.util.*;
  */
 public class DiseaseAPI {
 
-    private static final String DISEASE_DATASET_PATH = "GlobalDiseaseData.csv";
+    private static final String DISEASE_DATASET_PATH =
+            "src/main/java/GlobalDiseaseData.csv";
 
     /**
      * Read from the Disease CSV and create a List of Disease Objects.
      * @return a List of Disease Objects.
      */
-    public static Disease[] readFromDiseaseCSV(){
+
+    public static void main(String[] args) {
+        readFromDiseaseCSV();
+    }
+
+    public static HashMap<String, Set<String>> readFromDiseaseCSV(){
         HashMap<String, Set<String>> diseaseMap = new HashMap<>();
         Path pathToFile = Paths.get(DISEASE_DATASET_PATH);
 
@@ -30,15 +36,17 @@ public class DiseaseAPI {
             
             while (line != null) {
                 String[] data = line.split(",");       // data contains the disease name and symptoms
+//                System.out.print("data: " + data.toString());
                 putDataToMap(diseaseMap, data);
                 line = br.readLine();                       // read next line before looping
             }
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
         // convert diseaseMap to an array of Disease objects
-        return returnListFromMap(diseaseMap);
+        return diseaseMap;
     }
 
     /**
@@ -75,13 +83,19 @@ public class DiseaseAPI {
     private static void putDataToMap(HashMap<String, Set<String>> map,String[] data) {
         String diseaseName = data[0];
         String[] symptomsList = Arrays.copyOfRange(data, 1, data.length);
+//        System.out.print("symptom LIST:"+symptomsList.toString());
+
 
         for (String symptom : symptomsList) {
             if (!map.containsKey(diseaseName)) {
+
                 map.put(diseaseName, new HashSet<>());      // add disease to map for the first time
             }
             if (!symptom.equals("")) {                      // add symptom to map only if it is not ""
-                map.get(diseaseName).add(symptom);
+                 String mySymptom = symptom.replace(" ", "");
+
+//                System.out.print("symptom:"+mySymptom);
+                map.get(diseaseName).add(mySymptom);
             }
         }
 

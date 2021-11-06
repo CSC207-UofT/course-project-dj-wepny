@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.Math;
+import java.util.List;
+import java.util.Set;
 
 import static java.util.Objects.isNull;
 
@@ -17,7 +20,7 @@ class UserManager {
      * @param personal is an arraylist of weight, height, and age
      * @return a new User object
      */
-    public static User createNewUser(String[] basic, String[] personal) {
+    public static void createNewUser(String[] basic, String[] personal) {
 
             HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
@@ -30,7 +33,9 @@ class UserManager {
             while (existingUsers.containsKey(id)){
                 id = (int)Math.floor(Math.random()*(10000)+1);
             }
-            return new User(id, basic[0], basic[1], userInfo);
+
+            User user = new User(id, basic[0], basic[1], userInfo);
+            addUser(true, user);
         }
 
 
@@ -83,6 +88,15 @@ class UserManager {
         return currentUser;
     }
 
+    public static void addNewInfo(Object info, int command){
+        switch(command){
+            case 2: currentUser.setPersonalData("activity level", (String) info);
+                // temporary test diseaseAnalyzer
+            case 4:
+                currentUser.addRiskFactor((String) info);
+        }
+    }
+
 //    public static User getExistingUser(int id) {
 //        HashMap<Integer, User> users = existingUsers;
 //        return users.getOrDefault(id, null);
@@ -90,12 +104,30 @@ class UserManager {
 
     /**
      * changes the username of the user based on the given string.
-     * @param user An User object that we want to modify.
      * @param newName A string representing the new username for the user.
      * @throws Exception In case the username string is invalid (?)
      */
-    public static void changeUserName(User user, String newName) throws Exception {
-        user.setUserName(newName);
+    public static void changeUserName(String newName) throws Exception {
+        currentUser.setUserName(newName);
 //        UserParser.updateUserInfo();
     }
+
+    public static void changeInfo(Object info, int command){
+        switch(command){
+            case 2: currentUser.setPersonalData("activity level", (String) info);
+                // temporary test diseaseAnalyzer
+            case 4:
+                currentUser.setRiskFactor((ArrayList<String>)info);
+        }
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(int id){
+        currentUser = existingUsers.get(id);
+    }
 }
+
+

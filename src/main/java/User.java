@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *  This class stores user's information.
@@ -9,7 +11,7 @@ public class User {
     private final String gender;
     private HashMap<FoodFilterCriterion, Boolean> foodPreference;
     private HashMap<String, Object> exercisePreference;
-    private HashMap<String, Object> riskFactor;
+    private ArrayList<String> riskFactor;
     private HashMap<String, Object> personalData;
     private String activityRating;
 
@@ -28,9 +30,10 @@ public class User {
         this.gender = gender;
         this.foodPreference = new HashMap<>();
         this.exercisePreference = new HashMap<String, Object>();
-        this.riskFactor = new HashMap<String, Object>();
+        this.riskFactor = new ArrayList<String>();
         this.personalData = personalData;
-    }
+        this.activityRating = "";
+   }
 
     /*
        An overloaded constructor, but why do we need this? - David
@@ -42,16 +45,17 @@ public class User {
      * @param exercise
      * @param disease
      */
-    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
-                HashMap<String, Object> exercise, HashMap<String, Object> disease){
-        this.id = id;
-        this.username= name;
-        this.gender = gender;
-        this.foodPreference = food;
-        this.exercisePreference = exercise;
-        this.riskFactor = disease;
-        this.personalData = personalData;
-    }
+//    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
+//                HashMap<String, Object> exercise, ArrayList<String> disease, HashMap<String, Set<String>> potentialDisease){
+//        this.id = id;
+//        this.username= name;
+//        this.gender = gender;
+//        this.foodPreference = food;
+//        this.exercisePreference = exercise;
+//        this.riskFactor = disease;
+//        this.personalData = personalData;
+//
+//    }
 
     public int getId() {
         return this.id;
@@ -73,7 +77,7 @@ public class User {
         return exercisePreference;
     }
 
-    public HashMap<String, Object> getRiskFactor() {
+    public ArrayList<String> getRiskFactor() {
         return riskFactor;
     }
 
@@ -89,14 +93,16 @@ public class User {
         exercisePreference.put(key, value);
     }
 
-    public void setRiskFactor(String key, Object value) {
-        riskFactor.put(key, value);
+    public void setRiskFactor(ArrayList<String> newSymptoms) {
+        riskFactor = newSymptoms;
     }
 
+    public void addRiskFactor(String addedSymptoms) {
+        riskFactor.add(addedSymptoms);
+    }
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
     }
-
     public void setUserName(String newName) {this.username = newName;}
     // do we need this?
 
@@ -104,5 +110,9 @@ public class User {
     public void setActivityRating(String activityRating) {this.activityRating = activityRating;}
 
     public String getActivityRating() {return activityRating;}
+
+
 }
+
+
 

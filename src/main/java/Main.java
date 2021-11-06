@@ -6,14 +6,11 @@ import java.util.ArrayList;
  * This class runs the program.
  */
 public class Main {
-    public static final String USER_FILE = "src/main/java/UserInfo.csv";
-
 
     public static void main(String[] args) throws Exception {
 
         while (true) {
             Scanner reader = new Scanner(System.in);
-
             try {
                 ArrayList<String> userInfo = UserParser.readUserInfo();
                 System.out.println(userInfo);
@@ -22,6 +19,7 @@ public class Main {
                 }
             }
             catch (Exception exception) {
+                System.out.println(exception.getMessage());
                 System.out.println("Uh oh, an error has occurred! " +
                         "Please check that the files exist and are in the specified position.");
             }
@@ -29,9 +27,10 @@ public class Main {
             boolean logOut = false;
             // if they are a new user run:
             if (!Console.checkExisting(reader)) {
-                User userInfo = Console.gatherInfo(reader);
+                Console.gatherInfo(reader);
                 while (!logOut) {
-                    String output = Console.NewUserMenu(reader, userInfo);
+
+                    String output = Console.NewUserMenu(reader);
                     System.out.println(output);
                     logOut = Console.logOut(reader);
                 }
