@@ -19,7 +19,6 @@ class UserManager {
      * @return a new User object
      */
     public static void createNewUser(String[] basic, String[] personal) {
-
             HashMap<String, Object> userInfo = new HashMap<String, Object>();
 
             userInfo.put("height", personal[0]);
@@ -35,18 +34,7 @@ class UserManager {
             User user = new User(id, basic[0], basic[1], userInfo);
             addUser(true, user);
         }
-    public static void addNewInfo(User user, Object info, int command){
-        switch(command){
-            case 2: user.setPersonalData("activity level", (String) info);
-            // temporary test diseaseAnalyzer
-            case 3:
-                ArrayList<String> symptoms = new ArrayList<String>();
-                symptoms.add("continuous_sneezing");
-                symptoms.add("shivering");
-                symptoms.add("watering_from_eyes");
-                user.setRiskFactor(symptoms);
-        }
-    }
+
 
 //    public static User loadExistingUser(String name, String gender, HashMap<String, Object> personalData,
 //                                                                            HashMap<String, Object> food,
@@ -55,23 +43,44 @@ class UserManager {
 
     /**
      * Loads the existing user based on the inputs.
-     * @param id A string representing the user's ID.
-     * @param name A string representing the user's name.
-     * @param gender A string representing a user's gender.
-     * @param weight A string representing the weight of the user.
-     * @param height A string representing the height of the user.
-     * @param age A string representing the age of the user.
-     * @return A User object.
      */
-    public static User loadExistingUser(String id, String name, String gender, String weight, String height, String age){
-        HashMap<String, Object> userInfo = new HashMap<String, Object>();
+    public static void loadExistingUser(String[] userInfo){
+        int id = Integer.parseInt(userInfo[0]);
+        String name = userInfo[1];
+        String gender = userInfo[2];
+        String weight = userInfo[3];
+        String height = userInfo[4];
+        String age = userInfo[5];
+        HashMap<String, Object> personal = new HashMap<String, Object>();
+        personal.put("height", height);
+        personal.put("weight", weight);
+        personal.put("age", age);
+        User user = new User(id, name, gender, personal);
 
-        userInfo.put("height", height);
-        userInfo.put("weight", weight);
-        userInfo.put("age", age);
-        int id1 = Integer.parseInt(id);
+        if (!userInfo[6].equals("null")){
+            String[] exercise = userInfo[6].split("\\*");
 
-        return new User(id1, name, gender, userInfo);
+            user.setExercisePreference("major muscle", exercise[0]);
+            user.setExercisePreference("minor muscle", exercise[1]);
+            user.setExercisePreference("equipment", exercise[2]);
+        }
+
+        if(!userInfo[7].equals("null")){
+            String[] risk = userInfo[7].split("\\*");
+            for (String s : risk){
+                user.addRiskFactor(s);
+            }
+        }
+
+        if (!userInfo[8].equals("null")){
+            user.setPersonalData("activity level", userInfo[8]);
+        }
+//
+//        if (!userInfo[9].equals("null")){
+//
+//        }
+//
+        addUser(false, user);
     }
 
     /**
@@ -93,7 +102,7 @@ class UserManager {
         return existingUsers;
     }
 
-    public static User getNewUsers() {
+    public static User getCurrentUsers() {
         return currentUser;
     }
 
@@ -102,19 +111,22 @@ class UserManager {
             currentUser.setPersonalData("activity level", (String) info);
         }
         else if (command == 3){
-            ArrayList[] info1 = (ArrayList[]) info;
+            String[] info1 = (String[]) info;
 //                ArrayList<String> exerciseList = new ArrayList<>();
-                ArrayList<String> majorMuscleList = info1[0];
-                ArrayList<String> minorMuscleList = info1[1];
-                ArrayList<String> equipmentList = info1[2];
 
-                currentUser.setExercisePreference("major muscle", majorMuscleList);
-                currentUser.setExercisePreference("minor muscle", minorMuscleList);
-                currentUser.setExercisePreference("equipment", equipmentList);
+            String majorMuscle = info1[0];
+            String minorMuscle = info1[1];
+            String equipment = info1[2];
+
+            currentUser.setExercisePreference("major muscle", majorMuscle);
+            currentUser.setExercisePreference("minor muscle", minorMuscle);
+            currentUser.setExercisePreference("equipment", equipment);
         }
+        // TODO: add food generator command
         else{
             currentUser.addRiskFactor((String) info);
         }
+
     }
 
 //    public static User getExistingUser(int id) {
@@ -132,14 +144,14 @@ class UserManager {
 //        UserParser.updateUserInfo();
     }
 
-    public static void changeInfo(Object info, int command){
-        switch(command){
-            case 2: currentUser.setPersonalData("activity level", (String) info);
-                // temporary test diseaseAnalyzer
-            case 4:
-                currentUser.setRiskFactor((ArrayList<String>)info);
-        }
-    }
+//    public static void changeInfo(Object info, int command){
+//        switch(command){
+//            case 2: currentUser.setPersonalData("activity level", (String) info);
+//                // temporary test diseaseAnalyzer
+//            case 4:
+//                currentUser.setRiskFactor((ArrayList<String>)info);
+//        }
+//    }
 
     public static User getCurrentUser() {
         return currentUser;

@@ -57,7 +57,7 @@ public class ExerciseAPI {
         addElementToList(data, majorMuscle, 3);
         addElementToList(data, minorMuscle, 4);
 
-        return new Exercise(name, equipments, exerciseType, majorMuscle, minorMuscle);
+        return new Exercise(name, exerciseType, minorMuscle, majorMuscle, equipments);
     }
 
 

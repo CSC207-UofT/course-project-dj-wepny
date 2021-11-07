@@ -32,28 +32,7 @@ public class RunCommand {
     /**
      * Input boundary UserAnalyzer for the use cases.
      */
-//    private final UserAnalyzer useranalyzer;
 
-    /**
-     * Executes the provided command line accordingly
-//     * @param command is the given command
-     * @return string that is given back as command is executed
-     * @throws Exception if the provided command is invalid
-     */
-//    public String executeCommand(int command, String[] basic, String[] personal) throws Exception {
-//
-//        User newUser = UserManager.createNewUser(basic, personal);
-//        UserManager.addUser(true, newUser);
-//
-//        switch(command) {
-//            case 1:
-//                BMIAnalyzer bmi = new BMIAnalyzer();
-//
-//                return (String) bmi.analyze(newUser);
-//
-//            default:
-//                throw new Exception("Sorry, the command you have entered is invalid. Please re-enter.");
-//        }
     public UserAnalyzer getAnalyzer(){
         return this.useranalyzer;
     }
@@ -67,10 +46,6 @@ public class RunCommand {
     }
     public void addInfo(Object info, int command){
         UserManager.addNewInfo(info, command);
-    }
-
-    public void changeInfo(Object info, int command){
-        UserManager.changeInfo(info, command);
     }
 
     public int executeCommandDisease(ArrayList<String> responses) throws Exception{
@@ -91,6 +66,7 @@ public class RunCommand {
             case "personal data" : return UserManager.getCurrentUser().getPersonalData();
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();
+            case "exercise": return UserManager.getCurrentUser().getExercisePreference();
             default : return "";
         }
     }
@@ -108,8 +84,16 @@ public class RunCommand {
         }
     }
 
+    public HashMap<Integer, User> getAllExistingUser(){
+        return UserManager.getExistingUsers();
+    }
+
     public void setCurrentUser(int id){
         UserManager.setCurrentUser(id);
+    }
+
+    public void setToExisting(){
+        UserManager.addUser(false, UserManager.getCurrentUser());
     }
 
 }
