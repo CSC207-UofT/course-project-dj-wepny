@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.lang.Math;
-import java.util.List;
-import java.util.Set;
 
 import static java.util.Objects.isNull;
 
@@ -100,11 +98,22 @@ class UserManager {
     }
 
     public static void addNewInfo(Object info, int command){
-        switch(command){
-            case 2: currentUser.setPersonalData("activity level", (String) info);
-                // temporary test diseaseAnalyzer
-            case 4:
-                currentUser.addRiskFactor((String) info);
+        if (command == 2){
+            currentUser.setPersonalData("activity level", (String) info);
+        }
+        else if (command == 3){
+            ArrayList[] info1 = (ArrayList[]) info;
+//                ArrayList<String> exerciseList = new ArrayList<>();
+                ArrayList<String> majorMuscleList = info1[0];
+                ArrayList<String> minorMuscleList = info1[1];
+                ArrayList<String> equipmentList = info1[2];
+
+                currentUser.setExercisePreference("major muscle", majorMuscleList);
+                currentUser.setExercisePreference("minor muscle", minorMuscleList);
+                currentUser.setExercisePreference("equipment", equipmentList);
+        }
+        else{
+            currentUser.addRiskFactor((String) info);
         }
     }
 

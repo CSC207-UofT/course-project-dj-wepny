@@ -152,49 +152,13 @@ public class Console {
             commandExecutor.addInfo(level, 2);
         }
 
+        if (command == 3) {
+            ArrayList[] exercisePreference = exercisePreference(reader);
+            commandExecutor.addInfo(exercisePreference, 3);
+        }
+
         if (command == 4){
-            commandExecutor.resetPotentialDisease();
-            commandExecutor.changeInfo(new ArrayList<String>(), 4);
-            int potentialDisease;
-
-            ArrayList<String> currentSymptoms = new ArrayList<>();
-
-            while(true) {
-                    potentialDisease = commandExecutor.executeCommandDisease(currentSymptoms);
-                    if(potentialDisease <= 6){
-                        break;
-                    }
-                    //outputs how many potential disease client could have
-                    // pass in empty array list if it is first round.
-                    System.out.println("Hi Welcome to the Disease Predictor, given the lists of potential symptoms,\n" +
-                            "please enter the symptoms you are experiencing, and the program will generate potential\n" +
-                            "diseases that you may be diagnosed for.");
-                    System.out.println("\nThese are the symptom options. " +
-                            "If you are currently experiencing more than one, please separate the input using a comma ','\n" +
-                            "for example, 'high_fever,back_pain' (notice there is no space in between)\n"+
-                            "\nIf none of them apply to you, please type in N/A.");
-
-                    Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-                    System.out.println(analyze_results.retrieveOutput()); //first time giving options
-
-                    String symptoms = reader.nextLine(); //client's input of symptoms
-                    if(!symptoms.equals("N/A")){
-                        symptoms = symptoms.replaceAll("[\\[\\](){}]","");
-                        String[] symptomsList = symptoms.split(",");
-//                        String SymptomsList[] = symptoms.split(",");
-                        List<String> finalSymptomsList;
-                        finalSymptomsList = Arrays.asList(symptomsList);
-                        //convert client symptoms into a list of symptoms;
-                        //add those symptoms into the current symptoms that client has
-                        currentSymptoms.addAll(finalSymptomsList);
-                    }
-            }
-            System.out.println("These are your potential diseases: (if output = [], " +
-                    "there is no disease that match the current symptoms you are experiencing)");
-            commandExecutor.executeCommand();
-//            Presenter analyze_results = new Presenter(analyzer);
-            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-            return analyze_results.retrieveOutput();
+           return diseaseList(reader, commandExecutor);
         }
         else {
             commandExecutor.executeCommand();
@@ -243,6 +207,14 @@ public class Console {
                 System.out.println("Oh no! Information missing for this report.");
                 String level = activityLevel(reader);
                 commandExecutor.addInfo(level, 2);
+            }
+            commandExecutor.executeCommand();
+        }
+
+        if (command == 4) {
+            if (!checkInfoExist(4)){
+                System.out.println("Oh no! Information missing for this report.");
+                diseaseList(reader, commandExecutor);
             }
             commandExecutor.executeCommand();
         }
@@ -317,6 +289,10 @@ public class Console {
             HashMap personalData = (HashMap) commandExecutor.retrieveUser("personal data");
             return personalData.containsKey("activity level");
         }
+        if (command == 3) {
+            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
+            return !(riskFactors.isEmpty());
+        }
         else{
             return false;
         }
@@ -340,4 +316,78 @@ public class Console {
         }
     }
 
+    public static ArrayList[] exercisePreference(Scanner reader) {
+
+//        ArrayList<String> minorList = new ArrayList<String>();
+//        ArrayList<String> equipList = new ArrayList<String>();
+
+        System.out.println("This exercise analyzer generate a list of exercising moves based on your preference.");
+        System.out.println("PLease select the major muscle you want to exercise from the following list:\n" +
+                "Arms, Core, Full Body, Legs, Back");
+        String majorMuscle = reader.nextLine();
+        String[] majorMuscleList = majorMuscle.split(",");
+        ArrayList<String> majorList = new ArrayList<String>(Arrays.asList(majorMuscleList));
+        System.out.println("PLease select the minor muscle you want to exercise from the following list:\n" +
+                "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \n" +
+                "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique");
+        String minorMuscle = reader.nextLine();
+        String[] minorMuscleList = minorMuscle.split(",");
+        ArrayList<String> minorList = new ArrayList<String>(Arrays.asList(minorMuscleList));
+        System.out.println("Please select the equipment you have or want to use:\n" +
+                "Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball");
+        String equipment = reader.nextLine();
+        String[] equipmentList = equipment.split(",");
+        ArrayList<String> equipList = new ArrayList<String>(Arrays.asList(equipmentList));
+        return new ArrayList[] {majorList, minorList, equipList};
+
+    }
+
+
+    public static String diseaseList(Scanner reader, RunCommand commandExecutor) throws Exception {
+//        RunCommand commandExecutor = new RunCommand();
+        commandExecutor.resetPotentialDisease();
+//        commandExecutor.changeInfo(new ArrayList<String>(), 4);
+        int potentialDisease;
+
+        ArrayList<String> currentSymptoms = new ArrayList<>();
+
+        System.out.println("Hi Welcome to the Disease Predictor, given the lists of potential symptoms,\n" +
+                "please enter the symptoms you are experiencing, and the program will generate potential\n" +
+                "diseases that you may be diagnosed for.");
+
+        while(true) {
+            potentialDisease = commandExecutor.executeCommandDisease(currentSymptoms);
+            if(potentialDisease <= 6){
+                break;
+            }
+            //outputs how many potential disease client could have
+            // pass in empty array list if it is first round.
+
+            System.out.println("\nThese are the symptom options. " +
+                    "If you are currently experiencing more than one, please separate the input using a comma ','\n" +
+                    "for example, 'high_fever,back_pain' (notice there is no space in between)\n"+
+                    "\nIf none of them apply to you, please type in N/A.");
+
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            System.out.println(analyze_results.retrieveOutput()); //first time giving options
+
+            String symptoms = reader.nextLine(); //client's input of symptoms
+            if(!symptoms.equals("N/A")){
+                symptoms = symptoms.replaceAll("[\\[\\](){}]","");
+                String[] symptomsList = symptoms.split(",");
+//                        String SymptomsList[] = symptoms.split(",");
+                List<String> finalSymptomsList;
+                finalSymptomsList = Arrays.asList(symptomsList);
+                //convert client symptoms into a list of symptoms;
+                //add those symptoms into the current symptoms that client has
+                currentSymptoms.addAll(finalSymptomsList);
+            }
+        }
+        System.out.println("These are your potential diseases: (if output = [], " +
+                "there is no disease that match the current symptoms you are experiencing)");
+        commandExecutor.executeCommand();
+//            Presenter analyze_results = new Presenter(analyzer);
+        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+        return analyze_results.retrieveOutput();
+    }
 }
