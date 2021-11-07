@@ -10,18 +10,16 @@ public class User {
     private String username;
     private final String gender;
     private HashMap<FoodFilterCriterion, Boolean> foodPreference;
-    private HashMap<String, Object> exercisePreference;
+    private HashMap<String, String> exercisePreference;
     private ArrayList<String> riskFactor;
     private HashMap<String, Object> personalData;
-    private String activityRating;
-
 
     /**
      * Construct a User, with a username, user's gender and personal data
      *
      * @param username Username of the user
      * @param gender  Gender of the user
-     * @param personalData contains user's height, weight, age, daily activity level, BMI, and EER
+     * @param personalData contains user's height, weight, age, daily activity level
      */
 
     public User(int id, String username, String gender, HashMap<String, Object> personalData) {
@@ -29,10 +27,9 @@ public class User {
         this.username = username;
         this.gender = gender;
         this.foodPreference = new HashMap<>();
-        this.exercisePreference = new HashMap<String, Object>();
+        this.exercisePreference = new HashMap<String, String>();
         this.riskFactor = new ArrayList<String>();
         this.personalData = personalData;
-        this.activityRating = "";
    }
 
     /*
@@ -73,7 +70,7 @@ public class User {
         return foodPreference;
     }
 
-    public HashMap<String, Object> getExercisePreference() {
+    public HashMap<String, String> getExercisePreference() {
         return exercisePreference;
     }
 
@@ -89,12 +86,8 @@ public class User {
         foodPreference.put(key, value);
     }
 
-    public void setExercisePreference(String key, Object value) {
+    public void setExercisePreference(String key, String value) {
         exercisePreference.put(key, value);
-    }
-
-    public void setRiskFactor(ArrayList<String> newSymptoms) {
-        riskFactor = newSymptoms;
     }
 
     public void addRiskFactor(String addedSymptoms) {
@@ -105,12 +98,6 @@ public class User {
     }
     public void setUserName(String newName) {this.username = newName;}
     // do we need this?
-
-
-    public void setActivityRating(String activityRating) {this.activityRating = activityRating;}
-
-    public String getActivityRating() {return activityRating;}
-
 
 }
 

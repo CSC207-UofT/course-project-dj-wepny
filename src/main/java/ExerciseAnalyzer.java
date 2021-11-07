@@ -14,12 +14,13 @@ public class ExerciseAnalyzer implements UserAnalyzer{
 
     @Override
     public void analyze() {
+
         User user = UserManager.getCurrentUser();
         String intro =  "*****************************************************************************\n" +
                 "Exercises for " + user.getUsername() + ": " +
-                "The following exercises are based on your preferences on the muscles exercised and equipment. \n";
+                "The following exercises are based on your preferences on the muscles exercised and equipment.\n";
 
-        HashMap<String, Object> user_preference = user.getExercisePreference();
+        HashMap<String, String> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
         ArrayList<Exercise> user_exercises = new ArrayList<Exercise>(); // May not be needed
         StringBuilder exercise_names = new StringBuilder();
@@ -28,33 +29,38 @@ public class ExerciseAnalyzer implements UserAnalyzer{
             if(exercise_match(exercise, user_preference)){
                 user_exercises.add(exercise);
                 String exercise_equipment = exercise.getEquipmentNeeded().toString();
-                exercise_names.append("-  ").append(exercise.getName()).
-                        append(": Uses\n").append(exercise_equipment).append("; ").
-                        append("The major muscle exercised is ").append(exercise.getMajorMuscleExercised()).
-                        append(", and the minor muscle exercised is ").append(exercise.getMinorMuscleExercised());
+                exercise_names.append("\n-  ").append(exercise.getName()).
+                        append("\n    -> Type of the exercise: ").append(exercise.getType()).
+                        append("\n    -> Uses: ").append(exercise_equipment).append(";").
+                        append("\n    -> The major muscle exercised is: ").append(exercise.getMajorMuscleExercised()).
+                        append("\n    -> The minor muscle exercised is: ").append(exercise.getMinorMuscleExercised()).
+                        append("\n\n");
             }
         }
-
-        this.result = intro + exercise_names +
-                "\n*****************************************************************************\n";
-
+        if (user_exercises.isEmpty()){
+            String msg = "\nUnfortunately, no exercise moves matches this particular set of preference, " +
+                    "please try again!";
+            this.result = intro + msg +
+                    "\n**********************************************************************************************\n";
+        }
+        else {
+            this.result = intro + exercise_names +
+                    "**********************************************************************************************\n";
+        }
     }
 
     /**
      *  A method used to determine if the exercise matches the user's exercise preferences
      */
-    public boolean exercise_match(Exercise exercise, HashMap<String, Object> user_preference){
-        boolean has_maj_muscle = user_preference.containsValue(exercise.getMajorMuscleExercised());
-        boolean has_min_muscle = user_preference.containsValue(exercise.getMinorMuscleExercised());
-        if(has_maj_muscle && has_min_muscle){
-            for(String equipment:exercise.getEquipmentNeeded()){
-                if(!user_preference.containsValue(equipment)){
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+    public boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
+        String majorMuscle =  user_preference.get("major muscle");
+        String minorMuscle = user_preference.get("minor muscle");
+        String equipment = user_preference.get("equipment");
+        boolean hasMajMuscle = exercise.getMajorMuscleExercised().contains(majorMuscle);
+        boolean hasMinMuscle = exercise.getMinorMuscleExercised().contains(minorMuscle);
+        boolean hasEquip = exercise.getEquipmentNeeded().contains(equipment);
+
+        return (hasMinMuscle || hasMajMuscle) && hasEquip;
     }
 
     @Override

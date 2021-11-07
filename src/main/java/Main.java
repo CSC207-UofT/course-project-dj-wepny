@@ -29,14 +29,12 @@ public class Main {
             if (!Console.checkExisting(reader)) {
                 Console.gatherInfo(reader);
                 while (!logOut) {
-
                     String output = Console.NewUserMenu(reader);
                     System.out.println(output);
                     logOut = Console.logOut(reader);
                 }
-                User user = UserController.getCurrentUser();
-                UserParser.writeUserInfo(user);
-
+                Console.addToExisting();
+                UserParser.writeUserInfo("write");
             }
             // if they are an existing user, run:
             else{
@@ -46,8 +44,7 @@ public class Main {
                     System.out.println(output);
                     logOut = Console.logOut(reader);
                 }
-                HashMap<Integer, User> allUsers = UserController.getExistingUsers();
-                UserParser.updateUserInfo(allUsers);
+                UserParser.writeUserInfo("update");
             }
 
             boolean restart = Console.reStart(reader);

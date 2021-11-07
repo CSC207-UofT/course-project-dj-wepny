@@ -57,7 +57,7 @@ public class ExerciseAPI {
         addElementToList(data, majorMuscle, 3);
         addElementToList(data, minorMuscle, 4);
 
-        return new Exercise(name, equipments, exerciseType, majorMuscle, minorMuscle);
+        return new Exercise(name, exerciseType, minorMuscle, majorMuscle, equipments);
     }
 
 
@@ -65,7 +65,7 @@ public class ExerciseAPI {
 
         List<Exercise> exerciseList = new ArrayList<>();
 
-        Path pathToFile = Paths.get("src/main/java/ExerciseMoveData.csv");
+        Path pathToFile = Paths.get("src/main/java/ExerciseMovesData.csv");
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

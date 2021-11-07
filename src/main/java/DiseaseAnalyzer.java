@@ -18,7 +18,9 @@ public class DiseaseAnalyzer implements UserAnalyzer{
         ArrayList<String> userInput = user.getRiskFactor(); //what users input
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         ArrayList<String> options = generateOptions(newDisease);
-        if (potentialDisease.size() <= 6){result = newDisease.keySet().toString();}
+        String msg = "These are your potential diseases: (if output = [], " +
+                "there is no disease that match the current symptoms you are experiencing)\n";
+        if (potentialDisease.size() <= 6){result = msg + newDisease.keySet().toString();}
         else{result = options.toString();}
         potentialDisease = newDisease;
 
@@ -33,7 +35,6 @@ public class DiseaseAnalyzer implements UserAnalyzer{
                                                                      ArrayList<String> chosenSymptoms){
         //given the chosen symptoms, remove the diseases that don't involve these symptoms and return
         //the possible new HashMap of diseases.
-
         ArrayList<String> removeDiseases = new ArrayList<String>();
         for (String disease: oldPotentialDisease.keySet()){
             if(!oldPotentialDisease.get(disease).containsAll(chosenSymptoms)){
@@ -41,10 +42,9 @@ public class DiseaseAnalyzer implements UserAnalyzer{
             }
         }
 
-        oldPotentialDisease.keySet().removeAll(removeDiseases);
+        removeDiseases.forEach(oldPotentialDisease.keySet()::remove);
         return oldPotentialDisease;
     }
-
 
 
     private static ArrayList<String> generateOptions(HashMap<String, Set<String>> givenDisease) {

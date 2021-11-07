@@ -20,9 +20,12 @@ public class UserParser {
      */
     public static ArrayList<String> readUserInfo() throws IOException {
         FileReader readInfo;
+
         readInfo = new FileReader(USER_FILE);
         ArrayList<String> UserInfo = new ArrayList<String>();
         BufferedReader br = new BufferedReader(readInfo);
+
+        br.readLine();
 
         String currentUserInfo = br.readLine();
         while (currentUserInfo != null) {
@@ -32,37 +35,68 @@ public class UserParser {
         br.close();
         readInfo.close();
         return UserInfo;
-
     }
 
     /**
      * An helper method that adds the user's information into the file.
-     * @param user The user of interest.
      * @throws IOException In case if there's something wrong with the file.
      */
-    public static void writeUserInfo(User user) throws IOException {
+    public static void writeUserInfo(String type) throws IOException {
+        if (type.equals("write")){
+            User user = UserController.getCurrentUser();
+            writeIntoFile(user);
+        }
+        else if (type.equals("update")){
+            new FileWriter(USER_FILE, false).close();
+            HashMap<Integer, User> allUsers = UserController.getExistingUsers();
+            String header = "id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food\n";
+            FileWriter writeInfo;
+            writeInfo = new FileWriter(USER_FILE, true);
+            writeInfo.write(header);
 
-        String userInfo = Integer.toString(user.getId()) + "," + user.getUsername() + "," + user.getGender() + "," +
-                user.getPersonalData().get("weight") + "," + user.getPersonalData().get("height") + "," +
-                user.getPersonalData().get("age");
-
-        FileWriter writeInfo;
-        writeInfo = new FileWriter(USER_FILE, true);
-
-        writeInfo.write(userInfo+"\n");
-        writeInfo.close();
-    }
-
-    /**
-     * Adds all the user in the hashmap to the file.
-     * @param allUsers A hashmap with an integer as a key and an user as a value.
-     * @throws IOException In case if there's something wrong with the file.
-     */
-    public static void updateUserInfo(HashMap<Integer, User> allUsers) throws IOException{
-        new FileWriter(USER_FILE, false).close();
-        for (User user : allUsers.values()){
-            UserParser.writeUserInfo(user);
+            writeInfo.close();
+            for (User user : allUsers.values()) {
+                writeIntoFile(user);
+            }
         }
     }
+
+    // helper function for writeUserInfo
+    public static void writeIntoFile(User user) throws IOException {
+        String userInfo = Integer.toString(user.getId()) + "," + user.getUsername() + "," + user.getGender() + "," +
+                    user.getPersonalData().get("weight") + "," + user.getPersonalData().get("height") + "," +
+                    user.getPersonalData().get("age");
+
+        if (!user.getExercisePreference().isEmpty()){
+            userInfo = userInfo + "," + user.getExercisePreference().get("major muscle") + "*" +
+                    user.getExercisePreference().get("minor muscle") + "*" +
+                    user.getExercisePreference().get("equipment");
+        }
+        else{
+            userInfo = userInfo + "," + "null";
+        }
+        if (!user.getRiskFactor().isEmpty()){
+            String str = String.join("*",user.getRiskFactor());
+            userInfo = userInfo + "," + str;
+        }
+        else{
+            userInfo = userInfo + "," + "null";
+        }
+        userInfo = userInfo + "," + user.getPersonalData().getOrDefault("activity level", "null");
+
+        if (!user.getFoodPreference().isEmpty()){
+            //TODO: add food Preference here
+        }
+        else{
+            userInfo = userInfo + "," + "null";
+        }
+
+
+            FileWriter writeInfo;
+            writeInfo = new FileWriter(USER_FILE, true);
+            writeInfo.write(userInfo+"\n");
+            writeInfo.close();
+    }
+
 
 }

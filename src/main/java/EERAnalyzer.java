@@ -13,7 +13,7 @@ public class EERAnalyzer implements UserAnalyzer{
 
         //Instantiating necessary variables for EER calculation.
         String gender = user.getGender();
-        String activityRating = user.getActivityRating();
+        String activityRating = (String) user.getPersonalData().get("activity level");
         double physicalActivity = getPAValueFromActivityRating(gender, activityRating);
 
         HashMap<String, Object> personalData = user.getPersonalData();
