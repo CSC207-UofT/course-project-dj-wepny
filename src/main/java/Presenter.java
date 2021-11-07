@@ -1,8 +1,9 @@
+/**
+This is a class that retrieves the results from the use cases, and then called by
+the console to return the output.
+ */
 public class Presenter {
-    /*
-    This is a class that retrieves the results from the use cases, and then called by
-    the console to return the output.
-     */
+
 
     public Presenter(UserAnalyzer analyzer){ this.userAnalyzer = analyzer; }
 

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.lang.Math;
 /**
- * Below is the User class which stores user's information.
+ * This class stores user's information based on their input.
  */
 public class CreateUser {
     /**

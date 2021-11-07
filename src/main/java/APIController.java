@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class APIController {
     public static List<Food> getFood(){
@@ -6,8 +8,8 @@ public class APIController {
         return foodList;
     }
 
-    public static Disease[] getDisease() {
-        Disease[] diseases = DiseaseAPI.readFromDiseaseCSV();
+    public static HashMap<String, Set<String>> getDisease() {
+        HashMap<String, Set<String>> diseases = DiseaseAPI.readFromDiseaseCSV();
         return diseases;
     }
 

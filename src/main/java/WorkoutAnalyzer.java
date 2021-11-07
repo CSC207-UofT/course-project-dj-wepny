@@ -3,15 +3,15 @@ import java.util.List;
 
 public class WorkoutAnalyzer implements UserAnalyzer {
 
-    /* This class takes in user's exercise preferences and outputs a string describing what
-       exercises are best suited for them.
+    /** This class takes in user's exercise preferences and outputs a string describing what
+     * exercises are best suited for them.
      */
 
     private String result;
 
     @Override
-    public void analyze(User user) {
-
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
         // Initializes an Arraylist for the resulting Exercise names.
         ArrayList<String> exerciseNameResults = new ArrayList<>();
 

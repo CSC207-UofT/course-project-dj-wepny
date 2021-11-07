@@ -12,7 +12,7 @@ public class FoodAPI {
     This class reads the CSV file of all food data, extracts the variables of interest, and create
     Food objects and List of Food objects.
      */
-    private static final String FOOD_DATASET_PATH = "GlobalFoodData.csv";
+    private static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
 
     private static final double FAT_PER_DAY = 75.0;
     private static final double CARB_PER_DAY = 300.0;

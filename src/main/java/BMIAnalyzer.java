@@ -9,7 +9,9 @@ public class BMIAnalyzer implements UserAnalyzer {
 
     private String result;
 
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
+
         HashMap<String, Object> personalData = user.getPersonalData();
         float userHeight = Float.parseFloat((String)personalData.get("height"));
         float userWeight = Float.parseFloat((String)personalData.get("weight"));

@@ -7,13 +7,14 @@ import java.util.List;
  */
 
 public class ExerciseAnalyzer implements UserAnalyzer{
+    private String result;
 
     public ExerciseAnalyzer(){
     }
 
-    private String result;
     @Override
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
         String intro =  "*****************************************************************************\n" +
                 "Exercises for " + user.getUsername() + ": " +
                 "The following exercises are based on your preferences on the muscles exercised and equipment. \n";
@@ -21,15 +22,16 @@ public class ExerciseAnalyzer implements UserAnalyzer{
         HashMap<String, Object> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
         ArrayList<Exercise> user_exercises = new ArrayList<Exercise>(); // May not be needed
-        String exercise_names = "";
+        StringBuilder exercise_names = new StringBuilder();
 
         for(Exercise exercise: exercises){
             if(exercise_match(exercise, user_preference)){
                 user_exercises.add(exercise);
                 String exercise_equipment = exercise.getEquipmentNeeded().toString();
-                exercise_names += "-  " + exercise.getName() + ": Uses\n" + exercise_equipment + "; " +
-                        "The major muscle exercised is " + exercise.getMajorMuscleExercised() +
-                        ", and the minor muscle exercised is " + exercise.getMinorMuscleExercised();
+                exercise_names.append("-  ").append(exercise.getName()).
+                        append(": Uses\n").append(exercise_equipment).append("; ").
+                        append("The major muscle exercised is ").append(exercise.getMajorMuscleExercised()).
+                        append(", and the minor muscle exercised is ").append(exercise.getMinorMuscleExercised());
             }
         }
 

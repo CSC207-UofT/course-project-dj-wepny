@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
+/**
+This Class Analyzes the Energy Requirement per day (EER) for the user.
+ */
 public class EERAnalyzer implements UserAnalyzer{
-
-    /*
-    This Class Analyzes the Energy Requirement per day (EER) for the user.
-     */
 
     String result;
 
     @Override
-    public void analyze(User user) {
+    public void analyze() {
+        User user = UserManager.getCurrentUser();
 
         //Instantiating necessary variables for EER calculation.
         String gender = user.getGender();
@@ -25,7 +25,13 @@ public class EERAnalyzer implements UserAnalyzer{
         double energyRequirement= calculateEER(gender, physicalActivity, userHeight, userWeight, age);
 
         //Setting the resulting String.
-        result = "Your Energy Requirement (EER) per day is roughly: " + energyRequirement;
+        result =  "*****************************************************************************\n" +
+                "The Estimated Energy Requirement (EER) is a predicted average dietary intake \n" +
+                "needed to maintain energy balance in the healthy adult of a defined age, gender, weight, \n" +
+                "and a level of physical activity that is consistent with good health.\n" +
+                "Your Estimated Energy Requirement is: " +
+                (double) Math.round(energyRequirement * 100) / 100 +
+                "\n*****************************************************************************\n";
     }
 
     @Override
@@ -43,9 +49,9 @@ public class EERAnalyzer implements UserAnalyzer{
         if (gender.equals("M")){
             switch (activityRating) {
                 case "Sedentary": return 1.0;
-                case "Low active": return 1.12;
-                case "Active": return 1.27;
-                default: return 1.54;
+                case "Low active": return 1.11;
+                case "Active": return 1.25;
+                default: return 1.48;
             }
 
         }
@@ -53,7 +59,7 @@ public class EERAnalyzer implements UserAnalyzer{
         if (gender.equals("F")){
              switch (activityRating) {
                  case "Sedentary": return 1.0;
-                 case "Low active": return 1.14;
+                 case "Low active": return 1.12;
                  case "Active": return 1.27;
                  default: return 1.45;
             }
@@ -73,8 +79,8 @@ public class EERAnalyzer implements UserAnalyzer{
      */
     private double calculateEER(String gender, double physicalActivity, float height, float weight, int age){
         if (gender.equals("M")){
-            return 864 - 9.72 * age + physicalActivity * (14.2 * weight + 503 * height);
+            return 662 - 9.53 * age + physicalActivity * (15.91 * weight + 539.6 * height);
         }
-        return 387 - 7.31 * age + physicalActivity * (10.9 * weight + 660.7 * height);
+        return 354 - 6.91 * age + physicalActivity * (9.36 * weight + 726 * height);
     }
 }
