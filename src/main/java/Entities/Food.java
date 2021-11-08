@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Objects;
+
 /**
  * This class stores a Food Object from the database,
  * describing its nutrient level
@@ -48,6 +50,22 @@ public class Food {
         this.vegFriendly = veg;
         this.nutrientScore = score;
 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
+            return false;
+        }
+        if (this.getClass() != obj.getClass()){
+            return false;
+        }
+
+        Food other = (Food) obj;
+        return Objects.equals(this.id, other.id);
     }
 
 
