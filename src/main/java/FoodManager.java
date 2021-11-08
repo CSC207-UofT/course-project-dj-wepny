@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -11,18 +13,23 @@ public class FoodManager {
     private static final List<Food> foodList = APIController.getFood();
 
     /**
-     * Return a list of food objects that satisfies a given criteria.
+     * Return a hashmap with keys being the types of food and values being the list of food objects of the type,
+     * such that the food items satisfy the given criteria.
      * @param criteriaList A list of criteria that the food must satisfy.
-     * @return A list of food objects that meet the criteria.
+     * @return A hashmap containing Food objects that meet the criteria.
      */
-    public static List<Food> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
-        List<Food> filteredFoodList = new ArrayList<>();
+    public static HashMap<String, List<Food>> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
+        HashMap<String, List<Food>> filteredFoodMap = new HashMap<>();
+
         for (Food food : foodList) {
             if (foodSatisfiesCriteria(food, criteriaList)) {
-                filteredFoodList.add(food);
+                if (!filteredFoodMap.containsKey(food.getFoodType())) {
+                    filteredFoodMap.put(food.getFoodType(), new ArrayList<>());      // add food to map for the first time of its type
+                }
+                filteredFoodMap.get(food.getFoodType()).add(food);
             }
         }
-        return filteredFoodList;
+        return filteredFoodMap;
     }
 
     /**
