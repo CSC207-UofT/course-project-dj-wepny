@@ -85,17 +85,63 @@ public class UserParser {
         userInfo = userInfo + "," + user.getPersonalData().getOrDefault("activity level", "null");
 
         if (!user.getFoodPreference().isEmpty()){
-            //TODO: add food Preference here
+//            FoodFilterCriterion foodIsLowCarbs = new FoodIsLowCarbs();
+//            FoodFilterCriterion foodIsLowFat = new FoodIsLowFat();
+//            FoodFilterCriterion foodIsLowSugar = new FoodIsLowSugar();
+//            FoodFilterCriterion foodIsVegetarian = new FoodIsVegetarian();
+
+            Set<FoodFilterCriterion> preference = user.getFoodPreference().keySet();
+
+            String lowCarb = "N";
+            String lowFat = "N";
+            String lowSugar = "N";
+            String veg = "N";
+            for (FoodFilterCriterion pref : preference) {
+                if (pref instanceof FoodIsLowCarbs && user.getFoodPreference().get(pref)) {
+                    lowCarb = "Y";
+                }
+                if (pref instanceof FoodIsLowFat && user.getFoodPreference().get(pref)) {
+                    lowFat = "Y";
+                }
+                if (pref instanceof FoodIsLowSugar && user.getFoodPreference().get(pref)) {
+                    lowSugar = "Y";
+                }
+                if (pref instanceof FoodIsVegetarian && user.getFoodPreference().get(pref)) {
+                    veg = "Y";
+                }
+            }
+//            if (user.getFoodPreference().get(foodIsLowCarbs)) {
+//                lowCarb = "Y";
+//            }
+//
+//            if (user.getFoodPreference().get(foodIsLowFat)) {
+//                lowFat = "Y";
+//            }
+//
+//            if (user.getFoodPreference().get(foodIsLowSugar)) {
+//                lowSugar = "Y";
+//            }
+//
+//
+//            if (user.getFoodPreference().get(foodIsVegetarian)) {
+//                veg = "Y";
+//            }
+
+            userInfo = userInfo + "," + lowCarb + "*" +
+                    lowFat + "*" +
+                    lowSugar + "*" +
+                    veg+ "*" +
+                    user.getNumFood();
         }
         else{
             userInfo = userInfo + "," + "null";
         }
 
 
-            FileWriter writeInfo;
-            writeInfo = new FileWriter(USER_FILE, true);
-            writeInfo.write(userInfo+"\n");
-            writeInfo.close();
+        FileWriter writeInfo;
+        writeInfo = new FileWriter(USER_FILE, true);
+        writeInfo.write(userInfo+"\n");
+        writeInfo.close();
     }
 
 

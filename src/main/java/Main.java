@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * This class runs the program.
@@ -46,6 +47,7 @@ public class Main {
                 }
                 UserParser.writeUserInfo("update");
             }
+
 
             boolean restart = Console.reStart(reader);
             if (restart){

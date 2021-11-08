@@ -24,9 +24,9 @@ public class RunCommand {
         else if (command == 4){
             this.useranalyzer = new DiseaseAnalyzer();
         }
-//        else if (command == 5){
-//            this.useranalyzer = new MealPlanGenerator();
-//        }
+        else if (command == 5){
+            this.useranalyzer = new MealPlanGenerator();
+        }
     }
     public RunCommand(){}
     /**
@@ -67,21 +67,25 @@ public class RunCommand {
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();
             case "exercise": return UserManager.getCurrentUser().getExercisePreference();
+            case "food": return UserManager.getCurrentUser().getFoodPreference();
             default : return "";
         }
     }
 
-    public void executeCommandUpdateInfo(int command2, String newItem)
-            throws Exception {
+    public void executeCommandUpdateInfo(int command2, String newItem) throws Exception {
 
-        switch(command2) {
-            // change username
-            case 1:
-                UserManager.changeUserName(newItem);
-
-            case 6:
-
-        }
+//        switch(command2) {
+//            // change username
+//            case 1:
+//                UserManager.changeUserInfo(newItem, command2);
+//            case 2:
+//                UserManager.changeUserInfo(newItem, command2);
+//
+//
+//            case 6:
+//
+//        }
+        UserManager.changeUserInfo(newItem, command2);
     }
 
     public HashMap<Integer, User> getAllExistingUser(){

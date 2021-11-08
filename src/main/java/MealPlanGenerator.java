@@ -5,15 +5,31 @@ import java.util.*;
 This class generates meal plans for user base on user input on FoodPreference and the number of Food items to be
  returned.
  */
-public class MealPlanGenerator {
+public class MealPlanGenerator implements UserAnalyzer{
 
-    /**
-     * Generate a list of food objects (i.e. meal plan) based on user data.
-     * @param user The user object whose FoodPreference is used to generate meal plan.
-     * @param numFoods The number of food items that need to be in the meal plan.
-     * @return A list of food objects that are generated based on the user's FoodPreference.
-     */
-    public List<Food> generateMealPlan(User user, int numFoods) throws Exception {
+    private String result;
+
+//    /**
+//     * Generate a list of food objects (i.e. meal plan) based on user data.
+//     * @param user The user object whose FoodPreference is used to generate meal plan.
+//     * @param numFoods The number of food items that need to be in the meal plan.
+//     * @return A list of food objects that are generated based on the user's FoodPreference.
+//     */
+//    public List<Food> generateMealPlan(User user, int numFoods) throws Exception {
+//        // 1. get food from dataset that meets the user's FoodPreference.
+//        HashMap<String, List<Food>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
+//
+//        // check if the total number of food items in foodMap >= numFoods or not.
+//        if (!isNumberOfFoodInMapNoLessThan(foodMetCriteria, numFoods)) {
+//            throw new Exception("Requested number of food items greater than total food items in food map.");
+//        }
+//        // 2. perform additional filters to only keep numFoods items
+//        return filterFoodMap(foodMetCriteria, numFoods);
+//    }
+
+    public void analyze() throws Exception {
+        User user = UserManager.getCurrentUser();
+        int numFoods = user.getNumFood();
         // 1. get food from dataset that meets the user's FoodPreference.
         HashMap<String, List<Food>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
 
@@ -22,7 +38,20 @@ public class MealPlanGenerator {
             throw new Exception("Requested number of food items greater than total food items in food map.");
         }
         // 2. perform additional filters to only keep numFoods items
-        return filterFoodMap(foodMetCriteria, numFoods);
+//        ArrayList<String> foodResult = new ArrayList<>();
+        String intro =  "*****************************************************************************\n" +
+                "Food for " + user.getUsername() + ": " +
+                "The following foods are based on your preferences.\n";
+        StringBuilder msg = new StringBuilder();
+        for (Food food : filterFoodMap(foodMetCriteria, numFoods)) {
+//            foodResult.add(food.toString());
+            msg.append(food.toStrings());
+        }
+
+        this.result = intro + msg +
+                "\n**********************************************************************************************\n";
+//        this.result = "" + filterFoodMap(foodMetCriteria, numFoods);
+//        return filterFoodMap(foodMetCriteria, numFoods);
     }
 
     private List<Food> filterFoodMap(HashMap<String, List<Food>> foodMap, int numFoods) {
@@ -88,5 +117,9 @@ public class MealPlanGenerator {
             }
         }
         return FoodFilterCriteriaList;
+    }
+
+    public String getResult(){
+        return this.result;
     }
 }

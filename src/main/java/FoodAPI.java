@@ -20,16 +20,33 @@ public class FoodAPI {
     private static final double PROTEIN_PER_DAY = 50.0;
 
 
+    /**
+     * Helper method to convert from String to Double. Returns 0 if input.equals("NULL").
+     * @param input A string, either a number with decimals or "NULL".
+     * @return A double variable.
+     */
+    private static Double convertFromStringToDouble(String input){
+        if (!input.equals("NULL")){
+            return Double.parseDouble(input);
+        }
+        return 0.0;
+    }
+
+    /**
+     * Creates a food object based on the data provided.
+     * @param metadata An array of strings with data of interest.
+     * @return A food object.
+     */
     private static Food createFood(String[] metadata){
         String id =  metadata[0];
         String name = metadata[1];
         String foodType = metadata[2];
-        double calories = Double.parseDouble(metadata[3]);
-        double fat= Double.parseDouble(metadata[4]) / FAT_PER_DAY;
-        double proteins = Double.parseDouble(metadata[5]) / PROTEIN_PER_DAY;
-        double carbohydrates = Double.parseDouble(metadata[6]) / CARB_PER_DAY;
-        double sugar= Double.parseDouble(metadata[7]) / SUGAR_PER_DAY;
-        boolean vegFriendly = (metadata[2].contains("Vegetable") || metadata[2].contains("Fruits"));
+        double calories = convertFromStringToDouble(metadata[3]);
+        double fat= convertFromStringToDouble(metadata[4]) / FAT_PER_DAY;
+        double proteins = convertFromStringToDouble(metadata[5]) / PROTEIN_PER_DAY;
+        double carbohydrates = convertFromStringToDouble(metadata[6]) / CARB_PER_DAY;
+        double sugar= convertFromStringToDouble(metadata[7]) / SUGAR_PER_DAY;
+        boolean vegFriendly = (!metadata[2].contains("Meats"));
 
         // Note: I can't find a column in the dataset that corresponds to a nutrient score,
         // so I'm going to set it to default 0 for now.
