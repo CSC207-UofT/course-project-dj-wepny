@@ -11,8 +11,6 @@ import java.util.*;
  * This class interact with the users and receives their input, then it sends
  * the inputs to the controller class.
  */
-
-
 public class Console {
 
     private final static int[] COMMAND = {1, 2, 3, 4, 5};
@@ -235,8 +233,7 @@ public class Console {
     public static boolean notInRange(int i, int type) {
         if (type == 1) {
             return i <= 0 || i >= 6;
-        }
-        else{
+        } else {
             return i <= 0 || i >= 7;
         }
     }
@@ -299,9 +296,7 @@ public class Console {
 
         ArrayList<String> currentSymptoms = new ArrayList<>();
 
-        System.out.println("Hi Welcome to the Disease Predictor, given the lists of potential symptoms,\n" +
-                "please enter the symptoms you are experiencing, and the program will generate potential\n" +
-                "diseases that you may be diagnosed for.");
+        System.out.println(Constants.DISEASE_START);
 
         while (true) {
             potentialDisease = commandExecutor.executeCommandDisease(currentSymptoms);
@@ -311,10 +306,7 @@ public class Console {
             //outputs how many potential disease client could have
             // pass in empty array list if it is first round.
 
-            System.out.println("\nThese are the symptom options. " +
-                    "If you are currently experiencing more than one, please separate the input using a comma ','\n" +
-                    "for example, 'high_fever,back_pain' (notice there is no space in between)\n" +
-                    "\nIf none of them apply to you, please type in N/A.");
+            System.out.println(Constants.SYMPTOMS_DESC);
 
             Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             System.out.println(analyze_results.retrieveOutput()); //first time giving options
@@ -339,32 +331,24 @@ public class Console {
     public static String updateUser(Scanner reader, RunCommand commandExecutor) throws Exception {
         System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Change Username \n" +
-                " 2. Change Food Preferences \n"); //TODO: Are we adding more here?
+                " 2. Change Exercise Preferences \n"); // TODO: Are we adding more here?
         int secondCommand = Integer.parseInt(reader.nextLine());
 
-        if (secondCommand == 1) {
-            System.out.println("Please enter your new Username");
+        if (secondCommand == 1) { // update username
+            System.out.println(Constants.CHANGE_USERNAME);
             String newName = reader.nextLine();
-            System.out.println("Thank you. Currently updating your new username.");
+            System.out.println(Constants.UPDATED_USERNAME);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newName);
         }
         else if (secondCommand == 2){
             // TODO: allow user to change their exercise preference
         }
-        return Constants.UPDATED_PROFILE; //this can be used for general cases 1-6
+        return Constants.UPDATED_PROFILE; // this can be used for general cases 1-6
     }
 
     public static String checkCommand(String input, Scanner reader, int type){
         boolean check = true;
         while (check) {
-//            if (isInteger(input) && notInRange(Integer.parseInt(input), type)) {
-//                System.out.println("Sorry, your command is invalid. Please try again.");
-//                input = reader.nextLine();
-//            } else if (!isInteger(input)) {
-//                System.out.println("Sorry, your command is invalid. Please enter a number only, no other characters." +
-//                        "Try again:");
-//                input = reader.nextLine();
-//            }
             if (!isInteger(input) || notInRange(Integer.parseInt(input), type)) {
                 System.out.println(Constants.INVALID_INPUT);
                 input = reader.nextLine();

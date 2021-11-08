@@ -1,10 +1,8 @@
 package System;
 
 import Controllers.UserController;
-import Entities.User;
 import Constants.Constants;
 import UseCases.UserParser;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -42,7 +40,7 @@ public class Main {
                 UserParser.writeUserInfo("write");
             }
             // if they are an existing user, run:
-            else{
+            else {
                 int id = Console.loginPage(reader);
                 while (!logOut) {
                     String output = Console.ExistingUserMenu(reader, id);

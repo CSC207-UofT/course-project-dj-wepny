@@ -1,17 +1,19 @@
 package UseCases;
 
 import Entities.User;
+import Constants.Constants;
 import java.util.HashMap;
+
 /**
  * Subclass of UserAnalyzer. Returns user BMI.
  */
 public class BMIAnalyzer implements UserAnalyzer {
 
-    public BMIAnalyzer() {
-    }
+    public BMIAnalyzer() {}
 
     private String result;
 
+    @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
 
@@ -21,34 +23,32 @@ public class BMIAnalyzer implements UserAnalyzer {
         float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
 
-        String intro =  "*****************************************************************************\n" +
-                "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +
-                "High BMI (>25.0) can indicate high body fatness, and considered as overweight. \n" +
-                "BMI can indicate health problems such as obesity and malnutrition.\nYour Body Mass Index is " +
-            (double) Math.round(bmi * 100) / 100;
+        String intro =  Constants.DIVIDER + Constants.BMI_INTRO + (double) Math.round(bmi * 100) / 100;
+        String health = getBMIStatus(bmi);
+        String username = user.getUsername();
 
+        this.result = intro + Constants.EMPTY_LINE + username + Constants.BMI_ANALYSIS + health + Constants.DIVIDER;
+    }
 
+    /**
+     * Helper method for analyze.
+     * @param bmi of the user.
+     * @return classification of user's bmi.
+     */
+    private String getBMIStatus(float bmi) {
         String health;
-        //TODO: change to constants?
         if (bmi >= 30){
-            health = "Obesity.";
+            health = Constants.OBESE;
+        } else if (bmi >= 25){
+            health = Constants.OVERWEIGHT;
+        } else if (bmi >= 18.5) {
+            health = Constants.HEALTHY;
+        } else {
+            health = Constants.UNDERWEIGHT;
         }
-        else if (bmi >= 25){
-            health = "OverWeight.";
-        }
-        else if (bmi >= 18.5) {
-            health = "Healthy Weight.";
-        }
-        else{
-            health = "Underweight.";
-        }
-        this.result = intro + ".\n\n"+user.getUsername()+", your BMI is considered: " + health +
-                "\n*****************************************************************************\n";
+        return health;
     }
 
-    public String getResult(){
-        return this.result;
-    }
-
+    public String getResult() { return this.result; }
 
 }

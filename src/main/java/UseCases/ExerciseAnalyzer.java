@@ -3,61 +3,67 @@ package UseCases;
 import API.ExerciseAPI;
 import Entities.Exercise;
 import Entities.User;
+import Constants.Constants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * Subclass of UserAnalyzer. Returns exercises recommended to the user.
+ * Subclass of UserAnalyzer. Return exercises recommended to the user.
  */
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
 
-    public ExerciseAnalyzer(){
-    }
+    public ExerciseAnalyzer(){}
 
     @Override
     public void analyze() {
-
         User user = UserManager.getCurrentUser();
-        String intro =  "*****************************************************************************\n" +
-                "Exercises for " + user.getUsername() + ": " +
-                "The following exercises are based on your preferences on the muscles exercised and equipment.\n";
 
         HashMap<String, String> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
         ArrayList<Exercise> user_exercises = new ArrayList<Exercise>(); // May not be needed
         StringBuilder exercise_names = new StringBuilder();
 
+        // add each exercise to user_exercises and exercise_names
         for(Exercise exercise: exercises){
-            if(exercise_match(exercise, user_preference)){
+            if (exercise_match(exercise, user_preference)) {
                 user_exercises.add(exercise);
-                String exercise_equipment = exercise.getEquipmentNeeded().toString();
-                exercise_names.append("\n-  ").append(exercise.getName()).
-                        append("\n    -> Type of the exercise: ").append(exercise.getType()).
-                        append("\n    -> Uses: ").append(exercise_equipment).append(";").
-                        append("\n    -> The major muscle exercised is: ").append(exercise.getMajorMuscleExercised()).
-                        append("\n    -> The minor muscle exercised is: ").append(exercise.getMinorMuscleExercised()).
-                        append("\n\n");
+                exercise_names.append(addNewExercise(exercise));
             }
         }
-        if (user_exercises.isEmpty()){
-            String msg = "\nUnfortunately, no exercise moves matches this particular set of preference, " +
-                    "please try again!";
-            this.result = intro + msg +
-                    "\n**********************************************************************************************\n";
-        }
-        else {
-            this.result = intro + exercise_names +
-                    "**********************************************************************************************\n";
+
+        String intro =  Constants.DIVIDER +
+                Constants.EXERCISE_INTRO1 + user.getUsername() + Constants.EXERCISE_INTRO2;
+
+        if (user_exercises.isEmpty()){ // no exercise suggestions :(
+            this.result = intro + Constants.NO_EXERCISES_FOUND + Constants.DIVIDER;
+        } else { // return exercise suggestions
+            this.result = intro + exercise_names +Constants.DIVIDER;
         }
     }
 
     /**
-     *  A method used to determine if the exercise matches the user's exercise preferences
+     * Helper method to create a new StringBuilder description for one new exercise to suggest to user.
+     * @param exercise to create description from
+     * @return description for new exercise
      */
-    public boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
+    private StringBuilder addNewExercise(Exercise exercise) {
+        StringBuilder new_exercise = new StringBuilder();
+        new_exercise.append(Constants.TAB).append(exercise.getName()).
+                append(Constants.EX_DESC_TYPE).append(exercise.getType()).
+                append(Constants.EX_DESC_USES).append(exercise.getEquipmentNeeded().toString()).
+                append(Constants.EX_DESC_MAJOR).append(exercise.getMajorMuscleExercised()).
+                append(Constants.EX_DESC_MINOR).append(exercise.getMinorMuscleExercised()).
+                append(Constants.EMPTY_LINE);
+        return new_exercise;
+    }
+
+    /**
+     *  A helper method used to determine if the exercise matches the user's exercise preferences
+     */
+    private boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
         String majorMuscle =  user_preference.get("major muscle");
         String minorMuscle = user_preference.get("minor muscle");
         String equipment = user_preference.get("equipment");

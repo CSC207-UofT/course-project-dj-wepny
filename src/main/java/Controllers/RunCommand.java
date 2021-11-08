@@ -68,7 +68,7 @@ public class RunCommand {
 
     public Object retrieveUser(String typeInfo){
         switch (typeInfo) {
-            case "name": return (String) UserManager.getCurrentUser().getUsername();
+            case "name": return UserManager.getCurrentUser().getUsername();
             case "personal data" : return UserManager.getCurrentUser().getPersonalData();
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();

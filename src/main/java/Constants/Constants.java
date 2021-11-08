@@ -1,5 +1,7 @@
 package Constants;
 
+import javax.print.StreamPrintServiceFactory;
+
 /**
  * This class holds the constants used in the program.
  */
@@ -61,6 +63,16 @@ public class Constants {
                     "and a level of physical activity that is consistent with good health." +
                     "\nYour Estimated Energy Requirement is: ";
 
+    // Disease
+    public static final String DISEASE_START =
+            "Welcome to the Disease Analyzer. Given the lists of potential symptoms,\n" +
+            "please enter the ones you are experiencing, and the program will generate potential\n" +
+            "diseases that you may be at risk for.";
+    public static final String SYMPTOMS_DESC = "\nHere are the options. " +
+            "If you are currently experiencing more than one symptom, please separate the input using a comma ','\n" +
+            "for example, 'high_fever,back_pain' with no spaces in between\n" +
+            "\nIf none of them apply to you, please type in N/A.";
+
 
     // ExerciseAnalyzer
     // Messages
@@ -77,11 +89,14 @@ public class Constants {
             "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_INTRO1 = "Exercises for ";
     public static final String EXERCISE_INTRO2 =
-            ": The following exercises are based on your preferences on the muscles exercised and equipment. \n";
-    public static final String EXERCISE_DESC1 = "-  ";
-    public static final String EXERCISE_DESC2 = ": Uses\n";
-    public static final String EXERCISE_DESC3 = "; The major muscle exercised is ";
-    public static final String EXERCISE_DESC4 = ", and the minor muscle exercised is ";
+            ": \nThe following exercises are based on your preferences on the muscles exercised and equipment. \n";
+    public static final String TAB = "\n-  ";
+    public static final String EX_DESC_TYPE = "\n    -> Type of the exercise: ";
+    public static final String EX_DESC_USES = "\n    -> Uses: ";
+    public static final String EX_DESC_MAJOR = ";\n    -> The major muscle exercised is: ";
+    public static final String EX_DESC_MINOR = "\n    -> The minor muscle exercised is: ";
+    public static final String NO_EXERCISES_FOUND =
+            "\nUnfortunately, we currently do not have any exercises that match these preferences. Please try again.";
 
     //Console
     public static final String BASIC_INFO = "We will start from some basic information.";
@@ -123,6 +138,7 @@ public class Constants {
     public static final String ID_PROMPT = "Please enter your personal ID";
     public static final String RETURN_MENU = "Do you want to go back to your user main menu page? (Y/N)";
     public static final String RESTART_PROGRAM = "Would you like to start again? (Y/N):";
+    public static final String CHANGE_USERNAME = "Please enter your new username.";
 
     // Messages
     public static final String ID_MESSAGE1 =
@@ -131,12 +147,13 @@ public class Constants {
             "\nPlease take note of this number as you will need it to access your account in the future.";
     public static final String REPORT = "Here is your report based on previously entered information: \n\n";
     public static final String UPDATED_PROFILE = "Your profile has been updated.";
+    public static final String UPDATED_USERNAME = "Your username has been updated.";
 
     // Errors
     public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again. \n";
     public static final String FILE_LOC_ERROR =
             "Uh oh, an error has occurred! Please check that the files exist and are in the specified position.";
-    public static final String NOT_ENOUGH_INFO = "Oh no! There is currently not enough information " +
+    public static final String NOT_ENOUGH_INFO = "There is currently not enough information " +
             "in your profile to generate this report.\n" + "Please fill in the following information:\n";
 
 
