@@ -12,21 +12,8 @@ public class RunCommand {
     public UserAnalyzer useranalyzer;
 
     public RunCommand(int command) {
-        if (command == 1) {
-            this.useranalyzer = new BMIAnalyzer();
-        }
-        else if (command == 2){
-            this.useranalyzer = new EERAnalyzer();
-        }
-        else if (command == 3){
-            this.useranalyzer = new ExerciseAnalyzer();
-        }
-        else if (command == 4){
-            this.useranalyzer = new DiseaseAnalyzer();
-        }
-//        else if (command == 5){
-//            this.useranalyzer = new MealPlanGenerator();
-//        }
+        UserAnalyzerFactory factory = new UserAnalyzerFactory();
+        this.useranalyzer = factory.create_analyzer(command);
     }
     public RunCommand(){}
     /**

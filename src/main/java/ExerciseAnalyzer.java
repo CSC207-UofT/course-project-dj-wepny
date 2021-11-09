@@ -8,14 +8,25 @@ import java.util.List;
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
+    private User user;
 
     public ExerciseAnalyzer(){
+        this.user = null;
     }
 
+    public ExerciseAnalyzer(User user_given){
+        this.user = user_given;
+    }
     @Override
     public void analyze() {
+        User user;
+        if(this.user == null){
+            user = UserManager.getCurrentUser();
+        }
+        else{
+            user = this.user;
+        }
 
-        User user = UserManager.getCurrentUser();
         String intro =  "*****************************************************************************\n" +
                 "Exercises for " + user.getUsername() + ": " +
                 "The following exercises are based on your preferences on the muscles exercised and equipment.\n";

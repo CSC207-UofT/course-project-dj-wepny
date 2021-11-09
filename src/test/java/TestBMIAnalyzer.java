@@ -1,7 +1,6 @@
 /*
  *This file contains Junit test case for BMIAnalyzer.java
  */
-
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.HashMap;
