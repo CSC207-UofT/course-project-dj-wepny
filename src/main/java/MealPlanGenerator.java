@@ -1,3 +1,8 @@
+import Entities.Food;
+import Entities.FoodFilterCriterion;
+import Entities.User;
+import UseCases.FoodManager;
+
 import javax.management.ObjectName;
 import java.util.*;
 
