@@ -1,3 +1,13 @@
+package Controllers;
+
+import Entities.User;
+import UseCases.BMIAnalyzer;
+import UseCases.DiseaseAnalyzer;
+import UseCases.EERAnalyzer;
+import UseCases.ExerciseAnalyzer;
+import UseCases.UserAnalyzer;
+import UseCases.UserManager;
+import Constants.Constants;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +36,9 @@ public class RunCommand {
         }
 //        else if (command == 5){
 //            this.useranalyzer = new MealPlanGenerator();
-//        }
+//        }     // See MealPlanGenerator
     }
     public RunCommand(){}
-    /**
-     * Input boundary UserAnalyzer for the use cases.
-     */
 
     public UserAnalyzer getAnalyzer(){
         return this.useranalyzer;
@@ -41,9 +48,8 @@ public class RunCommand {
         UserManager.createNewUser(basic, personal);
     }
 
-    public void executeCommand() throws Exception {
-        useranalyzer.analyze();
-    }
+    public void executeCommand() {useranalyzer.analyze();}
+
     public void addInfo(Object info, int command){
         UserManager.addNewInfo(info, command);
     }
@@ -62,7 +68,7 @@ public class RunCommand {
 
     public Object retrieveUser(String typeInfo){
         switch (typeInfo) {
-            case "name": return (String) UserManager.getCurrentUser().getUsername();
+            case "name": return UserManager.getCurrentUser().getUsername();
             case "personal data" : return UserManager.getCurrentUser().getPersonalData();
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();

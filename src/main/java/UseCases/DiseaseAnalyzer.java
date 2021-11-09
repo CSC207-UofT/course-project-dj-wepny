@@ -1,3 +1,7 @@
+package UseCases;
+
+import API.DiseaseAPI;
+import Entities.User;
 import java.lang.reflect.Array;
 import java.util.*;
 

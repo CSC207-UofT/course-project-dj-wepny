@@ -1,3 +1,7 @@
+package Controllers;
+
+import Entities.User;
+import UseCases.UserManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 

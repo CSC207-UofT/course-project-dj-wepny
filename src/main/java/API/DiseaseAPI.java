@@ -1,3 +1,7 @@
+package API;
+
+import Entities.Disease;
+import Constants.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,21 +16,17 @@ import java.util.*;
  */
 public class DiseaseAPI {
 
-    private static final String DISEASE_DATASET_PATH =
-            "src/main/java/GlobalDiseaseData.csv";
+    public static void main(String[] args) {
+        readFromDiseaseCSV();
+    }
 
     /**
      * Read from the Disease CSV and create a List of Disease Objects.
      * @return a List of Disease Objects.
      */
-
-    public static void main(String[] args) {
-        readFromDiseaseCSV();
-    }
-
     public static HashMap<String, Set<String>> readFromDiseaseCSV(){
         HashMap<String, Set<String>> diseaseMap = new HashMap<>();
-        Path pathToFile = Paths.get(DISEASE_DATASET_PATH);
+        Path pathToFile = Paths.get(Constants.DISEASE_DATASET_PATH);
 
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
             // Skipping the header.

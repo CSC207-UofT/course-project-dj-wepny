@@ -1,3 +1,7 @@
+package Controllers;
+
+import UseCases.UserAnalyzer;
+
 /**
 This is a class that retrieves the results from the use cases, and then called by
 the console to return the output.

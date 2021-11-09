@@ -1,7 +1,14 @@
+package UseCases;
+
+import Controllers.APIController;
+import Entities.Food;
+import Entities.FoodFilterCriterion;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /**
   * This class stores a list of food objects, and returns a new list that satisfies the criteria

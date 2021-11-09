@@ -1,3 +1,7 @@
+package UseCases;
+
+import Entities.User;
+import Constants.Constants;
 import java.util.HashMap;
 
 /**
@@ -25,13 +29,8 @@ public class EERAnalyzer implements UserAnalyzer{
         double energyRequirement= calculateEER(gender, physicalActivity, userHeight, userWeight, age);
 
         //Setting the resulting String.
-        result =  "*****************************************************************************\n" +
-                "The Estimated Energy Requirement (EER) is a predicted average dietary intake \n" +
-                "needed to maintain energy balance in the healthy adult of a defined age, gender, weight, \n" +
-                "and a level of physical activity that is consistent with good health.\n" +
-                "Your Estimated Energy Requirement is: " +
-                (double) Math.round(energyRequirement * 100) / 100 +
-                "\n*****************************************************************************\n";
+        result =  Constants.DIVIDER + Constants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
+                Constants.DIVIDER;
     }
 
     @Override
@@ -48,9 +47,9 @@ public class EERAnalyzer implements UserAnalyzer{
     private double getPAValueFromActivityRating(String gender, String activityRating){
         if (gender.equals("M")){
             switch (activityRating) {
-                case "Sedentary": return 1.0;
-                case "Low active": return 1.11;
-                case "Active": return 1.25;
+                case Constants.SED: return 1.0;
+                case Constants.LOW: return 1.11;
+                case Constants.MID: return 1.25;
                 default: return 1.48;
             }
 
@@ -58,9 +57,9 @@ public class EERAnalyzer implements UserAnalyzer{
 
         if (gender.equals("F")){
              switch (activityRating) {
-                 case "Sedentary": return 1.0;
-                 case "Low active": return 1.12;
-                 case "Active": return 1.27;
+                 case Constants.SED: return 1.0;
+                 case Constants.LOW: return 1.12;
+                 case Constants.MID: return 1.27;
                  default: return 1.45;
             }
         }
