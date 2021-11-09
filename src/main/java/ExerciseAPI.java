@@ -19,18 +19,18 @@ public class ExerciseAPI {
     }
 
     /**
-     * Helper method that adds elements in a String array to a corresponding List.
+     * Helper method that adds elements that's in a String array to a corresponding List.
      * @param data A string of array with elements to be passed into the list.
      * @param variable An arraylist of strings that will receive inputs.
-     * @param i the index of the string array.
+     * @param index the index of the string array.
      */
-    private static void addElementToList(String[] data, ArrayList<String> variable, int i) {
-        if (data[i].contains(",")){
-            String[] equipmentInfo = splitting(data[i]);
+    private static void addElementToList(String[] data, ArrayList<String> variable, int index) {
+        if (data[index].contains(",")){
+            String[] equipmentInfo = splitting(data[index]);
             variable.addAll(Arrays.asList(equipmentInfo));
         }
         else{
-            variable.add(data[i]);
+            variable.add(data[index]);
         }
     }
 
@@ -57,7 +57,7 @@ public class ExerciseAPI {
         addElementToList(data, majorMuscle, 3);
         addElementToList(data, minorMuscle, 4);
 
-        return new Exercise(name, equipments, exerciseType, majorMuscle, minorMuscle);
+        return new Exercise(name, exerciseType, minorMuscle, majorMuscle, equipments);
     }
 
 
@@ -65,7 +65,7 @@ public class ExerciseAPI {
 
         List<Exercise> exerciseList = new ArrayList<>();
 
-        Path pathToFile = Paths.get("src/main/java/ExerciseMoveData.csv");
+        Path pathToFile = Paths.get("src/main/java/ExerciseMovesData.csv");
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.
@@ -89,7 +89,6 @@ public class ExerciseAPI {
         }
         return exerciseList;
     }
-
 
 
 }

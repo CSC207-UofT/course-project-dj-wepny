@@ -13,6 +13,7 @@ public class Constants {
     public static final HashMap<Integer, UserAnalyzer> COMMANDS = new HashMap<>();
     static {
         COMMANDS.put(1, new BMIAnalyzer());
+
         // Add other functionalities here
     }
     // I will put this in the RunCommand class for now since I can't import for some reason??
