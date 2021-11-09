@@ -1,3 +1,5 @@
+package Entities;
+
 import java.util.ArrayList;
 /**
  * This class stores an Exercise Object from the database,

@@ -1,6 +1,8 @@
+package Entities;
+
 public class FoodIsVegetarian extends FoodFilterCriterion {
     @Override
-    boolean isSatisfiedBy(Food food) {
+    public boolean isSatisfiedBy(Food food) {
         return food.getVegFriendly();
     }
 }

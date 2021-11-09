@@ -1,3 +1,5 @@
+import Entities.User;
+
 import java.util.HashMap;
 import java.lang.Math;
 /**

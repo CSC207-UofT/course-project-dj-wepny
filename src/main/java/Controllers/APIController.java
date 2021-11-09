@@ -1,3 +1,8 @@
+package Controllers;
+
+import API.DiseaseAPI;
+import API.FoodAPI;
+import Entities.Food;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;

@@ -1,3 +1,6 @@
+package UseCases;
+
+import Entities.User;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.lang.Math;
@@ -7,7 +10,7 @@ import static java.util.Objects.isNull;
 /**
  * This class creates new users, loads data for existing users, and can change user's username.
  */
-class UserManager {
+public class UserManager {
     private static HashMap<Integer, User> existingUsers = new HashMap<Integer, User>();
     private static User currentUser;
 

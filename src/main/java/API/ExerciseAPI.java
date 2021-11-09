@@ -1,3 +1,6 @@
+package API;
+
+import Entities.Exercise;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
