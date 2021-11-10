@@ -1,8 +1,8 @@
+package UseCases;
 /**
  * A class that uses the Factory Design Pattern to create the appropriate subclass of UserAnalyzer
  * depending on the given command
  **/
-
 
 public class UserAnalyzerFactory {
     public UserAnalyzer create_analyzer(int command){

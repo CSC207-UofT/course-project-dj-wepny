@@ -1,4 +1,4 @@
-package java;/*
+/*
  *This file contains Junit test case for BMIAnalyzer.java
  */
 

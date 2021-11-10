@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import UseCases.UserAnalyzer;
+import Entities.*;
+import API.*;
+import UseCases.UserManager;
 
 /**
  * Subclass of UserAnalyzer. Returns exercises recommended to the user.

@@ -1,6 +1,13 @@
+package Controllers;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import Entities.User;
+import UseCases.DiseaseAnalyzer;
+import UseCases.UserAnalyzer;
+import UseCases.UserAnalyzerFactory;
+import UseCases.UserManager;
 
 /**
  * This class executes command appropriately based on command given.

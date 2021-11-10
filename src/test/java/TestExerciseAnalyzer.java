@@ -5,6 +5,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.HashMap;
+import UseCases.ExerciseAnalyzer;
+import Entities.User;
 
 public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises;
@@ -25,9 +27,10 @@ public class TestExerciseAnalyzer {
     @Test(timeout = 500)
     public void testOutput() {
         exercises.analyze();
-        assertEquals("*****************************************************************************\n" +
+        String expected_string ="*****************************************************************************\n" +
                 "Exercises for " + user.getUsername() + ": " +
-                "The following exercises are based on your preferences on the muscles exercised and equipment.\n",
+                "The following exercises are based on your preferences on the muscles exercised and equipment.\n";
+        assertEquals(expected_string,
                 exercises.getResult());
     }
 
