@@ -296,15 +296,50 @@ public class Console {
         System.out.println(Constants.EXERCISE_START + Constants.EXERCISE_MAJOR);
         String majorMuscle = reader.nextLine();
 
+        while(!Constants.ALL_MAJOR_MUSCLES.contains(majorMuscle)){
+            System.out.println(Constants.EXERCISE_MAJOR_ERROR);
+            majorMuscle = reader.nextLine();
+        }
+
         System.out.println(Constants.EXERCISE_MINOR);
         String minorMuscle = reader.nextLine();
+
+        while(!Constants.ALL_MINOR_MUSCLES.contains(minorMuscle)){
+            System.out.println(Constants.EXERCISE_MINOR_ERROR);
+            minorMuscle = reader.nextLine();
+        }
 
         System.out.println(Constants.EXERCISE_EQUIPMENT);
         String equipment = reader.nextLine();
 
+        while(!Constants.ALL_EQUIPMENTS.contains(equipment)){
+            System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_BG);
+            equipment = reader.nextLine();
+        }
+
+        System.out.println(Constants.EXERCISE_EQUIPMENT2);
+        String new_equipment = reader.nextLine();;
+
+        while(!new_equipment.equals("None")){
+            while(!Constants.ALL_EQUIPMENTS.contains(new_equipment) && !new_equipment.equals("None")){
+                System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_AF);
+                new_equipment = reader.nextLine();
+            }
+            if(equipment.contains(new_equipment)){
+                System.out.println(Constants.EXERCISE_EQUIPMENT3);
+            }
+            else if(new_equipment.equals("None")){
+                break;
+            }
+            else{
+                equipment = equipment + ',' + new_equipment;
+                System.out.println(Constants.EXERCISE_EQUIPMENT2);
+            }
+            new_equipment = reader.nextLine();
+        }
+
         return new String[]{majorMuscle, minorMuscle, equipment};
     }
-
 
     public static String diseaseList(Scanner reader, RunCommand commandExecutor) throws Exception {
         commandExecutor.resetPotentialDisease();
