@@ -5,6 +5,7 @@ import Entities.Exercise;
 import Entities.User;
 import Constants.Constants;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,12 +15,21 @@ import java.util.List;
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
+    private User user;
 
     public ExerciseAnalyzer(){}
+
+    public ExerciseAnalyzer(User user){
+        this.user = user;
+    }
 
     @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
+
+        if(user == null){
+            user = this.user;
+        }
 
         HashMap<String, String> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
@@ -66,10 +76,10 @@ public class ExerciseAnalyzer implements UserAnalyzer{
     private boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
         String majorMuscle =  user_preference.get("major muscle");
         String minorMuscle = user_preference.get("minor muscle");
-        String equipment = user_preference.get("equipment");
+        List<String> equipments = Arrays.asList(user_preference.get("equipment").split(","));
         boolean hasMajMuscle = exercise.getMajorMuscleExercised().contains(majorMuscle);
         boolean hasMinMuscle = exercise.getMinorMuscleExercised().contains(minorMuscle);
-        boolean hasEquip = exercise.getEquipmentNeeded().contains(equipment);
+        boolean hasEquip = equipments.containsAll(exercise.getEquipmentNeeded());
 
         return (hasMinMuscle || hasMajMuscle) && hasEquip;
     }

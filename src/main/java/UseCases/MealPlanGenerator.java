@@ -3,6 +3,7 @@ package UseCases;
 import Entities.Food;
 import Entities.FoodFilterCriterion;
 import Entities.User;
+import Constants.Constants;
 import java.util.ArrayList;
 import java.util.List;
 import javax.management.ObjectName;
@@ -33,17 +34,14 @@ public class MealPlanGenerator implements UserAnalyzer {
         }
         // 2. perform additional filters to only keep numFoods items
 //        ArrayList<String> foodResult = new ArrayList<>();
-        String intro = "*****************************************************************************\n" +
-                "Food for " + user.getUsername() + ": " +
-                "The following foods are based on your preferences.\n";
+        String intro = user.getUsername() + Constants.MEALPLAN_INTRO;
         StringBuilder msg = new StringBuilder();
         for (Food food : filterFoodMap(foodMetCriteria, numFoods)) {
 //            foodResult.add(food.toString());
             msg.append(food.toStrings());
         }
 
-        this.result = intro + msg +
-                "\n**********************************************************************************************\n";
+        this.result = Constants.DIVIDER + intro + msg + Constants.DIVIDER;
 //        this.result = "" + filterFoodMap(foodMetCriteria, numFoods);
 //        return filterFoodMap(foodMetCriteria, numFoods);    }
     }
