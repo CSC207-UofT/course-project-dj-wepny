@@ -1,13 +1,16 @@
 package Controllers;
+import Entities.User;
+import UseCases.BMIAnalyzer;
+import UseCases.DiseaseAnalyzer;
+import UseCases.EERAnalyzer;
+import UseCases.ExerciseAnalyzer;
+import UseCases.UserAnalyzer;
+import UseCases.UserManager;
+import Constants.Constants;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import Entities.User;
-import UseCases.DiseaseAnalyzer;
-import UseCases.UserAnalyzer;
-import UseCases.UserAnalyzerFactory;
-import UseCases.UserManager;
+import UseCases.MealPlanGenerator;
 
 /**
  * This class executes command appropriately based on command given.
@@ -19,13 +22,23 @@ public class RunCommand {
     public UserAnalyzer useranalyzer;
 
     public RunCommand(int command) {
-        UserAnalyzerFactory factory = new UserAnalyzerFactory();
-        this.useranalyzer = factory.create_analyzer(command);
+        if (command == 1) {
+            this.useranalyzer = new BMIAnalyzer();
+        }
+        else if (command == 2){
+            this.useranalyzer = new EERAnalyzer();
+        }
+        else if (command == 3){
+            this.useranalyzer = new ExerciseAnalyzer();
+        }
+        else if (command == 4){
+            this.useranalyzer = new DiseaseAnalyzer();
+        }
+        else if (command == 5){
+            this.useranalyzer = new MealPlanGenerator();
+        }       // See MealPlanGenerator
     }
     public RunCommand(){}
-    /**
-     * Input boundary UserAnalyzer for the use cases.
-     */
 
     public UserAnalyzer getAnalyzer(){
         return this.useranalyzer;
@@ -35,9 +48,8 @@ public class RunCommand {
         UserManager.createNewUser(basic, personal);
     }
 
-    public void executeCommand() throws Exception {
-        useranalyzer.analyze();
-    }
+    public void executeCommand() throws Exception {useranalyzer.analyze();}
+
     public void addInfo(Object info, int command){
         UserManager.addNewInfo(info, command);
     }
@@ -56,26 +68,19 @@ public class RunCommand {
 
     public Object retrieveUser(String typeInfo){
         switch (typeInfo) {
-            case "name": return (String) UserManager.getCurrentUser().getUsername();
+            case "name": return UserManager.getCurrentUser().getUsername();
             case "personal data" : return UserManager.getCurrentUser().getPersonalData();
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();
             case "exercise": return UserManager.getCurrentUser().getExercisePreference();
+            case "food": return UserManager.getCurrentUser().getFoodPreference();
             default : return "";
         }
     }
 
-    public void executeCommandUpdateInfo(int command2, String newItem)
-            throws Exception {
+    public void executeCommandUpdateInfo(int command2, String newItem) throws Exception {
+        UserManager.changeUserInfo(newItem, command2);
 
-        switch(command2) {
-            // change username
-            case 1:
-                UserManager.changeUserName(newItem);
-
-            case 6:
-
-        }
     }
 
     public HashMap<Integer, User> getAllExistingUser(){

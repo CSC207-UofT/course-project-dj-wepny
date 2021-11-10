@@ -9,10 +9,10 @@ import java.util.Objects;
 public class Food {
     private final String foodName;
     private final double calories;
-    private final double carbohydrate;
+    private double carbohydrate;
     private final double proteins;
-    private final double fat;
-    private final double sugar;
+    private double fat;
+    private double sugar;
     private final String foodType;
     private final String id;
     private final boolean vegFriendly;
@@ -49,7 +49,6 @@ public class Food {
         this.id = id;
         this.vegFriendly = veg;
         this.nutrientScore = score;
-
     }
 
     @Override
@@ -66,6 +65,20 @@ public class Food {
 
         Food other = (Food) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    public StringBuilder toStrings() {
+        StringBuilder foodNames = new StringBuilder();
+        this.sugar = sugar * 100;
+        this.fat = fat * 100;
+        this.carbohydrate = carbohydrate * 100;
+        return foodNames.
+                append("\n    -> Name of food: ").append(foodName).
+                append("\n    -> Calories: ").append(calories).
+                append("\n    -> This food contains ").append((double) Math.round(sugar * 100) / 100).append("% of recommended daily sugar intake").
+                append("\n    -> This food contains ").append((double) Math.round(fat * 100) / 100).append("% of recommended daily fat intake").
+                append("\n    -> This food contains ").append((double) Math.round(carbohydrate * 100) / 100).append("% of recommended daily carbohydrate intake").
+                append("\n\n");
     }
 
 

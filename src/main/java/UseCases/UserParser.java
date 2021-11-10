@@ -2,12 +2,17 @@ package UseCases;
 
 import Controllers.UserController;
 import Entities.User;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import Entities.FoodIsLowCarbs;
+import Entities.FoodFilterCriterion;
+import Entities.FoodIsLowFat;
+import Entities.FoodIsLowSugar;
+import Entities.FoodIsVegetarian;
+
 
 /**
  * This class writes user information for existing users onto a file.
@@ -88,7 +93,31 @@ public class UserParser {
         userInfo = userInfo + "," + user.getPersonalData().getOrDefault("activity level", "null");
 
         if (!user.getFoodPreference().isEmpty()){
-            //TODO: add food Preference here
+            Set<FoodFilterCriterion> preference = user.getFoodPreference().keySet();
+
+            String lowCarb = "N";
+            String lowFat = "N";
+            String lowSugar = "N";
+            String veg = "N";
+            for (FoodFilterCriterion pref : preference) {
+                if (pref instanceof FoodIsLowCarbs && user.getFoodPreference().get(pref)) {
+                    lowCarb = "Y";
+                }
+                if (pref instanceof FoodIsLowFat && user.getFoodPreference().get(pref)) {
+                    lowFat = "Y";
+                }
+                if (pref instanceof FoodIsLowSugar && user.getFoodPreference().get(pref)) {
+                    lowSugar = "Y";
+                }
+                if (pref instanceof FoodIsVegetarian && user.getFoodPreference().get(pref)) {
+                    veg = "Y";
+                }
+            }
+            userInfo = userInfo + "," + lowCarb + "*" +
+                    lowFat + "*" +
+                    lowSugar + "*" +
+                    veg+ "*" +
+                    user.getNumFood();
         }
         else{
             userInfo = userInfo + "," + "null";

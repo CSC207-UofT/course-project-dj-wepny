@@ -17,7 +17,6 @@ public class FoodAPI {
     Food objects and List of Food objects.
      */
     private static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
-
     private static final double FAT_PER_DAY = 75.0;
     private static final double CARB_PER_DAY = 300.0;
     private static final double SUGAR_PER_DAY = 100.0;

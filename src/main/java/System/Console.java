@@ -15,6 +15,7 @@ public class Console {
 
     private final static int[] COMMAND = {1, 2, 3, 4, 5};
 
+
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].
@@ -128,6 +129,8 @@ public class Console {
                 break;
             case 4:
                 return diseaseList(reader, commandExecutor);
+            case 5:
+                commandExecutor.addInfo(foodPreference(reader), command);
         }
 
         commandExecutor.executeCommand();
@@ -183,8 +186,14 @@ public class Console {
                     return diseaseList(reader, commandExecutor);
                 }
                 break;
-                //  TODO: case 5
-
+            case 5:
+                if (noInfoFound(command)) {
+                    System.out.println("Oh no! There is currently not enough information " +
+                            "in your profile to generate this report");
+                    System.out.println("Please fill in the following information:\n");
+                    commandExecutor.addInfo(foodPreference(reader), command);
+                }
+                break;
             case 6:
                 return updateUser(reader, commandExecutor);
         }
@@ -224,6 +233,7 @@ public class Console {
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
+
         } catch (Exception e) {
             return false;
         }
@@ -233,7 +243,8 @@ public class Console {
     public static boolean notInRange(int i, int type) {
         if (type == 1) {
             return i <= 0 || i >= 6;
-        } else {
+        }
+        else {
             return i <= 0 || i >= 7;
         }
     }
@@ -251,7 +262,12 @@ public class Console {
         if (command == 4) {
             ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
             return riskFactors.isEmpty();
-        } else {
+        }
+        if (command == 5) {
+            HashMap foodData = (HashMap) commandExecutor.retrieveUser("food");
+            return foodData.isEmpty();
+        }
+        else {
             return true;
         }
     }
@@ -328,11 +344,48 @@ public class Console {
         return analyze_results.retrieveOutput();
     }
 
+    public static ArrayList<Object> foodPreference(Scanner reader) throws Exception {
+        System.out.println("Welcome to the Meal Plan Generator!");
+        System.out.println("Please enter Y or N for the following options");
+        System.out.println("I prefer low carbohydrate");
+        String lowCarb = reader.nextLine();
+        System.out.println("I prefer low fat");
+        String lowFat = reader.nextLine();
+        System.out.println("I prefer low sugar");
+        String lowSugar = reader.nextLine();
+        System.out.println("I am vegetarian");
+        String vegetarian = reader.nextLine();
+        System.out.println("How many foods do you want?");
+        String numFoods = reader.nextLine();
+        String[] foodCriterion = {lowCarb, lowFat, lowSugar, vegetarian};
+        ArrayList<Object> foodFilterCriterion = new ArrayList<>();
+        for(String criterion : foodCriterion) {
+            if (criterion.equals("Y")) {
+                foodFilterCriterion.add(true);
+            }
+            else {
+                foodFilterCriterion.add(false);
+            }
+        }
+        foodFilterCriterion.add(numFoods);
+
+        return foodFilterCriterion;
+
+    }
+
     public static String updateUser(Scanner reader, RunCommand commandExecutor) throws Exception {
         System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
                 " 1. Change Username \n" +
-                " 2. Change Exercise Preferences \n"); // TODO: Are we adding more here?
+                " 2. Change Height \n" +
+                " 3. Change Weight \n" +
+                " 4. Change Age \n" +
+                " 5. Change Gender \n" +
+                " 6. Change Activity Level \n" +
+                " 7. Change Exercise Preferences \n" +
+                " 8. Change Symptoms \n" +
+                " 9. Change Food Preferences \n"); // TODO: Are we adding more here?
         int secondCommand = Integer.parseInt(reader.nextLine());
+        RunCommand command = new RunCommand(4);
 
         if (secondCommand == 1) { // update username
             System.out.println(Constants.CHANGE_USERNAME);
@@ -340,8 +393,54 @@ public class Console {
             System.out.println(Constants.UPDATED_USERNAME);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newName);
         }
+        //update Height
         else if (secondCommand == 2){
-            // TODO: allow user to change their exercise preference
+            System.out.println("Please enter your new height:");
+            String newHeight = reader.nextLine();
+            System.out.println("Thank you. Currently updating your new height.");
+            commandExecutor.executeCommandUpdateInfo(secondCommand, newHeight);
+        }
+        //update Weight
+        else if (secondCommand == 3){
+            System.out.println("Please enter your new weight:");
+            String newWeight = reader.nextLine();
+            System.out.println("Thank you. Currently updating your new weight.");
+            commandExecutor.executeCommandUpdateInfo(secondCommand, newWeight);
+
+        }
+        //change age
+        else if (secondCommand == 4){
+            System.out.println("Please enter your new age:");
+            String newAge = reader.nextLine();
+            System.out.println("Thank you. Currently updating your new gender.");
+            commandExecutor.executeCommandUpdateInfo(secondCommand, newAge);
+        }
+        //change gender
+        else if (secondCommand == 5){
+            System.out.println("Please enter your new gender:");
+            String newGender = reader.nextLine();
+            System.out.println("Thank you. Currently updating your new gender.");
+            commandExecutor.executeCommandUpdateInfo(secondCommand, newGender);
+
+        }
+        //update activity level
+        else if (secondCommand == 6){
+            String level = activityLevel(reader);
+            commandExecutor.addInfo(level, 2);
+        }
+        //update exercise preference
+        else if (secondCommand == 7){
+            commandExecutor.addInfo(exercisePreference(reader), 3);
+        }
+        //update disease
+        else if (secondCommand == 8){
+            command.addInfo("", 6);
+            return diseaseList(reader, command);
+        }
+        else if (secondCommand == 9){
+            commandExecutor.addInfo("", 7);
+            commandExecutor.addInfo(foodPreference(reader), 5);
+
         }
         return Constants.UPDATED_PROFILE; // this can be used for general cases 1-6
     }
