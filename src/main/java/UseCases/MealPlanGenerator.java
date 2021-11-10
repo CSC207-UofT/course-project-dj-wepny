@@ -3,18 +3,16 @@ package UseCases;
 import Entities.Food;
 import Entities.FoodFilterCriterion;
 import Entities.User;
-import java.util.ArrayList;
-import java.util.List;
+import UseCases.FoodManager;
+
 import javax.management.ObjectName;
 import java.util.*;
 
 /**
-This class generates meal plans for user base on user input on FoodPreference,
-and the number of Food items to be returned.
+This class generates meal plans for user base on user input on FoodPreference and the number of Food items to be
+ returned.
  */
 public class MealPlanGenerator {
-
-    // TODO: does this class not implement UserAnalyzer like the other functionalities? -n
 
     /**
      * Generate a list of food objects (i.e. meal plan) based on user data.
