@@ -188,9 +188,7 @@ public class Console {
                 break;
             case 5:
                 if (noInfoFound(command)) {
-                    System.out.println("Oh no! There is currently not enough information " +
-                            "in your profile to generate this report");
-                    System.out.println("Please fill in the following information:\n");
+                    System.out.println(Constants.NOT_ENOUGH_INFO);
                     commandExecutor.addInfo(foodPreference(reader), command);
                 }
                 break;
@@ -345,17 +343,16 @@ public class Console {
     }
 
     public static ArrayList<Object> foodPreference(Scanner reader) throws Exception {
-        System.out.println("Welcome to the Meal Plan Generator!");
-        System.out.println("Please enter Y or N for the following options");
-        System.out.println("I prefer low carbohydrate");
+        System.out.println(Constants.MEALPLAN_WELCOME);
+        System.out.println(Constants.LOWCARBS);
         String lowCarb = reader.nextLine();
-        System.out.println("I prefer low fat");
+        System.out.println(Constants.LOWFAT);
         String lowFat = reader.nextLine();
-        System.out.println("I prefer low sugar");
+        System.out.println(Constants.LOWSUGAR);
         String lowSugar = reader.nextLine();
-        System.out.println("I am vegetarian");
+        System.out.println(Constants.VEG);
         String vegetarian = reader.nextLine();
-        System.out.println("How many foods do you want?");
+        System.out.println(Constants.NUM_FOODS);
         String numFoods = reader.nextLine();
         String[] foodCriterion = {lowCarb, lowFat, lowSugar, vegetarian};
         ArrayList<Object> foodFilterCriterion = new ArrayList<>();
@@ -374,16 +371,7 @@ public class Console {
     }
 
     public static String updateUser(Scanner reader, RunCommand commandExecutor) throws Exception {
-        System.out.println(" You may choose the following options: (Please enter a number from 1 to 5) \n" +
-                " 1. Change Username \n" +
-                " 2. Change Height \n" +
-                " 3. Change Weight \n" +
-                " 4. Change Age \n" +
-                " 5. Change Gender \n" +
-                " 6. Change Activity Level \n" +
-                " 7. Change Exercise Preferences \n" +
-                " 8. Change Symptoms \n" +
-                " 9. Change Food Preferences \n"); // TODO: Are we adding more here?
+        System.out.println(Constants.USER_UPDATE);
         int secondCommand = Integer.parseInt(reader.nextLine());
         RunCommand command = new RunCommand(4);
 
@@ -395,31 +383,31 @@ public class Console {
         }
         //update Height
         else if (secondCommand == 2){
-            System.out.println("Please enter your new height:");
+            System.out.println(Constants.CHANGE_HEIGHT);
             String newHeight = reader.nextLine();
-            System.out.println("Thank you. Currently updating your new height.");
+            System.out.println(Constants.UPDATED_HEIGHT);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newHeight);
         }
         //update Weight
         else if (secondCommand == 3){
-            System.out.println("Please enter your new weight:");
+            System.out.println(Constants.CHANGE_WEIGHT);
             String newWeight = reader.nextLine();
-            System.out.println("Thank you. Currently updating your new weight.");
+            System.out.println(Constants.UPDATED_WEIGHT);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newWeight);
 
         }
         //change age
         else if (secondCommand == 4){
-            System.out.println("Please enter your new age:");
+            System.out.println(Constants.CHANGE_AGE);
             String newAge = reader.nextLine();
-            System.out.println("Thank you. Currently updating your new gender.");
+            System.out.println(Constants.UPDATED_AGE);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newAge);
         }
         //change gender
         else if (secondCommand == 5){
-            System.out.println("Please enter your new gender:");
+            System.out.println(Constants.CHANGE_GENDER);
             String newGender = reader.nextLine();
-            System.out.println("Thank you. Currently updating your new gender.");
+            System.out.println(Constants.UPDATED_GENDER);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newGender);
 
         }
