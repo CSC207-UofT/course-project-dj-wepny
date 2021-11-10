@@ -1,13 +1,20 @@
+package UseCases;
+
+import Entities.User;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.lang.Math;
-
+import Entities.FoodIsLowCarbs;
+import Entities.FoodFilterCriterion;
+import Entities.FoodIsLowFat;
+import Entities.FoodIsLowSugar;
+import Entities.FoodIsVegetarian;
 import static java.util.Objects.isNull;
 
 /**
  * This class creates new users, loads data for existing users, and can change user's username.
  */
-class UserManager {
+public class UserManager {
     private static HashMap<Integer, User> existingUsers = new HashMap<Integer, User>();
     private static User currentUser;
 
@@ -140,7 +147,7 @@ class UserManager {
             currentUser.setExercisePreference("minor muscle", minorMuscle);
             currentUser.setExercisePreference("equipment", equipment);
         }
-        // TODO: add food generator command
+
         else if (command == 4){
             currentUser.addRiskFactor((String) info);
         }

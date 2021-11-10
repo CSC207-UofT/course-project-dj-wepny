@@ -1,10 +1,18 @@
+package UseCases;
 
-
+import Controllers.UserController;
+import Entities.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import Entities.FoodIsLowCarbs;
+import Entities.FoodFilterCriterion;
+import Entities.FoodIsLowFat;
+import Entities.FoodIsLowSugar;
+import Entities.FoodIsVegetarian;
+
 
 /**
  * This class writes user information for existing users onto a file.
@@ -85,11 +93,6 @@ public class UserParser {
         userInfo = userInfo + "," + user.getPersonalData().getOrDefault("activity level", "null");
 
         if (!user.getFoodPreference().isEmpty()){
-//            FoodFilterCriterion foodIsLowCarbs = new FoodIsLowCarbs();
-//            FoodFilterCriterion foodIsLowFat = new FoodIsLowFat();
-//            FoodFilterCriterion foodIsLowSugar = new FoodIsLowSugar();
-//            FoodFilterCriterion foodIsVegetarian = new FoodIsVegetarian();
-
             Set<FoodFilterCriterion> preference = user.getFoodPreference().keySet();
 
             String lowCarb = "N";
@@ -110,23 +113,6 @@ public class UserParser {
                     veg = "Y";
                 }
             }
-//            if (user.getFoodPreference().get(foodIsLowCarbs)) {
-//                lowCarb = "Y";
-//            }
-//
-//            if (user.getFoodPreference().get(foodIsLowFat)) {
-//                lowFat = "Y";
-//            }
-//
-//            if (user.getFoodPreference().get(foodIsLowSugar)) {
-//                lowSugar = "Y";
-//            }
-//
-//
-//            if (user.getFoodPreference().get(foodIsVegetarian)) {
-//                veg = "Y";
-//            }
-
             userInfo = userInfo + "," + lowCarb + "*" +
                     lowFat + "*" +
                     lowSugar + "*" +
@@ -138,10 +124,10 @@ public class UserParser {
         }
 
 
-        FileWriter writeInfo;
-        writeInfo = new FileWriter(USER_FILE, true);
-        writeInfo.write(userInfo+"\n");
-        writeInfo.close();
+            FileWriter writeInfo;
+            writeInfo = new FileWriter(USER_FILE, true);
+            writeInfo.write(userInfo+"\n");
+            writeInfo.close();
     }
 
 

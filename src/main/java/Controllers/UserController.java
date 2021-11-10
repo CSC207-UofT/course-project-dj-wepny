@@ -1,3 +1,7 @@
+package Controllers;
+
+import Entities.User;
+import UseCases.UserManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -5,6 +9,7 @@ import java.util.HashMap;
  * This class checks for existing users in the local file, and adds users to the file if they are
  * new.
  */
+
 public class UserController {
 
     public static void readExistingUser(ArrayList<String> allUser) {

@@ -1,3 +1,5 @@
+package UseCases;
+
 /**
  * This is an interface of a user analyzer. Analyzers with different functionalities must override
  * the method in here.
@@ -9,9 +11,9 @@ public interface UserAnalyzer {
     It then returns the type of output that will be specified in the other analyzers.
     The exact contents will vary then.
      */
+
     void analyze() throws Exception;
 
     String getResult();
 
-    //TODO: More methods may be required in the future?
 }

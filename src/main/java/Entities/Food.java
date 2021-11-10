@@ -1,3 +1,5 @@
+package Entities;
+
 import java.util.Objects;
 
 /**
@@ -47,7 +49,6 @@ public class Food {
         this.id = id;
         this.vegFriendly = veg;
         this.nutrientScore = score;
-
     }
 
     @Override
@@ -79,6 +80,7 @@ public class Food {
                 append("\n    -> This food contains ").append((double) Math.round(carbohydrate * 100) / 100).append("% of recommended daily carbohydrate intake").
                 append("\n\n");
     }
+
 
     // Getters and setters for the private variables:
 

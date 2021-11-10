@@ -1,3 +1,5 @@
+package Entities;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -5,6 +7,7 @@ import java.util.Set;
 /**
  *  This class stores user's information.
  */
+
 public class User {
     private final int id;
     private String username;
@@ -32,28 +35,6 @@ public class User {
         this.riskFactor = new ArrayList<String>();
         this.personalData = personalData;
    }
-
-    /*
-       An overloaded constructor, but why do we need this? - David
-     * @param id
-     * @param name
-     * @param gender
-     * @param personalData
-     * @param food
-     * @param exercise
-     * @param disease
-     */
-//    public User(int id, String name, String gender, HashMap<String, Object> personalData, HashMap<FoodFilterCriterion, Boolean> food,
-//                HashMap<String, Object> exercise, ArrayList<String> disease, HashMap<String, Set<String>> potentialDisease){
-//        this.id = id;
-//        this.username= name;
-//        this.gender = gender;
-//        this.foodPreference = food;
-//        this.exercisePreference = exercise;
-//        this.riskFactor = disease;
-//        this.personalData = personalData;
-//
-//    }
 
     public int getId() {
         return this.id;
@@ -109,13 +90,13 @@ public class User {
         personalData.put(key, value);
     }
 
-    public void setUserName(String newName) {this.username = newName;}
-
     public void resetFoodPreference() {
         foodPreference = new HashMap<>();
     }
 
+    public void setUserName(String newName) {this.username = newName;}
     // do we need this?
+
     public void setUserGender(String newGender) {this.gender = newGender;}
 
 }

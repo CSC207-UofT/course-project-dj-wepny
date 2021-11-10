@@ -1,4 +1,8 @@
-import java.util.HashMap;
+package System;
+
+import Controllers.UserController;
+import Constants.Constants;
+import UseCases.UserParser;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Set;
@@ -21,8 +25,7 @@ public class Main {
             }
             catch (Exception exception) {
                 System.out.println(exception.getMessage());
-                System.out.println("Uh oh, an error has occurred! " +
-                        "Please check that the files exist and are in the specified position.");
+                System.out.println(Constants.FILE_LOC_ERROR);
             }
 
             boolean logOut = false;
@@ -38,7 +41,7 @@ public class Main {
                 UserParser.writeUserInfo("write");
             }
             // if they are an existing user, run:
-            else{
+            else {
                 int id = Console.loginPage(reader);
                 while (!logOut) {
                     String output = Console.ExistingUserMenu(reader, id);
