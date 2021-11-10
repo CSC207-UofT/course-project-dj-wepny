@@ -28,7 +28,7 @@ public class Constants {
     // Classifications
     public static final String OBESE = "Obese.";
     public static final String OVERWEIGHT = "Overweight.";
-    public static final String HEALTHY = "Healthy.";
+    public static final String HEALTHY = "Healthy Weight.";
     public static final String UNDERWEIGHT = "Underweight.";
 
     // Messages

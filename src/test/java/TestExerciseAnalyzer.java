@@ -9,13 +9,12 @@ import java.util.HashMap;
 import UseCases.ExerciseAnalyzer;
 import Entities.User;
 
-public class TestExerciseAnalyzerRegular {
+public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises;
     User user;
 
     @Before
     public void setUp() {
-        exercises = new ExerciseAnalyzer();
         HashMap<String, Object> userInfo = new HashMap<>();
 
         userInfo.put("height", "1.80");
@@ -26,14 +25,16 @@ public class TestExerciseAnalyzerRegular {
         user.setExercisePreference("minor muscle", "Biceps");
         user.setExercisePreference("equipment", "Dumbbells");
 
+        exercises = new ExerciseAnalyzer(user);
+
     }
     // core, chest, body weight
     @Test(timeout = 500)
     public void testOutput() {
         exercises.analyze();
-        String expected_string ="*****************************************************************************\n" +
-                "Exercises for " + user.getUsername() + ": " +
-                "The following exercises are based on your preferences on the muscles exercised and equipment.\n" +
+        String expected_string ="\n*****************************************************************************\n" +
+                "Exercises for " + user.getUsername() + ": \n" +
+                "The following exercises are based on your preferences on the muscles exercised and equipment. \n\n" +
                 "-  Arnold Press\n" +
                 "    -> Type of the exercise: [Weight]\n" +
                 "    -> Uses: [Dumbbells];\n" +
@@ -74,7 +75,9 @@ public class TestExerciseAnalyzerRegular {
                 "    -> Uses: [Dumbbells];\n" +
                 "    -> The major muscle exercised is: [Arms]\n" +
                 "    -> The minor muscle exercised is: [Tricep]\n" +
-                "\n";
+                "\n" +
+                "\n" +
+                "*****************************************************************************\n";
         assertEquals(expected_string,
                 exercises.getResult());
     }

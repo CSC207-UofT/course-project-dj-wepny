@@ -15,12 +15,21 @@ import java.util.List;
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
+    private User user;
 
     public ExerciseAnalyzer(){}
+
+    public ExerciseAnalyzer(User user){
+        this.user = user;
+    }
 
     @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
+
+        if(user == null){
+            user = this.user;
+        }
 
         HashMap<String, String> user_preference = user.getExercisePreference();
         List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();

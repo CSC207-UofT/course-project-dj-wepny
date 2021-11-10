@@ -8,14 +8,20 @@ import java.util.HashMap;
  * Subclass of UserAnalyzer. Returns user BMI.
  */
 public class BMIAnalyzer implements UserAnalyzer {
-
+    private User user;
     public BMIAnalyzer() {}
+    public BMIAnalyzer(User user){
+        this.user = user;
+    }
 
     private String result;
 
     @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
+        if(user == null){
+            user = this.user;
+        }
 
         HashMap<String, Object> personalData = user.getPersonalData();
         float userHeight = Float.parseFloat((String)personalData.get("height"));
@@ -23,7 +29,7 @@ public class BMIAnalyzer implements UserAnalyzer {
         float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
 
-        String intro =  Constants.DIVIDER + Constants.BMI_INTRO + (double) Math.round(bmi * 100) / 100;
+        String intro =  Constants.DIVIDER + Constants.BMI_INTRO + (double) Math.round(bmi * 100) / 100 + ".";
         String health = getBMIStatus(bmi);
         String username = user.getUsername();
 
