@@ -137,7 +137,7 @@ public class Constants {
     public static final String ASK_EXISTING = "Are you an existing user? (Y/N)";
     public static final String ID_PROMPT = "Please enter your personal ID";
     public static final String RETURN_MENU = "Do you want to go back to your user main menu page? (Y/N)";
-    public static final String RESTART_PROGRAM = "Would you like to start again? (Y/N):";
+    public static final String RESTART_PROGRAM = "Would you like to exit the program entirely (Y/N):";
     public static final String CHANGE_USERNAME = "Please enter your new username.";
 
     // Messages

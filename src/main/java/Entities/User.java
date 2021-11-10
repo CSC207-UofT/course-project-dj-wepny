@@ -10,7 +10,8 @@ import java.util.Set;
 public class User {
     private final int id;
     private String username;
-    private final String gender;
+    private String gender;
+    private int numFood;
     private HashMap<FoodFilterCriterion, Boolean> foodPreference;
     private HashMap<String, String> exercisePreference;
     private ArrayList<String> riskFactor;
@@ -46,6 +47,10 @@ public class User {
         return gender;
     }
 
+    public int getNumFood() {
+        return numFood;
+    }
+
     public HashMap<FoodFilterCriterion, Boolean> getFoodPreference() {
         return foodPreference;
     }
@@ -66,6 +71,10 @@ public class User {
         foodPreference.put(key, value);
     }
 
+    public void setNumFoods(int numFoods) {
+        this.numFood = numFoods;
+    }
+
     public void setExercisePreference(String key, String value) {
         exercisePreference.put(key, value);
     }
@@ -73,11 +82,21 @@ public class User {
     public void addRiskFactor(String addedSymptoms) {
         riskFactor.add(addedSymptoms);
     }
+
+    public void resetRiskFactor() {riskFactor = new ArrayList<String>();}
+
     public void setPersonalData(String key, Object value) {
         personalData.put(key, value);
     }
+
+    public void resetFoodPreference() {
+        foodPreference = new HashMap<>();
+    }
+
     public void setUserName(String newName) {this.username = newName;}
     // do we need this?
+
+    public void setUserGender(String newGender) {this.gender = newGender;}
 
 }
 

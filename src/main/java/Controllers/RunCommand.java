@@ -11,6 +11,7 @@ import Constants.Constants;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import UseCases.MealPlanGenerator;
 
 /**
  * This class executes command appropriately based on command given.
@@ -34,9 +35,9 @@ public class RunCommand {
         else if (command == 4){
             this.useranalyzer = new DiseaseAnalyzer();
         }
-//        else if (command == 5){
-//            this.useranalyzer = new MealPlanGenerator();
-//        }     // See MealPlanGenerator
+        else if (command == 5){
+            this.useranalyzer = new MealPlanGenerator();
+        }       // See MealPlanGenerator
     }
     public RunCommand(){}
 
@@ -48,7 +49,7 @@ public class RunCommand {
         UserManager.createNewUser(basic, personal);
     }
 
-    public void executeCommand() {useranalyzer.analyze();}
+    public void executeCommand() throws Exception {useranalyzer.analyze();}
 
     public void addInfo(Object info, int command){
         UserManager.addNewInfo(info, command);
@@ -73,21 +74,14 @@ public class RunCommand {
             case "id" : return String.valueOf(UserManager.getCurrentUser().getId());
             case "risk" : return UserManager.getCurrentUser().getRiskFactor();
             case "exercise": return UserManager.getCurrentUser().getExercisePreference();
+            case "food": return UserManager.getCurrentUser().getFoodPreference();
             default : return "";
         }
     }
 
-    public void executeCommandUpdateInfo(int command2, String newItem)
-            throws Exception {
+    public void executeCommandUpdateInfo(int command2, String newItem) throws Exception {
+        UserManager.changeUserInfo(newItem, command2);
 
-        switch(command2) {
-            // change username
-            case 1:
-                UserManager.changeUserName(newItem);
-
-            case 6:
-
-        }
     }
 
     public HashMap<Integer, User> getAllExistingUser(){
