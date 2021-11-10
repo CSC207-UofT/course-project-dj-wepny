@@ -28,7 +28,7 @@ public class Constants {
     // Classifications
     public static final String OBESE = "Obese.";
     public static final String OVERWEIGHT = "Overweight.";
-    public static final String HEALTHY = "Healthy.";
+    public static final String HEALTHY = "Healthy Weight.";
     public static final String UNDERWEIGHT = "Underweight.";
 
     // Messages
@@ -82,13 +82,32 @@ public class Constants {
     public static final String EXERCISE_START =
             "This exercise analyzer generate a list of exercising moves based on your preference.\n";
     public static final String EXERCISE_MAJOR =
-            "PLease select only ONE major muscle you want to exercise from the following list:\n" +
+            "Please select only ONE major muscle you want to exercise from the following list:\n" +
             "\"Arms, Core, Full Body, Legs, Back\"";
+    public static final String EXERCISE_MAJOR_ERROR = "The major muscle entered is not valid. \n" +
+            "Please select only ONE major muscle you want to exercise from the following list:\n" +
+                    "\"Arms, Core, Full Body, Legs, Back\"";
     public static final String EXERCISE_MINOR =
-            "PLease select only ONE minor muscle you want to exercise from the following list:\n" +
+            "Please select only ONE minor muscle you want to exercise from the following list:\n" +
             "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
             "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
-    public static final String EXERCISE_EQUIPMENT = "Please select the equipment you have or want to use:\n" +
+    public static final String EXERCISE_MINOR_ERROR = "The minor muscle entered is not valid. \n" +
+            "Please select only ONE minor muscle you want to exercise from the following list:\n" +
+                    "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
+                    "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
+    public static final String EXERCISE_EQUIPMENT = "Please select one equipment you have or want to use:\n" +
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+    public static final String EXERCISE_EQUIPMENT2 = "Please select another equipment you have or want to use, " +
+            "or enter 'None' if there isn't anymore:\n" +
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+    public static final String EXERCISE_EQUIPMENT3 = "The equipment entered has already been added. " +
+            "Please select another equipment you have or want to use, or enter 'None' if there isn't anymore:\n" +
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+    public static final String EXERCISE_EQUIPMENT_ERROR_BG = "The equipment entered is invalid. " +
+            "Please select one equipment you have or want to use:\n" +
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+    public static final String EXERCISE_EQUIPMENT_ERROR_AF = "The equipment entered is invalid. " +
+            "Please select one equipment you have or want to use, or enter 'None' if there isn't anymore:\n" +
             "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_INTRO1 = "Exercises for ";
     public static final String EXERCISE_INTRO2 =
@@ -173,6 +192,23 @@ public class Constants {
     public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
     public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
     public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
+  
+    // PAL Constants
+    public static final double M_SEDENTARY = 1.0;
+    public static final double M_LOW = 1.11;
+    public static final double M_ACTIVE = 1.25;
+    public static final double M_HIGH = 1.48;
+    public static final double F_SEDENTARY = 1.0;
+    public static final double F_LOW = 1.12;
+    public static final double F_ACTIVE = 1.27;
+    public static final double F_HIGH = 1.45;
+
+    // Exercise
+    public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";
+    public static final String ALL_MINOR_MUSCLES = "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, " +
+            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique";
+    public static final String ALL_EQUIPMENTS = "Dumbbells, Bar, Cable, Body Weight, Platform, Machine, " +
+            "Band, Kettle Bell, Medicine Ball, Bosu Ball";
 
     // Errors
     public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again. \n";
