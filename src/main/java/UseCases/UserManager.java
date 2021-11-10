@@ -4,7 +4,11 @@ import Entities.User;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.lang.Math;
-
+import Entities.FoodIsLowCarbs;
+import Entities.FoodFilterCriterion;
+import Entities.FoodIsLowFat;
+import Entities.FoodIsLowSugar;
+import Entities.FoodIsVegetarian;
 import static java.util.Objects.isNull;
 
 /**
@@ -78,11 +82,29 @@ public class UserManager {
         if (!userInfo[8].equals("null")){
             user.setPersonalData("activity level", userInfo[8]);
         }
-//
-//        if (!userInfo[9].equals("null")){
-//
-//        }
-//
+
+        if (!userInfo[9].equals("null")){
+            String[] food = userInfo[9].split("\\*");
+            FoodIsLowCarbs foodIsLowCarbs = new FoodIsLowCarbs();
+            FoodIsLowFat foodIsLowFat = new FoodIsLowFat();
+            FoodIsLowSugar foodIsLowSugar = new FoodIsLowSugar();
+            FoodIsVegetarian foodIsVegetarian = new FoodIsVegetarian();
+            ArrayList<Boolean> foodFilterCriterion = new ArrayList<>();
+            for(String criterion : food) {
+                if (criterion.equals("Y")) {
+                    foodFilterCriterion.add(true);
+                }
+                else {
+                    foodFilterCriterion.add(false);
+                }
+            }
+            user.setFoodPreference(foodIsLowCarbs, foodFilterCriterion.get(0));
+            user.setFoodPreference(foodIsLowFat, foodFilterCriterion.get(1));
+            user.setFoodPreference(foodIsLowSugar, foodFilterCriterion.get(2));
+            user.setFoodPreference(foodIsVegetarian, foodFilterCriterion.get(3));
+            user.setNumFoods(Integer.parseInt(food[4]));
+        }
+
         addUser(false, user);
     }
 
@@ -125,9 +147,33 @@ public class UserManager {
             currentUser.setExercisePreference("minor muscle", minorMuscle);
             currentUser.setExercisePreference("equipment", equipment);
         }
-        // TODO: add food generator command
-        else{
+
+        else if (command == 4){
             currentUser.addRiskFactor((String) info);
+        }
+
+        else if (command == 5) {
+            ArrayList<Object> foodPreference = (ArrayList<Object>) info;
+            boolean lowCarb = (boolean) foodPreference.get(0);
+            boolean lowFat = (boolean) foodPreference.get(1);
+            boolean lowSugar = (boolean) foodPreference.get(2);
+            boolean vegetarian = (boolean) foodPreference.get(3);
+            int numFoods = Integer.parseInt((String)foodPreference.get(4));
+            FoodIsLowCarbs foodIsLowCarbs = new FoodIsLowCarbs();
+            FoodIsLowFat foodIsLowFat = new FoodIsLowFat();
+            FoodIsLowSugar foodIsLowSugar = new FoodIsLowSugar();
+            FoodIsVegetarian foodIsVegetarian = new FoodIsVegetarian();
+            currentUser.setFoodPreference(foodIsLowCarbs, lowCarb);
+            currentUser.setFoodPreference(foodIsLowFat, lowFat);
+            currentUser.setFoodPreference(foodIsLowSugar, lowSugar);
+            currentUser.setFoodPreference(foodIsVegetarian, vegetarian);
+            currentUser.setNumFoods(numFoods);
+        }
+        else if (command == 6) {
+            currentUser.resetRiskFactor();
+        }
+        else if (command == 7) {
+            currentUser.resetFoodPreference();
         }
 
     }
@@ -139,11 +185,35 @@ public class UserManager {
 
     /**
      * changes the username of the user based on the given string.
-     * @param newName A string representing the new username for the user.
+     * @param info A string representing the information user want to update.
      * @throws Exception In case the username string is invalid (?)
      */
-    public static void changeUserName(String newName) throws Exception {
-        currentUser.setUserName(newName);
+    public static void changeUserInfo(String info, int command) throws Exception {
+//        switch(command) {
+//            // change username
+//            case 1:
+//                currentUser.setUserName(info);
+//            case 2:
+//                currentUser.getPersonalData().replace("height", info);
+//
+//            case 6:
+//
+//        }
+        if (command == 1) {
+            currentUser.setUserName(info);
+        }
+        else if (command == 2) {
+            currentUser.getPersonalData().replace("height", info);
+        }
+        else if (command == 3) {
+            currentUser.getPersonalData().replace("weight", info);
+        }
+        else if (command == 4) {
+            currentUser.getPersonalData().replace("age", info);
+        }
+        else if (command == 5) {
+            currentUser.setUserGender(info);
+        }
 //        UserParser.updateUserInfo();
     }
 
