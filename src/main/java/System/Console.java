@@ -15,6 +15,7 @@ public class Console {
 
     private final static int[] COMMAND = {1, 2, 3, 4, 5};
 
+
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].

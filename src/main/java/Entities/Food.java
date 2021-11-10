@@ -49,7 +49,6 @@ public class Food {
         this.id = id;
         this.vegFriendly = veg;
         this.nutrientScore = score;
-
     }
 
     @Override

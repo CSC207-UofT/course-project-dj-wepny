@@ -7,6 +7,7 @@ import java.util.Set;
 /**
  *  This class stores user's information.
  */
+
 public class User {
     private final int id;
     private String username;

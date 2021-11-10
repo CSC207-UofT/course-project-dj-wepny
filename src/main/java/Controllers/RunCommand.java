@@ -1,5 +1,4 @@
 package Controllers;
-
 import Entities.User;
 import UseCases.BMIAnalyzer;
 import UseCases.DiseaseAnalyzer;

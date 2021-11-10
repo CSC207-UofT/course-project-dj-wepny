@@ -9,7 +9,6 @@ import Entities.FoodFilterCriterion;
 import Entities.FoodIsLowFat;
 import Entities.FoodIsLowSugar;
 import Entities.FoodIsVegetarian;
-
 import static java.util.Objects.isNull;
 
 /**

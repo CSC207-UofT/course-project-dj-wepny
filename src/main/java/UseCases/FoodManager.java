@@ -16,7 +16,6 @@ import java.util.HashSet;
   */
 public class FoodManager {
 
-
     private static final List<Food> foodList = APIController.getFood();
 
     /**

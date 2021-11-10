@@ -73,7 +73,6 @@ public class Constants {
             "for example, 'high_fever,back_pain' with no spaces in between\n" +
             "\nIf none of them apply to you, please type in N/A.";
 
-
     // ExerciseAnalyzer
     // Messages
     public static final String EXERCISE_START =

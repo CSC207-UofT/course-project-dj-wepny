@@ -11,6 +11,7 @@ public interface UserAnalyzer {
     It then returns the type of output that will be specified in the other analyzers.
     The exact contents will vary then.
      */
+
     void analyze() throws Exception;
 
     String getResult();
