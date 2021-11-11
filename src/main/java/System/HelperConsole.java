@@ -118,7 +118,7 @@ public class HelperConsole {
      * @param reader reads user info
      * @return true if the user would like to return to the main menu
      */
-    public static boolean reStart(Scanner reader) {
+    public static boolean restart(Scanner reader) {
         System.out.println(Constants.RESTART_PROGRAM);
         String restart = reader.nextLine();
 

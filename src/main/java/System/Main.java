@@ -62,7 +62,7 @@ public class Main {
             }
 
             // check if the user wants to rerun the whole program
-            boolean restart = HelperConsole.reStart(reader);
+            boolean restart = HelperConsole.restart(reader);
             if (restart) {
                 break;
             }

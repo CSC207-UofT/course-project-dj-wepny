@@ -5,7 +5,7 @@ package UseCases;
  **/
 
 public class UserAnalyzerFactory {
-    public UserAnalyzer create_analyzer(int command){
+    public UserAnalyzer createAnalyzer(int command){
         UserAnalyzer analyzer;
 
         if (command == 1) {

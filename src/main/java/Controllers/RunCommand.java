@@ -21,7 +21,7 @@ public class RunCommand {
      */
     public RunCommand(int command) {
         UserAnalyzerFactory factory = new UserAnalyzerFactory();
-        this.userAnalyzer = factory.create_analyzer(command);
+        this.userAnalyzer = factory.createAnalyzer(command);
     }
 
     /**

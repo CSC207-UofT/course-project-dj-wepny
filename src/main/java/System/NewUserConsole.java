@@ -7,7 +7,7 @@ import Constants.Constants;
 import java.util.*;
 
 /**
- * This class interact with the users and receives their input, then it sends
+ * This class interact with the new user and receives their input, then it sends
  * the inputs to the controller class.
  */
 public class NewUserConsole {
@@ -44,7 +44,7 @@ public class NewUserConsole {
         return analyze_results.retrieveOutput();
     }
 
-    public static void gatherInfo(Scanner reader) throws Exception {
+    public static void gatherInfo(Scanner reader) {
         System.out.println(Constants.BASIC_INFO);
         String[] basicUserInfo = HelperConsole.getBasicUserInfo(reader);
         System.out.println(Constants.PERSONAL_INFO);

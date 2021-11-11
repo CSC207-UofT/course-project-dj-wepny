@@ -200,10 +200,6 @@ public class UserManager {
         return existingUsers;
     }
 
-    public static User getCurrentUsers() {
-        return currentUser;
-    }
-
     public static User getCurrentUser() {
         return currentUser;
     }
