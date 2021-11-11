@@ -76,7 +76,7 @@ public class ExerciseAnalyzer implements UserAnalyzer{
     private boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
         String majorMuscle =  user_preference.get("major muscle");
         String minorMuscle = user_preference.get("minor muscle");
-        List<String> equipments = Arrays.asList(user_preference.get("equipment").split(","));
+        List<String> equipments = Arrays.asList(user_preference.get("equipment").split("/"));
         boolean hasMajMuscle = exercise.getMajorMuscleExercised().contains(majorMuscle);
         boolean hasMinMuscle = exercise.getMinorMuscleExercised().contains(minorMuscle);
         boolean hasEquip = equipments.containsAll(exercise.getEquipmentNeeded());

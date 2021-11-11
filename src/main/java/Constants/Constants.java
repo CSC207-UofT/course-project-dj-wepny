@@ -3,13 +3,14 @@ package Constants;
 import javax.print.StreamPrintServiceFactory;
 
 /**
- * This class holds the constants used in the program.
+ * This class contains all the constants used in the program.
  */
 public class Constants {
 
     // API
     public static final String DISEASE_DATASET_PATH = "src/main/java/GlobalDiseaseData.csv";
     public static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
+    public static final String EXERCISE_DATASET_PATH = "src/main/java/ExerciseMovesData.csv";
     public static final double FAT_PER_DAY = 75.0;
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;
@@ -96,7 +97,7 @@ public class Constants {
                     "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
                     "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
     public static final String EXERCISE_EQUIPMENT = "Please select one equipment you have or want to use:\n" +
-            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+            "\"Dumbbelxls, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_EQUIPMENT2 = "Please select another equipment you have or want to use, " +
             "or enter 'None' if there isn't anymore:\n" +
             "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
@@ -216,6 +217,5 @@ public class Constants {
             "Uh oh, an error has occurred! Please check that the files exist and are in the specified position.";
     public static final String NOT_ENOUGH_INFO = "There is currently not enough information " +
             "in your profile to generate this report.\n" + "Please fill in the following information:\n";
-
 
 }

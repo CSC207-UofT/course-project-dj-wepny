@@ -39,15 +39,15 @@ public class BMIAnalyzer implements UserAnalyzer {
     /**
      * Helper method for analyze.
      * @param bmi of the user.
-     * @return classification of user's bmi.
+     * @return Health state of the user given their bmi.
      */
     private String getBMIStatus(float bmi) {
         String health;
-        if (bmi >= 30){
+        if (bmi >= Constants.OBESE_BMI){
             health = Constants.OBESE;
-        } else if (bmi >= 25){
+        } else if (bmi >= Constants.OVERWEIGHT_BMI){
             health = Constants.OVERWEIGHT;
-        } else if (bmi >= 18.5) {
+        } else if (bmi >= Constants.HEALTHY_BMI) {
             health = Constants.HEALTHY;
         } else {
             health = Constants.UNDERWEIGHT;

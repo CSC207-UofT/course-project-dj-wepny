@@ -29,6 +29,8 @@ public class Exercise {
         this.equipmentNeeded = equipmentNeeded;
     }
 
+
+    // getter methods for all its instance attributes
     public String getName() {return name;}
 
     public ArrayList<String> getType() {
