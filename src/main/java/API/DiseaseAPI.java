@@ -1,6 +1,7 @@
 package API;
 
 import Entities.Disease;
+import Entities.IDisease;
 import Constants.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,7 +56,7 @@ public class DiseaseAPI {
      * @param symptoms A set of strings indicating the symtoms of the disease.
      * @return A Disease object.
      */
-    private static Disease createDiseaseObject(String name, Set<String> symptoms){
+    private static IDisease createDiseaseObject(String name, Set<String> symptoms){
         ArrayList<String> symptomsArrayList = new ArrayList<>(symptoms);
         return new Disease(name, symptomsArrayList);
     }
@@ -65,11 +66,11 @@ public class DiseaseAPI {
      * @param map A hashmap with the disease name as key and a set of symptoms as value.
      * @return A list of disease objects.
      */
-    private static Disease[] returnListFromMap(HashMap<String, Set<String>> map) {
-        Disease[] diseaseList = new Disease[map.keySet().size()];
+    private static IDisease[] returnListFromMap(HashMap<String, Set<String>> map) {
+        IDisease[] diseaseList = new Disease[map.keySet().size()];
         int i = 0;      // index to keep track of where to add new Disease object in diseaseList.
         for (String diseaseName : map.keySet()) {
-            Disease d = createDiseaseObject(diseaseName, map.get(diseaseName));
+            IDisease d = createDiseaseObject(diseaseName, map.get(diseaseName));
             diseaseList[i] = d;
         }
         return diseaseList;

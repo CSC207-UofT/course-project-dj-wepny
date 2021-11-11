@@ -1,6 +1,8 @@
 package API;
 
 import Entities.Food;
+import Constants.Constants;
+import Entities.IFood;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,17 +13,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodAPI {
-    /*
+
+/**
     This class reads the CSV file of all food data, extracts the variables of interest, and create
     Food objects and List of Food objects.
-     */
-    private static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
-    private static final double FAT_PER_DAY = 75.0;
-    private static final double CARB_PER_DAY = 300.0;
-    private static final double SUGAR_PER_DAY = 100.0;
-    private static final double PROTEIN_PER_DAY = 50.0;
-
+*/
+public class FoodAPI {
 
     /**
      * Helper method to convert from String to Double. Returns 0 if input.equals("NULL").
@@ -45,10 +42,10 @@ public class FoodAPI {
         String name = metadata[1];
         String foodType = metadata[2];
         double calories = convertFromStringToDouble(metadata[3]);
-        double fat= convertFromStringToDouble(metadata[4]) / FAT_PER_DAY;
-        double proteins = convertFromStringToDouble(metadata[5]) / PROTEIN_PER_DAY;
-        double carbohydrates = convertFromStringToDouble(metadata[6]) / CARB_PER_DAY;
-        double sugar= convertFromStringToDouble(metadata[7]) / SUGAR_PER_DAY;
+        double fat= convertFromStringToDouble(metadata[4]) / Constants.FAT_PER_DAY;
+        double proteins = convertFromStringToDouble(metadata[5]) / Constants.PROTEIN_PER_DAY;
+        double carbohydrates = convertFromStringToDouble(metadata[6]) / Constants.CARB_PER_DAY;
+        double sugar= convertFromStringToDouble(metadata[7]) / Constants.SUGAR_PER_DAY;
         boolean vegFriendly = (!metadata[2].contains("Meats"));
 
         // Note: I can't find a column in the dataset that corresponds to a nutrient score,
@@ -64,9 +61,9 @@ public class FoodAPI {
      * Read from the Food CSV and create a List of Food Objects.
      * @return a List of Food Objects.
      */
-    public static List<Food> readFoodFromCSV() {
-        List<Food> foodList = new ArrayList<>();
-        Path pathToFile = Paths.get(FOOD_DATASET_PATH);
+    public static List<IFood> readFoodFromCSV() {
+        List<IFood> foodList = new ArrayList<>();
+        Path pathToFile = Paths.get(Constants.FOOD_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

@@ -6,7 +6,7 @@ import java.util.Objects;
  * This class stores a Food Object from the database,
  * describing its nutrient level
  */
-public class Food {
+public class Food implements IFood{
     private final String foodName;
     private final double calories;
     private double carbohydrate;

@@ -8,7 +8,7 @@ import java.util.Set;
  *  This class stores user's information.
  */
 
-public class User {
+public class User implements IUser{
     private final int id;
     private String username;
     private String gender;

@@ -378,12 +378,12 @@ public class Console {
     }
 
     public static ArrayList<Object> foodPreference(Scanner reader) throws Exception {
-        System.out.println(Constants.MEALPLAN_WELCOME);
-        System.out.println(Constants.LOWCARBS);
+        System.out.println(Constants.MEAL_PLAN_WELCOME);
+        System.out.println(Constants.LOW_CARBS);
         String lowCarb = reader.nextLine();
-        System.out.println(Constants.LOWFAT);
+        System.out.println(Constants.LOW_FAT);
         String lowFat = reader.nextLine();
-        System.out.println(Constants.LOWSUGAR);
+        System.out.println(Constants.LOW_SUGAR);
         String lowSugar = reader.nextLine();
         System.out.println(Constants.VEG);
         String vegetarian = reader.nextLine();

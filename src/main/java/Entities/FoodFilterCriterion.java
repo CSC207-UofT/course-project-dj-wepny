@@ -6,5 +6,5 @@ package Entities;
  */
 
 abstract public class FoodFilterCriterion {
-    public abstract boolean isSatisfiedBy(Food food);
+    public abstract boolean isSatisfiedBy(IFood food);
 }

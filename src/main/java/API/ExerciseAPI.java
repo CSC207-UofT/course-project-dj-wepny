@@ -1,5 +1,6 @@
 package API;
 
+import Entities.IExercise;
 import Entities.Exercise;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class ExerciseAPI {
      * @param data a string array with relative information (name, equipment, major and/or minor muscle, etc.)
      * @return an Exercise object.
      */
-    private static Exercise createExercise(String[] data){
+    private static IExercise createExercise(String[] data){
 
         // Initializes the variables needed for Exercise's constructor.
         ArrayList<String> equipments = new ArrayList<>();
@@ -64,9 +65,9 @@ public class ExerciseAPI {
     }
 
 
-    public static List<Exercise> readFromExerciseCSV(){
+    public static List<IExercise> readFromExerciseCSV(){
 
-        List<Exercise> exerciseList = new ArrayList<>();
+        List<IExercise> exerciseList = new ArrayList<>();
 
         Path pathToFile = Paths.get("src/main/java/ExerciseMovesData.csv");
 
@@ -83,7 +84,7 @@ public class ExerciseAPI {
 
             while (line != null) {
                 String[] data = line.split("\\*");
-                Exercise exerciseItem = createExercise(data);
+                IExercise exerciseItem = createExercise(data);
                 exerciseList.add(exerciseItem);
                 line = br.readLine(); //read next line before looping
             }

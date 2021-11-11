@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * This class stores Disease object from the database.
  */
-public class Disease {
+public class Disease implements IDisease{
 
     private final String disease;
     private final ArrayList<String> symptoms;

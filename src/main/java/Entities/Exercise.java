@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * This class stores an Exercise Object from the database,
  * describing the characteristics of the workout move
  */
-public class Exercise {
+public class Exercise implements IExercise{
     private final String name;
     private final ArrayList<String> type;
     private final ArrayList<String> minorMuscleExercised;

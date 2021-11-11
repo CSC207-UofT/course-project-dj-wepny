@@ -41,14 +41,14 @@ public class Constants {
 
     // MealPlanGenerator
     // Messages
-    public static final String MEALPLAN_INTRO = ", the following foods are based on your preferences:";
-    public static final String MEALPLAN_WELCOME = "Welcome to the Meal Plan Generator!\n" +
+    public static final String MEAL_PLAN_INTRO = ", the following foods are based on your preferences:";
+    public static final String MEAL_PLAN_WELCOME = "Welcome to the Meal Plan Generator!\n" +
             "Please enter Y or N for the following options.";
 
     //Preferences
-    public static final String LOWCARBS = "I prefer low carbohydrates";
-    public static final String LOWFAT = "I prefer low fat";
-    public static final String LOWSUGAR = "I prefer low sugar";
+    public static final String LOW_CARBS = "I prefer low carbohydrates";
+    public static final String LOW_FAT = "I prefer low fat";
+    public static final String LOW_SUGAR = "I prefer low sugar";
     public static final String VEG = "I am vegetarian";
     public static final String NUM_FOODS = "How many foods would you like?";
 
@@ -192,16 +192,6 @@ public class Constants {
     public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
     public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
     public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
-  
-    // PAL Constants
-    public static final double M_SEDENTARY = 1.0;
-    public static final double M_LOW = 1.11;
-    public static final double M_ACTIVE = 1.25;
-    public static final double M_HIGH = 1.48;
-    public static final double F_SEDENTARY = 1.0;
-    public static final double F_LOW = 1.12;
-    public static final double F_ACTIVE = 1.27;
-    public static final double F_HIGH = 1.45;
 
     // Exercise
     public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";

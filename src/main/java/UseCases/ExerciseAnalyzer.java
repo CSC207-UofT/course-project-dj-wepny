@@ -1,8 +1,8 @@
 package UseCases;
 
 import API.ExerciseAPI;
-import Entities.Exercise;
-import Entities.User;
+import Entities.IExercise;
+import Entities.IUser;
 import Constants.Constants;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,29 +15,29 @@ import java.util.List;
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
-    private User user;
+    private IUser user;
 
     public ExerciseAnalyzer(){}
 
-    public ExerciseAnalyzer(User user){
+    public ExerciseAnalyzer(IUser user){
         this.user = user;
     }
 
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
 
         if(user == null){
             user = this.user;
         }
 
         HashMap<String, String> user_preference = user.getExercisePreference();
-        List<Exercise> exercises = ExerciseAPI.readFromExerciseCSV();
-        ArrayList<Exercise> user_exercises = new ArrayList<Exercise>(); // May not be needed
+        List<IExercise> exercises = ExerciseAPI.readFromExerciseCSV();
+        ArrayList<IExercise> user_exercises = new ArrayList<>(); // May not be needed
         StringBuilder exercise_names = new StringBuilder();
 
         // add each exercise to user_exercises and exercise_names
-        for(Exercise exercise: exercises){
+        for(IExercise exercise: exercises){
             if (exercise_match(exercise, user_preference)) {
                 user_exercises.add(exercise);
                 exercise_names.append(addNewExercise(exercise));
@@ -59,7 +59,7 @@ public class ExerciseAnalyzer implements UserAnalyzer{
      * @param exercise to create description from
      * @return description for new exercise
      */
-    private StringBuilder addNewExercise(Exercise exercise) {
+    private StringBuilder addNewExercise(IExercise exercise) {
         StringBuilder new_exercise = new StringBuilder();
         new_exercise.append(Constants.TAB).append(exercise.getName()).
                 append(Constants.EX_DESC_TYPE).append(exercise.getType()).
@@ -73,7 +73,7 @@ public class ExerciseAnalyzer implements UserAnalyzer{
     /**
      *  A helper method used to determine if the exercise matches the user's exercise preferences
      */
-    private boolean exercise_match(Exercise exercise, HashMap<String, String> user_preference){
+    private boolean exercise_match(IExercise exercise, HashMap<String, String> user_preference){
         String majorMuscle =  user_preference.get("major muscle");
         String minorMuscle = user_preference.get("minor muscle");
         List<String> equipments = Arrays.asList(user_preference.get("equipment").split(","));

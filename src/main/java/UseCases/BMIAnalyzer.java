@@ -1,6 +1,6 @@
 package UseCases;
 
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 import java.util.HashMap;
 
@@ -8,9 +8,9 @@ import java.util.HashMap;
  * Subclass of UserAnalyzer. Returns user BMI.
  */
 public class BMIAnalyzer implements UserAnalyzer {
-    private User user;
+    private IUser user;
     public BMIAnalyzer() {}
-    public BMIAnalyzer(User user){
+    public BMIAnalyzer(IUser user){
         this.user = user;
     }
 
@@ -18,7 +18,7 @@ public class BMIAnalyzer implements UserAnalyzer {
 
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
         if(user == null){
             user = this.user;
         }
@@ -43,11 +43,11 @@ public class BMIAnalyzer implements UserAnalyzer {
      */
     private String getBMIStatus(float bmi) {
         String health;
-        if (bmi >= 30){
+        if (bmi >= Constants.OBESE_BMI){
             health = Constants.OBESE;
-        } else if (bmi >= 25){
+        } else if (bmi >= Constants.OVERWEIGHT_BMI){
             health = Constants.OVERWEIGHT;
-        } else if (bmi >= 18.5) {
+        } else if (bmi >= Constants.HEALTHY_BMI) {
             health = Constants.HEALTHY;
         } else {
             health = Constants.UNDERWEIGHT;
