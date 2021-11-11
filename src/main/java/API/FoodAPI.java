@@ -1,5 +1,6 @@
 package API;
 
+import Constants.Constants;
 import Entities.Food;
 
 import java.io.BufferedReader;
@@ -10,18 +11,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+/**
+  This class reads the CSV file of all food data, extracts the variables of interest, and create
+  Food objects and List of Food objects.
+ **/
 
 public class FoodAPI {
-    /*
-    This class reads the CSV file of all food data, extracts the variables of interest, and create
-    Food objects and List of Food objects.
-     */
-    private static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
-    private static final double FAT_PER_DAY = 75.0;
-    private static final double CARB_PER_DAY = 300.0;
-    private static final double SUGAR_PER_DAY = 100.0;
-    private static final double PROTEIN_PER_DAY = 50.0;
-
 
     /**
      * Helper method to convert from String to Double. Returns 0 if input.equals("NULL").
@@ -45,18 +40,14 @@ public class FoodAPI {
         String name = metadata[1];
         String foodType = metadata[2];
         double calories = convertFromStringToDouble(metadata[3]);
-        double fat= convertFromStringToDouble(metadata[4]) / FAT_PER_DAY;
-        double proteins = convertFromStringToDouble(metadata[5]) / PROTEIN_PER_DAY;
-        double carbohydrates = convertFromStringToDouble(metadata[6]) / CARB_PER_DAY;
-        double sugar= convertFromStringToDouble(metadata[7]) / SUGAR_PER_DAY;
+        double fat = convertFromStringToDouble(metadata[4]) / Constants.FAT_PER_DAY;
+        double proteins = convertFromStringToDouble(metadata[5]) / Constants.PROTEIN_PER_DAY;
+        double carbohydrates = convertFromStringToDouble(metadata[6]) / Constants.CARB_PER_DAY;
+        double sugar = convertFromStringToDouble(metadata[7]) / Constants.SUGAR_PER_DAY;
         boolean vegFriendly = (!metadata[2].contains("Meats"));
 
-        // Note: I can't find a column in the dataset that corresponds to a nutrient score,
-        // so I'm going to set it to default 0 for now.
-        int nutrientScore = 0;
-
         // Create and return a new food object.
-        return new Food(name, calories,carbohydrates,proteins,fat,sugar,foodType,id,vegFriendly,nutrientScore);
+        return new Food(name, calories,carbohydrates, fat,sugar,foodType,id,vegFriendly);
 
     }
 
@@ -66,7 +57,7 @@ public class FoodAPI {
      */
     public static List<Food> readFoodFromCSV() {
         List<Food> foodList = new ArrayList<>();
-        Path pathToFile = Paths.get(FOOD_DATASET_PATH);
+        Path pathToFile = Paths.get(Constants.FOOD_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

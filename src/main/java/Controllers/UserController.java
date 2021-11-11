@@ -2,16 +2,24 @@ package Controllers;
 
 import Entities.User;
 import UseCases.UserManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * This class checks for existing users in the local file, and adds users to the file if they are
+ * This is a Controller class responsible for connecting the UserParser with the UserManager.
+ * Checks for existing users in the local file, and adds users to the file if they are
  * new.
  */
 
 public class UserController {
 
+    /**
+     * A function called by the UserParser, passes the information read from the userInfo
+     * csv into the UserManager to be loaded into a User object
+     *
+     * @param allUser an ArrayList with each element containing information about one user
+     */
     public static void readExistingUser(ArrayList<String> allUser) {
         for (String user : allUser) {
             String[] userInfo = user.split(",");
@@ -19,22 +27,25 @@ public class UserController {
         }
     }
 
-    public static User getCurrentUser(){
+    /**
+     * Get the currentUser from the UserManager
+     *
+     * @return a User Object
+     */
+    public static User getCurrentUser() {
         return UserManager.getCurrentUsers();
     }
 
-    public static HashMap<Integer, User> getExistingUsers(){
+    /**
+     * Get all the existing users from the UserManager
+     *
+     * @return a hashmap of all users' id mapped to the user object
+     */
+    public static HashMap<Integer, User> getExistingUsers() {
         HashMap<Integer, User> allUser;
         allUser = UserManager.getExistingUsers();
 
         return allUser;
     }
 
-//    public static void setPotentialDisease(User user, HashMap<String, Set<String>> potentialDisease){
-//        UserManager.setPontentialDisease(user, potentialDisease);
-//    }
-//
-//    public void updateUser(int newId) throws Exception {
-//        UserParser.updateUserInfo();
-//    }
 }

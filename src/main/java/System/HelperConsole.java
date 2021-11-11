@@ -2,19 +2,15 @@ package System;
 
 import Controllers.Presenter;
 import Controllers.RunCommand;
-import UseCases.UserManager;
 import Constants.Constants;
 
 import java.util.*;
 
 /**
- * This class interact with the users and receives their input, then it sends
- * the inputs to the controller class.
+ * This class contains all the helper function used both
+ * by ExistingUserController and NewUserController
  */
-public class Console {
-
-    private final static int[] COMMAND = {1, 2, 3, 4, 5};
-
+public class HelperConsole {
 
     /**
      * A helper method that prompts the user for their basic information.
@@ -24,7 +20,7 @@ public class Console {
      * @param reader The scanner used for the user input.
      * @return an array of strings of some basic information about the user.
      */
-    private static String[] getBasicUserInfo(Scanner reader) {
+    public static String[] getBasicUserInfo(Scanner reader) {
         System.out.println(Constants.NAME_PROMPT);
         String name = reader.nextLine();
 
@@ -48,28 +44,32 @@ public class Console {
      * and the method is subject to change (Maybe ArrayList instead of Array).
      *
      * @param reader The scanner used for the user input.
-     * @return an array of strings of some personal data of the user.
+     * @return an array of strings of the user's height, weight, and age
      */
-    private static String[] getPersonalUserInfo(Scanner reader) {
+    public static String[] getPersonalUserInfo(Scanner reader) {
         System.out.println(Constants.HEIGHT_PROMPT);
         String height = reader.nextLine();
 
-
-        while (Float.parseFloat(height) <= 0) {
+        // checking to make sure the height input is a number between 0 m to 2.5 m
+        while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
             System.out.println(Constants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
             height = reader.nextLine();
         }
 
         System.out.println(Constants.WEIGHT_PROMPT);
         String weight = reader.nextLine();
-        while (Float.parseFloat(weight) <= 0) {
+
+        // checking to make sure the weight input is a number larger than 0
+        while (isNotNum(height) || Float.parseFloat(weight) <= 0) {
             System.out.println(Constants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
             weight = reader.nextLine();
         }
 
         System.out.println(Constants.AGE_PROMPT);
         String age = reader.nextLine();
-        while (Integer.parseInt(age) < 0) {
+
+        // checking to make sure the age input is a number larger or equal to 0
+        while (isNotNum(age) || Integer.parseInt(age) < 0) {
             System.out.println(Constants.INVALID_INPUT + Constants.AGE_PROMPT);
             age = reader.nextLine();
         }
@@ -81,127 +81,23 @@ public class Console {
      * Checks if user already exists in the system.
      *
      * @param reader reads user input
-     * @return whether user exists already or not.
+     * @return true if the user identify themselves as an existing user
      */
     public static boolean checkExisting(Scanner reader) {
         System.out.println(Constants.ASK_EXISTING);
         String exists = reader.nextLine();
 
+        // making sure the input is equal to Y or N
         while (!exists.equals("Y") && !exists.equals("N")) {
             System.out.println(Constants.INVALID_INPUT + Constants.ASK_EXISTING);
             exists = reader.nextLine();
         }
-
         return exists.equals("Y");
-    }
-
-    public static void gatherInfo(Scanner reader) throws Exception {
-        System.out.println(Constants.BASIC_INFO);
-        String[] basicUserInfo = getBasicUserInfo(reader);
-        System.out.println(Constants.PERSONAL_INFO);
-        String[] personalUserInfo = getPersonalUserInfo(reader);
-
-        RunCommand.createUser(basicUserInfo, personalUserInfo);
-        RunCommand infoGetter = new RunCommand();
-        System.out.println( Constants.ID_MESSAGE1 + infoGetter.retrieveUser("id") + Constants.ID_MESSAGE2);
-    }
-
-    public static String NewUserMenu(Scanner reader) throws Exception {
-        RunCommand infoGetter = new RunCommand();
-        System.out.println(Constants.WELCOME1 + infoGetter.retrieveUser("name") + Constants.WELCOME2 +
-                Constants.MAIN_MENU);
-
-        String input = reader.nextLine();
-
-        // checking if the command is an integer between 1 and 5
-        input = checkCommand(input, reader, 1);
-
-        int command = Integer.parseInt(input);
-
-        RunCommand commandExecutor = new RunCommand(command);
-        switch (command) {
-            case 2:
-                String level = activityLevel(reader);
-                commandExecutor.addInfo(level, command);
-                break;
-            case 3:
-                commandExecutor.addInfo(exercisePreference(reader), command);
-                break;
-            case 4:
-                return diseaseList(reader, commandExecutor);
-            case 5:
-                commandExecutor.addInfo(foodPreference(reader), command);
-        }
-
-        commandExecutor.executeCommand();
-
-        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        return analyze_results.retrieveOutput();
-    }
-
-    public static int loginPage(Scanner reader) throws Exception {
-        System.out.println(Constants.ID_PROMPT);
-        String id = reader.nextLine();
-        while (!UserManager.getExistingUsers().containsKey(Integer.parseInt(id))) {
-            System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
-            id = reader.nextLine();
-        }
-        return Integer.parseInt(id);
-    }
-
-    public static String ExistingUserMenu(Scanner reader, int id) throws Exception {
-
-        RunCommand currentUser = new RunCommand();
-        currentUser.setCurrentUser(id);
-
-        System.out.println(Constants.WELCOME_EXISTING + currentUser.retrieveUser("name") +
-                Constants.WELCOME2 + Constants.EXISTING_USER_MENU);
-
-        String input = reader.nextLine();
-
-        //check whether the command is an integer from 1 to 6
-        input = checkCommand(input, reader, 2);
-
-        int command = Integer.parseInt(input);
-        RunCommand commandExecutor = new RunCommand(command);
-
-        switch (command) {
-            case 2:
-                if (noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
-                    String level = activityLevel(reader);
-                    commandExecutor.addInfo(level, command);
-                }
-                break;
-            case 3:
-                if (noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
-                    String[] exercises = exercisePreference(reader);
-                    commandExecutor.addInfo(exercises, command);
-                }
-                break;
-            case 4:
-                if (noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
-                    return diseaseList(reader, commandExecutor);
-                }
-                break;
-            case 5:
-                if (noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
-                    commandExecutor.addInfo(foodPreference(reader), command);
-                }
-                break;
-            case 6:
-                return updateUser(reader, commandExecutor);
-        }
-            commandExecutor.executeCommand(); //regular operations from 1-5
-            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-            return Constants.REPORT + analyze_results.retrieveOutput();
     }
 
     /**
      * Returns true if the user wants to log out.
+     *
      * @param reader reads user info
      * @return True if the user wants to log out
      */
@@ -216,11 +112,16 @@ public class Console {
         return logOut.equals("N");
     }
 
+    /**
+     * return true if the user want to return to their main menu and restart
+     *
+     * @param reader reads user info
+     * @return true if the user would like to return to the main menu
+     */
     public static boolean reStart(Scanner reader) {
         System.out.println(Constants.RESTART_PROGRAM);
         String restart = reader.nextLine();
 
-        // if they don't want to restart, adds its info back into the file
         while (!restart.equals("N") & !restart.equals("Y")) {
             System.out.println(Constants.INVALID_INPUT + Constants.RESTART_PROGRAM);
             restart = reader.nextLine();
@@ -228,52 +129,23 @@ public class Console {
         return restart.equals("Y");
     }
 
-    public static boolean isInteger(String input) {
-        try {
-            Integer.parseInt(input);
-
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean notInRange(int i, int type) {
-        if (type == 1) {
-            return i <= 0 || i >= 6;
-        }
-        else {
-            return i <= 0 || i >= 7;
-        }
-    }
-
-    public static boolean noInfoFound(int command) {
-        RunCommand commandExecutor = new RunCommand();
-        if (command == 2) {
-            HashMap personalData = (HashMap) commandExecutor.retrieveUser("personal data");
-            return !personalData.containsKey("activity level");
-        }
-        if (command == 3) {
-            HashMap exerciseData = (HashMap) commandExecutor.retrieveUser("exercise");
-            return exerciseData.isEmpty();
-        }
-        if (command == 4) {
-            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
-            return riskFactors.isEmpty();
-        }
-        if (command == 5) {
-            HashMap foodData = (HashMap) commandExecutor.retrieveUser("food");
-            return foodData.isEmpty();
-        }
-        else {
-            return true;
-        }
-    }
-
+    /**
+     * Helper function that lets the user input their activity level
+     *
+     * @param reader reads the user input
+     * @return the activity level represented by the user's input
+     */
     public static String activityLevel(Scanner reader) {
 
         System.out.println(Constants.ACTIVITY_MENU);
         String userActivityLevel = reader.nextLine();
+
+        //check to make sure the input is a number within the correct range
+        while (isNotNum(userActivityLevel) ||
+                notInRange(Integer.parseInt(userActivityLevel), 3)) {
+            System.out.println(Constants.INVALID_INPUT);
+            userActivityLevel = reader.nextLine();
+        }
 
         switch (userActivityLevel) {
             case "1":
@@ -289,56 +161,70 @@ public class Console {
         }
     }
 
+    /**
+     * Helper function that lets the user input their exercise preference
+     *
+     * @param reader reads in the user input
+     * @return a string of the user's input
+     */
     public static String[] exercisePreference(Scanner reader) {
 
         System.out.println(Constants.EXERCISE_START + Constants.EXERCISE_MAJOR);
         String majorMuscle = reader.nextLine();
 
-        while(!Constants.ALL_MAJOR_MUSCLES.contains(majorMuscle)){
+        // making sure the user input is a valid major muscle
+        while (!Constants.ALL_MAJOR_MUSCLES.contains(majorMuscle)) {
             System.out.println(Constants.EXERCISE_MAJOR_ERROR);
             majorMuscle = reader.nextLine();
         }
-
         System.out.println(Constants.EXERCISE_MINOR);
         String minorMuscle = reader.nextLine();
 
-        while(!Constants.ALL_MINOR_MUSCLES.contains(minorMuscle)){
+        // making sure the user input is a valid minor muscle
+        while (!Constants.ALL_MINOR_MUSCLES.contains(minorMuscle)) {
             System.out.println(Constants.EXERCISE_MINOR_ERROR);
             minorMuscle = reader.nextLine();
         }
 
         System.out.println(Constants.EXERCISE_EQUIPMENT);
-        String equipment = reader.nextLine();
+        StringBuilder equipment = new StringBuilder(reader.nextLine());
 
-        while(!Constants.ALL_EQUIPMENTS.contains(equipment)){
+        // making sure the user input is a valid equipment
+        while (!Constants.ALL_EQUIPMENTS.contains(equipment.toString())) {
             System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_BG);
-            equipment = reader.nextLine();
+            equipment = new StringBuilder(reader.nextLine());
         }
 
         System.out.println(Constants.EXERCISE_EQUIPMENT2);
-        String new_equipment = reader.nextLine();;
+        String new_equipment = reader.nextLine();
 
-        while(!new_equipment.equals("None")){
-            while(!Constants.ALL_EQUIPMENTS.contains(new_equipment) && !new_equipment.equals("None")){
+        // allow the user to enter as many equipments they want until they enter "None"
+        while (!new_equipment.equals("None")) {
+            while (!Constants.ALL_EQUIPMENTS.contains(new_equipment) && !new_equipment.equals("None")) {
                 System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_AF);
                 new_equipment = reader.nextLine();
             }
-            if(equipment.contains(new_equipment)){
+            if (equipment.toString().contains(new_equipment)) {
                 System.out.println(Constants.EXERCISE_EQUIPMENT3);
-            }
-            else if(new_equipment.equals("None")){
+            } else if (new_equipment.equals("None")) {
                 break;
-            }
-            else{
-                equipment = equipment + ',' + new_equipment;
+            } else {
+                equipment.append('/').append(new_equipment);
                 System.out.println(Constants.EXERCISE_EQUIPMENT2);
             }
             new_equipment = reader.nextLine();
         }
 
-        return new String[]{majorMuscle, minorMuscle, equipment};
+        return new String[]{majorMuscle, minorMuscle, equipment.toString()};
     }
 
+    /**
+     * Helper function that lets the user input their symptoms
+     *
+     * @param reader          reads in the user input
+     * @param commandExecutor pass in the RunCommand to execute the diseaseAnalyzer
+     * @return the list of disease the user might have according to their inputted symptoms
+     */
     public static String diseaseList(Scanner reader, RunCommand commandExecutor) throws Exception {
         commandExecutor.resetPotentialDisease();
         int potentialDisease;
@@ -374,28 +260,55 @@ public class Console {
         commandExecutor.executeCommand();
         Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
 
+        // returns the user's potential diseases
         return analyze_results.retrieveOutput();
     }
 
-    public static ArrayList<Object> foodPreference(Scanner reader) throws Exception {
+    /**
+     * Helper function that lets the user input their food preference
+     *
+     * @param reader read the user input
+     * @return an array list of foodFilterCriterion
+     */
+    public static ArrayList<Object> foodPreference(Scanner reader){
         System.out.println(Constants.MEALPLAN_WELCOME);
         System.out.println(Constants.LOWCARBS);
         String lowCarb = reader.nextLine();
+        // checking to make sure the input is valid
+        while (!Objects.equals(lowCarb, "Y") && !Objects.equals(lowCarb, "N")) {
+            System.out.println(Constants.INVALID_INPUT);
+            lowCarb = reader.nextLine();
+        }
         System.out.println(Constants.LOWFAT);
         String lowFat = reader.nextLine();
+        while (!Objects.equals(lowFat, "Y") && !Objects.equals(lowFat, "N")) {
+            System.out.println(Constants.INVALID_INPUT);
+            lowFat = reader.nextLine();
+        }
         System.out.println(Constants.LOWSUGAR);
         String lowSugar = reader.nextLine();
+        while (!Objects.equals(lowSugar, "Y") && !Objects.equals(lowSugar, "N")) {
+            System.out.println(Constants.INVALID_INPUT);
+            lowSugar = reader.nextLine();
+        }
         System.out.println(Constants.VEG);
         String vegetarian = reader.nextLine();
+        while (!Objects.equals(vegetarian, "Y") && !Objects.equals(vegetarian, "N")) {
+            System.out.println(Constants.INVALID_INPUT);
+            vegetarian = reader.nextLine();
+        }
         System.out.println(Constants.NUM_FOODS);
         String numFoods = reader.nextLine();
+        while (isNotNum(numFoods) || Integer.parseInt(numFoods) > 25) {
+            System.out.println(Constants.INVALID_INPUT);
+            numFoods = reader.nextLine();
+        }
         String[] foodCriterion = {lowCarb, lowFat, lowSugar, vegetarian};
         ArrayList<Object> foodFilterCriterion = new ArrayList<>();
-        for(String criterion : foodCriterion) {
+        for (String criterion : foodCriterion) {
             if (criterion.equals("Y")) {
                 foodFilterCriterion.add(true);
-            }
-            else {
+            } else {
                 foodFilterCriterion.add(false);
             }
         }
@@ -405,6 +318,13 @@ public class Console {
 
     }
 
+    /**
+     * Helper function that updates the user's information
+     *
+     * @param reader          reads in user's input
+     * @param commandExecutor pass in a RunCommand to help execute the command
+     * @return a msg to tell the user the update is successful
+     */
     public static String updateUser(Scanner reader, RunCommand commandExecutor) throws Exception {
         System.out.println(Constants.USER_UPDATE);
         int secondCommand = Integer.parseInt(reader.nextLine());
@@ -417,14 +337,14 @@ public class Console {
             commandExecutor.executeCommandUpdateInfo(secondCommand, newName);
         }
         //update Height
-        else if (secondCommand == 2){
+        else if (secondCommand == 2) {
             System.out.println(Constants.CHANGE_HEIGHT);
             String newHeight = reader.nextLine();
             System.out.println(Constants.UPDATED_HEIGHT);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newHeight);
         }
         //update Weight
-        else if (secondCommand == 3){
+        else if (secondCommand == 3) {
             System.out.println(Constants.CHANGE_WEIGHT);
             String newWeight = reader.nextLine();
             System.out.println(Constants.UPDATED_WEIGHT);
@@ -432,14 +352,14 @@ public class Console {
 
         }
         //change age
-        else if (secondCommand == 4){
+        else if (secondCommand == 4) {
             System.out.println(Constants.CHANGE_AGE);
             String newAge = reader.nextLine();
             System.out.println(Constants.UPDATED_AGE);
             commandExecutor.executeCommandUpdateInfo(secondCommand, newAge);
         }
         //change gender
-        else if (secondCommand == 5){
+        else if (secondCommand == 5) {
             System.out.println(Constants.CHANGE_GENDER);
             String newGender = reader.nextLine();
             System.out.println(Constants.UPDATED_GENDER);
@@ -447,31 +367,42 @@ public class Console {
 
         }
         //update activity level
-        else if (secondCommand == 6){
+        else if (secondCommand == 6) {
             String level = activityLevel(reader);
             commandExecutor.addInfo(level, 2);
         }
         //update exercise preference
-        else if (secondCommand == 7){
+        else if (secondCommand == 7) {
             commandExecutor.addInfo(exercisePreference(reader), 3);
         }
         //update disease
-        else if (secondCommand == 8){
+        else if (secondCommand == 8) {
+            // resetting the symptoms list to empty first
             command.addInfo("", 6);
+            // overwriting the symptoms given the new input
             return diseaseList(reader, command);
-        }
-        else if (secondCommand == 9){
+        } else if (secondCommand == 9) {
+            // resetting the food preference to empty first
             commandExecutor.addInfo("", 7);
+            // overwriting the food preference to the new input
             commandExecutor.addInfo(foodPreference(reader), 5);
 
         }
         return Constants.UPDATED_PROFILE; // this can be used for general cases 1-6
     }
 
-    public static String checkCommand(String input, Scanner reader, int type){
+    /**
+     * Helper function that checks to make sure that the command is within the valid range
+     *
+     * @param input  the input that needs to be checked
+     * @param reader reads in the user's new input if the previous one is not valid
+     * @param type   making sure the range is within the specified type
+     * @return the first valid input the user inputs
+     */
+    public static String checkCommand(String input, Scanner reader, int type) {
         boolean check = true;
         while (check) {
-            if (!isInteger(input) || notInRange(Integer.parseInt(input), type)) {
+            if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
                 System.out.println(Constants.INVALID_INPUT);
                 input = reader.nextLine();
             } else {
@@ -480,10 +411,79 @@ public class Console {
         }
         return input;
     }
-    public static void addToExisting(){
+
+
+    /**
+     * Checks if the input is a number of not
+     *
+     * @param input the information that needs to be checked
+     * @return true if the input is not a number
+     */
+    public static boolean isNotNum(String input) {
+        try {
+            Integer.parseInt(input);
+
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Helper function that checks the command the user inputted is correct
+     * and within the range wanted
+     *
+     * @param i    the command the user inputs
+     * @param type specifies the range we want the number i to be in
+     * @return true if int 'i' is within the desired range
+     */
+    public static boolean notInRange(int i, int type) {
+        if (type == 1) {
+            return i <= 0 || i >= 6;
+        } else if (type == 2) {
+            return i <= 0 || i >= 7;
+        } else {
+            return i <= 0 || i >= 5;
+        }
+    }
+
+    /**
+     * Helper function that checks if the user has the wanted information stored in its
+     * object
+     *
+     * @param command specifies which type of information we are
+     *                checking for in the user object
+     * @return true if the information is empty in the user object
+     */
+    public static boolean noInfoFound(int command) {
+        RunCommand commandExecutor = new RunCommand();
+        if (command == 2) {
+            HashMap personalData = (HashMap) commandExecutor.retrieveUser("personal data");
+            return !personalData.containsKey("activity level");
+        }
+        if (command == 3) {
+            HashMap exerciseData = (HashMap) commandExecutor.retrieveUser("exercise");
+            return exerciseData.isEmpty();
+        }
+        if (command == 4) {
+            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
+            return riskFactors.isEmpty();
+        }
+        if (command == 5) {
+            HashMap foodData = (HashMap) commandExecutor.retrieveUser("food");
+            return foodData.isEmpty();
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Add the user to existingUser
+     */
+    public static void addToExisting() {
         RunCommand command = new RunCommand();
         int id = Integer.parseInt((String) command.retrieveUser("id"));
-        if (!command.getAllExistingUser().containsKey(id)){
+        if (!command.getAllExistingUser().containsKey(id)) {
             command.setToExisting();
         }
     }

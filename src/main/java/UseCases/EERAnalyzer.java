@@ -47,20 +47,20 @@ public class EERAnalyzer implements UserAnalyzer{
     private double getPAValueFromActivityRating(String gender, String activityRating){
         if (gender.equals("M")){
             switch (activityRating) {
-                case Constants.SED: return 1.0;
-                case Constants.LOW: return 1.11;
-                case Constants.MID: return 1.25;
-                default: return 1.48;
+                case Constants.SED: return Constants.M_SEDENTARY;
+                case Constants.LOW: return Constants.M_LOW;
+                case Constants.MID: return Constants.M_ACTIVE;
+                default: return Constants.M_HIGH;
             }
 
         }
 
         if (gender.equals("F")){
              switch (activityRating) {
-                 case Constants.SED: return 1.0;
-                 case Constants.LOW: return 1.12;
-                 case Constants.MID: return 1.27;
-                 default: return 1.45;
+                 case Constants.SED: return Constants.F_SEDENTARY;
+                 case Constants.LOW: return Constants.F_LOW;
+                 case Constants.MID: return Constants.F_ACTIVE;
+                 default: return Constants.F_HIGH;
             }
         }
 
