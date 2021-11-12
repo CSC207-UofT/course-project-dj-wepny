@@ -11,14 +11,20 @@ that the user may have.
  */
 
 public class DiseaseAnalyzer implements UserAnalyzer{
-
+    private User user;
     private String result;
     private  static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
 
-
+    public DiseaseAnalyzer(User user){
+        this.user = user;
+    }
+    public DiseaseAnalyzer(){}
     @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
+        if(user == null){
+            user = this.user;
+        }
         ArrayList<String> userInput = user.getRiskFactor(); //what users input
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         ArrayList<String> options = generateOptions(newDisease);
