@@ -1,6 +1,6 @@
 package UseCases;
 
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 import java.util.HashMap;
 
@@ -8,9 +8,9 @@ import java.util.HashMap;
  * Subclass of UserAnalyzer. Returns user BMI.
  */
 public class BMIAnalyzer implements UserAnalyzer {
-    private User user;
+    private IUser user;
     public BMIAnalyzer() {}
-    public BMIAnalyzer(User user){
+    public BMIAnalyzer(IUser user){
         this.user = user;
     }
 
@@ -18,7 +18,7 @@ public class BMIAnalyzer implements UserAnalyzer {
 
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
         if(user == null){
             user = this.user;
         }

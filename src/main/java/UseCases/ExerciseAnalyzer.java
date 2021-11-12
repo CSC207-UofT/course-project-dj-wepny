@@ -2,7 +2,7 @@ package UseCases;
 
 import API.ExerciseAPI;
 import Entities.Exercise;
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,17 +15,17 @@ import java.util.List;
 
 public class ExerciseAnalyzer implements UserAnalyzer{
     private String result;
-    private User user;
+    private IUser user;
 
     public ExerciseAnalyzer(){}
 
-    public ExerciseAnalyzer(User user){
+    public ExerciseAnalyzer(IUser user){
         this.user = user;
     }
 
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
 
         if(user == null){
             user = this.user;

@@ -1,7 +1,7 @@
 package UseCases;
 
 import API.DiseaseAPI;
-import Entities.User;
+import Entities.IUser;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -18,7 +18,7 @@ public class DiseaseAnalyzer implements UserAnalyzer{
 
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
         ArrayList<String> userInput = user.getRiskFactor(); //what users input
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         ArrayList<String> options = generateOptions(newDisease);
