@@ -2,7 +2,7 @@ package System;
 
 import Controllers.Presenter;
 import Controllers.RunCommand;
-import UseCases.UserManager;
+import Controllers.UserController;
 import Constants.Constants;
 
 import java.util.*;
@@ -25,7 +25,7 @@ public class ExistingUserConsole {
         String id = reader.nextLine();
 
         // check if the input is a number and is a valid id of an existing user
-        while (HelperConsole.isNotNum(id) || !UserManager.getExistingUsers().containsKey(Integer.parseInt(id))) {
+        while (HelperConsole.isNotNum(id) || !UserController.checkUserExist(id)) {
             System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
             id = reader.nextLine();
         }
