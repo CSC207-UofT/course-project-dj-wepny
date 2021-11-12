@@ -1,8 +1,7 @@
 package UseCases;
 
 import API.DiseaseAPI;
-import Entities.User;
-
+import Entities.IUser;
 import java.util.*;
 
 /**
@@ -20,9 +19,10 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      */
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
         // get the symptoms of user
         ArrayList<String> userInput = user.getRiskFactor();
+
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         // generate new options for the user
         ArrayList<String> options = generateOptions(newDisease);

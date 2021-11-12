@@ -421,7 +421,7 @@ public class HelperConsole {
      */
     public static boolean isNotNum(String input) {
         try {
-            Integer.parseInt(input);
+            Float.parseFloat(input);
 
         } catch (Exception e) {
             return true;

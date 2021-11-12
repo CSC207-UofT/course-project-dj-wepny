@@ -1,6 +1,6 @@
 package UseCases;
 
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class EERAnalyzer implements UserAnalyzer {
      */
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
 
         //Calculating EER.
         double energyRequirement = calculateEER(user);
