@@ -16,7 +16,7 @@ import Entities.FoodIsVegetarian;
  * and updating user's profile and personal information.
  */
 public class UserManager {
-    private static HashMap<Integer, User> existingUsers = new HashMap<>();
+    private static final HashMap<Integer, User> existingUsers = new HashMap<>();
     private static User currentUser;
 
     /**
@@ -67,7 +67,6 @@ public class UserManager {
         // setting the user's exercisePreference
         if (!userInfo[6].equals("null")) {
             String[] exercise = userInfo[6].split("\\*");
-//            String[] equipments = exercise[2].split("\\~");
 
             user.setExercisePreference("major muscle", exercise[0]);
             user.setExercisePreference("minor muscle", exercise[1]);
@@ -208,6 +207,7 @@ public class UserManager {
         return currentUser;
     }
 
+    // setter for the private instance variable CurrentUser.
     public static void setCurrentUser(int id) {
         currentUser = existingUsers.get(id);
     }

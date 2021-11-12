@@ -1,10 +1,8 @@
 package Controllers;
 
-import Entities.User;
 import UseCases.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * This is a Controller class that executes command that are passed from the Console by calling the corresponding use cases
@@ -131,13 +129,19 @@ public class RunCommand {
         UserManager.addUser(false, UserManager.getCurrentUser());
     }
 
+    /**
+     * Check if the user is an existing user.
+     *
+     * @return true it an existing user and false otherwise.
+     */
+    public boolean checkExistingUsers() {
+        RunCommand command = new RunCommand();
+        int id = Integer.parseInt((String) command.retrieveUser("id"));
+        return UserManager.getExistingUsers().containsKey(id);
+    }
+
     // getter functions
     public UserAnalyzer getAnalyzer() {
         return this.userAnalyzer;
     }
-
-    public HashMap<Integer, User> getAllExistingUser() {
-        return UserManager.getExistingUsers();
-    }
-
 }
