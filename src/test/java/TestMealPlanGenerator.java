@@ -1,4 +1,5 @@
 import Entities.Food;
+import Entities.IFood;
 import Entities.User;
 import UseCases.MealPlanGenerator;
 import org.junit.Before;
@@ -14,13 +15,15 @@ import java.util.*;
 public class TestMealPlanGenerator {
     private static final User user = new User(1931, "John P Wintergreen", "M", new HashMap<>());
     private static final MealPlanGenerator mealPlanGenerator = new MealPlanGenerator(user);
-    private static final HashMap<String, List<Food>> foodMapTypical = new HashMap<>();
-    private static final HashMap<String, List<Food>> foodMapOneType = new HashMap<>();
-    private static final HashMap<String, List<Food>> foodMapAsymmetric = new HashMap<>();
+    private static final HashMap<String, List<IFood>> foodMapTypical = new HashMap<>();
+    private static final HashMap<String, List<IFood>> foodMapOneType = new HashMap<>();
+    private static final HashMap<String, List<IFood>> foodMapAsymmetric = new HashMap<>();
     private static final String foodType1 = "foodType1";
     private static final String foodType2 = "foodType2";
     private static final String foodType3 = "foodType3";
     private final HashMap<String, Integer> numFoodOfTypeMap = new HashMap<>();
+    private List<IFood> foodList = new ArrayList<>();
+    private List<Integer> expectedNumFoodOfType = new ArrayList<>();
 
     @BeforeClass
     public static void setUp() {
@@ -50,116 +53,118 @@ public class TestMealPlanGenerator {
 
     @Before
     public void setUpForEachTest() {
-        // reset numFoodOfTypeMap for each test
+        // reset numFoodOfTypeMap, expectedNumFoodOfType, and foodList for each test
         numFoodOfTypeMap.put(foodType1, 0);
         numFoodOfTypeMap.put(foodType2, 0);
         numFoodOfTypeMap.put(foodType3, 0);
+        foodList.clear();
+        expectedNumFoodOfType.clear();
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapTypical1() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 0);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 0);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 0, 0));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 0, 0));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapTypical2() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 2);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 2);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 1, 1));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 1, 1));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapTypical3() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 3);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 3);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 1, 1));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 1, 1));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapTypical4() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 5);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 5);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 2, 1));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 2, 1));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapTypical5() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 6);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapTypical, 6);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 2, 2));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 2, 2));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapOneType1() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 0);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 0);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 0, 0));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(0, 0, 0));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapOneType2() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 2);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 2);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 0, 0));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(2, 0, 0));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapOneType3() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 3);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapOneType, 3);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(3, 0, 0));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(3, 0, 0));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapAsymmetric1() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 2);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 2);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 1, 0));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 1, 0));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapAsymmetric2() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 4);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 4);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 1));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 1));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapAsymmetric3() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 5);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 5);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 2));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 2));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
 
     @Test(timeout = 500)
     public void testFilterFoodMapAsymmetric4() {
-        List<Food> foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 6);
+        foodList = mealPlanGenerator.filterFoodMap(foodMapAsymmetric, 6);
         updateNumFoodOfTypeMap(foodList);
-        List<Integer> expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 3));
+        expectedNumFoodOfType = new ArrayList<>(Arrays.asList(1, 2, 3));
 
         assert checkNumFoodOfTypeIsCorrect(numFoodOfTypeMap, expectedNumFoodOfType);
     }
@@ -173,8 +178,8 @@ public class TestMealPlanGenerator {
     /*
     * Helpers
     * */
-    private void updateNumFoodOfTypeMap(List<Food> foodList) {
-        for (Food food : foodList) {
+    private void updateNumFoodOfTypeMap(List<IFood> foodList) {
+        for (IFood food : foodList) {
             numFoodOfTypeMap.put(food.getFoodType(), numFoodOfTypeMap.get(food.getFoodType()) + 1);
         }
     }

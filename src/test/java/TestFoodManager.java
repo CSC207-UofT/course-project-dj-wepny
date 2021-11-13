@@ -2,7 +2,6 @@ import Controllers.APIController;
 import Entities.*;
 import UseCases.FoodManager;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,9 +14,8 @@ import java.util.List;
 
 public class TestFoodManager {
 
-    private static final User user = new User(2021, "Xiangling", "F", new HashMap<>());
     private static final List<FoodFilterCriterion> criteriaList = new ArrayList<>();
-    private static final List<Food> foodList = APIController.getFood();
+    private static final List<IFood> foodList = APIController.getFood();
 
     @Before
     public void setUpForEachTest() {
@@ -27,8 +25,8 @@ public class TestFoodManager {
     @Test(timeout = 5000)
     public void testGetFoodByCriteriaVegetarian() {
         criteriaList.add(new FoodIsVegetarian());
-        List<Food> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
-        for (Food food : foodList) {
+        List<IFood> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
+        for (IFood food : foodList) {
             if (FoodManager.foodSatisfiesCriteria(food, criteriaList)) {
                 filterFoodList.remove(food);
             }
@@ -40,8 +38,8 @@ public class TestFoodManager {
     public void testGetFoodByCriteriaVegetarianAndLowCarbs() {
         criteriaList.add(new FoodIsVegetarian());
         criteriaList.add(new FoodIsLowCarbs());
-        List<Food> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
-        for (Food food : foodList) {
+        List<IFood> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
+        for (IFood food : foodList) {
             if (FoodManager.foodSatisfiesCriteria(food, criteriaList)) {
                 filterFoodList.remove(food);
             }
@@ -53,8 +51,8 @@ public class TestFoodManager {
     /*
      * Helpers
      * */
-    private List<Food> convertMapToList(HashMap<String, List<Food>> foodMap) {
-        List<Food> foodList = new ArrayList<>();
+    private List<IFood> convertMapToList(HashMap<String, List<IFood>> foodMap) {
+        List<IFood> foodList = new ArrayList<>();
         for (String key : foodMap.keySet()) {
             foodList.addAll(foodMap.get(key));
         }
