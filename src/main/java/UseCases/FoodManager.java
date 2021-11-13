@@ -1,7 +1,6 @@
 package UseCases;
 
 import Controllers.APIController;
-import Entities.Food;
 import Entities.FoodFilterCriterion;
 import Entities.IFood;
 
