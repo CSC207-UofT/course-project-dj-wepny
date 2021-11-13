@@ -7,6 +7,10 @@ import javax.print.StreamPrintServiceFactory;
  */
 public class Constants {
 
+    // UserParser
+    public static final String USER_FILE = "src/main/java/UserInfo.csv";
+    public static final String TEST_USER_FILE = "src/main/java/TestParser.csv";
+
     // API
     public static final String DISEASE_DATASET_PATH = "src/main/java/GlobalDiseaseData.csv";
     public static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
