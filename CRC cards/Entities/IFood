@@ -1,0 +1,13 @@
+Responsibility: 
+This is interface is an abstraction of the Food Entity
+
+Methods:
+getCarbohydrate
+getSugar
+getFoodType
+getId
+getFat
+getVegFriendly
+toStrings
+
+ 
