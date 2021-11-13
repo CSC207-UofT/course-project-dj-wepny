@@ -1,7 +1,7 @@
-/**
+/*
  *This file contains Junit test case for the ExerciseAnalyzer.java for when
  * an appropriate list of exercises is given
- **/
+ */
 
 import org.junit.*;
 import static org.junit.Assert.*;

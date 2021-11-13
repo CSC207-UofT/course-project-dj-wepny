@@ -270,7 +270,7 @@ public class HelperConsole {
      * @param reader read the user input
      * @return an array list of foodFilterCriterion
      */
-    public static ArrayList<Object> foodPreference(Scanner reader){
+    public static ArrayList<Object> foodPreference(Scanner reader) {
         System.out.println(Constants.MEALPLAN_WELCOME);
         System.out.println(Constants.LOWCARBS);
         String lowCarb = reader.nextLine();
@@ -421,7 +421,7 @@ public class HelperConsole {
      */
     public static boolean isNotNum(String input) {
         try {
-            Integer.parseInt(input);
+            Float.parseFloat(input);
 
         } catch (Exception e) {
             return true;
@@ -482,8 +482,7 @@ public class HelperConsole {
      */
     public static void addToExisting() {
         RunCommand command = new RunCommand();
-        int id = Integer.parseInt((String) command.retrieveUser("id"));
-        if (!command.getAllExistingUser().containsKey(id)) {
+        if (command.checkExistingUsers()) {
             command.setToExisting();
         }
     }

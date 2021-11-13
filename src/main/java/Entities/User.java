@@ -8,7 +8,7 @@ import java.util.HashMap;
  * describing the information and preferences the user has
  */
 
-public class User {
+public class User implements IUser {
     // an unique id used to identify the user
     private final int id;
     // the user's name
