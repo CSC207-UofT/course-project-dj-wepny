@@ -2,10 +2,21 @@ Responsibilities:
 This class contains all the helper function used both by ExistingUserController and NewUserController
 
 Methods: 
-getBasicUserInfo()
-getPersonalUserInfo()
-main
+checkExisting
+logOut
+reStart
+activityLevel
+exercisePreference
+diseaseList
+foodPreference
+addToExisting
+noInfoFound
+notInRange
+isNotNum
+checkCommand
 
 Collaborators:
 RunCommand
 Presenter
+NewUserConsole
+ExistingUserConsole
