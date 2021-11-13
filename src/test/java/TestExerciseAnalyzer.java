@@ -3,6 +3,7 @@
  * an appropriate list of exercises is given
  */
 
+import UseCases.UserManager;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.HashMap;
@@ -15,22 +16,24 @@ public class TestExerciseAnalyzer {
 
     @Before
     public void setUp() {
-        HashMap<String, Object> userInfo = new HashMap<>();
+        // call UserManager to create a new user
+        UserManager.createNewUser(new String[]{"John", "M"}, new String[]{"1.80", "65", "21"});
+        // set user to currentUser
+        user = UserManager.getCurrentUser();
 
-        userInfo.put("height", "1.80");
-        userInfo.put("weight", "65");
-        userInfo.put("age", "21");
-        user = new User(2012, "John", "M", userInfo);
+        // set the exercise preference of user
         user.setExercisePreference("major muscle", "Arms");
         user.setExercisePreference("minor muscle", "Biceps");
         user.setExercisePreference("equipment", "Dumbbells");
 
+        // initiate a new ExerciseAnalyzer of the current user
         exercises = new ExerciseAnalyzer(user);
 
     }
-    // core, chest, body weight
+
     @Test(timeout = 500)
     public void testOutput() {
+        // analyze the exercise suggestion for the user
         exercises.analyze();
         String expected_string ="\n*****************************************************************************\n" +
                 "Exercises for " + user.getUsername() + ": \n" +

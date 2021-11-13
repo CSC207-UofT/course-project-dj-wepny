@@ -26,22 +26,30 @@ public class TestUserParser {
         userInfo.put("height", "1.88");
         userInfo.put("weight", "65");
         userInfo.put("age", "19");
+        // initiate a new user
         user = new User(2030, "Frank", "M", userInfo);
         UserManager.addUser(true, user);
     }
 
     @Test(timeout = 500)
     public void testOutput1() throws IOException {
+        // write the information of the new user into TestParser.csv
         UserParser.writeUserInfo("write", Constants.TEST_USER_FILE);
+        // read the TestParser.csv and store the information into an ArrayList
         ArrayList<String> userInfo = UserParser.readUserInfo(Constants.TEST_USER_FILE);
+        // check that the new user is written into file
         assertTrue(userInfo.contains("2030,Frank,M,65,1.88,19,null,null,null,null"));
     }
 
     @Before
     public void setUp2() throws IOException {
+        // read the TestParser.csv and store the information into an ArrayList
         ArrayList<String> userInfo = UserParser.readUserInfo(Constants.TEST_USER_FILE);
+        // call UserController to read the userInfo to store the information of each user as a User object
         UserController.readExistingUser(userInfo);
+        // set current user as the user with id 2021
         UserManager.setCurrentUser(2021);
+        // update the information of the current user
         UserManager.getCurrentUser().setPersonalData("activity level", "Active");
         UserManager.getCurrentUser().setExercisePreference("major muscle", "Legs");
         UserManager.getCurrentUser().setExercisePreference("minor muscle", "Quads");
@@ -50,8 +58,11 @@ public class TestUserParser {
 
     @Test(timeout = 500)
     public void testOutput2() throws IOException {
+        // update the TestParser.csv
         UserParser.writeUserInfo("update", Constants.TEST_USER_FILE);
+        // read the TestParser.csv and store the information into an ArrayList
         ArrayList<String> userInfo = UserParser.readUserInfo(Constants.TEST_USER_FILE);
+        // check that the information of the user is updated in file
         assertTrue(userInfo.contains("2021,Amy,F,58,1.70,21,Legs*Quads*Bar,null,Active,null"));
     }
 

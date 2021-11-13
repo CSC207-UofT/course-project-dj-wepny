@@ -6,13 +6,13 @@ package Constants;
 public class Constants {
 
     // UserParser
-    public static final String USER_FILE = "src/main/java/UserInfo.csv";
-    public static final String TEST_USER_FILE = "src/main/java/TestParser.csv";
+    public static final String USER_FILE = "src/main/data/UserInfo.csv";
+    public static final String TEST_USER_FILE = "src/main/data/TestParser.csv";
 
     // API
-    public static final String DISEASE_DATASET_PATH = "src/main/java/GlobalDiseaseData.csv";
-    public static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
-    public static final String EXERCISE_DATASET_PATH = "src/main/java/ExerciseMovesData.csv";
+    public static final String DISEASE_DATASET_PATH = "src/main/data/GlobalDiseaseData.csv";
+    public static final String FOOD_DATASET_PATH = "src/main/data/GlobalFoodData.csv";
+    public static final String EXERCISE_DATASET_PATH = "src/main/data/ExerciseMovesData.csv";
     public static final double FAT_PER_DAY = 75.0;
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;

@@ -4,12 +4,10 @@
 
 import Entities.User;
 import UseCases.BMIAnalyzer;
+import UseCases.UserManager;
 import org.junit.*;
 
 import static org.junit.Assert.*;
-
-import java.util.HashMap;
-
 
 public class TestBMIAnalyzer {
     BMIAnalyzer bmi;
@@ -17,18 +15,18 @@ public class TestBMIAnalyzer {
 
     @Before
     public void setUp() {
-        HashMap<String, Object> userInfo = new HashMap<>();
+        // call UserManager to create a new user
+        UserManager.createNewUser(new String[]{"Amy", "F"}, new String[]{"1.70", "58", "21"});
+        // set user to the currentUser
+        user = UserManager.getCurrentUser();
 
-        userInfo.put("height", "1.70");
-        userInfo.put("weight", "58");
-        userInfo.put("age", "21");
-        user = new User(20, "Amy", "F", userInfo);
-
+        // initiate a new BMIAnalyzer of the current user
         bmi = new BMIAnalyzer(user);
     }
 
     @Test(timeout = 500)
     public void testOutput() {
+        // analyze the bmi of user
         bmi.analyze();
         assertEquals("\n*****************************************************************************\n" +
                         "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +

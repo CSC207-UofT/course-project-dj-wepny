@@ -1,5 +1,6 @@
 id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food
 8388,Edward,M,76,1.76,19,Legs*Quads*Body Weight/Bar,null,Low Active,null
-2021,Amy,F,58,1.70,21,null,null,null,null
+2021,Amy,F,58,1.70,21,Legs*Quads*Bar,null,Active,null
 9799,Nick,M,85,1.88,56,null,headache*loss_of_balance,Active,null
 6376,Aidan,M,63,1.7,14,null,restlessness,null,null
+2030,Frank,M,65,1.88,19,null,null,null,null

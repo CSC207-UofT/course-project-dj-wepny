@@ -4,10 +4,9 @@
 
 import Entities.User;
 import UseCases.EERAnalyzer;
+import UseCases.UserManager;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,19 +16,20 @@ public class TestEERAnalyzer {
 
     @Before
     public void setUp() {
-        HashMap<String, Object> userInfo = new HashMap<>();
-
-        userInfo.put("height", "1.70");
-        userInfo.put("weight", "58");
-        userInfo.put("age", "21");
-        user = new User(20, "Amy", "F", userInfo);
+        // call UserManager to create a new user
+        UserManager.createNewUser(new String[]{"Amy", "F"}, new String[]{"1.70", "58", "21"});
+        // set user to currentUser
+        user = UserManager.getCurrentUser();
+        // set the activity level of user
         user.setPersonalData("activity level", "Active");
 
+        // initiate a new EERAnalyzer of the current user
         eer = new EERAnalyzer(user);
     }
 
     @Test(timeout = 500)
     public void testOutput() {
+        // analyze the EER of the user
         eer.analyze();
         assertEquals("\n*****************************************************************************\n" +
                         "The Estimated Energy Requirement (EER) is a predicted average dietary intake \n" +
