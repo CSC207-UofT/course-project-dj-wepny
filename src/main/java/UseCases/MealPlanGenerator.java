@@ -1,6 +1,5 @@
 package UseCases;
 
-import Entities.Food;
 import Entities.FoodFilterCriterion;
 import Entities.IFood;
 import Entities.IUser;
@@ -24,7 +23,6 @@ public class MealPlanGenerator implements UserAnalyzer {
      */
     public MealPlanGenerator() {
     }
-
 
     /**
      * An overloading constructor that initiate a ExerciseAnalyzer which take user as its parameter.

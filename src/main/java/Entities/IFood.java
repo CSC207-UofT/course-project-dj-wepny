@@ -1,5 +1,8 @@
 package Entities;
 
+/**
+ *  This is interface is an abstraction of the Food Entity
+ */
 public interface IFood {
 
     double getCarbohydrate();

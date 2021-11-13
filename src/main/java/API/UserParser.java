@@ -1,4 +1,4 @@
-package UseCases;
+package API;
 
 import Controllers.UserController;
 import Entities.User;
