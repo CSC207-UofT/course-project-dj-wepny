@@ -247,6 +247,7 @@ public class HelperConsole {
             System.out.println(analyze_results.retrieveOutput()); //first time giving options
 
             String symptoms = reader.nextLine(); //client's input of symptoms
+            currentSymptoms = new ArrayList<>();
             if (!symptoms.equals("N/A")) {
                 symptoms = symptoms.replaceAll("[\\[\\](){}]", "");
                 String[] symptomsList = symptoms.split(",");
