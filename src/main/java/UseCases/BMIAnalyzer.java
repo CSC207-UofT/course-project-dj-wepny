@@ -2,7 +2,6 @@ package UseCases;
 
 import Entities.IUser;
 import Constants.Constants;
-import Entities.User;
 
 import java.util.HashMap;
 
