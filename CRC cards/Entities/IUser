@@ -1,5 +1,5 @@
 Responsibilities: 
-This is interface is an abstraction of the User Entity
+This interface is an abstraction of the User Entity
 
 Methods:
 getId
