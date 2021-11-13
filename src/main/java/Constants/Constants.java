@@ -75,8 +75,8 @@ public class Constants {
     // Disease
     public static final String DISEASE_START =
             "Welcome to the Disease Analyzer. Given the lists of potential symptoms,\n" +
-            "please enter the ones you are experiencing, and the program will generate potential\n" +
-            "diseases that you may be at risk for.";
+                    "please enter the ones you are experiencing, and the program will generate potential\n" +
+                    "diseases that you may be at risk for.";
     public static final String SYMPTOMS_DESC = "\nHere are the options. " +
             "If you are currently experiencing more than one symptom, please separate the input using a comma ','\n" +
             "for example, 'high_fever,back_pain' with no spaces in between\n" +
@@ -88,18 +88,18 @@ public class Constants {
             "This exercise analyzer generate a list of exercising moves based on your preference.\n";
     public static final String EXERCISE_MAJOR =
             "Please select only ONE major muscle you want to exercise from the following list:\n" +
-            "\"Arms, Core, Full Body, Legs, Back\"";
+                    "\"Arms, Core, Full Body, Legs, Back\"";
     public static final String EXERCISE_MAJOR_ERROR = "The major muscle entered is not valid. \n" +
             "Please select only ONE major muscle you want to exercise from the following list:\n" +
-                    "\"Arms, Core, Full Body, Legs, Back\"";
+            "\"Arms, Core, Full Body, Legs, Back\"";
     public static final String EXERCISE_MINOR =
-            "Please select only ONE minor muscle you want to exercise from the following list:\n" +
-            "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
-            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
-    public static final String EXERCISE_MINOR_ERROR = "The minor muscle entered is not valid. \n" +
             "Please select only ONE minor muscle you want to exercise from the following list:\n" +
                     "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
                     "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
+    public static final String EXERCISE_MINOR_ERROR = "The minor muscle entered is not valid. \n" +
+            "Please select only ONE minor muscle you want to exercise from the following list:\n" +
+            "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
+            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
     public static final String EXERCISE_EQUIPMENT = "Please select one equipment you have or want to use:\n" +
             "\"Dumbbelxls, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_EQUIPMENT2 = "Please select another equipment you have or want to use, " +
@@ -156,15 +156,15 @@ public class Constants {
                     "6. Edit Profile";
     public static final String USER_UPDATE =
             " You may choose the following options: (Please enter a number from 1 to 9) \n" +
-            " 1. Change Username \n" +
-            " 2. Change Height \n" +
-            " 3. Change Weight \n" +
-            " 4. Change Age \n" +
-            " 5. Change Gender \n" +
-            " 6. Change Activity Level \n" +
-            " 7. Change Exercise Preferences \n" +
-            " 8. Change Symptoms \n" +
-            " 9. Change Food Preferences \n";
+                    " 1. Change Username \n" +
+                    " 2. Change Height \n" +
+                    " 3. Change Weight \n" +
+                    " 4. Change Age \n" +
+                    " 5. Change Gender \n" +
+                    " 6. Change Activity Level \n" +
+                    " 7. Change Exercise Preferences \n" +
+                    " 8. Change Symptoms \n" +
+                    " 9. Change Food Preferences \n";
 
     // Prompts
     public static final String NAME_PROMPT = "Please enter your name:";
@@ -197,7 +197,7 @@ public class Constants {
     public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
     public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
     public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
-  
+
     // PAL Constants
     public static final double M_SEDENTARY = 1.0;
     public static final double M_LOW = 1.11;

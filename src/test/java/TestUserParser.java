@@ -20,7 +20,7 @@ public class TestUserParser {
     User user;
 
     @Before
-    public void setUp1() throws IOException {
+    public void setUp1() {
         HashMap<String, Object> userInfo = new HashMap<>();
 
         userInfo.put("height", "1.88");
