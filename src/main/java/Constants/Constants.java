@@ -1,7 +1,5 @@
 package Constants;
 
-import javax.print.StreamPrintServiceFactory;
-
 /**
  * This class contains all the constants used in the program.
  */

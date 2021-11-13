@@ -1,6 +1,5 @@
 package UseCases;
 
-import Constants.Constants;
 import Controllers.UserController;
 import Entities.User;
 

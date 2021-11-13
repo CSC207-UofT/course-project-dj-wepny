@@ -55,5 +55,4 @@ public class TestUserParser {
         assertTrue(userInfo.contains("2021,Amy,F,58,1.70,21,Legs*Quads*Bar,null,Active,null"));
     }
 
-
 }
