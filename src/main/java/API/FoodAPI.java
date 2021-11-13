@@ -42,7 +42,6 @@ public class FoodAPI {
         String foodType = metadata[2];
         double calories = convertFromStringToDouble(metadata[3]);
         double fat = convertFromStringToDouble(metadata[4]) / Constants.FAT_PER_DAY;
-        double proteins = convertFromStringToDouble(metadata[5]) / Constants.PROTEIN_PER_DAY;
         double carbohydrates = convertFromStringToDouble(metadata[6]) / Constants.CARB_PER_DAY;
         double sugar = convertFromStringToDouble(metadata[7]) / Constants.SUGAR_PER_DAY;
         boolean vegFriendly = (!metadata[2].contains("Meats"));
