@@ -26,16 +26,16 @@ public class NewUserConsole {
         RunCommand commandExecutor = new RunCommand(command);
         switch (command) {
             case 2:
-                String level = HelperConsole.activityLevel(reader);
+                String level = HelperUserInfo.activityLevel(reader);
                 commandExecutor.addInfo(level, command);
                 break;
             case 3:
-                commandExecutor.addInfo(HelperConsole.exercisePreference(reader), command);
+                commandExecutor.addInfo(HelperUserInfo.exercisePreference(reader), command);
                 break;
             case 4:
-                return HelperConsole.diseaseList(reader, commandExecutor);
+                return HelperUserInfo.diseaseList(reader, commandExecutor);
             case 5:
-                commandExecutor.addInfo(HelperConsole.foodPreference(reader), command);
+                commandExecutor.addInfo(HelperUserInfo.foodPreference(reader), command);
         }
 
         commandExecutor.executeCommand();
