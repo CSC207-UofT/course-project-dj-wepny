@@ -2,7 +2,6 @@ package UseCases;
 
 import Entities.IUser;
 import Constants.Constants;
-import Entities.User;
 
 import java.util.HashMap;
 
@@ -41,7 +40,7 @@ public class EERAnalyzer implements UserAnalyzer {
         }
 
         //Calculating EER.
-        double energyRequirement = calculateEER((User) user);
+        double energyRequirement = calculateEER(user);
 
         //Setting the resulting String.
         result = Constants.DIVIDER + Constants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
