@@ -1,0 +1,13 @@
+Responsibilities:
+  - A class that uses the Factory Design Pattern to create the appropriate subclass of UserAnalyzer
+depending on the given command
+
+Method:
+createAnalyzer
+
+Collaborators:
+BMIAnalyzer
+EERAnalyzer
+DiseaseAnalyzer
+WorkoutAnalyzer
+MealPlanGenerator
