@@ -2,7 +2,7 @@ package System;
 
 import Controllers.UserController;
 import Constants.Constants;
-import UseCases.UserParser;
+import API.UserParser;
 
 import java.util.Scanner;
 import java.util.ArrayList;

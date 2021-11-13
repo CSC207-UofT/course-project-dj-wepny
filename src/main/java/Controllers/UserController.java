@@ -33,7 +33,7 @@ public class UserController {
      * @return a User Object
      */
     public static User getCurrentUser() {
-        return UserManager.getCurrentUsers();
+        return UserManager.getCurrentUser();
     }
 
     /**
