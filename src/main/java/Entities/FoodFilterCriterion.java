@@ -5,5 +5,5 @@ package Entities;
  * Low Fat, Low Sugar, etc.
  */
 abstract public class FoodFilterCriterion {
-    public abstract boolean isSatisfiedBy(Food food);
+    public abstract boolean isSatisfiedBy(IFood food);
 }

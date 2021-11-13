@@ -1,6 +1,7 @@
 package API;
 
 import Constants.Constants;
+import Entities.IFood;
 import Entities.Food;
 
 import java.io.BufferedReader;
@@ -35,7 +36,7 @@ public class FoodAPI {
      * @param metadata An array of strings with data of interest.
      * @return A food object.
      */
-    private static Food createFood(String[] metadata){
+    private static IFood createFood(String[] metadata){
         String id =  metadata[0];
         String name = metadata[1];
         String foodType = metadata[2];
@@ -55,8 +56,8 @@ public class FoodAPI {
      * Read from the Food CSV and create a List of Food Objects.
      * @return a List of Food Objects.
      */
-    public static List<Food> readFoodFromCSV() {
-        List<Food> foodList = new ArrayList<>();
+    public static List<IFood> readFoodFromCSV() {
+        List<IFood> foodList = new ArrayList<>();
         Path pathToFile = Paths.get(Constants.FOOD_DATASET_PATH);
 
         // create an instance of BufferedReader
@@ -73,7 +74,7 @@ public class FoodAPI {
             // Now we create food objects and append them to the list.
             while (line != null) {
                 String[] attributes = line.split(",");
-                Food foodItem = createFood(attributes);
+                IFood foodItem = createFood(attributes);
                 foodList.add(foodItem);
                 line = br.readLine(); //read next line before looping
             }

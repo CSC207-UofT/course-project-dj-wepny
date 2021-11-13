@@ -3,6 +3,7 @@ package UseCases;
 import Controllers.APIController;
 import Entities.Food;
 import Entities.FoodFilterCriterion;
+import Entities.IFood;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class FoodManager {
 
-    private static final List<Food> foodList = APIController.getFood();
+    private static final List<IFood> foodList = APIController.getFood();
 
     /**
      * Return a hashmap with keys being the types of food and values being the list of food objects of the type,
@@ -23,10 +24,10 @@ public class FoodManager {
      * @param criteriaList A list of criteria that the food must satisfy.
      * @return A hashmap containing Food objects that meet the criteria.
      */
-    public static HashMap<String, List<Food>> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
-        HashMap<String, List<Food>> filteredFoodMap = new HashMap<>();
+    public static HashMap<String, List<IFood>> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
+        HashMap<String, List<IFood>> filteredFoodMap = new HashMap<>();
 
-        for (Food food : foodList) {
+        for (IFood food : foodList) {
             if (foodSatisfiesCriteria(food, criteriaList)) {
                 if (!filteredFoodMap.containsKey(food.getFoodType())) {
                     // add food to map for the first time of its type
@@ -46,7 +47,7 @@ public class FoodManager {
      * @param criteriaList A list of criteria for the food to fufill.
      * @return A boolean.
      */
-    public static boolean foodSatisfiesCriteria(Food food, List<FoodFilterCriterion> criteriaList) {
+    public static boolean foodSatisfiesCriteria(IFood food, List<FoodFilterCriterion> criteriaList) {
         for (FoodFilterCriterion criterion : criteriaList) {
             // check if food satisfy the criterion given
             if (!criterion.isSatisfiedBy(food)) {

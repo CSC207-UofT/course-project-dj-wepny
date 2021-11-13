@@ -11,8 +11,14 @@ import java.util.*;
 
 public class DiseaseAnalyzer implements UserAnalyzer {
 
+    private IUser user;
     private String result;
     private static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
+    
+    public DiseaseAnalyzer(IUser user){
+        this.user = user;
+    }
+    public DiseaseAnalyzer(){}
 
     /**
      * This method analyze the user's potential diseases using their list of symptoms.
@@ -20,6 +26,10 @@ public class DiseaseAnalyzer implements UserAnalyzer {
     @Override
     public void analyze() {
         IUser user = UserManager.getCurrentUser();
+        if(user == null){
+            user = this.user;
+        }
+        
         // get the symptoms of user
         ArrayList<String> userInput = user.getRiskFactor();
 

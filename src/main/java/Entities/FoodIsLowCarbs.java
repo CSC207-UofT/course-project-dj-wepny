@@ -6,7 +6,7 @@ package Entities;
  */
 public class FoodIsLowCarbs extends FoodFilterCriterion {
     @Override
-    public boolean isSatisfiedBy(Food food) {
+    public boolean isSatisfiedBy(IFood food) {
         // i.e. food has percentage of carbs under 15% of the recommended daily value of intake.
         return food.getCarbohydrate() < 0.15;
     }
