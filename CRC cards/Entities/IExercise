@@ -1,0 +1,9 @@
+Responsibilities:
+This interface is an abstraction of Exercise Entity
+
+Methods:
+getName
+getType
+getMinorMuscleExercises
+getEquipmentNeeded
+getMajorMuscleExercised
