@@ -17,12 +17,34 @@ import java.util.*;
 public class MealPlanGenerator implements UserAnalyzer {
 
     private String result;
+    private IUser user;
+
+    /**
+     * Initiating a ExerciseAnalyzer with no parameter.
+     */
+    public MealPlanGenerator() {
+    }
+
+
+    /**
+     * An overloading constructor that initiate a ExerciseAnalyzer which take user as its parameter.
+     *
+     * @param user The user that the ExerciseAnalyzer is analyzing for.
+     */
+    public MealPlanGenerator(IUser user){
+        this.user = user;
+    }
 
     /**
      * Generate a list of food objects (i.e. meal plan) based on user data.
      */
     public void analyze() throws Exception {
         IUser user = UserManager.getCurrentUser();
+
+        if (user == null) {
+            user = this.user;
+        }
+
         int numFoods = user.getNumFood();        // 1. get food from dataset that meets the user's FoodPreference.
         HashMap<String, List<IFood>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
 
@@ -48,14 +70,14 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param numFoods is a integer of the number of food that the user requested.
      * @return A list of Food.
      */
-    private List<IFood> filterFoodMap(HashMap<String, List<IFood>> foodMap, int numFoods) {
+    public List<IFood> filterFoodMap(HashMap<String, List<IFood>> foodMap, int numFoods) {
         return generateFoodListGivenKeys(foodMap, numFoods, new ArrayList<>(foodMap.keySet()), new ArrayList<>(), 1);
     }
 
     /**
-     * The function chooses a random Food object of each food type T in the list keys such that the random
-     * Food objects chosen are not already in foodsChosen. If numFoods > foodMap.keySet().size(), the function
-     * continues to try to choose a random Food object of each food type that is not already chosen.
+     * The function chooses up to numFoods random Food objects from foodMap that are not already in
+     * the list foodsChosen. The function tries to choose each new Food object as a random Food object of a different
+     * type than the previously chosen Food object.
      * <p>
      * The input depth is used to calculate the keys list for recursive calls of this function
      * (i.e. the new keys list used as input for a recursive call satisfies the condition that for all
@@ -64,6 +86,7 @@ public class MealPlanGenerator implements UserAnalyzer {
      * Precondition:
      * 1) for all key in foodMap.keySet(), foodMap.get(key).size() > 0.
      * 2) every Food object in foodMap is distinct.
+     * 3) 0 <= numFoods <= number of ll Food objects in foodMap.
      *
      * @param foodMap     is a hashmap that map a string to a list of food.
      * @param numFoods    the number of food requested by the user
@@ -76,27 +99,25 @@ public class MealPlanGenerator implements UserAnalyzer {
                                                  List<String> keys, List<IFood> foodsChosen, int depth) {
 
         List<String> newKeys = new ArrayList<>();
-        if (numFoods == 0) {
-            return foodsChosen;
-        }  // early return
+        if (numFoods == 0) { return foodsChosen;}  // early return
+
         for (String key : keys) {
-            if (foodsChosen.size() == numFoods) {
-                return foodsChosen;
-            }        // return foodList if numFoods food items have been added
             List<IFood> foodListOfType = foodMap.get(key);
+
             if (foodListOfType.size() > depth) {
                 newKeys.add(key);
             }
             IFood randomFood = chooseRandomFoodFromList(foodListOfType, foodsChosen);
             foodsChosen.add(randomFood);
+
+            // return foodList if numFoods food items have been added
+            if (foodsChosen.size() == numFoods) {
+                return foodsChosen;
+            }
         }
 
-        // if numFoods >= keys.size(), add the remaining numFoods - keys.size() food items
-        List<IFood> foodsChosenCopy = new ArrayList<>(foodsChosen);
-        foodsChosen.addAll(generateFoodListGivenKeys(foodMap, numFoods - keys.size(), newKeys,
-                foodsChosenCopy, depth + 1));
-
-        return foodsChosen;
+        return generateFoodListGivenKeys(foodMap, numFoods, newKeys,
+                foodsChosen, depth + 1);
     }
 
     /**

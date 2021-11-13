@@ -2,6 +2,7 @@
  *This file contains Junit test case for DiseaseAnalyzer.java
  */
 
+
 import API.DiseaseAPI;
 import Entities.User;
 import UseCases.DiseaseAnalyzer;

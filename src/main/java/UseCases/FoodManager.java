@@ -47,7 +47,7 @@ public class FoodManager {
      * @param criteriaList A list of criteria for the food to fufill.
      * @return A boolean.
      */
-    private static boolean foodSatisfiesCriteria(IFood food, List<FoodFilterCriterion> criteriaList) {
+    public static boolean foodSatisfiesCriteria(IFood food, List<FoodFilterCriterion> criteriaList) {
         for (FoodFilterCriterion criterion : criteriaList) {
             // check if food satisfy the criterion given
             if (!criterion.isSatisfiedBy(food)) {
