@@ -2,7 +2,7 @@ package UseCases;
 
 import API.ExerciseAPI;
 import Entities.Exercise;
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ExerciseAnalyzer implements UserAnalyzer {
 
     private String result;
-    private User user;
+    private IUser user;
 
     /**
      * Initiating a ExerciseAnalyzer with no parameter.
@@ -25,12 +25,13 @@ public class ExerciseAnalyzer implements UserAnalyzer {
     public ExerciseAnalyzer() {
     }
 
+
     /**
      * An overloading constructor that initiate a ExerciseAnalyzer which take user as its parameter.
      *
      * @param user The user that the ExerciseAnalyzer is analyzing for.
      */
-    public ExerciseAnalyzer(User user) {
+    public ExerciseAnalyzer(IUser user){
         this.user = user;
     }
 
@@ -39,7 +40,7 @@ public class ExerciseAnalyzer implements UserAnalyzer {
      */
     @Override
     public void analyze() {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
 
         if (user == null) {
             user = this.user;

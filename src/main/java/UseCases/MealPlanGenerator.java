@@ -2,7 +2,7 @@ package UseCases;
 
 import Entities.Food;
 import Entities.FoodFilterCriterion;
-import Entities.User;
+import Entities.IUser;
 import Constants.Constants;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class MealPlanGenerator implements UserAnalyzer {
      * Generate a list of food objects (i.e. meal plan) based on user data.
      */
     public void analyze() throws Exception {
-        User user = UserManager.getCurrentUser();
+        IUser user = UserManager.getCurrentUser();
         int numFoods = user.getNumFood();        // 1. get food from dataset that meets the user's FoodPreference.
         HashMap<String, List<Food>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
 
@@ -138,7 +138,7 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param user the user that the mealPlanGenerator is outputting food for.
      * @return a list of FoodFilterCriterion that the user entered.
      */
-    private List<FoodFilterCriterion> getFoodFilterCriteriaFrom(User user) {
+    private List<FoodFilterCriterion> getFoodFilterCriteriaFrom(IUser user) {
         List<FoodFilterCriterion> FoodFilterCriteriaList = new ArrayList<>();
         //get user food preference
         for (FoodFilterCriterion criterion : user.getFoodPreference().keySet()) {
