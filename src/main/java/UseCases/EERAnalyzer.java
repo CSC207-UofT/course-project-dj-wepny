@@ -9,8 +9,23 @@ import java.util.HashMap;
  * This Class Analyzes the Energy Requirement per day (EER) for the user.
  */
 public class EERAnalyzer implements UserAnalyzer {
-
+    private User user;
     String result;
+
+    /**
+     * Initiating a ExerciseAnalyzer with no parameter.
+     */
+    public EERAnalyzer() {
+    }
+
+    /**
+     * An overloading constructor that initiate a ExerciseAnalyzer which take user as its parameter.
+     *
+     * @param user The user that the ExerciseAnalyzer is analyzing for.
+     */
+    public EERAnalyzer(User user) {
+        this.user = user;
+    }
 
     /**
      * This method calculate the user's estimated energy requirement (EER).
@@ -18,6 +33,10 @@ public class EERAnalyzer implements UserAnalyzer {
     @Override
     public void analyze() {
         User user = UserManager.getCurrentUser();
+        // check if user is null
+        if (user == null) {
+            user = this.user;
+        }
 
         //Calculating EER.
         double energyRequirement = calculateEER(user);

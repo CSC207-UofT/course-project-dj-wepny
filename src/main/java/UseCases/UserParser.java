@@ -106,9 +106,6 @@ public class UserParser {
         // turn the symptoms of user into String with * separating the different symptoms
         // add it to userInfo with , separating it from previous info
         if (!user.getRiskFactor().isEmpty()) {
-            if (!(user.getRiskFactor().size() == 1)) {
-                user.getRiskFactor().remove(0);
-            }
             String str = String.join("*", user.getRiskFactor());
             userInfo = userInfo + "," + str;
         }

@@ -5,7 +5,9 @@
 import Entities.User;
 import UseCases.BMIAnalyzer;
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import java.util.HashMap;
 
 
@@ -26,16 +28,16 @@ public class TestBMIAnalyzer {
     }
 
     @Test(timeout = 500)
-     public void testOutput() {
+    public void testOutput() {
         bmi.analyze();
         assertEquals("\n*****************************************************************************\n" +
-                     "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +
-                     "High BMI (>25.0) can indicate high body fatness, and considered as overweight. \n" +
-                     "BMI can indicate health problems such as obesity and malnutrition.\n" +
-                     "Your Body Mass Index is 20.07.\n" +
-                     "\n" +
-                     user.getUsername() +", your BMI is considered: Healthy Weight.\n" +
-                     "*****************************************************************************\n",
+                        "The Body Mass Index (BMI) is a number calculated given your weight and height. \n" +
+                        "High BMI (>25.0) can indicate high body fatness, and considered as overweight. \n" +
+                        "BMI can indicate health problems such as obesity and malnutrition.\n" +
+                        "Your Body Mass Index is 20.07.\n" +
+                        "\n" +
+                        user.getUsername() + ", your BMI is considered: Healthy Weight.\n" +
+                        "*****************************************************************************\n",
                 bmi.getResult());
     }
 
