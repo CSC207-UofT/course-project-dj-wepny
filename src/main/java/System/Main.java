@@ -18,7 +18,6 @@ public class Main {
             try {
                 // read the userInfo
                 ArrayList<String> userInfo = UserParser.readUserInfo();
-                System.out.println(userInfo);
                 if (!userInfo.isEmpty()) {
                     // load all the information stored in the userInfo.csv into
                     // existing users in the UserManager
