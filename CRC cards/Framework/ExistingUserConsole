@@ -6,3 +6,8 @@ Methods:
 loginPage
 existingUserMenu
 updateUser
+
+Collaborators:
+HelperConsole
+RunCommand
+Presenter
