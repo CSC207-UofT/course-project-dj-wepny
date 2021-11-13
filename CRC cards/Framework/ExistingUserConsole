@@ -1,0 +1,8 @@
+Responsibilities:
+  - This class interact with existing users, prompts the login pageand existing user menu, and receives user input.
+    Also, responsible for sending user's command to the controller class.
+    
+Methods:
+loginPage
+existingUserMenu
+updateUser
