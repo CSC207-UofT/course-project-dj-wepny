@@ -1,5 +1,5 @@
 Responsibility: 
-This is interface is an abstraction of the Food Entity
+This interface is an abstraction of the Food Entity
 
 Methods:
 getCarbohydrate
