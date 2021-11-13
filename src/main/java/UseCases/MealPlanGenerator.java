@@ -2,6 +2,7 @@ package UseCases;
 
 import Entities.Food;
 import Entities.FoodFilterCriterion;
+import Entities.IFood;
 import Entities.IUser;
 import Constants.Constants;
 
@@ -23,7 +24,7 @@ public class MealPlanGenerator implements UserAnalyzer {
     public void analyze() throws Exception {
         IUser user = UserManager.getCurrentUser();
         int numFoods = user.getNumFood();        // 1. get food from dataset that meets the user's FoodPreference.
-        HashMap<String, List<Food>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
+        HashMap<String, List<IFood>> foodMetCriteria = FoodManager.getFoodByCriteria(getFoodFilterCriteriaFrom(user));
 
         // check if the total number of food items in foodMap >= numFoods or not.
         if (!isNumberOfFoodInMapNoLessThan(foodMetCriteria, numFoods)) {
@@ -32,7 +33,7 @@ public class MealPlanGenerator implements UserAnalyzer {
         // 2. perform additional filters to only keep numFoods items
         String intro = user.getUsername() + Constants.MEALPLAN_INTRO;
         StringBuilder msg = new StringBuilder();
-        for (Food food : filterFoodMap(foodMetCriteria, numFoods)) {
+        for (IFood food : filterFoodMap(foodMetCriteria, numFoods)) {
             msg.append(food.toStrings());
         }
 
@@ -47,7 +48,7 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param numFoods is a integer of the number of food that the user requested.
      * @return A list of Food.
      */
-    private List<Food> filterFoodMap(HashMap<String, List<Food>> foodMap, int numFoods) {
+    private List<IFood> filterFoodMap(HashMap<String, List<IFood>> foodMap, int numFoods) {
         return generateFoodListGivenKeys(foodMap, numFoods, new ArrayList<>(foodMap.keySet()), new ArrayList<>(), 1);
     }
 
@@ -71,8 +72,8 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param depth       is an integer used to calculate the keys list for recursive calls of this function
      * @return the foodsChosen for the user.
      */
-    private List<Food> generateFoodListGivenKeys(HashMap<String, List<Food>> foodMap, int numFoods,
-                                                 List<String> keys, List<Food> foodsChosen, int depth) {
+    private List<IFood> generateFoodListGivenKeys(HashMap<String, List<IFood>> foodMap, int numFoods,
+                                                 List<String> keys, List<IFood> foodsChosen, int depth) {
 
         List<String> newKeys = new ArrayList<>();
         if (numFoods == 0) {
@@ -82,16 +83,16 @@ public class MealPlanGenerator implements UserAnalyzer {
             if (foodsChosen.size() == numFoods) {
                 return foodsChosen;
             }        // return foodList if numFoods food items have been added
-            List<Food> foodListOfType = foodMap.get(key);
+            List<IFood> foodListOfType = foodMap.get(key);
             if (foodListOfType.size() > depth) {
                 newKeys.add(key);
             }
-            Food randomFood = chooseRandomFoodFromList(foodListOfType, foodsChosen);
+            IFood randomFood = chooseRandomFoodFromList(foodListOfType, foodsChosen);
             foodsChosen.add(randomFood);
         }
 
         // if numFoods >= keys.size(), add the remaining numFoods - keys.size() food items
-        List<Food> foodsChosenCopy = new ArrayList<>(foodsChosen);
+        List<IFood> foodsChosenCopy = new ArrayList<>(foodsChosen);
         foodsChosen.addAll(generateFoodListGivenKeys(foodMap, numFoods - keys.size(), newKeys,
                 foodsChosenCopy, depth + 1));
 
@@ -105,9 +106,9 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param foodsChosen is a list of food already chosen for the user.
      * @return Food object that is chosen for the user
      */
-    private Food chooseRandomFoodFromList(List<Food> foodList, List<Food> foodsChosen) {
+    private IFood chooseRandomFoodFromList(List<IFood> foodList, List<IFood> foodsChosen) {
         Random r = new Random();
-        Food randomFood;
+        IFood randomFood;
 
         do {
             randomFood = foodList.get(r.nextInt(foodList.size()));
@@ -124,7 +125,7 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @param k       an integer to check the number of food items against.
      * @return true if the number of food items is >= k and false otherwise.
      */
-    private boolean isNumberOfFoodInMapNoLessThan(HashMap<String, List<Food>> foodMap, int k) {
+    private boolean isNumberOfFoodInMapNoLessThan(HashMap<String, List<IFood>> foodMap, int k) {
         int numFood = 0;
         for (String key : foodMap.keySet()) {
             numFood += foodMap.get(key).size();

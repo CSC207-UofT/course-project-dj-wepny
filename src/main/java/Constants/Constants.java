@@ -97,7 +97,7 @@ public class Constants {
                     "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
                     "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
     public static final String EXERCISE_EQUIPMENT = "Please select one equipment you have or want to use:\n" +
-            "\"Dumbbelxls, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_EQUIPMENT2 = "Please select another equipment you have or want to use, " +
             "or enter 'None' if there isn't anymore:\n" +
             "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";

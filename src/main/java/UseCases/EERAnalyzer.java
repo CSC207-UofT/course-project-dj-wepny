@@ -9,7 +9,7 @@ import java.util.HashMap;
  * This Class Analyzes the Energy Requirement per day (EER) for the user.
  */
 public class EERAnalyzer implements UserAnalyzer {
-    private User user;
+    private IUser user;
     String result;
 
     /**
@@ -23,7 +23,7 @@ public class EERAnalyzer implements UserAnalyzer {
      *
      * @param user The user that the ExerciseAnalyzer is analyzing for.
      */
-    public EERAnalyzer(User user) {
+    public EERAnalyzer(IUser user) {
         this.user = user;
     }
 
@@ -103,7 +103,7 @@ public class EERAnalyzer implements UserAnalyzer {
      * @param user is the User that the EER is calculated for.
      * @return A double indicating the EER of the user.
      */
-    private double calculateEER(User user) {
+    private double calculateEER(IUser user) {
         //get user information
         String gender = user.getGender();
         String activityRating = (String) user.getPersonalData().get("activity level");
