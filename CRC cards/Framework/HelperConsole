@@ -5,10 +5,6 @@ Methods:
 checkExisting
 logOut
 reStart
-activityLevel
-exercisePreference
-diseaseList
-foodPreference
 addToExisting
 noInfoFound
 notInRange
