@@ -8,6 +8,8 @@ import UseCases.DiseaseAnalyzer;
 import org.junit.*;
 import org.junit.jupiter.api.BeforeEach;
 
+import javax.swing.*;
+
 import static org.junit.Assert.*;
 
 import java.util.*;
@@ -17,34 +19,41 @@ public class TestDiseaseAnalyzer {
     DiseaseAnalyzer disease;
     User user;
     @Before
-    public void setUp1() {
+    public void setUp() {
         HashMap<String, Object> userInfo = new HashMap<>();
         userInfo.put("height", "1.70");
         userInfo.put("weight", "58");
         userInfo.put("age", "21");
         user = new User(20, "Amy", "F", userInfo);
-        user.addRiskFactor("yellowish_skin");
-        user.addRiskFactor("nausea");
         disease = new DiseaseAnalyzer(user);
-
     }
 
     @Test(timeout = 500)
     public void testOutput1() {
+        user.addRiskFactor("yellowish_skin");
+        user.addRiskFactor("nausea");
         disease.analyze();
         assertEquals("These are your potential diseases: (if output = [], there is no disease that match the current symptoms you are experiencing)\n" +
                         "[Hepatitis E, hepatitis A, Chronic cholestasis, Hepatitis C, Hepatitis D]",
                 disease.getResult());
     }
 
+    @After
+    public void teardown() {
+        user.resetRiskFactor();
+        disease.resetPotentialDisease();
+    }
+
     @Test(timeout = 500)
     public void testOutput2() {
-        user.resetRiskFactor();
         user.addRiskFactor("vomiting");
+
         disease.analyze();
+
         //because everytime the symptoms are randomly generated, we can only check whether the options generated
         //actually correspond to diseases that include the given symptom.
         String result = disease.getResult();
+        System.out.println("Risk" + user.getRiskFactor());
         result = result.replaceAll("[\\[\\](){}]", "");
         String[] symptomsList = result.split(",");
         //These are the possible options to be generated
@@ -58,7 +67,6 @@ public class TestDiseaseAnalyzer {
            item = item.trim();
            finalOptionsList1.add(item);
         }
-        System.out.println(finalOptionsList1);
 
         HashMap<String, Set<String>> dataset = DiseaseAPI.readFromDiseaseCSV();
         ArrayList<String> allSymptoms = new ArrayList<>();
@@ -71,7 +79,6 @@ public class TestDiseaseAnalyzer {
 
             }
         }
-        System.out.println(allSymptoms);
 
         //check whether the options generated are truly contained in the possible options
         assertTrue(allSymptoms.containsAll(finalOptionsList1));
