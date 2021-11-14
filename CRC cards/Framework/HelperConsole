@@ -1,0 +1,18 @@
+Responsibilities:
+This class contains all the helper function used both by ExistingUserController and NewUserController
+
+Methods: 
+checkExisting
+logOut
+reStart
+addToExisting
+noInfoFound
+notInRange
+isNotNum
+checkCommand
+
+Collaborators:
+RunCommand
+Presenter
+NewUserConsole
+ExistingUserConsole

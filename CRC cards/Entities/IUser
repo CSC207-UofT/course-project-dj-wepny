@@ -1,0 +1,25 @@
+Responsibilities: 
+This interface is an abstraction of the User Entity
+
+Methods:
+getId
+getUsername
+getGender
+getNumFood
+getFoodPreference
+getExercisePreference
+getRiskFactor
+getPersonalData
+setFoodPreference
+setNumFoods
+setExercisePreference
+addRiskFactor
+setPersonalData
+resetFoodPreference
+setUserName
+setUserGender
+
+Collaborators:
+User
+
+ 

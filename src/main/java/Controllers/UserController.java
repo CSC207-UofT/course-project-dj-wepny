@@ -48,4 +48,14 @@ public class UserController {
         return allUser;
     }
 
+    /**
+     * Check if the user is an existing user.
+     *
+     * @param id is a string that represent the id of the user.
+     * @return true if the user is an existing user and false otherwise.
+     */
+    public static boolean checkUserExist(String id) {
+        return UserManager.getExistingUsers().containsKey(Integer.parseInt(id));
+    }
+
 }

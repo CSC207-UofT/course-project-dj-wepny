@@ -1,0 +1,16 @@
+Responsibilities:
+This class writes user information for onto a file, and reads users information to store in the UserManager when the program reruns
+
+Methods:
+readUserInfo
+writeUserInfo
+writeIntoFile
+
+Collaborators:
+User
+UserController
+FoodIsLowCarbs;
+FoodFilterCriterion;
+FoodIsLowFat;
+FoodIsLowSugar;
+FoodIsVegetarian;

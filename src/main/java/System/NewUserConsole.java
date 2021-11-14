@@ -7,7 +7,7 @@ import Constants.Constants;
 import java.util.*;
 
 /**
- * This class interact with the new user and receives their input, then it sends
+ * This class interact with the users and receives their input, then it sends
  * the inputs to the controller class.
  */
 public class NewUserConsole {
@@ -26,16 +26,16 @@ public class NewUserConsole {
         RunCommand commandExecutor = new RunCommand(command);
         switch (command) {
             case 2:
-                String level = HelperConsole.activityLevel(reader);
+                String level = HelperUserInfo.activityLevel(reader);
                 commandExecutor.addInfo(level, command);
                 break;
             case 3:
-                commandExecutor.addInfo(HelperConsole.exercisePreference(reader), command);
+                commandExecutor.addInfo(HelperUserInfo.exercisePreference(reader), command);
                 break;
             case 4:
-                return HelperConsole.diseaseList(reader, commandExecutor);
+                return HelperUserInfo.diseaseList(reader, commandExecutor);
             case 5:
-                commandExecutor.addInfo(HelperConsole.foodPreference(reader), command);
+                commandExecutor.addInfo(HelperUserInfo.foodPreference(reader), command);
         }
 
         commandExecutor.executeCommand();
@@ -44,7 +44,7 @@ public class NewUserConsole {
         return analyze_results.retrieveOutput();
     }
 
-    public static void gatherInfo(Scanner reader) {
+    public static void gatherInfo(Scanner reader){
         System.out.println(Constants.BASIC_INFO);
         String[] basicUserInfo = HelperConsole.getBasicUserInfo(reader);
         System.out.println(Constants.PERSONAL_INFO);

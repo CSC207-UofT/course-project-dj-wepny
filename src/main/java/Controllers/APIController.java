@@ -2,7 +2,7 @@ package Controllers;
 
 import API.DiseaseAPI;
 import API.FoodAPI;
-import Entities.Food;
+import Entities.IFood;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +16,7 @@ public class APIController {
      * A function that returns all the food objects read from the FoodAPI
      * @return a List containing all the Food Objects created from the food csv file
      */
-    public static List<Food> getFood(){
+    public static List<IFood> getFood(){
         return FoodAPI.readFoodFromCSV();
     }
 

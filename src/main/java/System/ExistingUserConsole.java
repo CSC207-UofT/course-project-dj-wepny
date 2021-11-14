@@ -2,7 +2,7 @@ package System;
 
 import Controllers.Presenter;
 import Controllers.RunCommand;
-import UseCases.UserManager;
+import Controllers.UserController;
 import Constants.Constants;
 
 import java.util.*;
@@ -25,7 +25,7 @@ public class ExistingUserConsole {
         String id = reader.nextLine();
 
         // check if the input is a number and is a valid id of an existing user
-        while (HelperConsole.isNotNum(id) || !UserManager.getExistingUsers().containsKey(Integer.parseInt(id))) {
+        while (HelperConsole.isNotNum(id) || !UserController.checkUserExist(id)) {
             System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
             id = reader.nextLine();
         }
@@ -67,7 +67,7 @@ public class ExistingUserConsole {
                 if (HelperConsole.noInfoFound(command)) {
                     // allows user to add the information
                     System.out.println(Constants.NOT_ENOUGH_INFO);
-                    String level = HelperConsole.activityLevel(reader);
+                    String level = HelperUserInfo.activityLevel(reader);
                     commandExecutor.addInfo(level, command);
                 }
                 break;
@@ -76,7 +76,7 @@ public class ExistingUserConsole {
                 if (HelperConsole.noInfoFound(command)) {
                     // allows user to add the information
                     System.out.println(Constants.NOT_ENOUGH_INFO);
-                    String[] exercises = HelperConsole.exercisePreference(reader);
+                    String[] exercises = HelperUserInfo.exercisePreference(reader);
                     commandExecutor.addInfo(exercises, command);
                 }
                 break;
@@ -85,7 +85,7 @@ public class ExistingUserConsole {
                 if (HelperConsole.noInfoFound(command)) {
                     System.out.println(Constants.NOT_ENOUGH_INFO);
                     // allows user to add the information
-                    return HelperConsole.diseaseList(reader, commandExecutor);
+                    return HelperUserInfo.diseaseList(reader, commandExecutor);
                 }
                 break;
             case 5:
@@ -93,13 +93,13 @@ public class ExistingUserConsole {
                 if (HelperConsole.noInfoFound(command)) {
                     System.out.println(Constants.NOT_ENOUGH_INFO);
                     // allows user to add the information
-                    commandExecutor.addInfo(HelperConsole.foodPreference(reader), command);
+                    commandExecutor.addInfo(HelperUserInfo.foodPreference(reader), command);
                 }
                 break;
             case 6:
                 // command 6 allows user to update their profile information, calls the helper
                 // function updateUser
-                return HelperConsole.updateUser(reader, commandExecutor);
+                return HelperUserInfo.updateUser(reader, commandExecutor);
         }
         // outputting the result from the analyzers using the presenter
         commandExecutor.executeCommand();

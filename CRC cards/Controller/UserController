@@ -1,0 +1,16 @@
+Responsibility:
+This is a Controller class responsible for connecting the UserParser with the UserManager.
+Checks for existing users in the local file, and adds users to the file if they are
+new.
+
+Methods:
+readExistingUser
+getCurrentUser
+getExistingUsers
+checkUsersExist
+
+Collaborators:
+User
+UserManager
+
+

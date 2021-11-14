@@ -1,0 +1,14 @@
+Responsbilities:
+This class interact with the new users and receives their input, then it sends the inputs to the controller class. 
+Also responsible for retrieving output from the Presenter and displays it to the user.
+
+Methods:
+NewUserMenu
+gatherInfo
+getBasicUserInfo
+getPersonalUserInfo
+
+Collaborators:
+HelperConsole
+Presenter
+RunCommand

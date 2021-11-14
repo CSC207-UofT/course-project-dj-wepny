@@ -4,13 +4,11 @@ Store food information from database
 Instance Attributes:
 calories
 carbohydrate (percentage of DV)
-protein  (percentage of DV)
 fat  (percentage of DV)
 sugar  (percentage of DV)
 foodType
-vegetarianFriendly
-nutrientScore
-Id
+vegFriendly
+id
 foodName
 
 Methods:
