@@ -53,7 +53,6 @@ public class TestDiseaseAnalyzer {
         //because everytime the symptoms are randomly generated, we can only check whether the options generated
         //actually correspond to diseases that include the given symptom.
         String result = disease.getResult();
-        System.out.println("Risk" + user.getRiskFactor());
         result = result.replaceAll("[\\[\\](){}]", "");
         String[] symptomsList = result.split(",");
         //These are the possible options to be generated
