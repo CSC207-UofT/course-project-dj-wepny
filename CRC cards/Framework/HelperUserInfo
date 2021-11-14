@@ -1,0 +1,14 @@
+Responsibilities:
+Helper Class that stores functions that need to be used by both NewUserConsole 
+and ExistingUserConsole
+
+Methods:
+activityLevel
+exercisePreference
+diseaseList
+foodPreference
+updateUser
+
+Collaborators:
+ExistingUserConsole
+NewUserConsole
