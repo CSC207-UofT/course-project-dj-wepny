@@ -21,19 +21,17 @@ import Entities.FoodIsVegetarian;
  */
 public class UserParser {
 
-    public static final String USER_FILE = "src/main/java/UserInfo.csv";
-
     /**
      * Return an ArrayList of user information inside the file.
      *
      * @return an ArrayList of strings, each element contains information for 1 unique user.
      * @throws IOException In case there's something wrong with the file.
      */
-    public static ArrayList<String> readUserInfo() throws IOException {
+    public static ArrayList<String> readUserInfo(String path) throws IOException {
         FileReader readInfo;
 
         // initialize a FileReader
-        readInfo = new FileReader(USER_FILE);
+        readInfo = new FileReader(path);
         ArrayList<String> UserInfo = new ArrayList<>();
         BufferedReader br = new BufferedReader(readInfo);
 
@@ -51,29 +49,29 @@ public class UserParser {
     }
 
     /**
-     * An helper method that adds the user's information into the file.
+     * Helper method that adds the user's information into the file.
      *
      * @throws IOException In case if there's something wrong with the file.
      */
-    public static void writeUserInfo(String type) throws IOException {
+    public static void writeUserInfo(String type, String path) throws IOException {
         // if the user is a new user, write the user information by appending to the file
         if (type.equals("write")) {
             User user = UserController.getCurrentUser();
-            writeIntoFile(user);
+            writeIntoFile(user, path);
         }
         // if the user is an existing user and update their profile, rewrite the whole file
         // with the updated information.
         else if (type.equals("update")) {
-            new FileWriter(USER_FILE, false).close();
+            new FileWriter(path, false).close();
             HashMap<Integer, User> allUsers = UserController.getExistingUsers();
             String header = "id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food\n";
             FileWriter writeInfo;
-            writeInfo = new FileWriter(USER_FILE, true);
+            writeInfo = new FileWriter(path, true);
             writeInfo.write(header);
 
             writeInfo.close();
             for (User user : allUsers.values()) {
-                writeIntoFile(user);
+                writeIntoFile(user, path);
             }
         }
     }
@@ -84,7 +82,7 @@ public class UserParser {
      * @param user is the user whose information is writing into the file
      * @throws IOException In case if there's something wrong with the file.
      */
-    public static void writeIntoFile(User user) throws IOException {
+    public static void writeIntoFile(User user, String path) throws IOException {
         // turn the basic information of user into String with , separating the different information
         String userInfo = user.getId() + "," + user.getUsername() + "," + user.getGender() + "," +
                 user.getPersonalData().get("weight") + "," + user.getPersonalData().get("height") + "," +
@@ -156,7 +154,7 @@ public class UserParser {
 
         // write the information of user into UserInfo.csv
         FileWriter writeInfo;
-        writeInfo = new FileWriter(USER_FILE, true);
+        writeInfo = new FileWriter(path, true);
         writeInfo.write(userInfo + "\n");
         writeInfo.close();
     }

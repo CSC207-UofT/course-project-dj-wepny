@@ -1,4 +1,4 @@
-/**
+/*
  *This file contains Junit test case for DiseaseAnalyzer.java
  */
 

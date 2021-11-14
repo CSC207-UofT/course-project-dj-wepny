@@ -1,0 +1,6 @@
+id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food
+9728,allan,F,90,1.9,37,Legs*Quads*Band,blackheads,Active,N*Y*Y*N*9
+9796,Eddie,F,70,1.88,35,Arms*Bicep*Bar/Band,weight_loss,null,Y*Y*Y*Y*3
+8388,Edward,M,76,1.76,19,Legs*Quads*Body Weight/Bar,null,Low Active,null
+2021,Amy,F,58,1.70,21,Legs*Quads*Bar,null,Active,null
+2030,Frank,M,65,1.88,19,null,null,null,null
