@@ -3,6 +3,9 @@ package Entities;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This is interface is an abstraction of the User Entity
+ */
 public interface IUser {
     int getId();
 

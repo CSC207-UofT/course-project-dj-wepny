@@ -4,6 +4,7 @@ and personal data
 
 Attributes:
 username
+id
 gender
 foodPreference
 excercisePreference
@@ -12,6 +13,8 @@ personalData
 
 Methods:
 getUsername()
+getId()
+getNumFood()
 getGender()
 getFoodPreference()
 getExcercisePreference()
@@ -21,6 +24,9 @@ setFoodPreference()
 setExcercisePreference()
 setRiskFactor()
 setPersonalData()
+setUserGender()
+setUserName
+resetFoodPreference
 
 Collaborators:
 UserAnalyzer

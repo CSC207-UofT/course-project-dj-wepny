@@ -2,7 +2,7 @@ package System;
 
 import Controllers.UserController;
 import Constants.Constants;
-import UseCases.UserParser;
+import API.UserParser;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -17,8 +17,7 @@ public class Main {
         while (true) {
             try {
                 // read the userInfo
-                ArrayList<String> userInfo = UserParser.readUserInfo();
-                System.out.println(userInfo);
+                ArrayList<String> userInfo = UserParser.readUserInfo(Constants.USER_FILE);
                 if (!userInfo.isEmpty()) {
                     // load all the information stored in the userInfo.csv into
                     // existing users in the UserManager
@@ -45,7 +44,7 @@ public class Main {
                 // once the new user log out, add them to existing users
                 HelperConsole.addToExisting();
                 // append the new user's information into the file
-                UserParser.writeUserInfo("write");
+                UserParser.writeUserInfo("write", Constants.USER_FILE);
             }
             // if they are an existing user, run:
             else {
@@ -58,7 +57,7 @@ public class Main {
                     logOut = HelperConsole.logOut(reader);
                 }
                 //update the file once the user logged out with any changed information
-                UserParser.writeUserInfo("update");
+                UserParser.writeUserInfo("update", Constants.USER_FILE);
             }
 
             // check if the user wants to rerun the whole program
@@ -69,8 +68,4 @@ public class Main {
 
         }
     }
-
 }
-
-
-

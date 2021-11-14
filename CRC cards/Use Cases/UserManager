@@ -1,0 +1,27 @@
+Responsibilities:
+The UserManager class keeps track of all the users, and differentiates the existing users from the current user that is using
+currently running the program. Responsible for creating new users, loading data for existing users,
+and updating user's profile and personal information.
+
+Instance Attributes:
+currentUser
+existingUsers
+
+Methods:
+createNewUser
+loadExistingUser
+addUser
+addNewInfo
+changeUserInfo
+changeUserInfo
+getExistingUser
+getCurrentUser
+setCurrentUser
+
+Collaborators:
+User
+FoodIsLowFat;
+FoodIsLowSugar;
+FoodIsVegetarian;
+
+

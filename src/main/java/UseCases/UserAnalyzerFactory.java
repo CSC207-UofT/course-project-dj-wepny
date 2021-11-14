@@ -13,7 +13,7 @@ public class UserAnalyzerFactory {
      * @param command an integer that correspond to the analyzer that need to be created.
      * @return a UserAnalyzer.
      */
-    public UserAnalyzer create_analyzer(int command) {
+    public UserAnalyzer createAnalyzer(int command) {
         UserAnalyzer analyzer;
 
         if (command == 1) {

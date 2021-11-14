@@ -20,7 +20,7 @@ public class UserManager {
     private static User currentUser;
 
     /**
-     * A static function that creates a new User object and adds the user to the manager
+     * A static function that creates ca new User object and adds the user to the manager
      *
      * @param basic    is an arraylist of Strings that contains the user's name and gender
      * @param personal is an arraylist of Strings that contains the user's weight, height, and age
@@ -197,10 +197,6 @@ public class UserManager {
     // getters for the private instance variables.
     public static HashMap<Integer, User> getExistingUsers() {
         return existingUsers;
-    }
-
-    public static User getCurrentUsers() {
-        return currentUser;
     }
 
     public static User getCurrentUser() {

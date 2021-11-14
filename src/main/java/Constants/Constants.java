@@ -1,16 +1,20 @@
 package Constants;
 
-import javax.print.StreamPrintServiceFactory;
+
 
 /**
  * This class contains all the constants used in the program.
  */
 public class Constants {
 
+    // UserParser
+    public static final String USER_FILE = "src/main/data/UserInfo.csv";
+    public static final String TEST_USER_FILE = "src/main/data/TestParser.csv";
+
     // API
-    public static final String DISEASE_DATASET_PATH = "src/main/java/GlobalDiseaseData.csv";
-    public static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
-    public static final String EXERCISE_DATASET_PATH = "src/main/java/ExerciseMovesData.csv";
+    public static final String DISEASE_DATASET_PATH = "src/main/data/GlobalDiseaseData.csv";
+    public static final String FOOD_DATASET_PATH = "src/main/data/GlobalFoodData.csv";
+    public static final String EXERCISE_DATASET_PATH = "src/main/data/ExerciseMovesData.csv";
     public static final double FAT_PER_DAY = 75.0;
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;
@@ -97,7 +101,7 @@ public class Constants {
                     "\"Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, \"" +
                     "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique\"";
     public static final String EXERCISE_EQUIPMENT = "Please select one equipment you have or want to use:\n" +
-            "\"Dumbbelxls, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
+            "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
     public static final String EXERCISE_EQUIPMENT2 = "Please select another equipment you have or want to use, " +
             "or enter 'None' if there isn't anymore:\n" +
             "\"Dumbbells, Bar, Cable, Body Weight, Platform, Machine, Band, Kettle Bell, Medicine Ball, Bosu Ball\"";
@@ -182,9 +186,9 @@ public class Constants {
 
     // Messages
     public static final String ID_MESSAGE1 =
-            "Hello and welcome to DJ WEPNY's Personal Health app! The following is your ID:\n";
+            "Hello and welcome to DJ WEPNY's Personal Health app!\nThe following number is your ID:";
     public static final String ID_MESSAGE2 =
-            "\nPlease take note of this number as you will need it to access your account in the future.";
+            "\nPlease take note of this number as you will need it to access your account in the future.\n";
     public static final String REPORT = "Here is your report based on previously entered information: \n\n";
 
     public static final String UPDATED_PROFILE = "Your profile has been updated.";

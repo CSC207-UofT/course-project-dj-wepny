@@ -1,0 +1,9 @@
+Responsibilities:
+Child class of FoodFilterCriterion, a condition that filters the food so it only
+contains food that has percentage of carbs under 15% of the recommended daily value of intake.
+
+Method:
+isSatisfiedBy
+
+Collaborators:
+IFood

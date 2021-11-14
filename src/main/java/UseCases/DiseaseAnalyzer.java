@@ -11,6 +11,7 @@ import java.util.*;
 
 public class DiseaseAnalyzer implements UserAnalyzer {
 
+    private IUser user;
     private String result;
     private static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
     

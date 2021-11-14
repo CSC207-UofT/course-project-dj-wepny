@@ -7,14 +7,12 @@ result
 
 Methods:
 analyze():
-Takes in inputs of the type User
-Manipulates with different information of the user, and returns the calculated output
-
-Collaborators:
-MealPlanGenerator
-User
+Manipulates with different information of the currentUser, and returns the calculated output
+getResults:
+getter method for the result of the analyzer
 
 Child Classes:
 DiseaseAnalyzer
+ExerciseAnalyzer
 BMIAnalyzer
 EERAnalyzer

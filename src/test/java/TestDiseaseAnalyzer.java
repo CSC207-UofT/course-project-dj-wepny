@@ -1,12 +1,13 @@
-/**
+/*
  *This file contains Junit test case for DiseaseAnalyzer.java
  */
+
 
 import API.DiseaseAPI;
 import Entities.User;
 import UseCases.DiseaseAnalyzer;
 import org.junit.*;
-import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.BeforeEach;
 
 import javax.swing.*;
 
@@ -82,4 +83,4 @@ public class TestDiseaseAnalyzer {
         //check whether the options generated are truly contained in the possible options
         assertTrue(allSymptoms.containsAll(finalOptionsList1));
     }
-    }
+}

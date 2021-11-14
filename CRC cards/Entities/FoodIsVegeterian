@@ -1,0 +1,9 @@
+Responsibilites:
+Child class of FoodFilterCriterion, a condition that filters the food so it only
+contains food that has no "meat" in its name
+
+Methods:
+isSatisfiedBy
+
+Collaborators:
+IFood

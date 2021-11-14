@@ -24,7 +24,7 @@ public class BMIAnalyzer implements UserAnalyzer {
      *
      * @param user The user that the BMI Analyzer is calculating the BMI for.
      */
-    public BMIAnalyzer(User user) {
+    public BMIAnalyzer(IUser user) {
 
         this.user = user;
     }
