@@ -1,12 +1,25 @@
 Responsibilities:
 Takes in String input that is entered by the user and execute the command if valid
 
-Method
+Instance Attribute:
+  - userAnalyzer
+  
+Method:
+createUser
+executeCommandDisease
+resetPotentialDIsease
+retrieveUser
 executeCommand
-call the corresponding analyzer that runs the functionality the user want
+addInfo
+executeCommandUpdateInfo
+setCurrentUser
+setToExisting
+checkExistingUsers
+getAnalyzer
 
 Collaborators:
-CreateUser
+UserAnalyzerFactory
+UserManager
 BMIAnalyzer
 EERAnalyzer
 DiseaseAnalyzer

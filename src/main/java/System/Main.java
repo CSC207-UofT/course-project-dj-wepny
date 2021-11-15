@@ -2,7 +2,8 @@ package System;
 
 import Controllers.UserController;
 import Constants.Constants;
-import UseCases.UserParser;
+import API.UserParser;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -14,51 +15,57 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         while (true) {
-            Scanner reader = new Scanner(System.in);
             try {
-                ArrayList<String> userInfo = UserParser.readUserInfo();
-                System.out.println(userInfo);
-                if (!userInfo.isEmpty()){
+                // read the userInfo
+                ArrayList<String> userInfo = UserParser.readUserInfo(Constants.USER_FILE);
+                if (!userInfo.isEmpty()) {
+                    // load all the information stored in the userInfo.csv into
+                    // existing users in the UserManager
                     UserController.readExistingUser(userInfo);
                 }
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 System.out.println(exception.getMessage());
                 System.out.println(Constants.FILE_LOC_ERROR);
             }
 
+            // initiate a new scanner object to read user's input
+            Scanner reader = new Scanner(System.in);
+
             boolean logOut = false;
             // if they are a new user run:
-            if (!Console.checkExisting(reader)) {
-                Console.gatherInfo(reader);
+            if (!HelperConsole.checkExisting(reader)) {
+                NewUserConsole.gatherInfo(reader);
+                // while the user chooses not to log out
                 while (!logOut) {
-                    String output = Console.NewUserMenu(reader);
+                    String output = NewUserConsole.NewUserMenu(reader);
                     System.out.println(output);
-                    logOut = Console.logOut(reader);
+                    logOut = HelperConsole.logOut(reader);
                 }
-                Console.addToExisting();
-                UserParser.writeUserInfo("write");
+                // once the new user log out, add them to existing users
+                HelperConsole.addToExisting();
+                // append the new user's information into the file
+                UserParser.writeUserInfo("write", Constants.USER_FILE);
             }
             // if they are an existing user, run:
             else {
-                int id = Console.loginPage(reader);
+                // check if their id is a valid id using the loginPage
+                int id = ExistingUserConsole.loginPage(reader);
+                // while the user chooses not to log out
                 while (!logOut) {
-                    String output = Console.ExistingUserMenu(reader, id);
+                    String output = ExistingUserConsole.ExistingUserMenu(reader, id);
                     System.out.println(output);
-                    logOut = Console.logOut(reader);
+                    logOut = HelperConsole.logOut(reader);
                 }
-                UserParser.writeUserInfo("update");
+                //update the file once the user logged out with any changed information
+                UserParser.writeUserInfo("update", Constants.USER_FILE);
             }
 
-            boolean restart = Console.reStart(reader);
-            if (restart){
+            // check if the user wants to rerun the whole program
+            boolean restart = HelperConsole.reStart(reader);
+            if (restart) {
                 break;
             }
 
         }
     }
-
 }
-
-
-

@@ -25,16 +25,14 @@ Similar to the BMI function, the EER, which is the User's Energy Requirement per
 found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1784117/). The system will output the user's energy requirement per day and explains what this number represents and possibly indicate some beneficial advices for their health.
 
 ## Exercise
-The user will be asked to input what specific body part they'd like to target, what type of exercise they like, and 
+The user will be asked to input what specific body part they'd like to target and
 what equipment they own. The app will then suggest possible exercises the user could perform, along with information
 about the major and minor muscles those exercises will work, and what equipment they may need.
 
 ## Disease
 The app will ask users whether they are experiencing some common symptoms. The user will then receive information
-about possible diseases they could be at risk for, a short summary of its implications, and its severity.
+about possible diseases they could be at risk for.
 
 ## Meal Plan
-Users will enter their food preferences, such as food they like and dislike and whether they are vegetarian or not.
-The user may also specify their health goals, such as weight loss, gain, or maintenance. The app will then use this 
-information as well as the user's EER to generate a meal plan within their desired calorie range containing foods 
-hey may like.
+Users will answer some simple questions such as whether they prefer food with low carbs, low sugar, low fat, and/or whether they are vegeterian or not.
+The user will also be asked to specify how many food they want to be recommended, and the program will use this information to generate a list of food within their desired requirements.

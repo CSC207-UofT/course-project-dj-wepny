@@ -1,11 +1,12 @@
-*extends API*
 Responsibilities:
-Read in the Food and nutrition dataset and store each row in the file as a Food Object
+This class reads the CSV file of all food data, extracts the variables of interest, and create Food objects and List of Food objects.
 
 Methods:
-ReadItemFromCSV (input: Filename)
+ReadFromCSV
 createItem(input: list containing strings)
+convertFromStringToDouble
+createFood
 
 Collaborators:
 Food
-FoodManager
+IFood

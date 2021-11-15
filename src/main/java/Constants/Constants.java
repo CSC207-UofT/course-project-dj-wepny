@@ -1,15 +1,20 @@
 package Constants;
 
-import javax.print.StreamPrintServiceFactory;
+
 
 /**
- * This class holds the constants used in the program.
+ * This class contains all the constants used in the program.
  */
 public class Constants {
 
+    // UserParser
+    public static final String USER_FILE = "src/main/data/UserInfo.csv";
+    public static final String TEST_USER_FILE = "src/main/data/TestParser.csv";
+
     // API
-    public static final String DISEASE_DATASET_PATH = "src/main/java/GlobalDiseaseData.csv";
-    public static final String FOOD_DATASET_PATH = "src/main/java/GlobalFoodData.csv";
+    public static final String DISEASE_DATASET_PATH = "src/main/data/GlobalDiseaseData.csv";
+    public static final String FOOD_DATASET_PATH = "src/main/data/GlobalFoodData.csv";
+    public static final String EXERCISE_DATASET_PATH = "src/main/data/ExerciseMovesData.csv";
     public static final double FAT_PER_DAY = 75.0;
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;
@@ -39,29 +44,26 @@ public class Constants {
     public static final String BMI_ANALYSIS = ", your BMI is considered: ";
 
 
+    // MealPlanGenerator
+    // Messages
+    public static final String MEALPLAN_INTRO = ", the following foods are based on your preferences:";
+    public static final String MEALPLAN_WELCOME = "Welcome to the Meal Plan Generator!\n" +
+            "Please enter Y or N for the following options.";
+
+    //Preferences
+    public static final String LOWCARBS = "I prefer low carbohydrates";
+    public static final String LOWFAT = "I prefer low fat";
+    public static final String LOWSUGAR = "I prefer low sugar";
+    public static final String VEG = "I am vegetarian";
+    public static final String NUM_FOODS = "How many foods would you like?";
+
+
     // EER
     // Activity Level
     public static final String SED = "Sedentary";
     public static final String LOW = "Low Active";
     public static final String MID = "Active";
     public static final String HIGH = "Very Active";
-
-    // PAL Constants
-    public static final double M_SEDENTARY = 1.0;
-    public static final double M_LOW = 1.11;
-    public static final double M_ACTIVE = 1.25;
-    public static final double M_HIGH = 1.48;
-    public static final double F_SEDENTARY = 1.0;
-    public static final double F_LOW = 1.12;
-    public static final double F_ACTIVE = 1.27;
-    public static final double F_HIGH = 1.45;
-
-    // Exercise
-    public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";
-    public static final String ALL_MINOR_MUSCLES = "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, " +
-            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique";
-    public static final String ALL_EQUIPMENTS = "Dumbbells, Bar, Cable, Body Weight, Platform, Machine, " +
-            "Band, Kettle Bell, Medicine Ball, Bosu Ball";
 
     // Messages
     public static final String EER_DESCRIPTION =
@@ -152,6 +154,17 @@ public class Constants {
                     "4. Analyze Disease \n " +
                     "5. Generate a meal plan \n " +
                     "6. Edit Profile";
+    public static final String USER_UPDATE =
+            " You may choose the following options: (Please enter a number from 1 to 9) \n" +
+            " 1. Change Username \n" +
+            " 2. Change Height \n" +
+            " 3. Change Weight \n" +
+            " 4. Change Age \n" +
+            " 5. Change Gender \n" +
+            " 6. Change Activity Level \n" +
+            " 7. Change Exercise Preferences \n" +
+            " 8. Change Symptoms \n" +
+            " 9. Change Food Preferences \n";
 
     // Prompts
     public static final String NAME_PROMPT = "Please enter your name:";
@@ -163,16 +176,44 @@ public class Constants {
     public static final String ID_PROMPT = "Please enter your personal ID";
     public static final String RETURN_MENU = "Do you want to go back to your user main menu page? (Y/N)";
     public static final String RESTART_PROGRAM = "Would you like to exit the program entirely (Y/N):";
+
+    // Update profile
     public static final String CHANGE_USERNAME = "Please enter your new username.";
+    public static final String CHANGE_HEIGHT = "Please enter your new height.";
+    public static final String CHANGE_WEIGHT = "Please enter your new weight.";
+    public static final String CHANGE_GENDER = "Please enter your new gender.";
+    public static final String CHANGE_AGE = "Please enter your new age.";
 
     // Messages
     public static final String ID_MESSAGE1 =
-            "Hello and welcome to DJ WEPNY's Personal Health app! The following is your ID:\n";
+            "Hello and welcome to DJ WEPNY's Personal Health app!\nThe following number is your ID:";
     public static final String ID_MESSAGE2 =
-            "\nPlease take note of this number as you will need it to access your account in the future.";
+            "\nPlease take note of this number as you will need it to access your account in the future.\n";
     public static final String REPORT = "Here is your report based on previously entered information: \n\n";
+
     public static final String UPDATED_PROFILE = "Your profile has been updated.";
-    public static final String UPDATED_USERNAME = "Your username has been updated.";
+    public static final String UPDATED_USERNAME = "Thank you. Currently updating your new username.";
+    public static final String UPDATED_HEIGHT = "Thank you. Currently updating your new height.";
+    public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
+    public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
+    public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
+  
+    // PAL Constants
+    public static final double M_SEDENTARY = 1.0;
+    public static final double M_LOW = 1.11;
+    public static final double M_ACTIVE = 1.25;
+    public static final double M_HIGH = 1.48;
+    public static final double F_SEDENTARY = 1.0;
+    public static final double F_LOW = 1.12;
+    public static final double F_ACTIVE = 1.27;
+    public static final double F_HIGH = 1.45;
+
+    // Exercise
+    public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";
+    public static final String ALL_MINOR_MUSCLES = "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, " +
+            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique";
+    public static final String ALL_EQUIPMENTS = "Dumbbells, Bar, Cable, Body Weight, Platform, Machine, " +
+            "Band, Kettle Bell, Medicine Ball, Bosu Ball";
 
     // Errors
     public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again. \n";
@@ -180,6 +221,5 @@ public class Constants {
             "Uh oh, an error has occurred! Please check that the files exist and are in the specified position.";
     public static final String NOT_ENOUGH_INFO = "There is currently not enough information " +
             "in your profile to generate this report.\n" + "Please fill in the following information:\n";
-
 
 }
