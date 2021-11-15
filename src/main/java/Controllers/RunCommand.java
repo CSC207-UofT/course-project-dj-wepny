@@ -1,16 +1,10 @@
 package Controllers;
 import Entities.User;
-import UseCases.BMIAnalyzer;
-import UseCases.DiseaseAnalyzer;
-import UseCases.EERAnalyzer;
-import UseCases.ExerciseAnalyzer;
-import UseCases.UserAnalyzer;
-import UseCases.UserManager;
+import UseCases.*;
 import Constants.Constants;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import UseCases.MealPlanGenerator;
 
 /**
  * This class executes command appropriately based on command given.
@@ -22,21 +16,8 @@ public class RunCommand {
     public UserAnalyzer useranalyzer;
 
     public RunCommand(int command) {
-        if (command == 1) {
-            this.useranalyzer = new BMIAnalyzer();
-        }
-        else if (command == 2){
-            this.useranalyzer = new EERAnalyzer();
-        }
-        else if (command == 3){
-            this.useranalyzer = new ExerciseAnalyzer();
-        }
-        else if (command == 4){
-            this.useranalyzer = new DiseaseAnalyzer();
-        }
-        else if (command == 5){
-            this.useranalyzer = new MealPlanGenerator();
-        }       // See MealPlanGenerator
+        UserAnalyzerFactory factory = new UserAnalyzerFactory();
+        this.useranalyzer = factory.create_analyzer(command);
     }
     public RunCommand(){}
 

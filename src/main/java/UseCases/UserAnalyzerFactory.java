@@ -20,9 +20,9 @@ public class UserAnalyzerFactory {
         else if (command == 4){
             analyzer = new DiseaseAnalyzer();
         }
-//        else if (command == 5){
-//            analyzer = new MealPlanGenerator();
-//        }
+        else if (command == 5){
+            analyzer = new MealPlanGenerator();
+        }
         else{
             analyzer = null;
         }
