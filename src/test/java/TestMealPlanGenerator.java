@@ -2,6 +2,7 @@ import Entities.Food;
 import Entities.IFood;
 import Entities.User;
 import UseCases.MealPlanGenerator;
+import UseCases.UserManager;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,8 +14,7 @@ import java.util.*;
  **/
 
 public class TestMealPlanGenerator {
-    private static final User user = new User(1931, "John P Wintergreen", "M", new HashMap<>());
-    private static final MealPlanGenerator mealPlanGenerator = new MealPlanGenerator(user);
+    private static final MealPlanGenerator mealPlanGenerator = new MealPlanGenerator();
     private static final HashMap<String, List<IFood>> foodMapTypical = new HashMap<>();
     private static final HashMap<String, List<IFood>> foodMapOneType = new HashMap<>();
     private static final HashMap<String, List<IFood>> foodMapAsymmetric = new HashMap<>();
@@ -171,6 +171,9 @@ public class TestMealPlanGenerator {
 
     @Test(timeout = 5000, expected = Exception.class)
     public void testAnalyzeThrowException() throws Exception {
+        // initiate a new user
+        User user = new User(1931, "John P Wintergreen", "M", new HashMap<>());
+        UserManager.addUser(true, user);
         user.setNumFoods(1000000);
         mealPlanGenerator.analyze();
     }
