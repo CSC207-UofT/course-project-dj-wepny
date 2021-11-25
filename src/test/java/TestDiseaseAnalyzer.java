@@ -30,11 +30,12 @@ public class TestDiseaseAnalyzer {
     }
 
     @Test(timeout = 500)
-    public void testOutput1() {
+    public void testOutputFinalDiseases() {
         user.addRiskFactor("yellowish_skin");
         user.addRiskFactor("nausea");
         disease.analyze();
-        assertEquals("These are your potential diseases: (if output = [], there is no disease that match the current symptoms you are experiencing)\n" +
+        assertEquals("These are your potential diseases: (if output = [], there is no disease that match " +
+                        "the current symptoms you are experiencing)\n" +
                         "[Hepatitis E, hepatitis A, Chronic cholestasis, Hepatitis C, Hepatitis D]",
                 disease.getResult());
     }
@@ -46,7 +47,7 @@ public class TestDiseaseAnalyzer {
     }
 
     @Test(timeout = 500)
-    public void testOutput2() {
+    public void testPromptDiseaseOptions() {
         user.addRiskFactor("vomiting");
 
         disease.analyze();
