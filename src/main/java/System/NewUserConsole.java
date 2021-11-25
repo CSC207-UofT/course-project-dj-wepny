@@ -13,8 +13,10 @@ import java.util.*;
 public class NewUserConsole {
     public static String NewUserMenu(Scanner reader) throws Exception {
         RunCommand infoGetter = new RunCommand();
-        System.out.println(Constants.WELCOME1 + infoGetter.retrieveUser("name") + Constants.WELCOME2 +
-                Constants.MAIN_MENU);
+        String username = (String) infoGetter.retrieveUser("name");
+//        System.out.println(Constants.WELCOME1 + infoGetter.retrieveUser("name") + Constants.WELCOME2 +
+//                Constants.MAIN_MENU);
+        Presenter.printWelcome(username);
 
         String input = reader.nextLine();
 
@@ -45,14 +47,18 @@ public class NewUserConsole {
     }
 
     public static void gatherInfo(Scanner reader){
-        System.out.println(Constants.BASIC_INFO);
+//        System.out.println(Constants.BASIC_INFO);
+        Presenter.printUserInfo("basic");
         String[] basicUserInfo = HelperConsole.getBasicUserInfo(reader);
-        System.out.println(Constants.PERSONAL_INFO);
+//        System.out.println(Constants.PERSONAL_INFO);
+        Presenter.printUserInfo("personal");
         String[] personalUserInfo = HelperConsole.getPersonalUserInfo(reader);
 
         RunCommand.createUser(basicUserInfo, personalUserInfo);
         RunCommand infoGetter = new RunCommand();
-        System.out.println( Constants.ID_MESSAGE1 + infoGetter.retrieveUser("id") + Constants.ID_MESSAGE2);
+        String ID = (String) infoGetter.retrieveUser("id");
+//        System.out.println( Constants.ID_MESSAGE1 + infoGetter.retrieveUser("id") + Constants.ID_MESSAGE2);
+        Presenter.printUserIDMessage(ID);
     }
 
 }
