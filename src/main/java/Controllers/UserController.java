@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entities.IUser;
 import Entities.User;
 import UseCases.UserManager;
 
@@ -32,7 +33,7 @@ public class UserController {
      *
      * @return a User Object
      */
-    public static User getCurrentUser() {
+    public static IUser getCurrentUser() {
         return UserManager.getCurrentUser();
     }
 
@@ -41,8 +42,8 @@ public class UserController {
      *
      * @return a hashmap of all users' id mapped to the user object
      */
-    public static HashMap<Integer, User> getExistingUsers() {
-        HashMap<Integer, User> allUser;
+    public static HashMap<Integer, IUser> getExistingUsers() {
+        HashMap<Integer, IUser> allUser;
         allUser = UserManager.getExistingUsers();
 
         return allUser;

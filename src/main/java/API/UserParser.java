@@ -1,19 +1,13 @@
 package API;
 
 import Controllers.UserController;
-import Entities.User;
+import Entities.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-
-import Entities.FoodIsLowCarbs;
-import Entities.FoodFilterCriterion;
-import Entities.FoodIsLowFat;
-import Entities.FoodIsLowSugar;
-import Entities.FoodIsVegetarian;
 
 
 /**
@@ -56,21 +50,21 @@ public class UserParser {
     public static void writeUserInfo(String type, String path) throws IOException {
         // if the user is a new user, write the user information by appending to the file
         if (type.equals("write")) {
-            User user = UserController.getCurrentUser();
+            IUser user = UserController.getCurrentUser();
             writeIntoFile(user, path);
         }
         // if the user is an existing user and update their profile, rewrite the whole file
         // with the updated information.
         else if (type.equals("update")) {
             new FileWriter(path, false).close();
-            HashMap<Integer, User> allUsers = UserController.getExistingUsers();
+            HashMap<Integer, IUser> allUsers = UserController.getExistingUsers();
             String header = "id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food\n";
             FileWriter writeInfo;
             writeInfo = new FileWriter(path, true);
             writeInfo.write(header);
 
             writeInfo.close();
-            for (User user : allUsers.values()) {
+            for (IUser user : allUsers.values()) {
                 writeIntoFile(user, path);
             }
         }
@@ -82,7 +76,7 @@ public class UserParser {
      * @param user is the user whose information is writing into the file
      * @throws IOException In case if there's something wrong with the file.
      */
-    public static void writeIntoFile(User user, String path) throws IOException {
+    public static void writeIntoFile(IUser user, String path) throws IOException {
         // turn the basic information of user into String with , separating the different information
         String userInfo = user.getId() + "," + user.getUsername() + "," + user.getGender() + "," +
                 user.getPersonalData().get("weight") + "," + user.getPersonalData().get("height") + "," +
