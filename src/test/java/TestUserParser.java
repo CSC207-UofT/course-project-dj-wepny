@@ -20,7 +20,7 @@ public class TestUserParser {
     User user;
 
     @Before
-    public void setUp1() {
+    public void setUpUser() {
         HashMap<String, Object> userInfo = new HashMap<>();
 
         userInfo.put("height", "1.88");
@@ -32,7 +32,7 @@ public class TestUserParser {
     }
 
     @Test(timeout = 500)
-    public void testOutput1() throws IOException {
+    public void testOutputWrite() throws IOException {
         // write the information of the new user into TestParser.csv
         UserParser.writeUserInfo("write", Constants.TEST_USER_FILE);
         // read the TestParser.csv and store the information into an ArrayList
@@ -42,7 +42,7 @@ public class TestUserParser {
     }
 
     @Before
-    public void setUp2() throws IOException {
+    public void setUpNewInfoForUser() throws IOException {
         // read the TestParser.csv and store the information into an ArrayList
         ArrayList<String> userInfo = UserParser.readUserInfo(Constants.TEST_USER_FILE);
         // call UserController to read the userInfo to store the information of each user as a User object
@@ -57,7 +57,7 @@ public class TestUserParser {
     }
 
     @Test(timeout = 500)
-    public void testOutput2() throws IOException {
+    public void testOutputUpdateUser() throws IOException {
         // update the TestParser.csv
         UserParser.writeUserInfo("update", Constants.TEST_USER_FILE);
         // read the TestParser.csv and store the information into an ArrayList
