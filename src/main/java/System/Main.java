@@ -1,7 +1,7 @@
 package System;
 
 import Controllers.UserController;
-import Constants.Constants;
+import Constants.*;
 import API.UserParser;
 
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class Main {
                 }
             } catch (Exception exception) {
                 System.out.println(exception.getMessage());
-                System.out.println(Constants.FILE_LOC_ERROR);
+                System.out.println(ErrorConstants.FILE_LOC_ERROR);
             }
 
             // initiate a new scanner object to read user's input

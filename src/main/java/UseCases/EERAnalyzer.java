@@ -1,7 +1,7 @@
 package UseCases;
 
 import Entities.IUser;
-import Constants.Constants;
+import Constants.*;
 
 import java.util.HashMap;
 
@@ -43,7 +43,7 @@ public class EERAnalyzer implements UserAnalyzer {
         double energyRequirement = calculateEER(user);
 
         //Setting the resulting String.
-        result = Constants.DIVIDER + Constants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
+        result = Constants.DIVIDER + EERConstants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
                 Constants.DIVIDER;
     }
 
@@ -68,14 +68,14 @@ public class EERAnalyzer implements UserAnalyzer {
         // check PA value for male
         if (gender.equals("M")) {
             switch (activityRating) {
-                case Constants.SED:
-                    return Constants.M_SEDENTARY;
-                case Constants.LOW:
-                    return Constants.M_LOW;
-                case Constants.MID:
-                    return Constants.M_ACTIVE;
+                case EERConstants.SED:
+                    return EERConstants.M_SEDENTARY;
+                case EERConstants.LOW:
+                    return EERConstants.M_LOW;
+                case EERConstants.MID:
+                    return EERConstants.M_ACTIVE;
                 default:
-                    return Constants.M_HIGH;
+                    return EERConstants.M_HIGH;
             }
 
         }
@@ -83,14 +83,14 @@ public class EERAnalyzer implements UserAnalyzer {
         // check PA value for female
         if (gender.equals("F")) {
             switch (activityRating) {
-                case Constants.SED:
-                    return Constants.F_SEDENTARY;
-                case Constants.LOW:
-                    return Constants.F_LOW;
-                case Constants.MID:
-                    return Constants.F_ACTIVE;
+                case EERConstants.SED:
+                    return EERConstants.F_SEDENTARY;
+                case EERConstants.LOW:
+                    return EERConstants.F_LOW;
+                case EERConstants.MID:
+                    return EERConstants.F_ACTIVE;
                 default:
-                    return Constants.F_HIGH;
+                    return EERConstants.F_HIGH;
             }
         }
 

@@ -1,7 +1,7 @@
 package UseCases;
 
 import Entities.IUser;
-import Constants.Constants;
+import Constants.*;
 
 import java.util.HashMap;
 
@@ -50,12 +50,12 @@ public class BMIAnalyzer implements UserAnalyzer {
         float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
 
-        String intro = Constants.DIVIDER + Constants.BMI_INTRO + (double) Math.round(bmi * 100) / 100 + ".";
+        String intro = Constants.DIVIDER + BMIConstants.BMI_INTRO + (double) Math.round(bmi * 100) / 100 + ".";
         String health = getBMIStatus(bmi);
         String username = user.getUsername();
 
         // set result to the string that will be prompt to the user
-        this.result = intro + Constants.EMPTY_LINE + username + Constants.BMI_ANALYSIS + health + Constants.DIVIDER;
+        this.result = intro + Constants.EMPTY_LINE + username + BMIConstants.BMI_ANALYSIS + health + Constants.DIVIDER;
     }
 
     /**
@@ -68,14 +68,14 @@ public class BMIAnalyzer implements UserAnalyzer {
         String health;
 
         //checking the health state of user
-        if (bmi >= Constants.OBESE_BMI) {
-            health = Constants.OBESE;
-        } else if (bmi >= Constants.OVERWEIGHT_BMI) {
-            health = Constants.OVERWEIGHT;
-        } else if (bmi >= Constants.HEALTHY_BMI) {
-            health = Constants.HEALTHY;
+        if (bmi >= BMIConstants.OBESE_BMI) {
+            health = BMIConstants.OBESE;
+        } else if (bmi >= BMIConstants.OVERWEIGHT_BMI) {
+            health = BMIConstants.OVERWEIGHT;
+        } else if (bmi >= BMIConstants.HEALTHY_BMI) {
+            health = BMIConstants.HEALTHY;
         } else {
-            health = Constants.UNDERWEIGHT;
+            health = BMIConstants.UNDERWEIGHT;
         }
         return health;
     }

@@ -3,7 +3,7 @@ package UseCases;
 import Entities.FoodFilterCriterion;
 import Entities.IFood;
 import Entities.IUser;
-import Constants.Constants;
+import Constants.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class MealPlanGenerator implements UserAnalyzer {
             throw new Exception("Requested number of food items greater than total food items in food map.");
         }
         // 2. perform additional filters to only keep numFoods items
-        String intro = user.getUsername() + Constants.MEALPLAN_INTRO;
+        String intro = user.getUsername() + MealPlanConstants.MEALPLAN_INTRO;
         StringBuilder msg = new StringBuilder();
         for (IFood food : filterFoodMap(foodMetCriteria, numFoods)) {
             msg.append(food.toStrings());
