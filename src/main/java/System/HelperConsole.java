@@ -1,5 +1,6 @@
 package System;
 
+import Controllers.Presenter;
 import Controllers.RunCommand;
 import Constants.Constants;
 
@@ -20,14 +21,17 @@ public class HelperConsole {
      * @return an array of strings of some basic information about the user.
      */
     public static String[] getBasicUserInfo(Scanner reader) {
-        System.out.println(Constants.NAME_PROMPT);
+//        System.out.println(Constants.NAME_PROMPT);
+        Presenter.printUserInfo("name");
         String name = reader.nextLine();
 
-        System.out.println(Constants.GENDER_PROMPT);
+//        System.out.println(Constants.GENDER_PROMPT);
+        Presenter.printUserInfo("gender");
         String gender = reader.nextLine();
 
         while (!gender.equals("M") && !gender.equals("F")) {
-            System.out.println(Constants.INVALID_INPUT + Constants.GENDER_PROMPT);
+//            System.out.println(Constants.INVALID_INPUT + Constants.GENDER_PROMPT);
+            Presenter.printInvalidPrompt("gender");
             gender = reader.nextLine();
         }
 
@@ -46,30 +50,36 @@ public class HelperConsole {
      * @return an array of strings of the user's height, weight, and age
      */
     public static String[] getPersonalUserInfo(Scanner reader) {
-        System.out.println(Constants.HEIGHT_PROMPT);
+//        System.out.println(Constants.HEIGHT_PROMPT);
+        Presenter.printUserInfo("height");
         String height = reader.nextLine();
 
         // checking to make sure the height input is a number between 0 m to 2.5 m
         while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
-            System.out.println(Constants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
+//            System.out.println(Constants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
+            Presenter.printInvalidPrompt("height");
             height = reader.nextLine();
         }
 
-        System.out.println(Constants.WEIGHT_PROMPT);
+//        System.out.println(Constants.WEIGHT_PROMPT);
+        Presenter.printUserInfo("weight");
         String weight = reader.nextLine();
 
         // checking to make sure the weight input is a number larger than 0
-        while (isNotNum(height) || Float.parseFloat(weight) <= 0) {
-            System.out.println(Constants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
+        while (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
+//            System.out.println(Constants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
+            Presenter.printInvalidPrompt("weight");
             weight = reader.nextLine();
         }
 
-        System.out.println(Constants.AGE_PROMPT);
+//        System.out.println(Constants.AGE_PROMPT);
+        Presenter.printUserInfo("age");
         String age = reader.nextLine();
 
         // checking to make sure the age input is a number larger or equal to 0
         while (isNotNum(age) || Integer.parseInt(age) < 0) {
-            System.out.println(Constants.INVALID_INPUT + Constants.AGE_PROMPT);
+//            System.out.println(Constants.INVALID_INPUT + Constants.AGE_PROMPT);
+            Presenter.printInvalidPrompt("age");
             age = reader.nextLine();
         }
 
@@ -83,12 +93,14 @@ public class HelperConsole {
      * @return true if the user identify themselves as an existing user
      */
     public static boolean checkExisting(Scanner reader) {
-        System.out.println(Constants.ASK_EXISTING);
+//        System.out.println(Constants.ASK_EXISTING);
+        Presenter.printAskExisting();
         String exists = reader.nextLine();
 
         // making sure the input is equal to Y or N
         while (!exists.equals("Y") && !exists.equals("N")) {
-            System.out.println(Constants.INVALID_INPUT + Constants.ASK_EXISTING);
+//            System.out.println(Constants.INVALID_INPUT + Constants.ASK_EXISTING);
+            Presenter.printInvalidPrompt("existing");
             exists = reader.nextLine();
         }
         return exists.equals("Y");
@@ -101,11 +113,13 @@ public class HelperConsole {
      * @return True if the user wants to log out
      */
     public static boolean logOut(Scanner reader) {
-        System.out.println(Constants.RETURN_MENU);
+//        System.out.println(Constants.RETURN_MENU);
+        Presenter.printReturnMenu();
         String logOut = reader.nextLine();
 
         while (!logOut.equals("Y") && !logOut.equals("N")) {
-            System.out.println(Constants.INVALID_INPUT + Constants.RETURN_MENU);
+//            System.out.println(Constants.INVALID_INPUT + Constants.RETURN_MENU);
+            Presenter.printInvalidPrompt("return");
             logOut = reader.nextLine();
         }
         return logOut.equals("N");
@@ -118,11 +132,13 @@ public class HelperConsole {
      * @return true if the user would like to return to the main menu
      */
     public static boolean reStart(Scanner reader) {
-        System.out.println(Constants.RESTART_PROGRAM);
+//        System.out.println(Constants.RESTART_PROGRAM);
+        Presenter.printRestart();
         String restart = reader.nextLine();
 
         while (!restart.equals("N") & !restart.equals("Y")) {
-            System.out.println(Constants.INVALID_INPUT + Constants.RESTART_PROGRAM);
+//            System.out.println(Constants.INVALID_INPUT + Constants.RESTART_PROGRAM);
+            Presenter.printInvalidPrompt("restart");
             restart = reader.nextLine();
         }
         return restart.equals("Y");
@@ -140,7 +156,8 @@ public class HelperConsole {
         boolean check = true;
         while (check) {
             if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
-                System.out.println(Constants.INVALID_INPUT);
+//                System.out.println(Constants.INVALID_INPUT);
+                Presenter.printInvalidPrompt("invalid");
                 input = reader.nextLine();
             } else {
                 check = false;
