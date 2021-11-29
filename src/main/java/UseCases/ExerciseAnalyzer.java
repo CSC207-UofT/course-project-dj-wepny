@@ -60,13 +60,13 @@ public class ExerciseAnalyzer implements UserAnalyzer {
             }
         }
 
-        String intro = Constants.DIVIDER +
+        String intro = SystemConstants.DIVIDER +
                 ExerciseConstants.EXERCISE_INTRO1 + user.getUsername() + ExerciseConstants.EXERCISE_INTRO2;
 
         if (user_exercises.isEmpty()) { // no exercise suggestions :(
-            this.result = intro + ErrorConstants.NO_EXERCISES_FOUND + Constants.DIVIDER;
+            this.result = intro + Exceptions.NO_EXERCISES_FOUND + SystemConstants.DIVIDER;
         } else { // return exercise suggestions
-            this.result = intro + exercise_names + Constants.DIVIDER;
+            this.result = intro + exercise_names + SystemConstants.DIVIDER;
         }
     }
 
@@ -83,7 +83,7 @@ public class ExerciseAnalyzer implements UserAnalyzer {
                 append(ExerciseConstants.EX_DESC_USES).append(exercise.getEquipmentNeeded().toString()).
                 append(ExerciseConstants.EX_DESC_MAJOR).append(exercise.getMajorMuscleExercised()).
                 append(ExerciseConstants.EX_DESC_MINOR).append(exercise.getMinorMuscleExercised()).
-                append(ExerciseConstants.EMPTY_LINE);
+                append(SystemConstants.EMPTY_LINE);
         return new_exercise;
     }
 

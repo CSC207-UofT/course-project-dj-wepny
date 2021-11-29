@@ -3,7 +3,7 @@ package Constants;
 /**
  * This class contains all the constants related to ExerciseAnalyzer function.
  */
-public class ExerciseConstants extends Constants{
+public class ExerciseConstants {
 
     // ExerciseAnalyzer messages
     public static final String EXERCISE_START =

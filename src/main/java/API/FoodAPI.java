@@ -1,6 +1,6 @@
 package API;
 
-import Constants.Constants;
+import Constants.SystemConstants;
 import Entities.IFood;
 import Entities.Food;
 
@@ -41,9 +41,9 @@ public class FoodAPI {
         String name = metadata[1];
         String foodType = metadata[2];
         double calories = convertFromStringToDouble(metadata[3]);
-        double fat = convertFromStringToDouble(metadata[4]) / Constants.FAT_PER_DAY;
-        double carbohydrates = convertFromStringToDouble(metadata[6]) / Constants.CARB_PER_DAY;
-        double sugar = convertFromStringToDouble(metadata[7]) / Constants.SUGAR_PER_DAY;
+        double fat = convertFromStringToDouble(metadata[4]) / SystemConstants.FAT_PER_DAY;
+        double carbohydrates = convertFromStringToDouble(metadata[6]) / SystemConstants.CARB_PER_DAY;
+        double sugar = convertFromStringToDouble(metadata[7]) / SystemConstants.SUGAR_PER_DAY;
         boolean vegFriendly = (!metadata[2].contains("Meats"));
 
         // Create and return a new food object.
@@ -57,7 +57,7 @@ public class FoodAPI {
      */
     public static List<IFood> readFoodFromCSV() {
         List<IFood> foodList = new ArrayList<>();
-        Path pathToFile = Paths.get(Constants.FOOD_DATASET_PATH);
+        Path pathToFile = Paths.get(SystemConstants.FOOD_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

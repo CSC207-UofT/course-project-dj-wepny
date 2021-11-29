@@ -3,7 +3,7 @@ package Constants;
 /**
  * This class contains constants relative to the EERAnalyzer function.
  */
-public class EERConstants extends Constants{
+public class EERConstants {
     // EER
     // Activity Level
     public static final String SED = "Sedentary";

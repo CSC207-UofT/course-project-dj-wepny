@@ -1,6 +1,6 @@
 package Constants;
 
-public class DiseaseConstants extends Constants{
+public class DiseaseConstants {
 
     // Disease
     public static final String DISEASE_START =

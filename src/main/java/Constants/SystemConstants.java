@@ -3,7 +3,7 @@ package Constants;
 /**
  * This class contains all the constants related to the system.
  */
-public class Constants {
+public class SystemConstants {
 
     // UserParser
     public static final String USER_FILE = "src/main/data/UserInfo.csv";
@@ -17,6 +17,7 @@ public class Constants {
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;
     public static final double PROTEIN_PER_DAY = 50.0;
+    // This varialbe is never used so maybe we can remove it?
 
     // Decorators
     public static final String DIVIDER = "\n*****************************************************************************\n";

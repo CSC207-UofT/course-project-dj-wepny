@@ -43,8 +43,8 @@ public class EERAnalyzer implements UserAnalyzer {
         double energyRequirement = calculateEER(user);
 
         //Setting the resulting String.
-        result = Constants.DIVIDER + EERConstants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
-                Constants.DIVIDER;
+        result = SystemConstants.DIVIDER + EERConstants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
+                SystemConstants.DIVIDER;
     }
 
     /**

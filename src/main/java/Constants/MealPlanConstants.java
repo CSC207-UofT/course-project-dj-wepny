@@ -3,7 +3,7 @@ package Constants;
 /**
  * This class contains constants relative to the MealPlanGenerator function.
  */
-public class MealPlanConstants extends Constants{
+public class MealPlanConstants {
 
     // MealPlanGenerator
     // Messages
