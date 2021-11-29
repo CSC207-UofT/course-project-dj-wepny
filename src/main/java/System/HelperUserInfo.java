@@ -37,7 +37,7 @@ public class HelperUserInfo {
             case "4":
                 return EERConstants.HIGH;
             default:
-                return ErrorConstants.INVALID_INPUT;
+                return Exceptions.INVALID_INPUT;
         }
     }
 
@@ -305,6 +305,6 @@ public class HelperUserInfo {
             commandExecutor.addInfo(foodPreference(reader), 5);
 
         }
-        return Constants.UPDATED_PROFILE; // this can be used for general cases 1-6
+        return SystemConstants.UPDATED_PROFILE; // this can be used for general cases 1-6
     }
 }

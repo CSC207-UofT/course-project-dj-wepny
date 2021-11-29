@@ -50,12 +50,12 @@ public class BMIAnalyzer implements UserAnalyzer {
         float bmi = (userWeight / (userHeight * userHeight));
         user.setPersonalData("BMI", bmi);
 
-        String intro = Constants.DIVIDER + BMIConstants.BMI_INTRO + (double) Math.round(bmi * 100) / 100 + ".";
+        String intro = SystemConstants.DIVIDER + BMIConstants.BMI_INTRO + (double) Math.round(bmi * 100) / 100 + ".";
         String health = getBMIStatus(bmi);
         String username = user.getUsername();
 
         // set result to the string that will be prompt to the user
-        this.result = intro + Constants.EMPTY_LINE + username + BMIConstants.BMI_ANALYSIS + health + Constants.DIVIDER;
+        this.result = intro + SystemConstants.EMPTY_LINE + username + BMIConstants.BMI_ANALYSIS + health + SystemConstants.DIVIDER;
     }
 
     /**

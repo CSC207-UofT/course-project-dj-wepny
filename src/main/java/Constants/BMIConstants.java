@@ -4,7 +4,7 @@ package Constants;
  * This class contains constants related to the BMIAnalyzer function.
  */
 
-public class BMIConstants extends Constants{
+public class BMIConstants {
     // BMIAnalyzer
     // BMI Constants
     public static final double OBESE_BMI = 30.0;

@@ -3,7 +3,7 @@ package Constants;
 /**
  * This class contains all the error messages in the program.
  */
-public class ErrorConstants extends Constants{
+public class Exceptions {
     // Errors
     public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again. \n";
     public static final String FILE_LOC_ERROR =

@@ -57,7 +57,7 @@ public class MealPlanGenerator implements UserAnalyzer {
             msg.append(food.toStrings());
         }
 
-        this.result = Constants.DIVIDER + intro + msg + Constants.DIVIDER;
+        this.result = SystemConstants.DIVIDER + intro + msg + SystemConstants.DIVIDER;
     }
 
     /**

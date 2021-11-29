@@ -1,6 +1,6 @@
 package API;
 
-import Constants.Constants;
+import Constants.SystemConstants;
 import Entities.IExercise;
 import Entities.Exercise;
 
@@ -30,7 +30,7 @@ public class ExerciseAPI {
 
         List<IExercise> exerciseList = new ArrayList<>();
 
-        Path pathToFile = Paths.get(Constants.EXERCISE_DATASET_PATH);
+        Path pathToFile = Paths.get(SystemConstants.EXERCISE_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.
