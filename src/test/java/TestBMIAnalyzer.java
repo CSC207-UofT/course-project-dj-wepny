@@ -17,29 +17,34 @@ public class TestBMIAnalyzer {
 
     @Before
     public void setUp() {
+        // Setup user info
         HashMap<String, Object> userInfoHealthy = new HashMap<>();
         HashMap<String, Object> userInfoUnderweight = new HashMap<>();
         HashMap<String, Object> userInfoOverweight = new HashMap<>();
         HashMap<String, Object> userInfoObese = new HashMap<>();
 
+        // Underweight user and bmi analyzer creation
         userInfoUnderweight.put("height", "1.70");
         userInfoUnderweight.put("weight", "20");
         userInfoUnderweight.put("age", "21");
         user_underweight = new User(20, "Amy", "F", userInfoUnderweight);
         bmi_underweight = new BMIAnalyzer(user_underweight);
 
+        // Underweight user and bmi analyzer creation
         userInfoHealthy.put("height", "1.70");
         userInfoHealthy.put("weight", "58");
         userInfoHealthy.put("age", "21");
         user_healthy = new User(21, "Sarah", "F", userInfoHealthy);
         bmi_healthy = new BMIAnalyzer(user_healthy);
 
+        // Overweight user and bmi analyzer creation
         userInfoOverweight.put("height", "1.70");
         userInfoOverweight.put("weight", "80");
         userInfoOverweight.put("age", "21");
         user_overweight = new User(22, "Sabrina", "F", userInfoOverweight);
         bmi_overweight = new BMIAnalyzer(user_overweight);
 
+        // Obese user and bmi analyzer creation
         userInfoObese.put("height", "1.70");
         userInfoObese.put("weight", "100");
         userInfoObese.put("age", "21");
