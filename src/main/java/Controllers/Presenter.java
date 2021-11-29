@@ -1,6 +1,6 @@
 package Controllers;
 
-import Constants.Constants;
+import Constants.*;
 import UseCases.UserAnalyzer;
 
 /**
@@ -74,31 +74,31 @@ public class Presenter {
     public static void printInvalidPrompt(String infoType) {
         switch (infoType) {
             case "invalid":
-                System.out.println(Constants.INVALID_INPUT);
+                System.out.println(ErrorConstants.INVALID_INPUT);
                 break;
             case "ID":
-                System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.ID_PROMPT);
                 break;
             case "gender":
-                System.out.println(Constants.INVALID_INPUT + Constants.GENDER_PROMPT);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.GENDER_PROMPT);
                 break;
             case "height":
-                System.out.println(Constants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
                 break;
             case "weight":
-                System.out.println(Constants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
                 break;
             case "age":
-                System.out.println(Constants.INVALID_INPUT + Constants.AGE_PROMPT);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.AGE_PROMPT);
                 break;
             case "existing":
-                System.out.println(Constants.INVALID_INPUT + Constants.ASK_EXISTING);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.ASK_EXISTING);
                 break;
             case "return":
-                System.out.println(Constants.INVALID_INPUT + Constants.RETURN_MENU);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.RETURN_MENU);
                 break;
             case "restart":
-                System.out.println(Constants.INVALID_INPUT + Constants.RESTART_PROGRAM);
+                System.out.println(ErrorConstants.INVALID_INPUT + Constants.RESTART_PROGRAM);
                 break;
         }
     }
@@ -110,7 +110,7 @@ public class Presenter {
     }
 
     public static void printNotEnoughInfoPrompt() {
-        System.out.println(Constants.NOT_ENOUGH_INFO);
+        System.out.println(ErrorConstants.NOT_ENOUGH_INFO);
     }
 
     public static void printAskExisting() {
@@ -132,7 +132,7 @@ public class Presenter {
                 System.out.println(Constants.ACTIVITY_MENU);
                 break;
             case "invalid":
-                System.out.println(Constants.INVALID_INPUT);
+                System.out.println(ErrorConstants.INVALID_INPUT);
                 break;
         }
     }
@@ -140,31 +140,32 @@ public class Presenter {
     public static void ExercisePrompt(String prompt) {
         switch (prompt) {
             case "start":
-                System.out.println(Constants.EXERCISE_START + Constants.EXERCISE_MAJOR);
+                System.out.println(ExerciseConstants.EXERCISE_START +
+                        ExerciseConstants.EXERCISE_MAJOR);
                 break;
             case "major error":
-                System.out.println(Constants.EXERCISE_MAJOR_ERROR);
+                System.out.println(ExerciseConstants.EXERCISE_MAJOR_ERROR);
                 break;
             case "minor":
-                System.out.println(Constants.EXERCISE_MINOR);
+                System.out.println(ExerciseConstants.EXERCISE_MINOR);
                 break;
             case "minor error":
-                System.out.println(Constants.EXERCISE_MINOR_ERROR);
+                System.out.println(ExerciseConstants.EXERCISE_MINOR_ERROR);
                 break;
             case "equipment1":
-                System.out.println(Constants.EXERCISE_EQUIPMENT);
+                System.out.println(ExerciseConstants.EXERCISE_EQUIPMENT);
                 break;
             case "equipment error 1":
-                System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_BG);
+                System.out.println(ExerciseConstants.EXERCISE_EQUIPMENT_ERROR_BG);
                 break;
             case "equipment2":
-                System.out.println(Constants.EXERCISE_EQUIPMENT2);
+                System.out.println(ExerciseConstants.EXERCISE_EQUIPMENT2);
                 break;
             case "equipment error 2":
-                System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_AF);
+                System.out.println(ExerciseConstants.EXERCISE_EQUIPMENT_ERROR_AF);
                 break;
             case "equipment3":
-                System.out.println(Constants.EXERCISE_EQUIPMENT3);
+                System.out.println(ExerciseConstants.EXERCISE_EQUIPMENT3);
                 break;
         }
     }
@@ -172,10 +173,10 @@ public class Presenter {
     public static void DiseasePrompt(String prompt) {
         switch (prompt) {
             case "start":
-                System.out.println(Constants.DISEASE_START);
+                System.out.println(DiseaseConstants.DISEASE_START);
                 break;
             case "description":
-                System.out.println(Constants.SYMPTOMS_DESC);
+                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
                 break;
         }
     }
@@ -187,22 +188,22 @@ public class Presenter {
     public static void FoodPrompt(String prompt) {
         switch (prompt) {
             case "welcome":
-                System.out.println(Constants.MEALPLAN_WELCOME);
+                System.out.println(MealPlanConstants.MEALPLAN_WELCOME);
                 break;
             case "low carb":
-                System.out.println(Constants.LOWCARBS);
+                System.out.println(MealPlanConstants.LOWCARBS);
                 break;
             case "low fat":
-                System.out.println(Constants.LOWFAT);
+                System.out.println(MealPlanConstants.LOWFAT);
                 break;
             case "low sugar":
-                System.out.println(Constants.LOWSUGAR);
+                System.out.println(MealPlanConstants.LOWSUGAR);
                 break;
             case "veg":
-                System.out.println(Constants.VEG);
+                System.out.println(MealPlanConstants.VEG);
                 break;
             case "num food":
-                System.out.println(Constants.NUM_FOODS);
+                System.out.println(MealPlanConstants.NUM_FOODS);
                 break;
         }
     }

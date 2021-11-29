@@ -1,6 +1,6 @@
 package System;
 
-import Constants.Constants;
+import Constants.*;
 import Controllers.Presenter;
 import Controllers.RunCommand;
 
@@ -29,15 +29,15 @@ public class HelperUserInfo {
 
         switch (userActivityLevel) {
             case "1":
-                return Constants.SED;
+                return EERConstants.SED;
             case "2":
-                return Constants.LOW;
+                return EERConstants.LOW;
             case "3":
-                return Constants.MID;
+                return EERConstants.MID;
             case "4":
-                return Constants.HIGH;
+                return EERConstants.HIGH;
             default:
-                return Constants.INVALID_INPUT;
+                return ErrorConstants.INVALID_INPUT;
         }
     }
 
@@ -54,7 +54,7 @@ public class HelperUserInfo {
         String majorMuscle = reader.nextLine();
 
         // making sure the user input is a valid major muscle
-        while (!Constants.ALL_MAJOR_MUSCLES.contains(majorMuscle)) {
+        while (!ExerciseConstants.ALL_MAJOR_MUSCLES.contains(majorMuscle)) {
 //            System.out.println(Constants.EXERCISE_MAJOR_ERROR);
             Presenter.ExercisePrompt("major error");
             majorMuscle = reader.nextLine();
@@ -64,7 +64,7 @@ public class HelperUserInfo {
         String minorMuscle = reader.nextLine();
 
         // making sure the user input is a valid minor muscle
-        while (!Constants.ALL_MINOR_MUSCLES.contains(minorMuscle)) {
+        while (!ExerciseConstants.ALL_MINOR_MUSCLES.contains(minorMuscle)) {
 //            System.out.println(Constants.EXERCISE_MINOR_ERROR);
             Presenter.ExercisePrompt("minor error");
             minorMuscle = reader.nextLine();
@@ -75,7 +75,7 @@ public class HelperUserInfo {
         StringBuilder equipment = new StringBuilder(reader.nextLine());
 
         // making sure the user input is a valid equipment
-        while (!Constants.ALL_EQUIPMENTS.contains(equipment.toString())) {
+        while (!ExerciseConstants.ALL_EQUIPMENTS.contains(equipment.toString())) {
 //            System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_BG);
             Presenter.ExercisePrompt("equipment error 1");
             equipment = new StringBuilder(reader.nextLine());
@@ -87,7 +87,7 @@ public class HelperUserInfo {
 
         // allow the user to enter as many equipments they want until they enter "None"
         while (!new_equipment.equals("None")) {
-            while (!Constants.ALL_EQUIPMENTS.contains(new_equipment) && !new_equipment.equals("None")) {
+            while (!ExerciseConstants.ALL_EQUIPMENTS.contains(new_equipment) && !new_equipment.equals("None")) {
 //                System.out.println(Constants.EXERCISE_EQUIPMENT_ERROR_AF);
                 Presenter.ExercisePrompt("equipment error 2");
                 new_equipment = reader.nextLine();
