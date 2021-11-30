@@ -17,9 +17,11 @@ public class TestExerciseAnalyzer {
 
     @Before
     public void setUp() {
+        // Setting up the user info hashmaps
         HashMap<String, Object> userInfoExist = new HashMap<>();
         HashMap<String, Object> userInfoNoMatch = new HashMap<>();
 
+        // Creating User and ExerciseAnalyzer for case with exercises printed
         userInfoExist.put("height", "1.80");
         userInfoExist.put("weight", "65");
         userInfoExist.put("age", "21");
@@ -29,6 +31,7 @@ public class TestExerciseAnalyzer {
         user_exist.setExercisePreference("equipment", "Dumbbells");
         exercises_exist = new ExerciseAnalyzer(user_exist);
 
+        // Creating User and ExerciseAnalyzer for case with no exercise matches found
         userInfoNoMatch.put("height", "1.80");
         userInfoNoMatch.put("weight", "70");
         userInfoNoMatch.put("age", "21");
@@ -92,6 +95,7 @@ public class TestExerciseAnalyzer {
                 exercises_exist.getResult());
     }
 
+    // arms, bicep, body weight
     @Test(timeout = 500)
     public void testNoOutput() {
         exercises_no_match.analyze();
