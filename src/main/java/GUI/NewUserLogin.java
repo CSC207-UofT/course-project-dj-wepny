@@ -17,7 +17,7 @@ public class NewUserLogin extends JFrame {
     private JTextField age;
     private JLabel invalidAge;
 
-    public NewUserLogin(){
+    public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);

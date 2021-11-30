@@ -45,7 +45,7 @@ public class NewUserConsole {
         return analyze_results.retrieveOutput();
     }
 
-    public static void gatherInfo(String input){
+    public static void gatherInfo(String input) {
 //        System.out.println(Constants.BASIC_INFO);
         Presenter.printUserInfo("basic");
         String[] basicUserInfo = HelperConsole.getBasicUserInfo(input);
