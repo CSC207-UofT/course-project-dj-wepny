@@ -12,6 +12,7 @@ public class NewUserLogin extends JFrame {
         this.setContentPane(newUserLoginMenu);
         this.setSize(1000, 700);
         this.setResizable(false);
+
     }
 
 }

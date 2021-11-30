@@ -8,7 +8,7 @@ public class ConsoleGUI extends JFrame{
     private JButton newUserButton;
     private JPanel console;
     private JFormattedTextField UserID;
-    private JTextPane welcomeMsg;
+    private JTextPane welcomeMessage;
     private JLabel IDError;
     private JButton enterID;
 
@@ -24,7 +24,6 @@ public class ConsoleGUI extends JFrame{
             NewUserLogin newUserLogin = new NewUserLogin();
             newUserLogin.setVisible(true);
         });
-
         enterID.addActionListener(e -> {
             String userInput = UserID.getText();
             if(!ConsoleForGUI.ExistingUserConsole.validID(userInput)){
