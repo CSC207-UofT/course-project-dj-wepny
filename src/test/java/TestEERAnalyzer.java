@@ -2,8 +2,8 @@
  *This file contains Junit test case for the EERAnalyzer.java
  */
 
-import Entities.User;
-import UseCases.EERAnalyzer;
+import entities.User;
+import usecases.EERAnalyzer;
 import org.junit.Before;
 import org.junit.Test;
 

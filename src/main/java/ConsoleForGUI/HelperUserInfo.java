@@ -1,11 +1,11 @@
 package ConsoleForGUI;
 
-import Constants.EERConstants;
-import Constants.Exceptions;
-import Constants.ExerciseConstants;
-import Constants.SystemConstants;
-import Controllers.Presenter;
-import Controllers.RunCommand;
+import constants.EERConstants;
+import constants.Exceptions;
+import constants.ExerciseConstants;
+import constants.SystemConstants;
+import controllers.Presenter;
+import controllers.RunCommand;
 
 import java.util.*;
 

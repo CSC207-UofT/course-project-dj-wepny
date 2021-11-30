@@ -1,9 +1,9 @@
 package ConsoleForGUI;
 
-import Constants.SystemConstants;
-import Controllers.Presenter;
-import Controllers.RunCommand;
-import Controllers.UserController;
+import constants.SystemConstants;
+import controllers.Presenter;
+import controllers.RunCommand;
+import controllers.UserController;
 
 import java.util.Scanner;
 

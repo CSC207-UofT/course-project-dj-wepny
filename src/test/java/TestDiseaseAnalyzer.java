@@ -3,9 +3,9 @@
  */
 
 
-import API.DiseaseAPI;
-import Entities.User;
-import UseCases.DiseaseAnalyzer;
+import api.DiseaseAPI;
+import entities.User;
+import usecases.DiseaseAnalyzer;
 import org.junit.*;
 
 import static org.junit.Assert.*;

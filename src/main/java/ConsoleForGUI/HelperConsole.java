@@ -1,8 +1,7 @@
 package ConsoleForGUI;
 
-import Controllers.Presenter;
-import Controllers.RunCommand;
-import Controllers.UserController;
+import controllers.Presenter;
+import controllers.RunCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;

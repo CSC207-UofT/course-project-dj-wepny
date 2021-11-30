@@ -1,18 +1,16 @@
 package GUI;
 
-import API.UserParser;
-import Constants.Exceptions;
-import Constants.SystemConstants;
-import Controllers.UserController;
+import api.UserParser;
+import constants.Exceptions;
+import constants.SystemConstants;
+import controllers.UserController;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainGUI {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         while (true) {
             try {
                 // read the userInfo
@@ -26,9 +24,9 @@ public class MainGUI {
                 System.out.println(exception.getMessage());
                 System.out.println(Exceptions.FILE_LOC_ERROR);
             }
-
           break;
         }
+        // Calling the main console gui
         JFrame console = new ConsoleGUI();
         console.setVisible(true);
     }

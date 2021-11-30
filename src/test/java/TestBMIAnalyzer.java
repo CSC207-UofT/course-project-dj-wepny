@@ -2,11 +2,10 @@
  *This file contains Junit test case for BMIAnalyzer.java
  */
 
-import Entities.User;
-import UseCases.BMIAnalyzer;
+import entities.User;
+import usecases.BMIAnalyzer;
 import org.junit.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
