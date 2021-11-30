@@ -2,6 +2,7 @@ package ConsoleForGUI;
 
 import Controllers.Presenter;
 import Controllers.RunCommand;
+import Controllers.UserController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,6 +86,38 @@ public class HelperConsole {
         }
 
         return new String[]{height, weight, age};
+    }
+
+    // check invalid gender input in GUI
+    public static boolean validGender(String gender){
+        if (!gender.equals("M") && !gender.equals("F")) {
+            return false;
+        }
+        return true;
+    }
+
+    // check invalid height input in GUI
+    public static boolean validHeight(String height){
+        if (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
+            return false;
+        }
+        return true;
+    }
+
+    // check invalid weight input in GUI
+    public static boolean validWeight(String weight){
+        if (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    // check invalid age input in GUI
+    public static boolean validAge(String age){
+        if (isNotNum(age) || Integer.parseInt(age) < 0) {
+            return false;
+        }
+        return true;
     }
 
     /**

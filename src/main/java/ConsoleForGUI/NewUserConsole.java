@@ -60,4 +60,9 @@ public class NewUserConsole {
         Presenter.printUserIDMessage(ID);
     }
 
+    // added new createUser method for the NewUserLogin of the GUI
+    public static void createUser(String[] basicUserInfo, String[] personalUserInfo) {
+        RunCommand.createUser(basicUserInfo, personalUserInfo);
+    }
+
 }
