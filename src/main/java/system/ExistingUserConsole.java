@@ -1,9 +1,9 @@
-package System;
+package system;
 
-import Controllers.Presenter;
-import Controllers.RunCommand;
-import Controllers.UserController;
-import Constants.SystemConstants;
+import controllers.Presenter;
+import controllers.RunCommand;
+import controllers.UserController;
+import constants.SystemConstants;
 
 import java.util.*;
 

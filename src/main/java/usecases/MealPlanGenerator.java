@@ -1,9 +1,9 @@
-package UseCases;
+package usecases;
 
-import Entities.FoodFilterCriterion;
-import Entities.IFood;
-import Entities.IUser;
-import Constants.*;
+import entities.FoodFilterCriterion;
+import entities.IFood;
+import entities.IUser;
+import constants.*;
 
 import java.util.ArrayList;
 import java.util.List;

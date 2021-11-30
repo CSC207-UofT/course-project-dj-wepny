@@ -1,8 +1,8 @@
-package API;
+package api;
 
-import Constants.SystemConstants;
-import Entities.IExercise;
-import Entities.Exercise;
+import constants.SystemConstants;
+import entities.IExercise;
+import entities.Exercise;
 
 import java.io.BufferedReader;
 import java.io.IOException;

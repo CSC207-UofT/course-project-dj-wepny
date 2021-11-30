@@ -2,11 +2,11 @@
  *This file contains Junit test case for the UserParser.java
  */
 
-import Constants.SystemConstants;
-import Controllers.UserController;
-import Entities.User;
-import UseCases.UserManager;
-import API.UserParser;
+import constants.SystemConstants;
+import controllers.UserController;
+import entities.User;
+import usecases.UserManager;
+import api.UserParser;
 import org.junit.Before;
 import org.junit.Test;
 

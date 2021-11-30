@@ -1,8 +1,8 @@
-package API;
+package api;
 
-import Constants.SystemConstants;
-import Entities.IFood;
-import Entities.Food;
+import constants.SystemConstants;
+import entities.IFood;
+import entities.Food;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,7 +1,7 @@
-package System;
+package system;
 
-import Controllers.Presenter;
-import Controllers.RunCommand;
+import controllers.Presenter;
+import controllers.RunCommand;
 
 import java.util.*;
 

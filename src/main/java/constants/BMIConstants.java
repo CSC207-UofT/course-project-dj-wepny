@@ -1,4 +1,4 @@
-package Constants;
+package constants;
 
 /**
  * This class contains constants related to the BMIAnalyzer function.

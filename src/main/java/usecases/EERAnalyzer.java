@@ -1,7 +1,7 @@
-package UseCases;
+package usecases;
 
-import Entities.IUser;
-import Constants.*;
+import entities.IUser;
+import constants.*;
 
 import java.util.HashMap;
 

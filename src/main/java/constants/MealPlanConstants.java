@@ -1,4 +1,4 @@
-package Constants;
+package constants;
 
 /**
  * This class contains constants relative to the MealPlanGenerator function.

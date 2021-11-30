@@ -5,8 +5,7 @@
 import entities.User;
 import usecases.BMIAnalyzer;
 import org.junit.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 

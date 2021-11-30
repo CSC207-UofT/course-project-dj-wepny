@@ -1,6 +1,6 @@
-package API;
+package api;
 
-import Constants.SystemConstants;
+import constants.SystemConstants;
 
 import java.io.BufferedReader;
 import java.io.IOException;

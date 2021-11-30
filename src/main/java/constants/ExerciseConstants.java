@@ -1,4 +1,4 @@
-package Constants;
+package constants;
 
 /**
  * This class contains all the constants related to ExerciseAnalyzer function.

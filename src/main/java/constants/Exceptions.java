@@ -1,4 +1,4 @@
-package Constants;
+package constants;
 
 /**
  * This class contains all the error messages in the program.

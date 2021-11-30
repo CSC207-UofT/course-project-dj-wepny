@@ -1,4 +1,4 @@
-package System;
+package system;
 
 import javax.swing.*;
 import java.awt.*;

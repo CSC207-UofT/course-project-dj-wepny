@@ -1,9 +1,9 @@
-package UseCases;
+package usecases;
 
-import API.ExerciseAPI;
-import Entities.IExercise;
-import Entities.IUser;
-import Constants.*;
+import api.ExerciseAPI;
+import entities.IExercise;
+import entities.IUser;
+import constants.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

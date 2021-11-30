@@ -1,7 +1,7 @@
-package Controllers;
+package controllers;
 
-import Constants.*;
-import UseCases.UserAnalyzer;
+import constants.*;
+import usecases.UserAnalyzer;
 
 /**
  * This is a Presenter class that retrieves the results from the use cases, and then is called by

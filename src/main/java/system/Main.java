@@ -1,8 +1,8 @@
-package System;
+package system;
 
-import Controllers.UserController;
-import Constants.*;
-import API.UserParser;
+import controllers.UserController;
+import constants.*;
+import api.UserParser;
 
 import java.util.Scanner;
 import java.util.ArrayList;

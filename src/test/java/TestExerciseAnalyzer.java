@@ -4,10 +4,11 @@
  */
 
 import org.junit.*;
-import static org.junit.Assert.*;
+
 import java.util.HashMap;
 import usecases.ExerciseAnalyzer;
 import entities.User;
+import static org.junit.Assert.assertEquals;
 
 public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises;
