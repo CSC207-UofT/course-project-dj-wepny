@@ -1,6 +1,6 @@
 Responsibilities:
 A Controller Class that is responsible for directing the information obtained from the
-API to the corresponding use cases
+api to the corresponding use cases
 
 Methods:
 getFood

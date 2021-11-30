@@ -6,8 +6,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.HashMap;
-import UseCases.ExerciseAnalyzer;
-import Entities.User;
+import usecases.ExerciseAnalyzer;
+import entities.User;
 
 public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises;

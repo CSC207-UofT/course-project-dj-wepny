@@ -1,6 +1,6 @@
 # CSC207 Project - Personal Health App
 
-CSC207 Project by DJ WEPNY. This project encodes for a Personal Health System that can create a meal plan, output BMI and EER, suggest workout ideas,
+CSC207 Project by DJ WEPNY. This project encodes for a Personal Health system that can create a meal plan, output BMI and EER, suggest workout ideas,
 and calculate risk factors for certain diseases through based on information provided by the user.
 
 ## Table of contents

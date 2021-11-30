@@ -1,4 +1,4 @@
-*extends API*
+*extends api*
 Responsibilities:
 Retrieves the exercise/workout moves data and stores each move as an Exercise Object
 

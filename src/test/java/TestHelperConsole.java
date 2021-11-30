@@ -1,6 +1,6 @@
-import Entities.User;
-import System.HelperConsole;
-import UseCases.UserManager;
+import entities.User;
+import system.HelperConsole;
+import usecases.UserManager;
 import org.junit.Before;
 import org.junit.Test;
 

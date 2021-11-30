@@ -1,6 +1,6 @@
-import Controllers.APIController;
-import Entities.*;
-import UseCases.FoodManager;
+import controllers.APIController;
+import entities.*;
+import usecases.FoodManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,6 +38,30 @@ public class TestFoodManager {
     public void testGetFoodByCriteriaVegetarianAndLowCarbs() {
         criteriaList.add(new FoodIsVegetarian());
         criteriaList.add(new FoodIsLowCarbs());
+        List<IFood> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
+        for (IFood food : foodList) {
+            if (FoodManager.foodSatisfiesCriteria(food, criteriaList)) {
+                filterFoodList.remove(food);
+            }
+        }
+        assert filterFoodList.isEmpty();
+    }
+
+    @Test(timeout = 5000)
+    public void testGetFoodByCriteriaLowFat() {
+        criteriaList.add(new FoodIsLowFat());
+        List<IFood> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
+        for (IFood food : foodList) {
+            if (FoodManager.foodSatisfiesCriteria(food, criteriaList)) {
+                filterFoodList.remove(food);
+            }
+        }
+        assert filterFoodList.isEmpty();
+    }
+
+    @Test(timeout = 5000)
+    public void testGetFoodByCriteriaLowSugar() {
+        criteriaList.add(new FoodIsLowSugar());
         List<IFood> filterFoodList = convertMapToList(FoodManager.getFoodByCriteria(criteriaList));
         for (IFood food : foodList) {
             if (FoodManager.foodSatisfiesCriteria(food, criteriaList)) {
