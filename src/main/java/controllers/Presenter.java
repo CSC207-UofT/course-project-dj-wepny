@@ -9,7 +9,7 @@ import usecases.UserAnalyzer;
  */
 public class Presenter {
 
-    private final UserAnalyzer userAnalyzer;
+    private static UserAnalyzer userAnalyzer;
 
     /**
      * Initiating a Presenter by declaring the type of analyzer it needs to retrieve results from
@@ -27,7 +27,7 @@ public class Presenter {
      *
      * @return returns the output calculated by the userAnalyzer
      */
-    public String retrieveOutput() {
+    public static String retrieveOutput() {
         return userAnalyzer.getResult();
     }
 
