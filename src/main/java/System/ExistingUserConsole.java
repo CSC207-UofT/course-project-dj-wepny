@@ -3,7 +3,7 @@ package System;
 import Controllers.Presenter;
 import Controllers.RunCommand;
 import Controllers.UserController;
-import Constants.Constants;
+import Constants.SystemConstants;
 
 import java.util.*;
 
@@ -21,12 +21,14 @@ public class ExistingUserConsole {
      * @return the id the user entered if it's valid
      */
     public static int loginPage(Scanner reader) {
-        System.out.println(Constants.ID_PROMPT);
+//        System.out.println(Constants.ID_PROMPT);
+        Presenter.printIDPrompt();
         String id = reader.nextLine();
 
         // check if the input is a number and is a valid id of an existing user
         while (HelperConsole.isNotNum(id) || !UserController.checkUserExist(id)) {
-            System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
+//            System.out.println(Constants.INVALID_INPUT + Constants.ID_PROMPT);
+            Presenter.printInvalidPrompt("ID");
             id = reader.nextLine();
         }
         // return the id
@@ -48,8 +50,10 @@ public class ExistingUserConsole {
         // setting the user as the currentUser
         currentUser.setCurrentUser(id);
 
-        System.out.println(Constants.WELCOME_EXISTING + currentUser.retrieveUser("name") +
-                Constants.WELCOME2 + Constants.EXISTING_USER_MENU);
+        String name = (String) currentUser.retrieveUser("name");
+//        System.out.println(Constants.WELCOME_EXISTING + currentUser.retrieveUser("name") +
+//                Constants.WELCOME2 + Constants.EXISTING_USER_MENU);
+        Presenter.printExistingUserWelcome(name);
 
         String input = reader.nextLine();
 
@@ -66,7 +70,8 @@ public class ExistingUserConsole {
                 // if the information needed to access EER report is missing
                 if (HelperConsole.noInfoFound(command)) {
                     // allows user to add the information
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
+//                    System.out.println(Constants.NOT_ENOUGH_INFO);
+                    Presenter.printNotEnoughInfoPrompt();
                     String level = HelperUserInfo.activityLevel(reader);
                     commandExecutor.addInfo(level, command);
                 }
@@ -75,7 +80,8 @@ public class ExistingUserConsole {
                 // if the information needed to access exercise report is missing
                 if (HelperConsole.noInfoFound(command)) {
                     // allows user to add the information
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
+//                    System.out.println(Constants.NOT_ENOUGH_INFO);
+                    Presenter.printNotEnoughInfoPrompt();
                     String[] exercises = HelperUserInfo.exercisePreference(reader);
                     commandExecutor.addInfo(exercises, command);
                 }
@@ -83,7 +89,8 @@ public class ExistingUserConsole {
             case 4:
                 // if the information needed to access disease report is missing
                 if (HelperConsole.noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
+//                    System.out.println(Constants.NOT_ENOUGH_INFO);
+                    Presenter.printNotEnoughInfoPrompt();
                     // allows user to add the information
                     return HelperUserInfo.diseaseList(reader, commandExecutor);
                 }
@@ -91,7 +98,8 @@ public class ExistingUserConsole {
             case 5:
                 // if the information needed to access meal plan report is missing
                 if (HelperConsole.noInfoFound(command)) {
-                    System.out.println(Constants.NOT_ENOUGH_INFO);
+//                    System.out.println(Constants.NOT_ENOUGH_INFO);
+                    Presenter.printNotEnoughInfoPrompt();
                     // allows user to add the information
                     commandExecutor.addInfo(HelperUserInfo.foodPreference(reader), command);
                 }
@@ -104,7 +112,7 @@ public class ExistingUserConsole {
         // outputting the result from the analyzers using the presenter
         commandExecutor.executeCommand();
         Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        return Constants.REPORT + analyze_results.retrieveOutput();
+        return SystemConstants.REPORT + analyze_results.retrieveOutput();
     }
 
 }

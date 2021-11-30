@@ -7,9 +7,6 @@ import API.DiseaseAPI;
 import Entities.User;
 import UseCases.DiseaseAnalyzer;
 import org.junit.*;
-//import org.junit.jupiter.api.BeforeEach;
-
-import javax.swing.*;
 
 import static org.junit.Assert.*;
 
@@ -74,9 +71,7 @@ public class TestDiseaseAnalyzer {
         //All possible symptoms to be generated in the options
         for (String disease: dataset.keySet()){
             if(dataset.get(disease).containsAll(user.getRiskFactor())){
-                for(String symptom: dataset.get(disease)) {
-                    allSymptoms.add(symptom);
-                }
+                allSymptoms.addAll(dataset.get(disease));
 
             }
         }

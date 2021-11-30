@@ -2,7 +2,7 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 9728,allan,F,90,1.9,37,Legs*Quads*Band,blackheads,Active,N*Y*Y*N*9
 9796,Ed,F,70,1.88,35,Arms*Bicep*Bar/Band,weight_loss,null,Y*Y*Y*Y*3
 8388,Edward,M,76,1.76,19,Legs*Quads*Body Weight/Bar,null,Low Active,null
-9799,Nick,M,85,1.88,56,null,headache*loss_of_balance,null,null
+9799,Nick,M,85,1.88,56,null,headache*loss_of_balance,Sedentary,null
 6376,Aidan,M,63,1.7,14,null,restlessness,null,null
 648,Bella,F,66,1.8,29,Core*Chest*Band,cramps,Sedentary,null
 5579,Eric,F,76,1.8,30,Back*Shoulders*Bar/Platform,internal_itching,Low Active,Y*N*Y*N*10
@@ -17,4 +17,4 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 6297,April,F,23,25,23,null,null,null,null
 9082,May,F,64,1.78,34,null,fatigue,null,null
 6267,Frank,M,56,1.7,18,Arms*Shoulders*Bar/Band,altered_sensorium,Active,Y*N*Y*N*6
-1566,Amy,F,58,1.70,21,null,null,Active,null
+1566,Amy,F,58,1.70,21,null,null,Active,Y*N*N*N*4

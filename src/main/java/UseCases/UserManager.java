@@ -16,7 +16,7 @@ import Entities.FoodIsVegetarian;
  * and updating user's profile and personal information.
  */
 public class UserManager {
-    private static final HashMap<Integer, User> existingUsers = new HashMap<>();
+    private static final HashMap<Integer, Entities.IUser> existingUsers = new HashMap<>();
     private static User currentUser;
 
     /**
@@ -195,7 +195,7 @@ public class UserManager {
     }
 
     // getters for the private instance variables.
-    public static HashMap<Integer, User> getExistingUsers() {
+    public static HashMap<Integer, Entities.IUser> getExistingUsers() {
         return existingUsers;
     }
 
@@ -205,7 +205,7 @@ public class UserManager {
 
     // setter for the private instance variable CurrentUser.
     public static void setCurrentUser(int id) {
-        currentUser = existingUsers.get(id);
+        currentUser = (User) existingUsers.get(id);
     }
 }
 
