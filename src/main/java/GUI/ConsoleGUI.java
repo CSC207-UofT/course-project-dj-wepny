@@ -1,6 +1,6 @@
 package GUI;
 
-import Controllers.RunCommand;
+import controllers.RunCommand;
 
 import javax.swing.*;
 

@@ -1,9 +1,9 @@
 package GUI;
 
-import API.UserParser;
-import Constants.Exceptions;
-import Constants.SystemConstants;
-import Controllers.UserController;
+import api.UserParser;
+import constants.Exceptions;
+import constants.SystemConstants;
+import controllers.UserController;
 
 import javax.swing.*;
 import java.util.ArrayList;

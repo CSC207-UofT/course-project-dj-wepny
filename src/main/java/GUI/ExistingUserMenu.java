@@ -1,8 +1,5 @@
 package GUI;
 
-import Controllers.Presenter;
-import Controllers.RunCommand;
-
 import javax.swing.*;
 
 public class ExistingUserMenu extends JFrame {
