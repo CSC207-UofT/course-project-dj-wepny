@@ -1,6 +1,6 @@
-package api;
+package API;
 
-import constants.Constants;
+import Constants.SystemConstants;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class DiseaseAPI {
      */
     public static HashMap<String, Set<String>> readFromDiseaseCSV() {
         HashMap<String, Set<String>> diseaseMap = new HashMap<>();
-        Path pathToFile = Paths.get(Constants.DISEASE_DATASET_PATH);
+        Path pathToFile = Paths.get(SystemConstants.DISEASE_DATASET_PATH);
 
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
             // Skipping the header.

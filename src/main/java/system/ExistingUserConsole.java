@@ -1,9 +1,9 @@
-package system;
+package System;
 
-import controllers.Presenter;
-import controllers.RunCommand;
-import controllers.UserController;
-import constants.Constants;
+import Controllers.Presenter;
+import Controllers.RunCommand;
+import Controllers.UserController;
+import Constants.SystemConstants;
 
 import java.util.*;
 
@@ -112,7 +112,7 @@ public class ExistingUserConsole {
         // outputting the result from the analyzers using the presenter
         commandExecutor.executeCommand();
         Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        return Constants.REPORT + analyze_results.retrieveOutput();
+        return SystemConstants.REPORT + analyze_results.retrieveOutput();
     }
 
 }

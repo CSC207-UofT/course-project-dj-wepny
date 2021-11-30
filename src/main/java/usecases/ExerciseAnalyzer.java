@@ -1,9 +1,9 @@
-package usecases;
+package UseCases;
 
-import api.ExerciseAPI;
-import entities.IExercise;
-import entities.IUser;
-import constants.Constants;
+import API.ExerciseAPI;
+import Entities.IExercise;
+import Entities.IUser;
+import Constants.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,13 +60,13 @@ public class ExerciseAnalyzer implements UserAnalyzer {
             }
         }
 
-        String intro = Constants.DIVIDER +
-                Constants.EXERCISE_INTRO1 + user.getUsername() + Constants.EXERCISE_INTRO2;
+        String intro = SystemConstants.DIVIDER +
+                ExerciseConstants.EXERCISE_INTRO1 + user.getUsername() + ExerciseConstants.EXERCISE_INTRO2;
 
         if (user_exercises.isEmpty()) { // no exercise suggestions :(
-            this.result = intro + Constants.NO_EXERCISES_FOUND + Constants.DIVIDER;
+            this.result = intro + Exceptions.NO_EXERCISES_FOUND + SystemConstants.DIVIDER;
         } else { // return exercise suggestions
-            this.result = intro + exercise_names + Constants.DIVIDER;
+            this.result = intro + exercise_names + SystemConstants.DIVIDER;
         }
     }
 
@@ -78,12 +78,12 @@ public class ExerciseAnalyzer implements UserAnalyzer {
      */
     private StringBuilder addNewExercise(IExercise exercise) {
         StringBuilder new_exercise = new StringBuilder();
-        new_exercise.append(Constants.TAB).append(exercise.getName()).
-                append(Constants.EX_DESC_TYPE).append(exercise.getType()).
-                append(Constants.EX_DESC_USES).append(exercise.getEquipmentNeeded().toString()).
-                append(Constants.EX_DESC_MAJOR).append(exercise.getMajorMuscleExercised()).
-                append(Constants.EX_DESC_MINOR).append(exercise.getMinorMuscleExercised()).
-                append(Constants.EMPTY_LINE);
+        new_exercise.append(ExerciseConstants.TAB).append(exercise.getName()).
+                append(ExerciseConstants.EX_DESC_TYPE).append(exercise.getType()).
+                append(ExerciseConstants.EX_DESC_USES).append(exercise.getEquipmentNeeded().toString()).
+                append(ExerciseConstants.EX_DESC_MAJOR).append(exercise.getMajorMuscleExercised()).
+                append(ExerciseConstants.EX_DESC_MINOR).append(exercise.getMinorMuscleExercised()).
+                append(SystemConstants.EMPTY_LINE);
         return new_exercise;
     }
 

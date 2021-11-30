@@ -1,8 +1,8 @@
-package api;
+package API;
 
-import constants.Constants;
-import entities.IExercise;
-import entities.Exercise;
+import Constants.SystemConstants;
+import Entities.IExercise;
+import Entities.Exercise;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class ExerciseAPI {
 
         List<IExercise> exerciseList = new ArrayList<>();
 
-        Path pathToFile = Paths.get(Constants.EXERCISE_DATASET_PATH);
+        Path pathToFile = Paths.get(SystemConstants.EXERCISE_DATASET_PATH);
 
         // create an instance of BufferedReader
         // Use a try-catch block for unexpected errors.

@@ -1,7 +1,7 @@
-package system;
+package System;
 
-import controllers.Presenter;
-import controllers.RunCommand;
+import Controllers.Presenter;
+import Controllers.RunCommand;
 
 import java.util.*;
 
@@ -130,7 +130,7 @@ public class HelperConsole {
      * @param reader reads user info
      * @return true if the user would like to return to the main menu
      */
-    public static boolean restart(Scanner reader) {
+    public static boolean reStart(Scanner reader) {
 //        System.out.println(Constants.RESTART_PROGRAM);
         Presenter.printRestart();
         String restart = reader.nextLine();
