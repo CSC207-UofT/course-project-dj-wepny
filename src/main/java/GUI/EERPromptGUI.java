@@ -31,7 +31,7 @@ public class EERPromptGUI extends JFrame {
             this.instruction.setEditable(false);
             this.returnToMenu.setVisible(false);
 
-            instruction.setText("Please enter your daily activity level: (Please enter a number from 1 to 4) ");
+            instruction.setText("Please select one of the following based on your daily activity level: ");
             commandOne.setText("1. Sedentary");
             commandTwo.setText(("2. Low Active"));
             commandThree.setText("3. Active");
