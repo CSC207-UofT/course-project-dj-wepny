@@ -22,23 +22,27 @@ public class EERPromptGUI extends JFrame {
     private String output;
 
     public EERPromptGUI(){
-            super("DJ WEPNY Personal Health Aid");
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.setContentPane(EERPromptGUI);
-            this.setResizable(false);
-            // Hiding this unless the user has the wrong input
-            this.invalidInput.setVisible(false);
-            this.instruction.setEditable(false);
-            this.returnToMenu.setVisible(false);
+        super("DJ WEPNY Personal Health Aid");
+        this.setSize(1000, 700);
+        EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(EERPromptGUI);
+        this.setResizable(false); // Think we should set this to true, so we can resize the window.
 
-            instruction.setText("Please select one of the following based on your daily activity level: ");
-            commandOne.setText("1. Sedentary");
-            commandTwo.setText(("2. Low Active"));
-            commandThree.setText("3. Active");
-            commandFour.setText("4. Very Active");
-            returnToMenu.setText("Return to Menu");
+        // Hiding this unless the user has the wrong input
+        this.invalidInput.setVisible(false);
 
-            this.pack();
+        this.instruction.setEditable(false);
+        this.returnToMenu.setVisible(false);
+
+        instruction.setText("Please select one of the following based on your daily activity level: ");
+        commandOne.setText("1. Sedentary");
+        commandTwo.setText(("2. Low Active"));
+        commandThree.setText("3. Active");
+        commandFour.setText("4. Very Active");
+        returnToMenu.setText("Return to Menu");
+
+        this.pack();
 
             // Get the user input from the selected button.
         commandOne.addActionListener(e -> {

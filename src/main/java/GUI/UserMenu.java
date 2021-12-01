@@ -19,6 +19,7 @@ public class UserMenu extends JFrame {
     public UserMenu(int num){
         // initializing the ExistingUserMenu frame
         super("DJ WEPNY Personal Health Aid");
+        this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(existingUserMenu);
         this.setResizable(false);
