@@ -14,7 +14,7 @@ public class NewUserLogin extends JFrame {
     private JLabel invalidGender;
     private JLabel invalidHeight;
     private JLabel invalidWeight;
-    private JTextField age;
+    private JFormattedTextField age;
     private JLabel invalidAge;
 
     public NewUserLogin(){
@@ -77,6 +77,9 @@ public class NewUserLogin extends JFrame {
                 ConsoleForGUI.NewUserConsole.createUser(basic,personal);
             }
             this.pack();
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
 
         });
 
