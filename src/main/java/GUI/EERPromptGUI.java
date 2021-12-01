@@ -1,6 +1,10 @@
 package GUI;
 
 
+import constants.EERConstants;
+import controllers.Presenter;
+import controllers.RunCommand;
+
 import javax.swing.*;
 
 public class EERPromptGUI extends JFrame {
@@ -14,7 +18,10 @@ public class EERPromptGUI extends JFrame {
     private JLabel commandThree;
     private JLabel commandFour;
     private JLabel invalidInput;
+    private JButton returnToMenu;
     private String userInput;
+    RunCommand commandExecutor = new RunCommand(2);
+    private String output;
 
     public EERPromptGUI(){
             super("DJ WEPNY Personal Health Aid");
@@ -23,6 +30,8 @@ public class EERPromptGUI extends JFrame {
             this.setResizable(false);
             // Hiding this unless the user has the wrong input
             this.invalidInput.setVisible(false);
+            this.instruction.setEditable(false);
+            this.returnToMenu.setVisible(false);
 
             instruction.setText("Please enter your daily activity level: (Please enter a number from 1 to 4) ");
             commandOne.setText("1. Sedentary");
@@ -42,14 +51,49 @@ public class EERPromptGUI extends JFrame {
             }
             else{
                 //TODO: analyze the EER somehow.
+                String level = "";
+                switch (userInput) {
+                    case "1":
+                        level = EERConstants.SED;
+                        break;
+                    case "2":
+                        level = EERConstants.LOW;
+                        break;
+                    case "3":
+                        level = EERConstants.MID;
+                        break;
+                    case "4":
+                        level = EERConstants.HIGH;
+                        break;
+                }
+                commandExecutor.addInfo(level, 2);
+                try {
+                    commandExecutor.executeCommand();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+                this.output = analyze_results.retrieveOutput();
+                instruction.setText(this.output);
+                returnToMenu.setVisible(true);
+                this.pack();
+                commandOne.setVisible(false);
+                commandTwo.setVisible(false);
+                commandThree.setVisible(false);
+                commandFour.setVisible(false);
+                enterButton.setVisible(false);
+                preferenceInput.setVisible(false);
+                this.pack();
 
-                //Close this window and opens the result GUI.
-                this.dispose();
-                EERResultGUI eerresultGUI = new EERResultGUI();
-                eerresultGUI.setVisible(true);
             }
 
+        });
 
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
         });
     }
+
 }

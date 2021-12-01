@@ -5,6 +5,7 @@ import controllers.RunCommand;
 import javax.swing.*;
 
 public class ConsoleGUI extends JFrame{
+    private static int userType;
     private JButton newUserButton;
     private JPanel console;
     private JFormattedTextField UserID;
@@ -26,6 +27,7 @@ public class ConsoleGUI extends JFrame{
             this.dispose();
             NewUserLogin newUserLogin = new NewUserLogin();
             newUserLogin.setVisible(true);
+            setUserType(true);
         });
 
         // if the "enter" button is pressed, close the current page and open the new existing user page
@@ -41,15 +43,27 @@ public class ConsoleGUI extends JFrame{
             // if the input is a valid and existing personal id, open the existingUserMenu
             else{
                 IDError.setVisible(false);
+                setUserType(false);
                 int id = Integer.parseInt(userInput);
                 RunCommand currentUser = new RunCommand();
                 currentUser.setCurrentUser(id);
                 this.dispose();
-                ExistingUserMenu existingUserMenu = new ExistingUserMenu();
+                UserMenu existingUserMenu = new UserMenu(getUserType());
                 existingUserMenu.setVisible(true);
             }
         });
     }
 
+    public static void setUserType(boolean newUser){
+        if (newUser) {
+            userType = 1;
+        }
+        else {
+            userType = 2;
+        }
+    }
 
+    public static int getUserType() {
+        return userType;
+    }
 }

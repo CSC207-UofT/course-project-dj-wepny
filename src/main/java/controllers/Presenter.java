@@ -62,8 +62,8 @@ public class Presenter {
         }
     }
 
-    public static void printUserIDMessage(String userID) {
-        System.out.println( SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2);
+    public static String printUserIDMessage(String userID) {
+        return SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2;
     }
 
     public static void printIDPrompt() {
