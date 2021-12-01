@@ -17,7 +17,7 @@ public class Presenter {
      * @param analyzer an analyzer that is of type UserAnalyzer
      */
     public Presenter(UserAnalyzer analyzer) {
-        this.userAnalyzer = analyzer;
+        userAnalyzer = analyzer;
     }
 
 

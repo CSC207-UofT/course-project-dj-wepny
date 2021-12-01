@@ -41,7 +41,7 @@ public class ExistingUserMenu extends JFrame {
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERGUI eerGUI = new EERGUI();
+                EERResultGUI eerGUI = new EERResultGUI();
                 eerGUI.setVisible(true);
             }
         });
@@ -58,7 +58,7 @@ public class ExistingUserMenu extends JFrame {
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERGUI eerGUI = new EERGUI();
+                EERResultGUI eerGUI = new EERResultGUI();
                 eerGUI.setVisible(true);
             }
         });
