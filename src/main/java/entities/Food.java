@@ -15,6 +15,7 @@ public class Food implements IFood{
     private final String foodType;
     private final String id;
     private final boolean vegFriendly;
+    private int curr;
 
     /**
      * Constructor for the Food Object
@@ -103,5 +104,14 @@ public class Food implements IFood{
 
     public boolean getVegFriendly() {
         return vegFriendly;
+    }
+
+    public Integer next () {
+        curr = curr + 2;
+        return curr;
+    }
+    public Integer next2 () {
+        int res = curr + 2;
+        return res;
     }
 }
