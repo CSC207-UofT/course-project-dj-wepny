@@ -10,13 +10,11 @@ import javax.swing.*;
 public class EERPromptGUI extends JFrame {
 
     private JPanel EERPromptGUI;
-    private JFormattedTextField preferenceInput;
-    private JButton enterButton;
     private JTextPane instruction;
-    private JLabel commandOne;
-    private JLabel commandTwo;
-    private JLabel commandThree;
-    private JLabel commandFour;
+    private JButton commandOne;
+    private JButton commandTwo;
+    private JButton commandThree;
+    private JButton commandFour;
     private JLabel invalidInput;
     private JButton returnToMenu;
     private String userInput;
@@ -24,69 +22,47 @@ public class EERPromptGUI extends JFrame {
     private String output;
 
     public EERPromptGUI(){
-            super("DJ WEPNY Personal Health Aid");
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.setContentPane(EERPromptGUI);
-            this.setResizable(false);
-            // Hiding this unless the user has the wrong input
-            this.invalidInput.setVisible(false);
-            this.instruction.setEditable(false);
-            this.returnToMenu.setVisible(false);
+        super("DJ WEPNY Personal Health Aid");
+        this.setSize(1000, 700);
+        EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(EERPromptGUI);
+        this.setResizable(false); // Think we should set this to true, so we can resize the window.
 
-            instruction.setText("Please enter your daily activity level: (Please enter a number from 1 to 4) ");
-            commandOne.setText("1. Sedentary");
-            commandTwo.setText(("2. Low Active"));
-            commandThree.setText("3. Active");
-            commandFour.setText("4. Very Active");
+        // Hiding this unless the user has the wrong input
+        this.invalidInput.setVisible(false);
 
-            this.pack();
+        this.instruction.setEditable(false);
+        this.returnToMenu.setVisible(false);
 
-            // Get the user input from the text field
-        enterButton.addActionListener(e -> {
-            userInput = preferenceInput.getText();
+        instruction.setText("Please select one of the following based on your daily activity level: ");
+        commandOne.setText("1. Sedentary");
+        commandTwo.setText(("2. Low Active"));
+        commandThree.setText("3. Active");
+        commandFour.setText("4. Very Active");
+        returnToMenu.setText("Return to Menu");
 
-            // Display error message if the input is invalid, keep the error message hidden otherwise.
-            if (ConsoleForGUI.HelperConsole.isNotNum(userInput)){
-                invalidInput.setVisible(true);
-            }
-            else{
-                //TODO: analyze the EER somehow.
-                String level = "";
-                switch (userInput) {
-                    case "1":
-                        level = EERConstants.SED;
-                        break;
-                    case "2":
-                        level = EERConstants.LOW;
-                        break;
-                    case "3":
-                        level = EERConstants.MID;
-                        break;
-                    case "4":
-                        level = EERConstants.HIGH;
-                        break;
-                }
-                commandExecutor.addInfo(level, 2);
-                try {
-                    commandExecutor.executeCommand();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-                this.output = analyze_results.retrieveOutput();
-                instruction.setText(this.output);
-                returnToMenu.setVisible(true);
-                this.pack();
-                commandOne.setVisible(false);
-                commandTwo.setVisible(false);
-                commandThree.setVisible(false);
-                commandFour.setVisible(false);
-                enterButton.setVisible(false);
-                preferenceInput.setVisible(false);
-                this.pack();
+        this.pack();
 
-            }
+            // Get the user input from the selected button.
+        commandOne.addActionListener(e -> {
+            userInput = "1";
+            helperForDisplay();
+        });
 
+        commandTwo.addActionListener(e -> {
+            userInput = "2";
+            helperForDisplay();
+        });
+
+        commandThree.addActionListener(e -> {
+            userInput = "3";
+            helperForDisplay();
+        });
+
+        commandFour.addActionListener(e -> {
+            userInput = "4";
+            helperForDisplay();
         });
 
         returnToMenu.addActionListener(e -> {
@@ -106,8 +82,6 @@ public class EERPromptGUI extends JFrame {
         commandTwo.setVisible(false);
         commandThree.setVisible(false);
         commandFour.setVisible(false);
-        enterButton.setVisible(false);
-        preferenceInput.setVisible(false);
         try {
             commandExecutor.executeCommand();
         } catch (Exception ex) {
@@ -118,6 +92,47 @@ public class EERPromptGUI extends JFrame {
         instruction.setText(this.output);
         returnToMenu.setVisible(true);
         this.pack();
+    }
+
+    private void helperForDisplay(){
+        // Display error message if the input is invalid, keep the error message hidden otherwise.
+        if (ConsoleForGUI.HelperConsole.isNotNum(userInput)){
+            invalidInput.setVisible(true);
+        }
+        else{
+            String level = "";
+            switch (userInput) {
+                case "1":
+                    level = EERConstants.SED;
+                    break;
+                case "2":
+                    level = EERConstants.LOW;
+                    break;
+                case "3":
+                    level = EERConstants.MID;
+                    break;
+                case "4":
+                    level = EERConstants.HIGH;
+                    break;
+            }
+            commandExecutor.addInfo(level, 2);
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            this.output = analyze_results.retrieveOutput();
+            instruction.setText(this.output);
+            returnToMenu.setVisible(true);
+            this.pack();
+            commandOne.setVisible(false);
+            commandTwo.setVisible(false);
+            commandThree.setVisible(false);
+            commandFour.setVisible(false);
+            this.pack();
+
+        }
     }
 
 }
