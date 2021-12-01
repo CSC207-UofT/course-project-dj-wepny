@@ -2,10 +2,10 @@ package GUI;
 
 import javax.swing.*;
 
-public class BMIAnazlyerGUI extends JFrame {
+public class BMIAnalyzerGUI extends JFrame {
     private JPanel BMIAnalyzer;
 
-    public BMIAnazlyerGUI(){
+    public BMIAnalyzerGUI(){
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BMIAnalyzer);
