@@ -96,4 +96,28 @@ public class EERPromptGUI extends JFrame {
         });
     }
 
+    public EERPromptGUI(String userType) {
+        super("DJ WEPNY Personal Health Aid");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(EERPromptGUI);
+        this.setResizable(false);
+        this.invalidInput.setVisible(false);
+        commandOne.setVisible(false);
+        commandTwo.setVisible(false);
+        commandThree.setVisible(false);
+        commandFour.setVisible(false);
+        enterButton.setVisible(false);
+        preferenceInput.setVisible(false);
+        try {
+            commandExecutor.executeCommand();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+        this.output = analyze_results.retrieveOutput();
+        instruction.setText(this.output);
+        returnToMenu.setVisible(true);
+        this.pack();
+    }
+
 }

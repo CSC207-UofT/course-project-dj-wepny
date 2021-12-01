@@ -23,7 +23,6 @@ public class UserMenu extends JFrame {
         this.setContentPane(existingUserMenu);
         this.setResizable(false);
         this.welcomeMessage.setEditable(false);
-        this.pack();
 
         RunCommand infoGetter = new RunCommand();
         if (num == 1) {
@@ -32,6 +31,7 @@ public class UserMenu extends JFrame {
             this.a6EditProfileButton.setVisible(false);
             this.pack();
         }
+        this.pack();
 
         // If the user clicks on the BMI, close the current page
         a1AnalyzeBodyMassButton.addActionListener(e -> {
@@ -53,7 +53,7 @@ public class UserMenu extends JFrame {
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERPromptGUI activityLevel = new EERPromptGUI();
+                EERPromptGUI activityLevel = new EERPromptGUI("existing");
                 activityLevel.setVisible(true);
             }
         });
