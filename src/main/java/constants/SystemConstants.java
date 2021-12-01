@@ -84,7 +84,8 @@ public class SystemConstants {
 
     // Messages
     public static final String ID_MESSAGE1 =
-            "Hello and welcome to DJ WEPNY's Personal Health app!\nThe following number is your ID:";
+            "Hello and welcome to DJ WEPNY's Personal Health app!" +
+                    "\nThe following number is your ID:";
     public static final String ID_MESSAGE2 =
             "\nPlease take note of this number as you will need it to access your account in the future.\n";
     public static final String REPORT = "Here is your report based on previously entered information: \n\n";

@@ -1,5 +1,6 @@
 id, name, gender, weight, height, age, exercise preference, risk factor, activity level, food
 9728,allan,F,90,1.9,37,Legs*Quads*Band,blackheads,Active,N*Y*Y*N*9
+7298,Jo,F,67,1.8,31,Arms*Shoulders*Dumbbells/Bosu Ball,muscle_pain,Active,N*N*N*Y*4
 9796,Ed,F,70,1.88,35,Arms*Bicep*Bar/Band,weight_loss,null,Y*Y*Y*Y*3
 8388,Edward,M,76,1.76,19,Legs*Quads*Body Weight/Bar,null,Low Active,null
 9799,Nick,M,85,1.88,56,null,headache*loss_of_balance,Sedentary,null

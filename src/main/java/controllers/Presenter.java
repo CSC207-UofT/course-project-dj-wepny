@@ -9,7 +9,7 @@ import usecases.UserAnalyzer;
  */
 public class Presenter {
 
-    private final UserAnalyzer userAnalyzer;
+    private static UserAnalyzer userAnalyzer;
 
     /**
      * Initiating a Presenter by declaring the type of analyzer it needs to retrieve results from
@@ -17,7 +17,7 @@ public class Presenter {
      * @param analyzer an analyzer that is of type UserAnalyzer
      */
     public Presenter(UserAnalyzer analyzer) {
-        this.userAnalyzer = analyzer;
+        userAnalyzer = analyzer;
     }
 
 
@@ -27,7 +27,7 @@ public class Presenter {
      *
      * @return returns the output calculated by the userAnalyzer
      */
-    public String retrieveOutput() {
+    public static String retrieveOutput() {
         return userAnalyzer.getResult();
     }
 
@@ -62,8 +62,8 @@ public class Presenter {
         }
     }
 
-    public static void printUserIDMessage(String userID) {
-        System.out.println( SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2);
+    public static String printUserIDMessage(String userID) {
+        return SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2;
     }
 
     public static void printIDPrompt() {
