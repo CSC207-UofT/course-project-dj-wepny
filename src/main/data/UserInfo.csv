@@ -7,7 +7,7 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 6376,Aidan,M,63,1.7,14,null,restlessness,null,null
 648,Bella,F,66,1.8,29,Core*Chest*Band,cramps,Sedentary,null
 5579,Eric,F,76,1.8,30,Back*Shoulders*Bar/Platform,internal_itching,Low Active,Y*N*Y*N*10
-6638,Annie,F,60,1.7,29,null,dehydration,null,null
+6638,Annie,F,60,1.7,29,null,null,null,null
 8914,Rick,M,66,1.67,12,null,watering_from_eyes,Active,Y*Y*N*Y*5
 2162,Melany,F,60,1.77,34,null,fatique,null,null
 5716,Ella,F,35,1.65,9,null,swelled_lymph_nodes,Very Active,null

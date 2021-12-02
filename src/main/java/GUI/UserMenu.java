@@ -1,8 +1,12 @@
 package GUI;
 
+import controllers.Presenter;
 import controllers.RunCommand;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class UserMenu extends JFrame {
 
@@ -74,6 +78,17 @@ public class UserMenu extends JFrame {
                 activityLevel.setVisible(true);
             }
         });
-    }
-    // TODO: do the rest for the rest three buttons, similar to the cases before
-}
+
+        a4AnalyzeDiseaseButton.addActionListener(e -> {
+            this.dispose();
+
+                DiseaseAnalyzerGUI potentialDisease;
+                    try {
+                        potentialDisease = new DiseaseAnalyzerGUI();
+                        potentialDisease.setVisible(true);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                }
+            })
+        ;}}
+
