@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 
+import constants.*;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -16,7 +17,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     private boolean lowFat = false;
     private boolean lowSugar = false;
     private boolean vegetarian = false;
-    private Object numFoods;
+    private String numFoods;
     private String output;
 
     private JPanel MealPlanGUI;
@@ -45,6 +46,17 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.returnToMenu.setVisible(false);
         this.pack();
 
+        //set text
+        lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
+        lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
+        lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
+        vegetarianCheckBox.setText(MealPlanConstants.VEG);
+        numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
+        invalidInput.setText(Exceptions.INVALID_INPUT);
+        enterButton.setText("Enter");
+        intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
+        returnToMenu.setText("Return to Menu");
+
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
         lowSugarCheckBox.addActionListener(e -> lowSugar = true);
@@ -58,17 +70,11 @@ public class MealPlanGeneratorGUI extends JFrame {
         });
 
         enterButton.addActionListener(e -> {
-            // check valid input
-            try {
-                numFoods = Integer.parseInt(numFoodsInput.getText());
-            } catch (Exception exception) {
-                invalidInput.setVisible(true);
-            }
 
             String tempNumFoods = numFoodsInput.getText();
-            if (!(ConsoleForGUI.HelperConsole.isNotNum(tempNumFoods))) { //if it's a valid num
+            if (!(ConsoleForGUI.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
                 //set numFoods
-                numFoods = Integer.parseInt(tempNumFoods);
+                numFoods = tempNumFoods;
 
                 // set up foodPreference
                 foodPreference.add(lowCarbs);
@@ -97,11 +103,13 @@ public class MealPlanGeneratorGUI extends JFrame {
                 }
 
                 // display results
-                setSize(1000, 1200);
+                setSize(1000, 700);
                 intro.setText(output);
                 intro.setVisible(true);
                 returnToMenu.setVisible(true);
 
+            } else {
+                invalidInput.setVisible(true);
             }
 
         });
@@ -121,6 +129,17 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.returnToMenu.setVisible(false);
         this.pack();
 
+        //set text
+        lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
+        lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
+        lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
+        vegetarianCheckBox.setText(MealPlanConstants.VEG);
+        numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
+        invalidInput.setText(Exceptions.INVALID_INPUT);
+        enterButton.setText("Enter");
+        intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
+        returnToMenu.setText("Return to Menu");
+
         // execute command
         try {
             commandExecutor.executeCommand();
@@ -138,7 +157,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         }
 
         // display results
-        setSize(1000, 1200);
+        setSize(1000, 700);
         intro.setText(output);
         intro.setVisible(true);
         returnToMenu.setVisible(true);

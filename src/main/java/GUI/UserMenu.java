@@ -26,7 +26,7 @@ public class UserMenu extends JFrame {
         this.welcomeMessage.setEditable(false);
 
         RunCommand infoGetter = new RunCommand();
-        if (num == 1) {
+        if (num == 1) { // new user
             String output = controllers.Presenter.printUserIDMessage((String) infoGetter.retrieveUser("id"));
             welcomeMessage.setText(output);
             this.a6EditProfileButton.setVisible(false);
@@ -79,11 +79,9 @@ public class UserMenu extends JFrame {
         a5GenerateAMealButton.addActionListener(e -> {
             this.dispose();
             if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
-                // new user/no info
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
                 mealPlanGUI.setVisible(true);
             } else {
-                // TODO: display window showing meal plan
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI("existing");
                 mealPlanGUI.setVisible(true);
             }
