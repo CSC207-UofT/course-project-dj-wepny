@@ -19,7 +19,7 @@ public class GUI implements ActionListener {
 
 
         //setting up a border and layout
-        panel.setBorder(BorderFactory.createEmptyBorder(300, 300, 100, 300));
+        panel.setBorder(BorderFactory.createEmptyBorder(300, 300, 300, 300));
         panel.setLayout(new GridLayout(0,1));
         panel.add(textField);
 

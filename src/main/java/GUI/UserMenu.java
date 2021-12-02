@@ -1,8 +1,10 @@
 package GUI;
 
+import controllers.RunCommand;
+
 import javax.swing.*;
 
-public class ExistingUserMenu extends JFrame {
+public class UserMenu extends JFrame {
 
     private JPanel existingUserMenu;
     private JButton a6EditProfileButton;
@@ -11,14 +13,25 @@ public class ExistingUserMenu extends JFrame {
     private JButton a2AnalyzeEnergyRequiredButton;
     private JButton a4AnalyzeDiseaseButton;
     private JButton a3AnalyzeWorkoutButton;
+    private JTextPane welcomeMessage;
 
 
-    public ExistingUserMenu(){
+    public UserMenu(int num){
         // initializing the ExistingUserMenu frame
         super("DJ WEPNY Personal Health Aid");
+        this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(existingUserMenu);
         this.setResizable(false);
+        this.welcomeMessage.setEditable(false);
+
+        RunCommand infoGetter = new RunCommand();
+        if (num == 1) {
+            String output = controllers.Presenter.printUserIDMessage((String) infoGetter.retrieveUser("id"));
+            welcomeMessage.setText(output);
+            this.a6EditProfileButton.setVisible(false);
+            this.pack();
+        }
         this.pack();
 
         // If the user clicks on the BMI, close the current page
@@ -35,14 +48,14 @@ public class ExistingUserMenu extends JFrame {
                 //TODO if there is no information found on the user's Activity level,
                 // new activityLevel Page pops up to gather user's Active status
 
-                ActivityLevelGUI activityLevel = new ActivityLevelGUI();
+                EERPromptGUI activityLevel = new EERPromptGUI();
                 activityLevel.setVisible(true);
             }
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERGUI eerGUI = new EERGUI();
-                eerGUI.setVisible(true);
+                EERPromptGUI activityLevel = new EERPromptGUI("existing");
+                activityLevel.setVisible(true);
             }
         });
 
@@ -58,8 +71,21 @@ public class ExistingUserMenu extends JFrame {
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERGUI eerGUI = new EERGUI();
-                eerGUI.setVisible(true);
+                EERPromptGUI activityLevel = new EERPromptGUI();
+                activityLevel.setVisible(true);
+            }
+        });
+
+        a5GenerateAMealButton.addActionListener(e -> {
+            this.dispose();
+            if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
+                // new user/no info
+                MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
+                mealPlanGUI.setVisible(true);
+            } else {
+                // TODO: display window showing meal plan
+                MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI("existing");
+                mealPlanGUI.setVisible(true);
             }
         });
     }
