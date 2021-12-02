@@ -38,7 +38,7 @@ public class UserMenu extends JFrame {
         a1AnalyzeBodyMassButton.addActionListener(e -> {
             this.dispose();
             //TODO implement the BMIAnalyzerGUI and display the page with the user's BMI Report
-            BMIAnazlyerGUI bmi = new BMIAnazlyerGUI();
+            BMIPromptGUI bmi = new BMIPromptGUI();
             bmi.setVisible(true);
         });
 
