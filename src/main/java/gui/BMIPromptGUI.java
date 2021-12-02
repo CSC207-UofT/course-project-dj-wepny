@@ -13,7 +13,7 @@ public class BMIPromptGUI extends JFrame {
 
     public BMIPromptGUI(){
         super("DJ WEPNY Personal Health Aid");
-        this.setSize(1000, 700);
+//        this.setSize(1000, 1000);
         BMIPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BMIPromptGUI);
