@@ -1,12 +1,8 @@
 package GUI;
 
-import controllers.Presenter;
 import controllers.RunCommand;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class UserMenu extends JFrame {
 
@@ -66,25 +62,45 @@ public class UserMenu extends JFrame {
         a3AnalyzeWorkoutButton.addActionListener(e -> {
             this.dispose();
             if (ConsoleForGUI.HelperConsole.noInfoFound(3)) {
-                ExercisePreference preference = new ExercisePreference();
-                preference.setVisible(true);
+                //TODO if there is no information found on the user's exercise preference,
+                // new exercisePreference Page pops up to gather user's exercise preference
+
+                ActivityLevelGUI activityLevel = new ActivityLevelGUI();
+                activityLevel.setVisible(true);
             }
             else{
-                ExercisePreference preference = new ExercisePreference("existing");
-                preference.setVisible(true);
+                //TODO if there is already existing information on the user's activity level,
+                // display the page with the user's EER Report
+                EERPromptGUI activityLevel = new EERPromptGUI();
+                activityLevel.setVisible(true);
             }
         });
+
 
         a4AnalyzeDiseaseButton.addActionListener(e -> {
             this.dispose();
 
-                DiseaseAnalyzerGUI potentialDisease;
-                    try {
-                        potentialDisease = new DiseaseAnalyzerGUI();
-                        potentialDisease.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                }
-            })
-        ;}}
+            DiseaseAnalyzerGUI potentialDisease;
+            try {
+                potentialDisease = new DiseaseAnalyzerGUI();
+                potentialDisease.setVisible(true);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
+        a5GenerateAMealButton.addActionListener(e -> {
+            this.dispose();
+            if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
+                MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
+                mealPlanGUI.setVisible(true);
+            }
+            else {
+                MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI("existing");
+                mealPlanGUI.setVisible(true);
+            }
+        });
+    }
+
+
+}
