@@ -38,10 +38,9 @@ public class MealPlanGeneratorGUI extends JFrame {
     public MealPlanGeneratorGUI() {
         // setting up JFrame
         super("DJ WEPNY's Meal Plan Generator");
-        this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
-        this.setResizable(false);
+        this.setResizable(true);
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
         this.pack();
@@ -53,9 +52,9 @@ public class MealPlanGeneratorGUI extends JFrame {
         vegetarianCheckBox.setText(MealPlanConstants.VEG);
         numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
         invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText("Enter");
+        enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return to Menu");
+        returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
 
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -121,10 +120,9 @@ public class MealPlanGeneratorGUI extends JFrame {
      */
     public MealPlanGeneratorGUI(String usertype) {
         super("DJ WEPNY's Meal Plan Generator");
-        this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
-        this.setResizable(false);
+        this.setResizable(true);
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
         this.pack();
@@ -136,9 +134,9 @@ public class MealPlanGeneratorGUI extends JFrame {
         vegetarianCheckBox.setText(MealPlanConstants.VEG);
         numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
         invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText("Enter");
+        enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return to Menu");
+        returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
 
         // execute command
         try {

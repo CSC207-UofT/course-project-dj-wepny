@@ -19,4 +19,8 @@ public class MealPlanConstants {
     public static final String LOWSUGAR = "I prefer low sugar";
     public static final String VEG = "I am vegetarian";
     public static final String NUM_FOODS = "How many foods would you like?";
+
+    //GUI
+    public static final String RETURN_TO_MENU = "Return to Menu";
+    public static final String ENTER = "Enter";
 }
