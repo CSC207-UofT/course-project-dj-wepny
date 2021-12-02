@@ -103,10 +103,10 @@ public class MealPlanGeneratorGUI extends JFrame {
                 }
 
                 // display results
-                setSize(1000, 700);
                 intro.setText(output);
                 intro.setVisible(true);
                 returnToMenu.setVisible(true);
+                this.pack();
 
             } else {
                 invalidInput.setVisible(true);
@@ -157,10 +157,10 @@ public class MealPlanGeneratorGUI extends JFrame {
         }
 
         // display results
-        setSize(1000, 700);
         intro.setText(output);
         intro.setVisible(true);
         returnToMenu.setVisible(true);
+        this.pack();
 
 
     }
