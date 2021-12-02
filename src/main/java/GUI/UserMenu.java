@@ -65,14 +65,14 @@ public class UserMenu extends JFrame {
                 //TODO if there is no information found on the user's exercise preference,
                 // new exercisePreference Page pops up to gather user's exercise preference
 
-                ActivityLevelGUI activityLevel = new ActivityLevelGUI();
-                activityLevel.setVisible(true);
+                ExercisePreference preference = new ExercisePreference();
+                preference.setVisible(true);
             }
             else{
                 //TODO if there is already existing information on the user's activity level,
                 // display the page with the user's EER Report
-                EERPromptGUI activityLevel = new EERPromptGUI();
-                activityLevel.setVisible(true);
+                ExercisePreference preference = new ExercisePreference("existing");
+                preference.setVisible(true);
             }
         });
 

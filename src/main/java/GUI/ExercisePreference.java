@@ -54,6 +54,7 @@ public class ExercisePreference extends JFrame{
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(exercisePreference);
+        this.setSize(700, 1000);
         this.setResizable(false);
         this.invalid.setVisible(false);
         this.returnToMenu.setVisible(false);
