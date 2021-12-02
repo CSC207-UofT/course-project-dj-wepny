@@ -170,15 +170,16 @@ public class Presenter {
         }
     }
 
-    public static void DiseasePrompt(String prompt) {
+    public static String DiseasePrompt(String prompt) {
         switch (prompt) {
             case "start":
-                System.out.println(DiseaseConstants.DISEASE_START);
-                break;
+//                System.out.println(DiseaseConstants.DISEASE_START);
+                return DiseaseConstants.DISEASE_START;
             case "description":
-                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
-                break;
+//                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
+                return DiseaseConstants.SYMPTOMS_DESC;
         }
+        return null;
     }
 
     public static void printDiseaseOutput(String output) {

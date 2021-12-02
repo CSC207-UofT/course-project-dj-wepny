@@ -25,8 +25,11 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      */
     @Override
     public void analyze() {
+        System.out.println("run here");
         IUser user = UserManager.getCurrentUser();
         if(user == null){
+            System.out.println("run user null");
+
             user = this.user;
         }
         
@@ -41,11 +44,15 @@ public class DiseaseAnalyzer implements UserAnalyzer {
         // set result to the string that will be prompt to the user is potential diseases is less than or
         // equal to 6
         if (potentialDisease.size() <= 6) {
+
             result = msg + newDisease.keySet();
         }
         // set result to the new options of symptoms for the user to select
         else {
+            System.out.println("create options");
+
             result = options.toString();
+            System.out.println("result"+result);
         }
         potentialDisease = newDisease;
 

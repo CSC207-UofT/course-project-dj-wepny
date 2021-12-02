@@ -26,7 +26,7 @@ public class UserMenu extends JFrame {
         this.welcomeMessage.setEditable(false);
 
         RunCommand infoGetter = new RunCommand();
-        if (num == 1) { // new user
+        if (num == 1) {
             String output = controllers.Presenter.printUserIDMessage((String) infoGetter.retrieveUser("id"));
             welcomeMessage.setText(output);
             this.a6EditProfileButton.setVisible(false);
@@ -38,7 +38,7 @@ public class UserMenu extends JFrame {
         a1AnalyzeBodyMassButton.addActionListener(e -> {
             this.dispose();
             //TODO implement the BMIAnalyzerGUI and display the page with the user's BMI Report
-            BMIAnalyzerGUI bmi = new BMIAnalyzerGUI();
+            BMIPromptGUI bmi = new BMIPromptGUI();
             bmi.setVisible(true);
         });
 
@@ -76,16 +76,31 @@ public class UserMenu extends JFrame {
             }
         });
 
+
+        a4AnalyzeDiseaseButton.addActionListener(e -> {
+            this.dispose();
+
+            DiseaseAnalyzerGUI potentialDisease;
+            try {
+                potentialDisease = new DiseaseAnalyzerGUI();
+                potentialDisease.setVisible(true);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         a5GenerateAMealButton.addActionListener(e -> {
             this.dispose();
             if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
                 mealPlanGUI.setVisible(true);
-            } else {
+            }
+            else {
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI("existing");
                 mealPlanGUI.setVisible(true);
             }
         });
     }
-    // TODO: do the rest for the rest three buttons, similar to the cases before
+
+
 }
