@@ -17,7 +17,7 @@ public class NewUserLogin extends JFrame {
     private JFormattedTextField age;
     private JLabel invalidAge;
 
-    public NewUserLogin(){
+    public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);
@@ -28,7 +28,6 @@ public class NewUserLogin extends JFrame {
         this.invalidHeight.setVisible(false);
         this.invalidWeight.setVisible(false);
         this.invalidAge.setVisible(false);
-
         this.pack();
 
         // what happens when the enter button is pressed

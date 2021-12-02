@@ -104,7 +104,7 @@ public class HelperConsole {
     }
 
     // check invalid weight input in GUI
-    public static boolean validWeight(String weight){
+    public static boolean validWeight(String weight) {
         if (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
             return false;
         }
@@ -112,7 +112,7 @@ public class HelperConsole {
     }
 
     // check invalid age input in GUI
-    public static boolean validAge(String age){
+    public static boolean validAge(String age) {
         if (isNotNum(age) || Integer.parseInt(age) < 0) {
             return false;
         }
