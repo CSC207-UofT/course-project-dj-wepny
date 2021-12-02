@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import controllers.RunCommand;
 
@@ -44,7 +44,7 @@ public class UserMenu extends JFrame {
 
         a2AnalyzeEnergyRequiredButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(2)) {
+            if (consoleforgui.HelperConsole.noInfoFound(2)) {
                 //TODO if there is no information found on the user's Activity level,
                 // new activityLevel Page pops up to gather user's Active status
 
@@ -61,7 +61,7 @@ public class UserMenu extends JFrame {
 
         a3AnalyzeWorkoutButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(3)) {
+            if (consoleforgui.HelperConsole.noInfoFound(3)) {
                 //TODO if there is no information found on the user's exercise preference,
                 // new exercisePreference Page pops up to gather user's exercise preference
 
@@ -91,7 +91,7 @@ public class UserMenu extends JFrame {
 
         a5GenerateAMealButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
+            if (consoleforgui.HelperConsole.noInfoFound(5)) {
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
                 mealPlanGUI.setVisible(true);
             }

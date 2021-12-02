@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
 
@@ -72,7 +72,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         enterButton.addActionListener(e -> {
 
             String tempNumFoods = numFoodsInput.getText();
-            if (!(ConsoleForGUI.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
+            if (!(consoleforgui.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
                 //set numFoods
                 numFoods = tempNumFoods;
 

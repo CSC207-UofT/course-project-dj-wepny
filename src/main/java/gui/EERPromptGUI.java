@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 
 import constants.EERConstants;
@@ -96,7 +96,7 @@ public class EERPromptGUI extends JFrame {
 
     private void helperForDisplay(){
         // Display error message if the input is invalid, keep the error message hidden otherwise.
-        if (ConsoleForGUI.HelperConsole.isNotNum(userInput)){
+        if (consoleforgui.HelperConsole.isNotNum(userInput)){
             invalidInput.setVisible(true);
         }
         else{

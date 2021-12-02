@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import controllers.RunCommand;
 
@@ -37,7 +37,7 @@ public class ConsoleGUI extends JFrame{
             // Gets the text from the text box
             String userInput = UserID.getText();
             // check if the user's input is valid
-            if(!ConsoleForGUI.ExistingUserConsole.validID(userInput)){
+            if(!consoleforgui.ExistingUserConsole.validID(userInput)){
                 // if the input is not valid, show the ID error message
                 IDError.setVisible(true);
             }

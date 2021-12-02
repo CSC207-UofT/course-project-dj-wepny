@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
 
@@ -40,40 +40,40 @@ public class NewUserLogin extends JFrame {
             String userAge = age.getText();
 
             // if the input is invalid set invalid prompt to visible
-            if(!ConsoleForGUI.HelperConsole.validGender(userGender)){
+            if(!consoleforgui.HelperConsole.validGender(userGender)){
                 invalidGender.setVisible(true);
             }
             // if the input is valid set invalid prompt back to invisible
-            if(ConsoleForGUI.HelperConsole.validGender(userGender)){
+            if(consoleforgui.HelperConsole.validGender(userGender)){
                 invalidGender.setVisible(false);
             }
-            if(!ConsoleForGUI.HelperConsole.validHeight(userHeight)){
+            if(!consoleforgui.HelperConsole.validHeight(userHeight)){
                 invalidHeight.setVisible(true);
             }
-            if(ConsoleForGUI.HelperConsole.validHeight(userHeight)){
+            if(consoleforgui.HelperConsole.validHeight(userHeight)){
                 invalidHeight.setVisible(false);
             }
-            if(!ConsoleForGUI.HelperConsole.validWeight(userWeight)){
+            if(!consoleforgui.HelperConsole.validWeight(userWeight)){
                 invalidWeight.setVisible(true);
             }
-            if(ConsoleForGUI.HelperConsole.validWeight(userWeight)){
+            if(consoleforgui.HelperConsole.validWeight(userWeight)){
                 invalidWeight.setVisible(false);
             }
-            if(!ConsoleForGUI.HelperConsole.validAge(userAge)){
+            if(!consoleforgui.HelperConsole.validAge(userAge)){
                 invalidAge.setVisible(true);
             }
-            if(ConsoleForGUI.HelperConsole.validAge(userAge)){
+            if(consoleforgui.HelperConsole.validAge(userAge)){
                 invalidAge.setVisible(false);
             }
             // if all inputs are valid, create new user with the information
             // TODO: need to go to the next window after the new user is created
-            if(ConsoleForGUI.HelperConsole.validGender(userGender) &&
-                    ConsoleForGUI.HelperConsole.validHeight(userHeight) &&
-                    ConsoleForGUI.HelperConsole.validWeight(userWeight) &&
-                    ConsoleForGUI.HelperConsole.validAge(userAge)) {
+            if(consoleforgui.HelperConsole.validGender(userGender) &&
+                    consoleforgui.HelperConsole.validHeight(userHeight) &&
+                    consoleforgui.HelperConsole.validWeight(userWeight) &&
+                    consoleforgui.HelperConsole.validAge(userAge)) {
                 String[] basic = {name, userGender};
                 String[] personal = {userHeight, userWeight, userAge};
-                ConsoleForGUI.NewUserConsole.createUser(basic,personal);
+                consoleforgui.NewUserConsole.createUser(basic,personal);
             }
             this.pack();
             this.dispose();
