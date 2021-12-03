@@ -9,6 +9,9 @@ import controllers.RunCommand;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class encodes for the GUI for the MealPlanGenerator function.
+ */
 public class MealPlanGeneratorGUI extends JFrame {
 
     RunCommand commandExecutor = new RunCommand(5);

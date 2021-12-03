@@ -27,6 +27,7 @@
           </grid>
         </constraints>
         <properties>
+          <editable value="false"/>
           <enabled value="true"/>
           <font name="Inconsolata" size="16"/>
           <text value="Please enter your daily activity level: (Please enter a number from 1 to 4) "/>
