@@ -1,8 +1,8 @@
-import Entities.Food;
-import Entities.IFood;
-import Entities.User;
-import UseCases.MealPlanGenerator;
-import UseCases.UserManager;
+import entities.Food;
+import entities.IFood;
+import entities.User;
+import usecases.MealPlanGenerator;
+import usecases.UserManager;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;

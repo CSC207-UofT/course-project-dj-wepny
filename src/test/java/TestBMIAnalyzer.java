@@ -2,11 +2,10 @@
  *This file contains Junit test case for BMIAnalyzer.java
  */
 
-import Entities.User;
-import UseCases.BMIAnalyzer;
+import entities.User;
+import usecases.BMIAnalyzer;
 import org.junit.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
@@ -30,7 +29,7 @@ public class TestBMIAnalyzer {
         user_underweight = new User(20, "Amy", "F", userInfoUnderweight);
         bmi_underweight = new BMIAnalyzer(user_underweight);
 
-        // Underweight user and bmi analyzer creation
+        // Healthy user and bmi analyzer creation
         userInfoHealthy.put("height", "1.70");
         userInfoHealthy.put("weight", "58");
         userInfoHealthy.put("age", "21");
@@ -51,6 +50,7 @@ public class TestBMIAnalyzer {
         user_obese = new User(23, "Ivy", "F", userInfoObese);
         bmi_obese = new BMIAnalyzer(user_obese);
     }
+
     @Test(timeout = 500)
     public void testUnderweightOutput() {
         bmi_underweight.analyze();
@@ -64,6 +64,7 @@ public class TestBMIAnalyzer {
                         "*****************************************************************************\n",
                 bmi_underweight.getResult());
     }
+
     @Test(timeout = 500)
     public void testHealthyOutput() {
         bmi_healthy.analyze();
@@ -105,5 +106,6 @@ public class TestBMIAnalyzer {
                         "*****************************************************************************\n",
                 bmi_obese.getResult());
     }
+
 
 }

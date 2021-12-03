@@ -3,17 +3,18 @@
  * an appropriate list of exercises is given
  */
 
-import Constants.ExerciseConstants;
 import org.junit.*;
-import static org.junit.Assert.*;
+
+import constants.*;
 import java.util.HashMap;
-import UseCases.ExerciseAnalyzer;
-import Entities.User;
-import Constants.*;
+import usecases.ExerciseAnalyzer;
+import entities.User;
+import static org.junit.Assert.assertEquals;
 
 public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises_exist, exercises_no_match;
     User user_exist, user_no_match;
+
 
     @Before
     public void setUp() {
@@ -91,8 +92,7 @@ public class TestExerciseAnalyzer {
                 "    -> The minor muscle exercised is: [Tricep]\n" +
                 "\n" +
                 SystemConstants.DIVIDER;
-        assertEquals(expected_string,
-                exercises_exist.getResult());
+        assertEquals(expected_string, exercises_exist.getResult());
     }
 
     // arms, bicep, body weight
@@ -100,7 +100,7 @@ public class TestExerciseAnalyzer {
     public void testNoOutput() {
         exercises_no_match.analyze();
         String expected_string = SystemConstants.DIVIDER +
-        ExerciseConstants.EXERCISE_INTRO1 + user_no_match.getUsername() + ExerciseConstants.EXERCISE_INTRO2 +
+                ExerciseConstants.EXERCISE_INTRO1 + user_no_match.getUsername() + ExerciseConstants.EXERCISE_INTRO2 +
                 Exceptions.NO_EXERCISES_FOUND + SystemConstants.DIVIDER;
         assertEquals(expected_string,
                 exercises_no_match.getResult());
