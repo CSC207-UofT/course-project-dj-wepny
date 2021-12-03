@@ -7,7 +7,7 @@ public class SystemConstants {
 
     // UserParser
     public static final String USER_FILE = "src/main/data/UserInfo.csv";
-    public static final String TEST_USER_FILE = "src/main/data/TestParser.csv";
+    public static final String TEST_USER_FILE = "src/test/data/TestParser.csv";
 
     // API
     public static final String DISEASE_DATASET_PATH = "src/main/data/GlobalDiseaseData.csv";
@@ -16,8 +16,6 @@ public class SystemConstants {
     public static final double FAT_PER_DAY = 75.0;
     public static final double CARB_PER_DAY = 300.0;
     public static final double SUGAR_PER_DAY = 100.0;
-    public static final double PROTEIN_PER_DAY = 50.0;
-    // This varialbe is never used so maybe we can remove it?
 
     // Decorators
     public static final String DIVIDER = "\n*****************************************************************************\n";

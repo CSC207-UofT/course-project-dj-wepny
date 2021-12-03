@@ -1,4 +1,4 @@
-package ConsoleForGUI;
+package consoleforgui;
 
 import constants.SystemConstants;
 import controllers.Presenter;
