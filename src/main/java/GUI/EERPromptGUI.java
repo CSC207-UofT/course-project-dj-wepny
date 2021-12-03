@@ -100,7 +100,8 @@ public class EERPromptGUI extends JFrame {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
-        this.setResizable(false);
+        this.setResizable(true);
+        this.setSize(900,900);
         this.invalidInput.setVisible(false);
         commandOne.setVisible(false);
         commandTwo.setVisible(false);
