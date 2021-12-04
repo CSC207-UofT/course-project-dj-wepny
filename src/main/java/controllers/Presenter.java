@@ -9,7 +9,7 @@ import usecases.UserAnalyzer;
  */
 public class Presenter {
 
-    private final UserAnalyzer userAnalyzer;
+    private static UserAnalyzer userAnalyzer;
 
     /**
      * Initiating a Presenter by declaring the type of analyzer it needs to retrieve results from
@@ -17,7 +17,7 @@ public class Presenter {
      * @param analyzer an analyzer that is of type UserAnalyzer
      */
     public Presenter(UserAnalyzer analyzer) {
-        this.userAnalyzer = analyzer;
+        userAnalyzer = analyzer;
     }
 
 
@@ -27,7 +27,7 @@ public class Presenter {
      *
      * @return returns the output calculated by the userAnalyzer
      */
-    public String retrieveOutput() {
+    public static String retrieveOutput() {
         return userAnalyzer.getResult();
     }
 
@@ -62,8 +62,8 @@ public class Presenter {
         }
     }
 
-    public static void printUserIDMessage(String userID) {
-        System.out.println( SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2);
+    public static String printUserIDMessage(String userID) {
+        return SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2;
     }
 
     public static void printIDPrompt() {
@@ -170,15 +170,16 @@ public class Presenter {
         }
     }
 
-    public static void DiseasePrompt(String prompt) {
+    public static String DiseasePrompt(String prompt) {
         switch (prompt) {
             case "start":
-                System.out.println(DiseaseConstants.DISEASE_START);
-                break;
+//                System.out.println(DiseaseConstants.DISEASE_START);
+                return DiseaseConstants.DISEASE_START;
             case "description":
-                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
-                break;
+//                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
+                return DiseaseConstants.SYMPTOMS_DESC;
         }
+        return null;
     }
 
     public static void printDiseaseOutput(String output) {

@@ -72,6 +72,14 @@ public class RunCommand {
         switch (typeInfo) {
             case "name":
                 return UserManager.getCurrentUser().getUsername();
+            case "weight":
+                return UserManager.getCurrentUser().getPersonalData().get("weight");
+            case "height":
+                return UserManager.getCurrentUser().getPersonalData().get("height");
+            case "gender":
+                return UserManager.getCurrentUser().getGender();
+            case "age":
+                return UserManager.getCurrentUser().getPersonalData().get("age");
             case "personal data":
                 return UserManager.getCurrentUser().getPersonalData();
             case "id":
