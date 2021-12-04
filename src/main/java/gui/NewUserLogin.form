@@ -18,7 +18,7 @@
         </constraints>
         <properties>
           <font name="Inconsolata" size="16"/>
-          <text value="Hello and welcome to DJ WEPNY's Personal Health app! &#10;&#10;Please enter your information in the space below"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="bb965" class="javax.swing.JFormattedTextField" binding="username">

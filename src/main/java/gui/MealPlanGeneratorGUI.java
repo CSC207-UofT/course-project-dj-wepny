@@ -41,6 +41,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(true);
+        numFoodsPrompt.setEditable(false);
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
         this.pack();
@@ -160,6 +161,10 @@ public class MealPlanGeneratorGUI extends JFrame {
         returnToMenu.setVisible(true);
         this.pack();
 
-
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
+        });
     }
 }

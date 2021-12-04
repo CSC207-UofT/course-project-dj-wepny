@@ -74,6 +74,8 @@ public class EERPromptGUI extends JFrame {
 
     public EERPromptGUI(String userType) {
         super("DJ WEPNY Personal Health Aid");
+        this.setSize(1000, 700);
+        EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
         this.setResizable(false);
@@ -92,6 +94,12 @@ public class EERPromptGUI extends JFrame {
         instruction.setText(this.output);
         returnToMenu.setVisible(true);
         this.pack();
+
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
+        });
     }
 
     private void helperForDisplay(){

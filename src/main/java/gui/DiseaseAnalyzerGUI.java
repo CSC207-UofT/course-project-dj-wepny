@@ -18,6 +18,8 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JButton submitButton;
     private JLabel instructions2;
     private JLabel symptomPrompt;
+    private JButton returnToMenu;
+    private JLabel diseaseResult;
     RunCommand commandExecutor = new RunCommand(4);
     private Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
     private String output;
@@ -30,6 +32,9 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
         this.setContentPane(DiseaseAnalyzerGUI);
         this.setResizable(true);
         this.setSize(10000,10000);
+        returnToMenu.setText("Return to Menu");
+        returnToMenu.setVisible(false);
+        diseaseResult.setVisible(false);
 
         symptomInput.setPreferredSize(new Dimension(250, 60));
         // do the start Prompt with instructions - currently modified Presenter to return statements (might need to
@@ -38,11 +43,14 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
         instructions.setText(Presenter.DiseasePrompt("start"));
         instructions2.setText(Presenter.DiseasePrompt("description"));
 
+        submitButton.addActionListener(this);
         commandExecutor.executeCommand();
         output = analyze_results.retrieveOutput();
         symptomPrompt.setText(output);
 
-        submitButton.addActionListener(this);
+        // The "submit" button is hidden and the "return to menu" button will show up after the function
+        // is finished.
+
         this.pack();
 }
 
@@ -69,9 +77,19 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
             try {
                 int diseaseSize = commandExecutor.executeCommandDisease(currentSymptoms);
                 output = analyze_results.retrieveOutput();
-                symptomPrompt.setText(output);
+                diseaseResult.setText(output);
+                diseaseResult.setVisible(true);
+                symptomPrompt.setVisible(false);
                 if(diseaseSize <= 6){
                     submitButton.setEnabled(false);
+                    submitButton.setVisible(false);
+                    returnToMenu.setVisible(true);
+
+                    returnToMenu.addActionListener(f -> {
+                        this.dispose();
+                        UserMenu userMenu = new UserMenu(ConsoleGUI.getUserType());
+                        userMenu.setVisible(true);
+                    });
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -79,5 +97,7 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
             System.out.println(symptoms);
         }
 
+      }
+
     }
-}}
+}

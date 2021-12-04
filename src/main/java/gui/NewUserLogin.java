@@ -23,6 +23,9 @@ public class NewUserLogin extends JFrame {
         this.setContentPane(newUserLoginMenu);
         this.setSize(1000, 700);
         this.setResizable(false);
+        welcomeMessage.setText("Hello and welcome to DJ WEPNY's Personal Health app!   " +
+                "Please enter your information in the space below");
+        welcomeMessage.setEditable(false);
         // set invalid output to invisible
         this.invalidGender.setVisible(false);
         this.invalidHeight.setVisible(false);
