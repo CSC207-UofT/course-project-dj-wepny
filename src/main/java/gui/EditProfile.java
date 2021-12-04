@@ -36,13 +36,9 @@ public class EditProfile extends JFrame {
         this.height.setText((String) infoGetter.retrieveUser("height"));
         this.age.setText((String) infoGetter.retrieveUser("age"));
 
-        femaleRadioButton.addActionListener(e -> {
-            infoGetter.executeCommandUpdateInfo(5, "F");
-        });
+        femaleRadioButton.addActionListener(e -> infoGetter.executeCommandUpdateInfo(5, "F"));
 
-        maleRadioButton.addActionListener(e -> {
-            infoGetter.executeCommandUpdateInfo(5, "M");
-        });
+        maleRadioButton.addActionListener(e -> infoGetter.executeCommandUpdateInfo(5, "M"));
 
         updateButton.addActionListener(e -> {
             infoGetter.executeCommandUpdateInfo(1, this.username.getText());

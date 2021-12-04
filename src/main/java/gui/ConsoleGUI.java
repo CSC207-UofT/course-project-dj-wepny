@@ -55,7 +55,7 @@ public class ConsoleGUI extends JFrame{
         });
     }
 
-    public static void setUserType(boolean newUser){
+    public static void setUserType(boolean newUser) {
         if (newUser) {
             userType = 1;
         }

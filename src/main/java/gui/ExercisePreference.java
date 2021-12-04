@@ -152,7 +152,6 @@ public class ExercisePreference extends JFrame {
                 returnToMenu.setVisible(true);
                 this.setPreferredSize(new Dimension(1000, 1200));
             }
-
         });
 
     }

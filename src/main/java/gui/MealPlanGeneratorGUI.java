@@ -127,6 +127,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.setResizable(false);
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
+
         this.pack();
 
         if (userType.equals("exsiting")) {

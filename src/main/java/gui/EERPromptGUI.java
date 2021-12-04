@@ -134,7 +134,6 @@ public class EERPromptGUI extends JFrame {
             });
         }
 
-
     }
 
     private void helperForDisplay(int type){

@@ -78,6 +78,7 @@ public class UserMenu extends JFrame {
             this.dispose();
 
             DiseaseAnalyzerGUI potentialDisease;
+
             try {
                 potentialDisease = new DiseaseAnalyzerGUI();
                 potentialDisease.setVisible(true);

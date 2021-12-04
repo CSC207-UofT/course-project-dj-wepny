@@ -29,6 +29,7 @@ public class NewUserLogin extends JFrame {
         this.invalidWeight.setVisible(false);
         this.invalidAge.setVisible(false);
         this.welcomeMessage.setEditable(false);
+
         this.pack();
 
         // what happens when the enter button is pressed
