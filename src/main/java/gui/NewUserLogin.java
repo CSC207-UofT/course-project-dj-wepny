@@ -2,8 +2,12 @@ package gui;
 
 import javax.swing.*;
 
+/**
+ * This class is the page for the Login page of a new user.
+ */
 public class NewUserLogin extends JFrame {
 
+    // Components of the page.
     private JPanel newUserLoginMenu;
     private JTextPane welcomeMessage;
     private JFormattedTextField username;
@@ -19,6 +23,7 @@ public class NewUserLogin extends JFrame {
 
     public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
+        // Initial settings of the page.
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);
         this.setSize(1000, 700);

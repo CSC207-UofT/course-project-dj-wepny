@@ -8,12 +8,12 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="f6247" class="javax.swing.JLabel">
+      <component id="f6247" class="javax.swing.JLabel" binding="welcomeMessage">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Please Enter Your Personal Identification Pin if you are an existing User:"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="c39de" class="javax.swing.JButton" binding="newUserButton">
