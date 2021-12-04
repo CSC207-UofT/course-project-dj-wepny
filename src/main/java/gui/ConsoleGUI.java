@@ -1,8 +1,12 @@
 package gui;
 
 import controllers.RunCommand;
+import constants.GUIFormatConstants;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
 
 public class ConsoleGUI extends JFrame{
     private static int userType;
@@ -12,6 +16,9 @@ public class ConsoleGUI extends JFrame{
     private JTextPane welcomeMessage;
     private JLabel IDError;
     private JButton enterID;
+    private JLabel imgLabel;
+    private JLabel emptyLabel;
+    private BufferedImage introImg;
 
     public ConsoleGUI(){
         // initializing the screen
@@ -66,5 +73,15 @@ public class ConsoleGUI extends JFrame{
 
     public static int getUserType() {
         return userType;
+    }
+
+    private void createUIComponents() {
+        try{
+            introImg = ImageIO.read(GUIFormatConstants.introImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        imgLabel = new JLabel(new ImageIcon(introImg));
     }
 }
