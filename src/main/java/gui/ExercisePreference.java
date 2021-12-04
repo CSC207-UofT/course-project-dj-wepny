@@ -1,5 +1,6 @@
 package gui;
 
+import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -43,6 +44,7 @@ public class ExercisePreference extends JFrame {
     private JCheckBox bosuBallCheckBox;
     private JLabel invalid;
     private JButton returnToMenu;
+    private JTextPane success;
     private String majorMuscle;
     private String minorMuscle;
     private ArrayList<String> equipments = new ArrayList<>();
@@ -162,6 +164,7 @@ public class ExercisePreference extends JFrame {
         this.setContentPane(exercisePreference);
         this.setSize(1000, 1200);
         this.setResizable(false);
+        this.success.setVisible(false);
         if (userType.equals("existing")) {
             returnToMenu.addActionListener(e -> {
                 this.dispose();
@@ -254,6 +257,8 @@ public class ExercisePreference extends JFrame {
                     this.invalid.setVisible(true);
                 } else {
                     this.returnToMenu.setVisible(true);
+                    this.success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                    this.success.setVisible(true);
                     this.equipment = new StringBuilder(this.equipments.get(0));
                     if (this.equipments.size() > 1) {
                         for (int i = 1; i < this.equipments.size(); i++) {
