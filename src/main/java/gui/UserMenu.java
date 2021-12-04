@@ -3,10 +3,12 @@ package gui;
 import api.UserParser;
 import constants.SystemConstants;
 import controllers.RunCommand;
+import controllers.UserController;
 import system.HelperConsole;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UserMenu extends JFrame {
 
@@ -124,6 +126,12 @@ public class UserMenu extends JFrame {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+            }
+            try {
+                ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+                UserController.readExistingUser(userInfo);
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
             ConsoleGUI console = new ConsoleGUI();
             console.setVisible(true);
