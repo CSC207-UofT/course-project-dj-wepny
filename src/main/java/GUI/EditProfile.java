@@ -17,6 +17,8 @@ public class EditProfile extends JFrame {
     private JButton updateButton;
     private JRadioButton femaleRadioButton;
     private JRadioButton maleRadioButton;
+    private JButton OKButton;
+    private JLabel updatedMessage;
 
     public EditProfile() {
         super("DJ WEPNY Personal Health Aid");
@@ -24,6 +26,8 @@ public class EditProfile extends JFrame {
         this.setContentPane(editProfile);
         this.setSize(700, 1000);
         this.setResizable(false);
+        this.OKButton.setVisible(false);
+        this.updatedMessage.setVisible(false);
 
         RunCommand infoGetter = new RunCommand();
 
@@ -45,6 +49,12 @@ public class EditProfile extends JFrame {
             infoGetter.executeCommandUpdateInfo(2, this.height.getText());
             infoGetter.executeCommandUpdateInfo(3, this.weight.getText());
             infoGetter.executeCommandUpdateInfo(4, this.age.getText());
+            this.OKButton.setVisible(true);
+            this.updatedMessage.setVisible(true);
+            this.pack();
+        });
+
+        OKButton.addActionListener(e -> {
             this.dispose();
             UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
             Menu.setVisible(true);
@@ -82,6 +92,7 @@ public class EditProfile extends JFrame {
             MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
             mealPlanGUI.setVisible(true);
         });
+        this.pack();
     }
 
 
