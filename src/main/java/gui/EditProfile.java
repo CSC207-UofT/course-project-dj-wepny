@@ -1,7 +1,6 @@
-package GUI;
+package gui;
 
 import controllers.RunCommand;
-import GUI.ExercisePreference;
 
 import javax.swing.*;
 

@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import api.UserParser;
 import constants.Exceptions;
