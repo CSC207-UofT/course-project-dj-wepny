@@ -9,7 +9,7 @@ public class ConsoleGUI extends JFrame{
     private JButton newUserButton;
     private JPanel console;
     private JFormattedTextField UserID;
-    private JTextPane welcomeMessage;
+    private JLabel welcomeMessage;
     private JLabel IDError;
     private JButton enterID;
 

@@ -18,7 +18,7 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JButton submitButton;
     private JLabel instructions2;
     private JLabel symptomPrompt;
-    RunCommand commandExecutor = new RunCommand(4);
+    private final RunCommand commandExecutor = new RunCommand(4);
     private Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
     private String output;
     public ArrayList<String> currentSymptoms;
