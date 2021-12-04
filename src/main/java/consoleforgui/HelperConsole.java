@@ -1,4 +1,4 @@
-package ConsoleForGUI;
+package consoleforgui;
 
 import controllers.Presenter;
 import controllers.RunCommand;

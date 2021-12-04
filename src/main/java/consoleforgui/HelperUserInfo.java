@@ -1,4 +1,4 @@
-package ConsoleForGUI;
+package consoleforgui;
 
 import constants.EERConstants;
 import constants.Exceptions;

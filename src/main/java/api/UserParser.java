@@ -82,35 +82,33 @@ public class UserParser {
                 user.getPersonalData().get("weight") + "," + user.getPersonalData().get("height") + "," +
                 user.getPersonalData().get("age");
 
-        // turn the exercise preference of user into String with * separating the different muscle and equipment
-        // add it to userInfo with , separating it from previous info
-        if (!user.getExercisePreference().isEmpty()) {
-            userInfo = userInfo + "," + user.getExercisePreference().get("major muscle") + "*" +
-                    user.getExercisePreference().get("minor muscle") + "*" +
-                    user.getExercisePreference().get("equipment");
-        }
-        // if user has not yet input exercise preference, add null to userInfo
-        // with , separating it from previous info
-        else {
-            userInfo = userInfo + "," + "null";
-        }
+        // add exercise preferences
+        userInfo = writeExercisePreferences(user, userInfo);
 
-        // turn the symptoms of user into String with * separating the different symptoms
-        // add it to userInfo with , separating it from previous info
-        if (!user.getRiskFactor().isEmpty()) {
-            String str = String.join("*", user.getRiskFactor());
-            userInfo = userInfo + "," + str;
-        }
-        // if user has not yet input symptoms, add null userInfo
-        // with , separating it from previous info
-        else {
-            userInfo = userInfo + "," + "null";
-        }
+        userInfo = writeSymptoms(user, userInfo);
 
         // add activity level of user to userInfo with , separating from the previous info and
         // add null if user has not yet input activity level
         userInfo = userInfo + "," + user.getPersonalData().getOrDefault("activity level", "null");
 
+        // add food preferences
+        userInfo = writeFoodPreferences(user, userInfo);
+
+        // write the information of user into UserInfo.csv
+        FileWriter writeInfo;
+        writeInfo = new FileWriter(path, true);
+        writeInfo.write(userInfo + "\n");
+        writeInfo.close();
+    }
+
+    /**
+     * Helper method for writeIntoFile. writes user food preferences.
+     * @param user to write information about
+     * @param userInfo String to update
+     * @return the updated userInfo String
+     */
+    public static String writeFoodPreferences(IUser user, String userInfo) {
+        String newUserInfo;
         // turn the food preference of user into String with * separating the different preferences
         // add it to userInfo with , separating it from previous info
         if (!user.getFoodPreference().isEmpty()) {
@@ -134,23 +132,48 @@ public class UserParser {
                     veg = "Y";
                 }
             }
-            userInfo = userInfo + "," + lowCarb + "*" +
+            newUserInfo = userInfo + "," + lowCarb + "*" +
                     lowFat + "*" +
                     lowSugar + "*" +
                     veg + "*" +
                     user.getNumFood();
-        }
-        // if user has not yet input food preferences, add null userInfo
-        // with , separating it from previous info
-        else {
-            userInfo = userInfo + "," + "null";
-        }
+        } else { newUserInfo = userInfo + "," + "null"; } // no input yet
+        return newUserInfo;
+    }
 
-        // write the information of user into UserInfo.csv
-        FileWriter writeInfo;
-        writeInfo = new FileWriter(path, true);
-        writeInfo.write(userInfo + "\n");
-        writeInfo.close();
+    /**
+     * Helper method for writeIntoFile. Add symptoms of user for DiseaseAnalyzer.
+     * @param user to write information about
+     * @param userInfo the String to modify and write into file
+     * @return newUserInfo, updated String
+     */
+    private static String writeSymptoms(IUser user, String userInfo) {
+        String newUserInfo;
+        // turn the symptoms of user into String with * as a separator. "," to separate from previous section
+        if (!user.getRiskFactor().isEmpty()) {
+            String str = String.join("*", user.getRiskFactor());
+            newUserInfo = userInfo + "," + str;
+        } else { newUserInfo = userInfo + "," + "null"; } // no symptoms input yet, add "," and null
+        return newUserInfo;
+    }
+
+    /**
+     * Helper method for writeIntoFile. Adds exercise preferences.
+     * @param user to write information about
+     * @param userInfo the String to modify and write into file
+     * @return newUserInfo String with exercise preferences added
+     */
+    private static String writeExercisePreferences(IUser user, String userInfo) {
+        String newUserInfo;
+        // if user has input exercise preferences, add with "*" separators between and "," before
+        if (!user.getExercisePreference().isEmpty()) {
+            newUserInfo = userInfo + "," + user.getExercisePreference().get("major muscle") + "*" +
+                    user.getExercisePreference().get("minor muscle") + "*" +
+                    user.getExercisePreference().get("equipment");
+        }
+        // if user has not yet input exercise preference, add null with ","
+        else { newUserInfo = userInfo + "," + "null"; }
+        return newUserInfo;
     }
 
 
