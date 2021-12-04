@@ -47,22 +47,22 @@ public class EERPromptGUI extends JFrame {
             // Get the user input from the selected button.
         commandOne.addActionListener(e -> {
             userInput = "1";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandTwo.addActionListener(e -> {
             userInput = "2";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandThree.addActionListener(e -> {
             userInput = "3";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandFour.addActionListener(e -> {
             userInput = "4";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         returnToMenu.addActionListener(e -> {
@@ -78,23 +78,65 @@ public class EERPromptGUI extends JFrame {
         this.setContentPane(EERPromptGUI);
         this.setResizable(true);
         this.invalidInput.setVisible(false);
-        commandOne.setVisible(false);
-        commandTwo.setVisible(false);
-        commandThree.setVisible(false);
-        commandFour.setVisible(false);
-        try {
-            commandExecutor.executeCommand();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        if (userType.equals("existing")) {
+            commandOne.setVisible(false);
+            commandTwo.setVisible(false);
+            commandThree.setVisible(false);
+            commandFour.setVisible(false);
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            this.output = analyze_results.retrieveOutput();
+            instruction.setText(this.output);
+            returnToMenu.setVisible(true);
+            this.pack();
         }
-        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        this.output = analyze_results.retrieveOutput();
-        instruction.setText(this.output);
-        returnToMenu.setVisible(true);
-        this.pack();
+        else {
+            this.instruction.setEditable(false);
+
+            instruction.setText("Please select one of the following based on your daily activity level: ");
+            commandOne.setText("1. Sedentary");
+            commandTwo.setText(("2. Low Active"));
+            commandThree.setText("3. Active");
+            commandFour.setText("4. Very Active");
+            returnToMenu.setText("Return to Menu");
+
+            this.pack();
+
+            // Get the user input from the selected button.
+            commandOne.addActionListener(e -> {
+                userInput = "1";
+                helperForDisplay(2);
+            });
+
+            commandTwo.addActionListener(e -> {
+                userInput = "2";
+                helperForDisplay(2);
+            });
+
+            commandThree.addActionListener(e -> {
+                userInput = "3";
+                helperForDisplay(2);
+            });
+
+            commandFour.addActionListener(e -> {
+                userInput = "4";
+                helperForDisplay(2);
+            });
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                EditProfile Menu = new EditProfile();
+                Menu.setVisible(true);
+            });
+        }
+
     }
 
-    private void helperForDisplay(){
+    private void helperForDisplay(int type){
         // Display error message if the input is invalid, keep the error message hidden otherwise.
         if (consoleforgui.HelperConsole.isNotNum(userInput)){
             invalidInput.setVisible(true);
@@ -116,22 +158,23 @@ public class EERPromptGUI extends JFrame {
                     break;
             }
             commandExecutor.addInfo(level, 2);
-            try {
-                commandExecutor.executeCommand();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (type == 1) {
+                try {
+                    commandExecutor.executeCommand();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+                this.output = analyze_results.retrieveOutput();
+                instruction.setText(this.output);
+                returnToMenu.setVisible(true);
+                this.pack();
+                commandOne.setVisible(false);
+                commandTwo.setVisible(false);
+                commandThree.setVisible(false);
+                commandFour.setVisible(false);
+                this.pack();
             }
-            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-            this.output = analyze_results.retrieveOutput();
-            instruction.setText(this.output);
-            returnToMenu.setVisible(true);
-            this.pack();
-            commandOne.setVisible(false);
-            commandTwo.setVisible(false);
-            commandThree.setVisible(false);
-            commandFour.setVisible(false);
-            this.pack();
-
         }
     }
 

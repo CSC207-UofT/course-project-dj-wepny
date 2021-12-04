@@ -2,20 +2,22 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 9728,allan,F,90,1.9,37,Legs*Quads*Band,blackheads,Active,N*Y*Y*N*9
 7298,Jo,F,67,1.8,31,Arms*Shoulders*Dumbbells/Bosu Ball,muscle_pain,Active,N*N*N*Y*4
 9796,Ed,F,70,1.88,35,Arms*Bicep*Bar/Band,weight_loss,null,Y*Y*Y*Y*3
-8388,Edward,M,76,1.76,19,Legs*Quads*Body Weight/Bar,null,Low Active,null
+8388,Edward,M,60,1.76,19,Arms*Calves*Kettle Bell,null,Active,N*Y*N*Y*2
 9799,Nick,M,85,1.88,56,null,headache*loss_of_balance,Sedentary,null
-6376,Aidan,M,63,1.7,14,null,restlessness,null,null
+6376,Aidan,M,63,1.7,14,Full Body*Shoulders*Cable/Kettle Bell/Medicine Ball/Band,restlessness,null,null
 648,Bella,F,66,1.8,29,Core*Chest*Band,cramps,Sedentary,null
-5579,Eric,F,76,1.8,30,Back*Shoulders*Bar/Platform,internal_itching,Low Active,Y*N*Y*N*10
+5579,Eric,F,76,1.8,30,Full Body*Quads*Bar/Band,internal_itching,Very Active,Y*N*Y*N*10
 6638,Annie,F,60,1.7,29,null,null,null,null
-8914,Rick,M,66,1.67,12,null,watering_from_eyes,Active,Y*Y*N*Y*5
-2162,Melany,F,60,1.77,34,null,fatique,null,null
+8914,Ricky,M,66,1.88,21,null,watering_from_eyes,Active,Y*Y*N*Y*5
+2162,Melany,F,60,1.77,34,Full Body*Bicep*Bar/Dumbbells/Kettle Bell,fatique,null,null
 5716,Ella,F,35,1.65,9,null,swelled_lymph_nodes,Very Active,null
-756,Mel,F,45,1.65,10,null,headache*congestion,null,null
-8533,Amy,F,50,1.65,19,null,stiff_neck,null,null
+756,Mel,M,45,1.65,10,null,headache*congestion,null,null
+8533,,F,,,,Arms*Chest*Cable,stiff_neck,null,Y*Y*Y*Y*2
 2743,Kelly,M,56,1.78,19,Legs*Glutes*Band/Body Weight/Platform,coma,null,Y*N*N*N*6
 6008,Mark,M,55,1.65,23,Arms*Shoulders*Bar,sunken_eyes,Active,null
 6297,April,F,23,25,23,null,null,null,null
 9082,May,F,64,1.78,34,null,fatigue,null,null
+1626,Helen,F,76,1.67,51,Legs*Inner Thigh*Kettle Bell/Cable/Machine,null,null,null
 6267,Frank,M,56,1.7,18,Arms*Shoulders*Bar/Band,altered_sensorium,Active,Y*N*Y*N*6
 1566,Amy,F,58,1.70,21,null,null,Active,Y*N*N*N*4
+1919,Sarah,F,56,1.67,21,null,null,Active,null
