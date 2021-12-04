@@ -36,15 +36,11 @@ public class MealPlanGeneratorGUI extends JFrame {
      * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info
      */
     public MealPlanGeneratorGUI() {
-        // setting up JFrame
         super("DJ WEPNY's Meal Plan Generator");
         this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
-        this.pack();
 
         //set text
         lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
@@ -56,6 +52,10 @@ public class MealPlanGeneratorGUI extends JFrame {
         enterButton.setText("Enter");
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
         returnToMenu.setText("Return");
+
+        this.invalidInput.setVisible(false);
+        this.returnToMenu.setVisible(false);
+        this.pack();
 
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -121,16 +121,11 @@ public class MealPlanGeneratorGUI extends JFrame {
      */
     public MealPlanGeneratorGUI(String userType) {
         super("DJ WEPNY's Meal Plan Generator");
-        this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
 
-        this.pack();
-
-        if (userType.equals("exsiting")) {
+        if (userType.equals("existing")) {
             //set text
             lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
             lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
@@ -141,6 +136,10 @@ public class MealPlanGeneratorGUI extends JFrame {
             enterButton.setText("Enter");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
             returnToMenu.setText("Return");
+
+            this.invalidInput.setVisible(false);
+            this.returnToMenu.setVisible(false);
+            this.pack();
 
             // execute command
             try {
@@ -183,6 +182,10 @@ public class MealPlanGeneratorGUI extends JFrame {
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
             returnToMenu.setText("Return to Menu");
             returnToMenu.setVisible(false);
+
+            this.invalidInput.setVisible(false);
+            this.returnToMenu.setVisible(false);
+            this.pack();
 
             // setting up checkboxes and foodPreference arraylist
             lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
