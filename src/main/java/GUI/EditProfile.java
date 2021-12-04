@@ -1,6 +1,7 @@
 package GUI;
 
 import controllers.RunCommand;
+import GUI.ExercisePreference;
 
 import javax.swing.*;
 
@@ -62,14 +63,14 @@ public class EditProfile extends JFrame {
 
         activityLevelButton.addActionListener(e -> {
             this.dispose();
-            EERPromptGUI activityLevel = new EERPromptGUI();
+            EERPromptGUI activityLevel = new EERPromptGUI("edit");
             activityLevel.setVisible(true);
 
         });
 
         exercisePreferenceButton.addActionListener(e -> {
             this.dispose();
-            ExercisePreference preference = new ExercisePreference();
+            ExercisePreference preference = new ExercisePreference("edit");
             preference.setVisible(true);
         });
 
@@ -89,7 +90,7 @@ public class EditProfile extends JFrame {
         foodPreferenceButton.addActionListener(e -> {
             this.dispose();
             infoGetter.addInfo("", 7);
-            MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
+            MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI("edit");
             mealPlanGUI.setVisible(true);
         });
         this.pack();

@@ -18,6 +18,7 @@ public class BMIPromptGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BMIPromptGUI);
         this.setResizable(true);
+        this.result.setEditable(false);
         createUIComponents();
 
         try {

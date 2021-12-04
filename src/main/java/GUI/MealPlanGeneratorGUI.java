@@ -55,7 +55,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         invalidInput.setText(Exceptions.INVALID_INPUT);
         enterButton.setText("Enter");
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return to Menu");
+        returnToMenu.setText("Return");
 
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -119,7 +119,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     /**
     MealPlanGeneratorGUI Constructor for users that already have foodPreferences info
      */
-    public MealPlanGeneratorGUI(String usertype) {
+    public MealPlanGeneratorGUI(String userType) {
         super("DJ WEPNY's Meal Plan Generator");
         this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,45 +129,91 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.returnToMenu.setVisible(false);
         this.pack();
 
-        //set text
-        lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
-        lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
-        lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
-        vegetarianCheckBox.setText(MealPlanConstants.VEG);
-        numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
-        invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText("Enter");
-        intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return to Menu");
+        if (userType.equals("exsiting")) {
+            //set text
+            lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
+            lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
+            lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
+            vegetarianCheckBox.setText(MealPlanConstants.VEG);
+            numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
+            invalidInput.setText(Exceptions.INVALID_INPUT);
+            enterButton.setText("Enter");
+            intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
+            returnToMenu.setText("Return");
 
-        // execute command
-        try {
-            commandExecutor.executeCommand();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            // execute command
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
+            });
+
+            // retrieve the output
+            Presenter analyzeResults = new Presenter(commandExecutor.getAnalyzer());
+            output = analyzeResults.retrieveOutput();
+
+            // hide components
+            for (Component c : MealPlanGUI.getComponents()) {
+                c.setVisible(false);
+            }
+
+            // display results
+            intro.setText(output);
+            intro.setVisible(true);
+            returnToMenu.setVisible(true);
+            this.pack();
         }
 
-        returnToMenu.addActionListener(e -> {
-            this.dispose();
-            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
-            Menu.setVisible(true);
-        });
+        else {
+            //set text
+            lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
+            lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
+            lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
+            vegetarianCheckBox.setText(MealPlanConstants.VEG);
+            numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
+            invalidInput.setText(Exceptions.INVALID_INPUT);
+            enterButton.setText("Enter");
+            intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
+            returnToMenu.setText("Return to Menu");
+            returnToMenu.setVisible(false);
 
-        // retrieve the output
-        Presenter analyzeResults = new Presenter(commandExecutor.getAnalyzer());
-        output = analyzeResults.retrieveOutput();
+            // setting up checkboxes and foodPreference arraylist
+            lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
+            lowSugarCheckBox.addActionListener(e -> lowSugar = true);
+            lowFatCheckBox.addActionListener(e -> lowFat = true);
+            vegetarianCheckBox.addActionListener(e -> vegetarian = true);
 
-        // hide components
-        for (Component c : MealPlanGUI.getComponents()) {
-            c.setVisible(false);
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                EditProfile Menu = new EditProfile();
+                Menu.setVisible(true);
+            });
+
+            enterButton.addActionListener(e -> {
+
+                String tempNumFoods = numFoodsInput.getText();
+                if (!(ConsoleForGUI.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
+                    //set numFoods
+                    numFoods = tempNumFoods;
+
+                    // set up foodPreference
+                    foodPreference.add(lowCarbs);
+                    foodPreference.add(lowSugar);
+                    foodPreference.add(lowFat);
+                    foodPreference.add(vegetarian);
+                    foodPreference.add(numFoods);
+
+                    // add info to commandExecutor
+                    commandExecutor.addInfo(foodPreference, 5);
+                    returnToMenu.setVisible(true);
+                }
+            });
         }
-
-        // display results
-        intro.setText(output);
-        intro.setVisible(true);
-        returnToMenu.setVisible(true);
-        this.pack();
-
-
     }
 }
