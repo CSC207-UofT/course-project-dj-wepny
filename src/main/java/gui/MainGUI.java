@@ -8,6 +8,10 @@ import controllers.UserController;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * This class is the GUI that runs the program.
+ */
+
 public class MainGUI {
 
     public static void main(String[] args){
