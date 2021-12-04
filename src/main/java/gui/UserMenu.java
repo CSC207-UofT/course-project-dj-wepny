@@ -135,6 +135,7 @@ public class UserMenu extends JFrame {
             }
             ConsoleGUI console = new ConsoleGUI();
             console.setVisible(true);
+
         });
     }
 
