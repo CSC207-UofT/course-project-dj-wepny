@@ -48,7 +48,7 @@ public class UserMenu extends JFrame {
 
         a2AnalyzeEnergyRequiredButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(2)) {
+            if (consoleforgui.HelperConsole.noInfoFound(2)) {
                 EERPromptGUI activityLevel = new EERPromptGUI();
                 activityLevel.setVisible(true);
             }
@@ -61,7 +61,7 @@ public class UserMenu extends JFrame {
 
         a3AnalyzeWorkoutButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(3)) {
+            if (consoleforgui.HelperConsole.noInfoFound(3)) {
 
                 ExercisePreference preference = new ExercisePreference();
                 preference.setVisible(true);
@@ -89,7 +89,7 @@ public class UserMenu extends JFrame {
 
         a5GenerateAMealButton.addActionListener(e -> {
             this.dispose();
-            if (ConsoleForGUI.HelperConsole.noInfoFound(5)) {
+            if (consoleforgui.HelperConsole.noInfoFound(5)) {
                 MealPlanGeneratorGUI mealPlanGUI = new MealPlanGeneratorGUI();
                 mealPlanGUI.setVisible(true);
             }
