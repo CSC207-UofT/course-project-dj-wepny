@@ -3,10 +3,12 @@ package gui;
 import api.UserParser;
 import constants.SystemConstants;
 import controllers.RunCommand;
+import controllers.UserController;
 import system.HelperConsole;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * This class is the menu page of the program (the page that has all the functionalities as an option).
@@ -137,8 +139,15 @@ public class UserMenu extends JFrame {
                     ex.printStackTrace();
                 }
             }
+            try {
+                ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+                UserController.readExistingUser(userInfo);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ConsoleGUI console = new ConsoleGUI();
             console.setVisible(true);
+
         });
     }
 
