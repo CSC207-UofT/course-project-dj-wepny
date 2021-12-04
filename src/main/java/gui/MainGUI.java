@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * This class runs the GUI for the program.
+ * This class is the GUI that runs the program.
  */
+
 public class MainGUI {
 
     public static void main(String[] args) throws IOException {
