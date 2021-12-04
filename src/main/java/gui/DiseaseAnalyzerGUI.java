@@ -106,7 +106,7 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 
     }
     /**
-     * checks whether the user input is a valid input given the symptoms prompted
+     * checks whether the user's input is a valid input given the symptoms prompted
      *
      * @param inputSymptoms    a String that contains the information that the user inputs
      * @param promptedSymptoms a number that specifies what type of information it is
