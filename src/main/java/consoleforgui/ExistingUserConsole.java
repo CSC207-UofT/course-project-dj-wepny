@@ -32,10 +32,7 @@ public class ExistingUserConsole {
 //    }
 
     public static boolean validID(String input){
-        if (HelperConsole.isNotNum(input) || !UserController.checkUserExist(input)){
-            return false;
-        }
-        return true;
+        return !HelperConsole.isNotNum(input) && UserController.checkUserExist(input);
     }
     /**
      * A Static function that outputs the user the existing user menu

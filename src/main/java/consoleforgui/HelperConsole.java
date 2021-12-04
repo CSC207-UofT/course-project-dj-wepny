@@ -11,7 +11,6 @@ import java.util.*;
  * by ExistingUserController and NewUserController
  */
 public class HelperConsole {
-
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].

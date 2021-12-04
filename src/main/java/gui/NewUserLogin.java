@@ -28,10 +28,12 @@ public class NewUserLogin extends JFrame {
         this.invalidHeight.setVisible(false);
         this.invalidWeight.setVisible(false);
         this.invalidAge.setVisible(false);
+        this.welcomeMessage.setEditable(false);
+
         this.pack();
 
         // what happens when the enter button is pressed
-        enterButton.addActionListener(e -> {
+        this.enterButton.addActionListener(e -> {
             // get user input form test field
             String name = username.getText();
             String userGender = gender.getText();
@@ -41,32 +43,31 @@ public class NewUserLogin extends JFrame {
 
             // if the input is invalid set invalid prompt to visible
             if(!consoleforgui.HelperConsole.validGender(userGender)){
-                invalidGender.setVisible(true);
+                this.invalidGender.setVisible(true);
             }
             // if the input is valid set invalid prompt back to invisible
             if(consoleforgui.HelperConsole.validGender(userGender)){
-                invalidGender.setVisible(false);
+                this.invalidGender.setVisible(false);
             }
             if(!consoleforgui.HelperConsole.validHeight(userHeight)){
-                invalidHeight.setVisible(true);
+                this.invalidHeight.setVisible(true);
             }
             if(consoleforgui.HelperConsole.validHeight(userHeight)){
-                invalidHeight.setVisible(false);
+                this.invalidHeight.setVisible(false);
             }
             if(!consoleforgui.HelperConsole.validWeight(userWeight)){
-                invalidWeight.setVisible(true);
+                this.invalidWeight.setVisible(true);
             }
             if(consoleforgui.HelperConsole.validWeight(userWeight)){
-                invalidWeight.setVisible(false);
+                this.invalidWeight.setVisible(false);
             }
             if(!consoleforgui.HelperConsole.validAge(userAge)){
-                invalidAge.setVisible(true);
+                this.invalidAge.setVisible(true);
             }
             if(consoleforgui.HelperConsole.validAge(userAge)){
-                invalidAge.setVisible(false);
+                this.invalidAge.setVisible(false);
             }
             // if all inputs are valid, create new user with the information
-            // TODO: need to go to the next window after the new user is created
             if(consoleforgui.HelperConsole.validGender(userGender) &&
                     consoleforgui.HelperConsole.validHeight(userHeight) &&
                     consoleforgui.HelperConsole.validWeight(userWeight) &&
@@ -74,11 +75,13 @@ public class NewUserLogin extends JFrame {
                 String[] basic = {name, userGender};
                 String[] personal = {userHeight, userWeight, userAge};
                 consoleforgui.NewUserConsole.createUser(basic,personal);
+
+                this.pack();
+                this.dispose();
+                this.pack();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
             }
-            this.pack();
-            this.dispose();
-            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
-            Menu.setVisible(true);
 
         });
 

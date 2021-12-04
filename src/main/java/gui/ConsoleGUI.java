@@ -21,6 +21,7 @@ public class ConsoleGUI extends JFrame{
         this.setContentPane(console);
         this.setResizable(false);
         IDError.setVisible(false);
+        welcomeMessage.setText("Please Enter Your Personal Identification Pin if you are an existing User:");
         this.pack();
 
         // if the "create new user" button is pressed, close the current page and open the new UserLoginPage
@@ -55,7 +56,11 @@ public class ConsoleGUI extends JFrame{
         });
     }
 
-    public static void setUserType(boolean newUser){
+    /**
+     * Helper function to set the user's type (if the user exist in the file or not)
+     * @param newUser A Boolean that's true if the user's a new user, false otherwise.
+     */
+    public static void setUserType(boolean newUser) {
         if (newUser) {
             userType = 1;
         }
@@ -64,6 +69,7 @@ public class ConsoleGUI extends JFrame{
         }
     }
 
+    // Getter for user type.
     public static int getUserType() {
         return userType;
     }

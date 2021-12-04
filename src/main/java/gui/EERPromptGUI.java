@@ -2,6 +2,7 @@ package gui;
 
 
 import constants.EERConstants;
+import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -17,6 +18,7 @@ public class EERPromptGUI extends JFrame {
     private JButton commandFour;
     private JLabel invalidInput;
     private JButton returnToMenu;
+    private JTextPane success;
     private String userInput;
     RunCommand commandExecutor = new RunCommand(2);
     private String output;
@@ -27,7 +29,7 @@ public class EERPromptGUI extends JFrame {
         EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
-        this.setResizable(false); // Think we should set this to true, so we can resize the window.
+        this.setResizable(true); // Think we should set this to true, so we can resize the window.
 
         // Hiding this unless the user has the wrong input
         this.invalidInput.setVisible(false);
@@ -47,22 +49,22 @@ public class EERPromptGUI extends JFrame {
             // Get the user input from the selected button.
         commandOne.addActionListener(e -> {
             userInput = "1";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandTwo.addActionListener(e -> {
             userInput = "2";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandThree.addActionListener(e -> {
             userInput = "3";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         commandFour.addActionListener(e -> {
             userInput = "4";
-            helperForDisplay();
+            helperForDisplay(1);
         });
 
         returnToMenu.addActionListener(e -> {
@@ -76,25 +78,80 @@ public class EERPromptGUI extends JFrame {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
-        this.setResizable(false);
+        this.setResizable(true);
         this.invalidInput.setVisible(false);
-        commandOne.setVisible(false);
-        commandTwo.setVisible(false);
-        commandThree.setVisible(false);
-        commandFour.setVisible(false);
-        try {
-            commandExecutor.executeCommand();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        this.success.setVisible(false);
+        if (userType.equals("existing")) {
+            commandOne.setVisible(false);
+            commandTwo.setVisible(false);
+            commandThree.setVisible(false);
+            commandFour.setVisible(false);
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            this.output = analyze_results.retrieveOutput();
+            instruction.setText(this.output);
+            returnToMenu.setVisible(true);
+            this.pack();
         }
-        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        this.output = analyze_results.retrieveOutput();
-        instruction.setText(this.output);
-        returnToMenu.setVisible(true);
-        this.pack();
+        else {
+            this.instruction.setEditable(false);
+
+            instruction.setText("Please select one of the following based on your daily activity level: ");
+            commandOne.setText("1. Sedentary");
+            commandTwo.setText(("2. Low Active"));
+            commandThree.setText("3. Active");
+            commandFour.setText("4. Very Active");
+            returnToMenu.setText("Return to Menu");
+
+            this.pack();
+
+            // Get the user input from the selected button.
+            commandOne.addActionListener(e -> {
+                userInput = "1";
+                helperForDisplay(2);
+                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setVisible(true);
+                this.pack();
+            });
+
+            commandTwo.addActionListener(e -> {
+                userInput = "2";
+                helperForDisplay(2);
+                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setVisible(true);
+                this.pack();
+            });
+
+            commandThree.addActionListener(e -> {
+                userInput = "3";
+                helperForDisplay(2);
+                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setVisible(true);
+                this.pack();
+            });
+
+            commandFour.addActionListener(e -> {
+                userInput = "4";
+                helperForDisplay(2);
+                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setVisible(true);
+                this.pack();
+            });
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                EditProfile Menu = new EditProfile();
+                Menu.setVisible(true);
+            });
+        }
+
     }
 
-    private void helperForDisplay(){
+    private void helperForDisplay(int type){
         // Display error message if the input is invalid, keep the error message hidden otherwise.
         if (consoleforgui.HelperConsole.isNotNum(userInput)){
             invalidInput.setVisible(true);
@@ -116,23 +173,23 @@ public class EERPromptGUI extends JFrame {
                     break;
             }
             commandExecutor.addInfo(level, 2);
-            try {
-                commandExecutor.executeCommand();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (type == 1) {
+                try {
+                    commandExecutor.executeCommand();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+                this.output = analyze_results.retrieveOutput();
+                instruction.setText(this.output);
+                returnToMenu.setVisible(true);
+                this.pack();
+                commandOne.setVisible(false);
+                commandTwo.setVisible(false);
+                commandThree.setVisible(false);
+                commandFour.setVisible(false);
+                this.pack();
             }
-            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-            this.output = analyze_results.retrieveOutput();
-            instruction.setText(this.output);
-            returnToMenu.setVisible(true);
-            this.pack();
-            commandOne.setVisible(false);
-            commandTwo.setVisible(false);
-            commandThree.setVisible(false);
-            commandFour.setVisible(false);
-            this.pack();
-
         }
     }
-
 }
