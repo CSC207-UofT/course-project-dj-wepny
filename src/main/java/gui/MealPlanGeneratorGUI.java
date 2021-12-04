@@ -39,14 +39,7 @@ public class MealPlanGeneratorGUI extends JFrame {
      * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info
      */
     public MealPlanGeneratorGUI() {
-        // setting up JFrame
         super("DJ WEPNY's Meal Plan Generator");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(MealPlanGUI);
-        this.setResizable(true);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
-        this.pack();
 
         //set text
         lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
@@ -58,6 +51,13 @@ public class MealPlanGeneratorGUI extends JFrame {
         enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
         returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(MealPlanGUI);
+        this.setResizable(true);
+        this.invalidInput.setVisible(false);
+        this.returnToMenu.setVisible(false);
+        this.pack();
 
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -123,12 +123,6 @@ public class MealPlanGeneratorGUI extends JFrame {
      */
     public MealPlanGeneratorGUI(String usertype) {
         super("DJ WEPNY's Meal Plan Generator");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(MealPlanGUI);
-        this.setResizable(true);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
-        this.pack();
 
         //set text
         lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
@@ -140,6 +134,13 @@ public class MealPlanGeneratorGUI extends JFrame {
         enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
         returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(MealPlanGUI);
+        this.setResizable(true);
+        this.invalidInput.setVisible(false);
+        this.returnToMenu.setVisible(false);
+        this.pack();
 
         // execute command
         try {
