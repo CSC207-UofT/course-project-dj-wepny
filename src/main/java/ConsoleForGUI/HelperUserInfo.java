@@ -284,7 +284,6 @@ public class HelperUserInfo {
 //            System.out.println(Constants.UPDATED_GENDER);
             Presenter.updateUser("update gender");
             commandExecutor.executeCommandUpdateInfo(secondCommand, newGender);
-
         }
         //update activity level
         else if (secondCommand == 6) {

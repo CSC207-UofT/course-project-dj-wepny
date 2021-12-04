@@ -147,6 +147,12 @@ public class MealPlanGeneratorGUI extends JFrame {
             exception.printStackTrace();
         }
 
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
+        });
+
         // retrieve the output
         Presenter analyzeResults = new Presenter(commandExecutor.getAnalyzer());
         output = analyzeResults.retrieveOutput();

@@ -134,13 +134,13 @@ public class ExercisePreference extends JFrame{
 //                for (int i = 0; i < this.equipments.size(); i++) {
 //                    equipmentList[i] = this.equipments.get(i);
 //                }
-                equipment = new StringBuilder(this.equipments.get(0));
+                this.equipment = new StringBuilder(this.equipments.get(0));
                 if (this.equipments.size() > 1) {
                     for (int i = 1; i < this.equipments.size(); i++) {
-                        equipment.append('/').append(equipments.size());
+                        this.equipment.append('/').append(this.equipments.get(i));
                     }
                 }
-                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, equipment.toString()}, 3);
+                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, this.equipment.toString()}, 3);
                 try {
                     commandExecutor.executeCommand();
                 } catch (Exception ex) {
@@ -168,6 +168,11 @@ public class ExercisePreference extends JFrame{
         this.setContentPane(exercisePreference);
         this.setSize(1000, 1200);
         this.setResizable(false);
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
+        });
         try {
             commandExecutor.executeCommand();
         } catch (Exception ex) {
