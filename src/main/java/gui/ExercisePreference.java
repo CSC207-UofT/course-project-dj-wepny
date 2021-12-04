@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ExercisePreference extends JFrame{
+public class ExercisePreference extends JFrame {
     private JPanel exercisePreference;
     private JTextPane majorMusclePrompt;
     private JCheckBox armsCheckBox;
@@ -50,7 +50,7 @@ public class ExercisePreference extends JFrame{
     RunCommand commandExecutor = new RunCommand(3);
     private String output;
 
-    public ExercisePreference(){
+    public ExercisePreference() {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(exercisePreference);
@@ -127,20 +127,15 @@ public class ExercisePreference extends JFrame{
         enterButton.addActionListener(e -> {
             if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
                 this.invalid.setVisible(true);
-            }
-            else {
-//                String[] equipmentList = new String[this.equipments.size()];
-//
-//                for (int i = 0; i < this.equipments.size(); i++) {
-//                    equipmentList[i] = this.equipments.get(i);
-//                }
-                equipment = new StringBuilder(this.equipments.get(0));
+            } else {
+
+                this.equipment = new StringBuilder(this.equipments.get(0));
                 if (this.equipments.size() > 1) {
                     for (int i = 1; i < this.equipments.size(); i++) {
-                        equipment.append('/').append(equipments.size());
+                        this.equipment.append('/').append(this.equipments.get(i));
                     }
                 }
-                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, equipment.toString()}, 3);
+                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, this.equipment.toString()}, 3);
                 try {
                     commandExecutor.executeCommand();
                 } catch (Exception ex) {
@@ -148,16 +143,15 @@ public class ExercisePreference extends JFrame{
                 }
                 Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
                 this.output = analyze_results.retrieveOutput();
-                for (Component child : exercisePreference.getComponents()){
+                for (Component child : exercisePreference.getComponents()) {
                     child.setVisible(false);
                 }
                 this.setSize(700, 1000);
                 exerciseWelcome.setText(this.output);
                 exerciseWelcome.setVisible(true);
                 returnToMenu.setVisible(true);
-                this.setPreferredSize(new Dimension(1000,1200));
+                this.setPreferredSize(new Dimension(1000, 1200));
             }
-
         });
 
     }
@@ -168,19 +162,113 @@ public class ExercisePreference extends JFrame{
         this.setContentPane(exercisePreference);
         this.setSize(1000, 1200);
         this.setResizable(false);
-        try {
-            commandExecutor.executeCommand();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        if (userType.equals("existing")) {
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
+            });
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            this.output = analyze_results.retrieveOutput();
+            for (Component child : exercisePreference.getComponents()) {
+                child.setVisible(false);
+            }
+            this.setSize(1000, 1200);
+            exerciseWelcome.setText(this.output);
+            exerciseWelcome.setVisible(true);
+            returnToMenu.setVisible(true);
+        } else {
+
+            this.invalid.setVisible(false);
+            this.returnToMenu.setVisible(false);
+
+            armsCheckBox.addActionListener(e -> this.majorMuscle = "Arms");
+
+            coreCheckBox.addActionListener(e -> this.majorMuscle = "Core");
+
+            fullBodyCheckBox.addActionListener(e -> this.majorMuscle = "Full Body");
+
+            backCheckBox.addActionListener(e -> this.majorMuscle = "Back");
+
+            legsCheckBox.addActionListener(e -> this.majorMuscle = "Legs");
+
+            bicepCheckBox.addActionListener(e -> this.minorMuscle = "Bicep");
+
+            shouldersCheckBox.addActionListener(e -> this.minorMuscle = "Shoulders");
+
+            outerThighCheckBox.addActionListener(e -> this.minorMuscle = "Outer Thigh");
+
+            glutesCheckBox.addActionListener(e -> this.minorMuscle = "Glutes");
+
+            hamstringsCheckBox.addActionListener(e -> this.minorMuscle = "Hamstrings");
+
+            quadsCheckBox.addActionListener(e -> this.minorMuscle = "Quads");
+
+            calvesCheckBox.addActionListener(e -> this.minorMuscle = "Calves");
+
+            chestCheckBox.addActionListener(e -> this.minorMuscle = "Chest");
+
+            innerThighCheckBox.addActionListener(e -> this.minorMuscle = "Inner Thigh");
+
+            tricepCheckBox.addActionListener(e -> this.minorMuscle = "Tricep");
+
+            latsCheckBox.addActionListener(e -> this.minorMuscle = "Lats");
+
+            obliqueCheckBox.addActionListener(e -> this.minorMuscle = "Oblique");
+
+            dumbbellsCheckBox.addActionListener(e -> this.equipments.add("Dumbbells"));
+
+            barCheckBox.addActionListener(e -> this.equipments.add("Bar"));
+
+            cableCheckBox.addActionListener(e -> this.equipments.add("Cable"));
+
+            bodyWeightCheckBox.addActionListener(e -> this.equipments.add("Body Weight"));
+
+            platformCheckBox.addActionListener(e -> this.equipments.add("Platform"));
+
+            machineCheckBox.addActionListener(e -> this.equipments.add("Machine"));
+
+            bandCheckBox.addActionListener(e -> this.equipments.add("Band"));
+
+            kettleBellCheckBox.addActionListener(e -> this.equipments.add("Kettle Bell"));
+
+            medicineBallCheckBox.addActionListener(e -> this.equipments.add("Medicine Ball"));
+
+            bosuBallCheckBox.addActionListener(e -> this.equipments.add("Bosu Ball"));
+
+            this.pack();
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                EditProfile Menu = new EditProfile();
+                Menu.setVisible(true);
+            });
+
+            enterButton.addActionListener(e -> {
+                if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
+                    this.invalid.setVisible(true);
+                } else {
+                    this.returnToMenu.setVisible(true);
+                    this.equipment = new StringBuilder(this.equipments.get(0));
+                    if (this.equipments.size() > 1) {
+                        for (int i = 1; i < this.equipments.size(); i++) {
+                            this.equipment.append('/').append(this.equipments.get(i));
+                        }
+                    }
+                    commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, this.equipment.toString()}, 3);
+                    this.pack();
+                }
+
+            });
+
+
         }
-        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        this.output = analyze_results.retrieveOutput();
-        for (Component child : exercisePreference.getComponents()){
-            child.setVisible(false);
-        }
-        this.setSize(1000, 1200);
-        exerciseWelcome.setText(this.output);
-        exerciseWelcome.setVisible(true);
-        returnToMenu.setVisible(true);
+
+
     }
 }
