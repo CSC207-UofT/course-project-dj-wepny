@@ -94,5 +94,6 @@ public class SystemConstants {
     public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
     public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
     public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
+    public static final String UPDATED_SUCCESSFULLY = "Changed Successfully, please press 'Return; to go back";
 
 }

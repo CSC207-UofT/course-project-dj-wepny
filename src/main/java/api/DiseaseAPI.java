@@ -16,10 +16,6 @@ import java.util.*;
  */
 public class DiseaseAPI {
 
-    public static void main(String[] args) {
-        readFromDiseaseCSV();
-    }
-
     /**
      * Read from the Disease CSV and return all the information in a hashmap
      *

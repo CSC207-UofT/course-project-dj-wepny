@@ -82,7 +82,7 @@
       </component>
       <component id="ed571" class="javax.swing.JButton" binding="activityLevelButton" default-binding="true">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Activity Level"/>
@@ -90,7 +90,7 @@
       </component>
       <component id="b96a3" class="javax.swing.JButton" binding="exercisePreferenceButton" default-binding="true">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Exercise Preference"/>
@@ -98,7 +98,7 @@
       </component>
       <component id="19ce8" class="javax.swing.JButton" binding="symptomsButton" default-binding="true">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Symptoms"/>
@@ -106,7 +106,7 @@
       </component>
       <component id="c8c56" class="javax.swing.JButton" binding="foodPreferenceButton" default-binding="true">
         <constraints>
-          <grid row="8" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Food Preference"/>
@@ -137,25 +137,25 @@
           <text value="Your profile has been updated!"/>
         </properties>
       </component>
-      <component id="1ff47" class="javax.swing.JButton" binding="OKButton">
+      <component id="1ff47" class="javax.swing.JButton" binding="returnButton">
         <constraints>
           <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="OK"/>
+          <text value="Return"/>
         </properties>
       </component>
       <component id="96d1c" class="javax.swing.JButton" binding="updateButton" default-binding="true">
         <constraints>
-          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Update"/>
         </properties>
       </component>
-      <vspacer id="58ce5">
+      <vspacer id="6a6d6">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
     </children>
