@@ -40,7 +40,7 @@ public class EERPromptGUI extends JFrame {
         EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
-        this.setResizable(true); // Think we should set this to true, so we can resize the window.
+        this.setResizable(false); // Think we should set this to true, so we can resize the window.
 
         // Hiding this unless the user has the wrong input
         this.invalidInput.setVisible(false);
@@ -91,7 +91,7 @@ public class EERPromptGUI extends JFrame {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
-        this.setResizable(true);
+        this.setResizable(false);
         this.invalidInput.setVisible(false);
         this.success.setVisible(false);
         if (userType.equals("existing")) {

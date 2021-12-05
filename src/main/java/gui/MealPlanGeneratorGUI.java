@@ -3,7 +3,8 @@ package gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import constants.*;
+import constants.MealPlanConstants;
+import constants.Exceptions;
 import controllers.Presenter;
 import controllers.RunCommand;
 

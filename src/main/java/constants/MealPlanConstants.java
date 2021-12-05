@@ -5,7 +5,6 @@ package constants;
  */
 public class MealPlanConstants {
 
-    // MealPlanGenerator
     // Messages
     public static final String MEALPLAN_INTRO = ", the following foods are based on your preferences:";
     public static final String MEALPLAN_WELCOME = "Welcome to the Meal Plan Generator!\n" +
