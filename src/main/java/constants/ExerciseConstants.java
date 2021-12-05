@@ -5,7 +5,6 @@ package constants;
  */
 public class ExerciseConstants {
 
-    // ExerciseAnalyzer messages
     public static final String EXERCISE_START =
             "This exercise analyzer generate a list of exercising moves based on your preference.\n";
     public static final String EXERCISE_MAJOR =
@@ -45,8 +44,6 @@ public class ExerciseConstants {
     public static final String EX_DESC_MAJOR = ";\n    -> The major muscle exercised is: ";
     public static final String EX_DESC_MINOR = "\n    -> The minor muscle exercised is: ";
 
-    //Exercises
-    // Exercise
     public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";
     public static final String ALL_MINOR_MUSCLES = "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, " +
             "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique";
