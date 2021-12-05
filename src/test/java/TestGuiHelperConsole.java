@@ -59,5 +59,15 @@ public class TestGuiHelperConsole {
         assert !HelperConsole.validAge("-1");
     }
 
+    @Test(timeout = 500)
+    public void testIsNotNumTrue() {
+        assert !HelperConsole.isNotNum("1");
+    }
+
+    @Test(timeout = 500)
+    public void testIsNotNumFalse() {
+        assert HelperConsole.isNotNum(".");
+    }
+
 
 }

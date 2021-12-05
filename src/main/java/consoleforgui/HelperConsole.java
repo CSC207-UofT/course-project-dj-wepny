@@ -12,7 +12,7 @@ import java.util.Scanner;
  * by ExistingUserController and NewUserController
  */
 public class HelperConsole {
-
+// TODO: several methods are never used (or the methods calling them are never used), refactor if time allows.
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].
@@ -230,6 +230,7 @@ public class HelperConsole {
      *                checking for in the user object
      * @return true if the information is empty in the user object
      */
+    // TODO: Refactor this method if time allows as this violates Open/Close Principle
     public static boolean noInfoFound(int command) {
         RunCommand commandExecutor = new RunCommand();
         if (command == 2) {
