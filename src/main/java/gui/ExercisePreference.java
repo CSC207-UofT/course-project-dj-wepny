@@ -1,5 +1,6 @@
 package gui;
 
+import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -7,7 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ExercisePreference extends JFrame{
+/**
+ * This class is the page for the ExerciseAnalyzer function.
+ */
+
+public class ExercisePreference extends JFrame {
+    // The components for the page.
     private JPanel exercisePreference;
     private JTextPane majorMusclePrompt;
     private JCheckBox armsCheckBox;
@@ -43,15 +49,18 @@ public class ExercisePreference extends JFrame{
     private JCheckBox bosuBallCheckBox;
     private JLabel invalid;
     private JButton returnToMenu;
+    private JTextPane success;
     private String majorMuscle;
     private String minorMuscle;
     private ArrayList<String> equipments = new ArrayList<>();
     private StringBuilder equipment;
-    RunCommand commandExecutor = new RunCommand(3);
+    private final RunCommand commandExecutor = new RunCommand(3);
     private String output;
 
-    public ExercisePreference(){
+    public ExercisePreference() {
         super("DJ WEPNY Personal Health Aid");
+
+        // Initial setup of the page.
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(exercisePreference);
         this.setSize(700, 1000);
@@ -64,6 +73,117 @@ public class ExercisePreference extends JFrame{
         this.equipmentPrompt.setEditable(false);
         this.pack();
 
+        setUpButtons();
+
+        // After pressing the "return to menu" button, this page is closed and the user menu page is opened.
+        returnToMenu.addActionListener(e -> {
+            this.dispose();
+            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+            Menu.setVisible(true);
+        });
+
+        // Runs ExerciseAnalyzer after pressing the "enter" button.
+        enterButton.addActionListener(e -> {
+            if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
+                this.invalid.setVisible(true);
+            } else {
+
+                this.equipment = new StringBuilder(this.equipments.get(0));
+                if (this.equipments.size() > 1) {
+                    for (int i = 1; i < this.equipments.size(); i++) {
+                        this.equipment.append('/').append(this.equipments.get(i));
+                    }
+                }
+                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, this.equipment.toString()}, 3);
+                try {
+                    commandExecutor.executeCommand();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+                this.output = analyze_results.retrieveOutput();
+                for (Component child : exercisePreference.getComponents()) {
+                    child.setVisible(false);
+                }
+                this.setSize(700, 1000);
+                exerciseWelcome.setText(this.output);
+                exerciseWelcome.setVisible(true);
+                returnToMenu.setVisible(true);
+                this.setPreferredSize(new Dimension(1000, 1200));
+            }
+        });
+
+    }
+
+    // Overloaded constructor if the user is an existing user. Everything's basically the same as the case
+    // of an new user.
+    public ExercisePreference(String userType) {
+        super("DJ WEPNY Personal Health Aid");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(exercisePreference);
+        this.setSize(1000, 1200);
+        this.setResizable(false);
+        this.success.setVisible(false);
+        if (userType.equals("existing")) {
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
+            });
+            try {
+                commandExecutor.executeCommand();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+            this.output = analyze_results.retrieveOutput();
+            for (Component child : exercisePreference.getComponents()) {
+                child.setVisible(false);
+            }
+            this.setSize(1000, 1200);
+            exerciseWelcome.setText(this.output);
+            exerciseWelcome.setVisible(true);
+            returnToMenu.setVisible(true);
+        } else {
+
+            this.invalid.setVisible(false);
+            this.returnToMenu.setVisible(false);
+
+            setUpButtons();
+
+            this.pack();
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                EditProfile Menu = new EditProfile();
+                Menu.setVisible(true);
+            });
+
+            enterButton.addActionListener(e -> {
+                if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
+                    this.invalid.setVisible(true);
+                } else {
+                    this.returnToMenu.setVisible(true);
+                    this.success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                    this.success.setVisible(true);
+                    this.equipment = new StringBuilder(this.equipments.get(0));
+                    if (this.equipments.size() > 1) {
+                        for (int i = 1; i < this.equipments.size(); i++) {
+                            this.equipment.append('/').append(this.equipments.get(i));
+                        }
+                    }
+                    commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, this.equipment.toString()}, 3);
+                    this.pack();
+                }
+            });
+        }
+    }
+
+    /**
+     * Helper function to set up buttons for the muscle groups, equipments, etc.
+     */
+    public void setUpButtons(){
+        // Make the checkboxes react to user's clicking.
         armsCheckBox.addActionListener(e -> this.majorMuscle = "Arms");
 
         coreCheckBox.addActionListener(e -> this.majorMuscle = "Core");
@@ -117,70 +237,5 @@ public class ExercisePreference extends JFrame{
         medicineBallCheckBox.addActionListener(e -> this.equipments.add("Medicine Ball"));
 
         bosuBallCheckBox.addActionListener(e -> this.equipments.add("Bosu Ball"));
-
-        returnToMenu.addActionListener(e -> {
-            this.dispose();
-            UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
-            Menu.setVisible(true);
-        });
-
-        enterButton.addActionListener(e -> {
-            if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
-                this.invalid.setVisible(true);
-            }
-            else {
-//                String[] equipmentList = new String[this.equipments.size()];
-//
-//                for (int i = 0; i < this.equipments.size(); i++) {
-//                    equipmentList[i] = this.equipments.get(i);
-//                }
-                equipment = new StringBuilder(this.equipments.get(0));
-                if (this.equipments.size() > 1) {
-                    for (int i = 1; i < this.equipments.size(); i++) {
-                        equipment.append('/').append(equipments.size());
-                    }
-                }
-                commandExecutor.addInfo(new String[]{majorMuscle, minorMuscle, equipment.toString()}, 3);
-                try {
-                    commandExecutor.executeCommand();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-                this.output = analyze_results.retrieveOutput();
-                for (Component child : exercisePreference.getComponents()){
-                    child.setVisible(false);
-                }
-                this.setSize(700, 1000);
-                exerciseWelcome.setText(this.output);
-                exerciseWelcome.setVisible(true);
-                returnToMenu.setVisible(true);
-                this.setPreferredSize(new Dimension(1000,1200));
-            }
-
-        });
-
-    }
-
-    public ExercisePreference(String userType) {
-        super("DJ WEPNY Personal Health Aid");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(exercisePreference);
-        this.setSize(1000, 1200);
-        this.setResizable(false);
-        try {
-            commandExecutor.executeCommand();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
-        this.output = analyze_results.retrieveOutput();
-        for (Component child : exercisePreference.getComponents()){
-            child.setVisible(false);
-        }
-        this.setSize(1000, 1200);
-        exerciseWelcome.setText(this.output);
-        exerciseWelcome.setVisible(true);
-        returnToMenu.setVisible(true);
     }
 }

@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public class RunCommand {
 
+    /**
+     * Abstract interface for the use cases that the controller interacts with.
+     */
     public UserAnalyzer userAnalyzer;
 
     /**
@@ -72,6 +75,14 @@ public class RunCommand {
         switch (typeInfo) {
             case "name":
                 return UserManager.getCurrentUser().getUsername();
+            case "weight":
+                return UserManager.getCurrentUser().getPersonalData().get("weight");
+            case "height":
+                return UserManager.getCurrentUser().getPersonalData().get("height");
+            case "gender":
+                return UserManager.getCurrentUser().getGender();
+            case "age":
+                return UserManager.getCurrentUser().getPersonalData().get("age");
             case "personal data":
                 return UserManager.getCurrentUser().getPersonalData();
             case "id":
@@ -140,7 +151,6 @@ public class RunCommand {
         return UserManager.getExistingUsers().containsKey(id);
     }
 
-    // getter functions
     public UserAnalyzer getAnalyzer() {
         return this.userAnalyzer;
     }

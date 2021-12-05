@@ -1,69 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.ConsoleGUI">
-  <grid id="27dc6" binding="console" layout-manager="GridLayoutManager" row-count="5" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="console" layout-manager="GridLayoutManager" row-count="8" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
-      <xy x="-35" y="20" width="776" height="868"/>
+      <xy x="-35" y="21" width="776" height="867"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1971201"/>
+    </properties>
     <border type="none"/>
     <children>
-      <component id="f6247" class="javax.swing.JLabel">
+      <component id="f6247" class="javax.swing.JLabel" binding="welcomeMessage">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="11" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Please Enter Your Personal Identification Pin if you are an existing User:"/>
-        </properties>
-      </component>
-      <component id="c39de" class="javax.swing.JButton" binding="newUserButton">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="9" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Inconsolata" size="16" style="0"/>
-          <text value="Create New User"/>
-        </properties>
-      </component>
-      <component id="8057d" class="javax.swing.JFormattedTextField" binding="UserID">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="6" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="10"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Inconsolata" size="16"/>
+
+          <background color="-12828863"/>
+          <font name="Montserrat" size="18" style="0"/>
           <text value=""/>
+
         </properties>
       </component>
-      <vspacer id="71cb3">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <component id="fbda" class="javax.swing.JLabel" binding="IDError">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="2" col-span="11" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Courier New" size="12"/>
+          <font name="Montserrat" size="12"/>
           <foreground color="-4510686"/>
           <text value="Please re-enter a valid pin"/>
         </properties>
       </component>
       <component id="9f2e3" class="javax.swing.JButton" binding="enterID">
         <constraints>
-          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="7" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Enter"/>
+          <background color="-4463135"/>
+          <font name="Century Gothic" size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <hideActionText value="true"/>
+          <text value="ENTER"/>
         </properties>
       </component>
       <hspacer id="da730">
         <constraints>
-          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="8" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
+      <component id="d777c" class="javax.swing.JLabel" binding="imgLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="11" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="c39de" class="javax.swing.JButton" binding="newUserButton">
+        <constraints>
+          <grid row="7" column="5" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-10237484"/>
+          <font name="Century Gothic" size="18" style="1"/>
+          <text value="Create New User"/>
+        </properties>
+      </component>
+      <component id="f42ce" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Montserrat" size="18" style="0"/>
+          <text value="Don't have a Personal Identification Number? "/>
+        </properties>
+      </component>
+      <component id="8057d" class="javax.swing.JFormattedTextField" binding="UserID">
+        <constraints>
+          <grid row="2" column="5" row-span="2" col-span="1" vsize-policy="0" hsize-policy="6" anchor="6" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Century Gothic" size="16"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="e68d0" class="javax.swing.JLabel" binding="emptyLabel">
+        <constraints>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-1971201"/>
+          <text value="Label"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

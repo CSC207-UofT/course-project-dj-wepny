@@ -1,170 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.NewUserLogin">
-  <grid id="27dc6" binding="newUserLoginMenu" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="newUserLoginMenu" layout-manager="GridLayoutManager" row-count="12" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
-      <xy x="20" y="20" width="534" height="604"/>
+      <xy x="20" y="13" width="534" height="611"/>
     </constraints>
     <properties>
+      <background color="-1971201"/>
+      <font name="Montserrat"/>
       <foreground color="-4521984"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="698c7" class="javax.swing.JTextPane" binding="welcomeMessage">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="105"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Inconsolata" size="16"/>
-          <text value="Hello and welcome to DJ WEPNY's Personal Health app! &#10;&#10;Please enter your information in the space below"/>
-        </properties>
-      </component>
       <component id="bb965" class="javax.swing.JFormattedTextField" binding="username">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Montserrat"/>
+        </properties>
       </component>
       <component id="f64e8" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
+          <foreground color="-16777216"/>
           <text value="Please enter your name:"/>
         </properties>
       </component>
       <component id="630e6" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
+          <foreground color="-16777216"/>
           <text value="Please enter your gender (M/F):"/>
         </properties>
       </component>
-      <component id="b55a0" class="javax.swing.JFormattedTextField" binding="gender">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="46511" class="javax.swing.JLabel" binding="invalidGender">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Courier New" size="10"/>
+          <font name="Montserrat"/>
           <foreground color="-4521984"/>
           <text value="Invalid input please enter again"/>
         </properties>
       </component>
       <component id="78a02" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
+          <foreground color="-16777216"/>
           <text value="Please enter your height (in m):"/>
         </properties>
       </component>
       <component id="45c4a" class="javax.swing.JTextField" binding="height">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
           </grid>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
           <text value=""/>
         </properties>
       </component>
       <component id="2997" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
+          <foreground color="-16777216"/>
           <text value="Please enter your weight (in kg):"/>
         </properties>
       </component>
       <component id="9260f" class="javax.swing.JTextField" binding="weight">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Montserrat"/>
+        </properties>
       </component>
       <component id="cb8c4" class="javax.swing.JLabel" binding="invalidHeight">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Courier New" size="10"/>
+          <font name="Montserrat"/>
           <foreground color="-4521984"/>
           <text value="Invalid input please enter again"/>
         </properties>
       </component>
       <component id="c7caf" class="javax.swing.JLabel" binding="invalidWeight">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Courier New" size="10"/>
+          <font name="Montserrat"/>
           <foreground color="-4521984"/>
           <text value="Invalid input please enter again"/>
         </properties>
       </component>
-      <component id="3a9db" class="javax.swing.JButton" binding="enterButton">
-        <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Enter"/>
-        </properties>
-      </component>
       <component id="f8270" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Montserrat"/>
+          <foreground color="-16777216"/>
           <text value="Please enter your age:"/>
         </properties>
       </component>
       <component id="ab0a2" class="javax.swing.JFormattedTextField" binding="age">
         <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="9" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Montserrat"/>
+        </properties>
       </component>
       <component id="5659c" class="javax.swing.JLabel" binding="invalidAge">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Courier New" size="10"/>
+          <font name="Montserrat"/>
           <foreground color="-4521984"/>
           <text value="Invalid input please enter again"/>
         </properties>
       </component>
-      <hspacer id="1249a">
+      <component id="8ef3e" class="javax.swing.JRadioButton" binding="maleRadioButton" default-binding="true">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="14" height="105"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="19"/>
           </grid>
         </constraints>
-      </hspacer>
-      <hspacer id="e49db">
+        <properties>
+          <background color="-1971201"/>
+          <font name="Montserrat"/>
+          <text value="Male"/>
+        </properties>
+      </component>
+      <component id="b0b0a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="14" height="105"/>
-          </grid>
+          <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
-      </hspacer>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="22" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Please enter your information in the space below"/>
+        </properties>
+      </component>
+      <component id="862c6" class="javax.swing.JRadioButton" binding="femaleRadioButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Montserrat"/>
+          <text value="Female"/>
+        </properties>
+      </component>
+      <component id="3a9db" class="javax.swing.JButton" binding="enterButton">
+        <constraints>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4463135"/>
+          <font name="Montserrat" size="18" style="1"/>
+          <text value="ENTER"/>
+        </properties>
+      </component>
+      <component id="521cf" class="javax.swing.JLabel" binding="headerImgLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <foreground color="-1971201"/>
+          <text value="Label"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
