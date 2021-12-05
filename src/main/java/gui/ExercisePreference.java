@@ -1,12 +1,16 @@
 package gui;
 
+import constants.GUIFormatConstants;
 import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 /**
  * This class is the page for the ExerciseAnalyzer function.
@@ -50,12 +54,14 @@ public class ExercisePreference extends JFrame {
     private JLabel invalid;
     private JButton returnToMenu;
     private JTextPane success;
+    private JLabel headerImgLabel;
     private String majorMuscle;
     private String minorMuscle;
     private ArrayList<String> equipments = new ArrayList<>();
     private StringBuilder equipment;
     private final RunCommand commandExecutor = new RunCommand(3);
     private String output;
+    private BufferedImage headerImg;
 
     public ExercisePreference() {
         super("DJ WEPNY Personal Health Aid");
@@ -237,5 +243,15 @@ public class ExercisePreference extends JFrame {
         medicineBallCheckBox.addActionListener(e -> this.equipments.add("Medicine Ball"));
 
         bosuBallCheckBox.addActionListener(e -> this.equipments.add("Bosu Ball"));
+    }
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.workoutAnalyzerImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

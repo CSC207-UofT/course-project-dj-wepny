@@ -21,3 +21,4 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 6267,Frank,M,56,1.7,18,Arms*Shoulders*Bar/Band,altered_sensorium,Active,Y*N*Y*N*6
 1566,Amy,F,58,1.70,21,null,null,Active,Y*N*N*N*4
 1919,Sarah,F,56,1.67,21,null,null,Active,null
+8172,wa,F,54,1.8,14,null,null,null,Y*Y*Y*Y*5
