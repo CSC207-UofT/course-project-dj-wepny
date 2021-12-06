@@ -20,6 +20,7 @@
 //     * @param reader a Scanner Object that can read user's keyboard input
 //     * @return the id the user entered if it's valid
 //     */
+
 //    public static int loginPage(Scanner reader) {
 ////        System.out.println(Constants.ID_PROMPT);
 //        Presenter.printIDPrompt();

@@ -58,6 +58,7 @@ public class NewUserConsole {
 //        Presenter.printUserIDMessage(ID);
 //    }
 
+
 //    /**
 //     * Creates a new user.
 //     * @param basicUserInfo of the new user

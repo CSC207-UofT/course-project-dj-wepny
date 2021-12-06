@@ -12,6 +12,7 @@ import java.util.Scanner;
  * and existing user menu, and receives user input. Also, responsible for sending user's
  * command to the controller class.
  */
+
 public class ExistingUserConsole {
 // TODO: Refactor this class? Only validID is used.
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 /**
  * This class contains all the helper function used both
  * by ExistingUserController and NewUserController
