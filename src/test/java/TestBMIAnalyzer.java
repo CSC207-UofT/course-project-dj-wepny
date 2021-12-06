@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
-
 public class TestBMIAnalyzer {
     BMIAnalyzer bmi_healthy, bmi_underweight, bmi_overweight, bmi_obese;
     User user_healthy, user_underweight, user_overweight, user_obese;

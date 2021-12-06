@@ -5,7 +5,7 @@ import constants.GUIFormatConstants;
 import constants.SystemConstants;
 import controllers.RunCommand;
 import controllers.UserController;
-import system.HelperConsole;
+import consoleforgui.HelperConsole;
 
 import javax.swing.*;
 import java.io.IOException;

@@ -1,7 +1,9 @@
 package consoleforgui;
 
+import constants.EERConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
+import controllers.UserController;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -12,6 +14,24 @@ import java.util.*;
  */
 public class HelperConsole {
 // TODO: several methods are never used (or the methods calling them are never used), refactor if time allows.
+
+    /**
+     * Checks that the ID input belongs to a valid user.
+     * @param input of the user
+     * @return whether the ID is valid or not.
+     */
+    public static boolean validID(String input){
+        return !HelperConsole.isNotNum(input) && UserController.checkUserExist(input);
+    }
+
+    /**
+     * Creates a new user.
+     * @param basicUserInfo of the new user
+     * @param personalUserInfo of the new user
+     */
+    public static void createUser(String[] basicUserInfo, String[] personalUserInfo) {
+        RunCommand.createUser(basicUserInfo, personalUserInfo);
+    }
 
 //    /**
 //     * A helper method that prompts the user for their basic information.
@@ -35,8 +55,8 @@ public class HelperConsole {
 //
 //        return new String[]{name, gender};
 //    }
-
-
+//
+//
 //    /**
 //     * A helper method that prompts the user for their personal data such as
 //     * height, weight, etc.
@@ -110,13 +130,12 @@ public class HelperConsole {
         return true;
     }
 
-
-    /**
-     * Returns true if the user wants to log out.
-     *
-     * @param reader reads user info
-     * @return True if the user wants to log out
-     */
+//    /**
+//     * Returns true if the user wants to log out.
+//     *
+//     * @param reader reads user info
+//     * @return True if the user wants to log out
+//     */
 //    public static boolean logOut(Scanner reader) {
 //        Presenter.printReturnMenu();
 //        String logOut = reader.nextLine();
@@ -127,13 +146,13 @@ public class HelperConsole {
 //        }
 //        return logOut.equals("N");
 //    }
-
-    /**
-     * return true if the user want to return to their main menu and restart
-     *
-     * @param reader reads user info
-     * @return true if the user would like to return to the main menu
-     */
+//
+//    /**
+//     * return true if the user want to return to their main menu and restart
+//     *
+//     * @param reader reads user info
+//     * @return true if the user would like to return to the main menu
+//     */
 //    public static boolean reStart(Scanner reader) {
 //        Presenter.printRestart();
 //        String restart = reader.nextLine();
@@ -275,4 +294,28 @@ public class HelperConsole {
         return newSymptoms;
     }
 
+    /**
+     * Helper method that returns a String that corresponds to the user's
+     * exercise preference based on the buttons they clicked
+     * @param userInput a string that corresponds to which button the user pressed
+     * @return corresponding activity level
+     */
+    public static String exerciseLevel(String userInput){
+        String level = "";
+        switch (userInput) {
+            case "1":
+                level = EERConstants.SED;
+                break;
+            case "2":
+                level = EERConstants.LOW;
+                break;
+            case "3":
+                level = EERConstants.MID;
+                break;
+            case "4":
+                level = EERConstants.HIGH;
+                break;
+        }
+        return level;
+    }
 }
