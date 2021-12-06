@@ -11,6 +11,7 @@ import java.util.*;
  * by ExistingUserController and NewUserController
  */
 public class HelperConsole {
+
     /**
      * A helper method that prompts the user for their basic information.
      * Returns an array of strings in the order of [name, age, gender].
@@ -20,16 +21,13 @@ public class HelperConsole {
      * @return an array of strings of some basic information about the user.
      */
     public static String[] getBasicUserInfo(String input) {
-//        System.out.println(Constants.NAME_PROMPT);
         Presenter.printUserInfo("name");
         String name = input;
 
-//        System.out.println(Constants.GENDER_PROMPT);
         Presenter.printUserInfo("gender");
         String gender = input;
 
         while (!gender.equals("M") && !gender.equals("F")) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.GENDER_PROMPT);
             Presenter.printInvalidPrompt("gender");
             gender = input;
         }
@@ -49,35 +47,29 @@ public class HelperConsole {
      * @return an array of strings of the user's height, weight, and age
      */
     public static String[] getPersonalUserInfo(String input) {
-//        System.out.println(Constants.HEIGHT_PROMPT);
         Presenter.printUserInfo("height");
         String height = input;
 
         // checking to make sure the height input is a number between 0 m to 2.5 m
         while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.HEIGHT_PROMPT);
             Presenter.printInvalidPrompt("height");
             height = input;
         }
 
-//        System.out.println(Constants.WEIGHT_PROMPT);
         Presenter.printUserInfo("weight");
         String weight = input;
 
         // checking to make sure the weight input is a number larger than 0
         while (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.WEIGHT_PROMPT);
             Presenter.printInvalidPrompt("weight");
             weight = input;
         }
 
-//        System.out.println(Constants.AGE_PROMPT);
         Presenter.printUserInfo("age");
         String age = input;
 
         // checking to make sure the age input is a number larger or equal to 0
         while (isNotNum(age) || Integer.parseInt(age) < 0) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.AGE_PROMPT);
             Presenter.printInvalidPrompt("age");
             age = input;
         }
@@ -117,13 +109,6 @@ public class HelperConsole {
         return true;
     }
 
-    /**
-     * Checks if user already exists in the system.
-     *
-     * @param input reads user input
-     * @return true if the user identify themselves as an existing user
-     */
-
 
     /**
      * Returns true if the user wants to log out.
@@ -132,12 +117,10 @@ public class HelperConsole {
      * @return True if the user wants to log out
      */
     public static boolean logOut(Scanner reader) {
-//        System.out.println(Constants.RETURN_MENU);
         Presenter.printReturnMenu();
         String logOut = reader.nextLine();
 
         while (!logOut.equals("Y") && !logOut.equals("N")) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.RETURN_MENU);
             Presenter.printInvalidPrompt("return");
             logOut = reader.nextLine();
         }
@@ -151,12 +134,10 @@ public class HelperConsole {
      * @return true if the user would like to return to the main menu
      */
     public static boolean reStart(Scanner reader) {
-//        System.out.println(Constants.RESTART_PROGRAM);
         Presenter.printRestart();
         String restart = reader.nextLine();
 
         while (!restart.equals("N") & !restart.equals("Y")) {
-//            System.out.println(Constants.INVALID_INPUT + Constants.RESTART_PROGRAM);
             Presenter.printInvalidPrompt("restart");
             restart = reader.nextLine();
         }
@@ -175,7 +156,6 @@ public class HelperConsole {
         boolean check = true;
         while (check) {
             if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
-//                System.out.println(Constants.INVALID_INPUT);
                 Presenter.printInvalidPrompt("invalid");
                 input = reader.nextLine();
             } else {

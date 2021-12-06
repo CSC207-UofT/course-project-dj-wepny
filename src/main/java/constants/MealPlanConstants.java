@@ -5,13 +5,12 @@ package constants;
  */
 public class MealPlanConstants {
 
-    // MealPlanGenerator
     // Messages
     public static final String MEALPLAN_INTRO = ", the following foods are based on your preferences:";
     public static final String MEALPLAN_WELCOME = "Welcome to the Meal Plan Generator!\n" +
             "Please enter Y or N for the following options.";
-    public static final String MEALPLAN_INTRO_GUI = "Welcome to DJ WEPNY's Meal Plan Generator! " +
-            "Please select all that apply, and enter the number of foods you want to generate.";
+    public static final String MEALPLAN_INTRO_GUI = "Please select all that apply, " +
+            "and enter the number of foods you want to generate.";
 
     //Preferences
     public static final String LOWCARBS = "I prefer low carbohydrates";
@@ -21,6 +20,6 @@ public class MealPlanConstants {
     public static final String NUM_FOODS = "How many foods would you like?";
 
     //GUI
-    public static final String RETURN_TO_MENU = "Return to Menu";
-    public static final String ENTER = "Enter";
+    public static final String RETURN_TO_MENU = "RETURN TO MENU";
+    public static final String ENTER = "ENTER";
 }

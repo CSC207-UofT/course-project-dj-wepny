@@ -9,6 +9,7 @@ import java.util.HashMap;
  * This Class Analyzes the Energy Requirement per day (EER) for the user.
  */
 public class EERAnalyzer implements UserAnalyzer {
+
     private IUser user;
     String result;
 

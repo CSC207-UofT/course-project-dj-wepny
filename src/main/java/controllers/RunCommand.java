@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class RunCommand {
 
+    /**
+     * Abstract interface for the use cases that the controller interacts with.
+     */
     public UserAnalyzer userAnalyzer;
 
     /**
@@ -149,7 +152,6 @@ public class RunCommand {
         return UserManager.getExistingUsers().containsKey(id);
     }
 
-    // getter functions
     public UserAnalyzer getAnalyzer() {
         return this.userAnalyzer;
     }

@@ -1,17 +1,26 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import constants.*;
+import constants.MealPlanConstants;
+import constants.Exceptions;
 import controllers.Presenter;
 import controllers.RunCommand;
+import constants.GUIFormatConstants;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
+/**
+ * This class is the page for the MealPlanGenerator function.
+ */
 public class MealPlanGeneratorGUI extends JFrame {
 
-    RunCommand commandExecutor = new RunCommand(5);
+    // Variables that stores the user's preferences.
+    private final RunCommand commandExecutor = new RunCommand(5);
     private ArrayList<Object> foodPreference = new ArrayList<>();
     private boolean lowCarbs = false;
     private boolean lowFat = false;
@@ -20,6 +29,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     private String numFoods;
     private String output;
 
+    // Components of the page.
     private JPanel MealPlanGUI;
     private JCheckBox lowCarbsCheckBox;
     private JCheckBox lowFatCheckBox;
@@ -31,20 +41,18 @@ public class MealPlanGeneratorGUI extends JFrame {
     private JButton enterButton;
     private JTextPane intro;
     private JButton returnToMenu;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
     /**
-     * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info
+     * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info.
      */
     public MealPlanGeneratorGUI() {
-        // setting up JFrame
         super("DJ WEPNY's Meal Plan Generator");
         this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
-        this.pack();
 
         //set text
         lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
@@ -56,6 +64,10 @@ public class MealPlanGeneratorGUI extends JFrame {
         enterButton.setText("Enter");
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
         returnToMenu.setText("Return");
+
+        this.invalidInput.setVisible(false);
+        this.returnToMenu.setVisible(false);
+        this.pack();
 
         // setting up checkboxes and foodPreference arraylist
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -121,16 +133,11 @@ public class MealPlanGeneratorGUI extends JFrame {
      */
     public MealPlanGeneratorGUI(String userType) {
         super("DJ WEPNY's Meal Plan Generator");
-        this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
-        this.invalidInput.setVisible(false);
-        this.returnToMenu.setVisible(false);
 
-        this.pack();
-
-        if (userType.equals("exsiting")) {
+        if (userType.equals("existing")) {
             //set text
             lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
             lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
@@ -138,9 +145,13 @@ public class MealPlanGeneratorGUI extends JFrame {
             vegetarianCheckBox.setText(MealPlanConstants.VEG);
             numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
             invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("Enter");
+            enterButton.setText("ENTER");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("Return");
+            returnToMenu.setText("RETURN");
+
+            this.invalidInput.setVisible(false);
+            this.returnToMenu.setVisible(false);
+            this.pack();
 
             // execute command
             try {
@@ -179,10 +190,14 @@ public class MealPlanGeneratorGUI extends JFrame {
             vegetarianCheckBox.setText(MealPlanConstants.VEG);
             numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
             invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("Enter");
+            enterButton.setText("ENTER");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("Return to Menu");
+            returnToMenu.setText("RETURN TO MENU");
             returnToMenu.setVisible(false);
+
+            this.invalidInput.setVisible(false);
+            this.returnToMenu.setVisible(false);
+            this.pack();
 
             // setting up checkboxes and foodPreference arraylist
             lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
@@ -216,5 +231,15 @@ public class MealPlanGeneratorGUI extends JFrame {
                 }
             });
         }
+    }
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.mealPlanGeneratorImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

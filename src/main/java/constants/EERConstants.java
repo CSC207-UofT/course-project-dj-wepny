@@ -4,7 +4,7 @@ package constants;
  * This class contains constants relative to the EERAnalyzer function.
  */
 public class EERConstants {
-    // EER
+
     // Activity Level
     public static final String SED = "Sedentary";
     public static final String LOW = "Low Active";

@@ -5,7 +5,7 @@ package constants;
  */
 
 public class BMIConstants {
-    // BMIAnalyzer
+
     // BMI Constants
     public static final double OBESE_BMI = 30.0;
     public static final double OVERWEIGHT_BMI = 25.0;

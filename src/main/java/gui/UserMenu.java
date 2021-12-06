@@ -1,15 +1,25 @@
 package gui;
 
 import api.UserParser;
+import constants.GUIFormatConstants;
 import constants.SystemConstants;
 import controllers.RunCommand;
+import controllers.UserController;
 import system.HelperConsole;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
+/**
+ * This class is the menu page of the program (the page that has all the functionalities as an option).
+ */
 
 public class UserMenu extends JFrame {
 
+    // Components of the page.
     private JPanel existingUserMenu;
     private JButton a6EditProfileButton;
     private JButton a5GenerateAMealButton;
@@ -19,6 +29,8 @@ public class UserMenu extends JFrame {
     private JButton a3AnalyzeWorkoutButton;
     private JTextPane welcomeMessage;
     private JButton logOutButton;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
 
     public UserMenu(int num){
@@ -39,13 +51,14 @@ public class UserMenu extends JFrame {
         }
         this.pack();
 
-        // If the user clicks on the BMI, close the current page
+        // If the user clicks on the BMI button, close the current page and opens the BMI page.
         a1AnalyzeBodyMassButton.addActionListener(e -> {
             this.dispose();
             BMIPromptGUI bmi = new BMIPromptGUI();
             bmi.setVisible(true);
         });
 
+        // If the user clicks on the EER button, close the current page and opens the EER page.
         a2AnalyzeEnergyRequiredButton.addActionListener(e -> {
             this.dispose();
             if (consoleforgui.HelperConsole.noInfoFound(2)) {
@@ -59,6 +72,8 @@ public class UserMenu extends JFrame {
             }
         });
 
+        // If the user clicks on the "analyze workout" button, close the current page and opens the ExerciseAnalyzer
+        // page.
         a3AnalyzeWorkoutButton.addActionListener(e -> {
             this.dispose();
             if (consoleforgui.HelperConsole.noInfoFound(3)) {
@@ -73,7 +88,7 @@ public class UserMenu extends JFrame {
             }
         });
 
-
+        //If the "analyze disease" buttons is pressed, close the current page and open the DiseaseAnalyzer page.
         a4AnalyzeDiseaseButton.addActionListener(e -> {
             this.dispose();
 
@@ -87,6 +102,8 @@ public class UserMenu extends JFrame {
             }
         });
 
+        // If the "generate a meal plan" button is pressed, close the current page and open the MealPlanGenerator
+        // page.
         a5GenerateAMealButton.addActionListener(e -> {
             this.dispose();
             if (consoleforgui.HelperConsole.noInfoFound(5)) {
@@ -99,12 +116,14 @@ public class UserMenu extends JFrame {
             }
         });
 
+        // If the "edit profile" button is pressed, close the current page and open the Edit Profile page.
         a6EditProfileButton.addActionListener(e -> {
             this.dispose();
             EditProfile editProfile = new EditProfile();
             editProfile.setVisible(true);
         });
 
+        // If the "log out" button is pressed, close the page.
         logOutButton.addActionListener(e -> {
             this.dispose();
             if (num == 1) {
@@ -125,10 +144,26 @@ public class UserMenu extends JFrame {
                     ex.printStackTrace();
                 }
             }
+            try {
+                ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+                UserController.readExistingUser(userInfo);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             ConsoleGUI console = new ConsoleGUI();
             console.setVisible(true);
+
         });
     }
 
 
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.loginImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
 }
