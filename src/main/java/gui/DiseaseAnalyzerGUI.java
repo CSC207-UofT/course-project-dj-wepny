@@ -63,9 +63,11 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
             invalidInput.setVisible(false);
             String symptoms = symptomInput.getText();
             List<String> newInput = HelperConsole.convertInputToList(symptoms);
+            symptomInput.setText("");
             if (!symptoms.equals("N/A") && !checkValidInput(symptoms, output)) {
                     invalidInput.setVisible(true);
-                }
+
+            }
             else{
                 if(symptoms.equals("N/A")){
                     currentSymptoms = new ArrayList<String>();
@@ -97,6 +99,7 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+
             }
 
         }
