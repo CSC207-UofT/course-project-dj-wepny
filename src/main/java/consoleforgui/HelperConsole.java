@@ -3,9 +3,8 @@ package consoleforgui;
 import controllers.Presenter;
 import controllers.RunCommand;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * This class contains all the helper function used both
@@ -79,7 +78,7 @@ public class HelperConsole {
     }
 
     // check invalid gender input in GUI
-    public static boolean validGender(String gender){
+    public static boolean validGender(String gender) {
         if (!gender.equals("M") && !gender.equals("F")) {
             return false;
         }
@@ -87,7 +86,7 @@ public class HelperConsole {
     }
 
     // check invalid height input in GUI
-    public static boolean validHeight(String height){
+    public static boolean validHeight(String height) {
         if (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
             return false;
         }
@@ -241,4 +240,44 @@ public class HelperConsole {
             command.setToExisting();
         }
     }
+
+    /**
+     * Checks whether the symptoms the user inputted is correct
+     *
+     * @param symptomList      the list of symptoms the user inputs before formatting
+     * @param promptedSymptoms the list of prompted symptoms before formatting
+     * @return true if user input is a valid input
+     */
+    public static boolean checkSymptomInput(String symptomList, String promptedSymptoms) {
+        ArrayList<String> newSymptomList = convertInputToList(symptomList);
+        ArrayList<String> newPromptedSymptoms = convertInputToList(promptedSymptoms);
+        for (String symptom : newSymptomList) {
+            if (!newPromptedSymptoms.contains(symptom)) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    /**
+     * converts a String into a usable form of List array
+     *
+     * @param inputSymptoms    a String that contains the information that the user inputs
+     * @return an ArrayList of strings of the user's input
+     */
+    public static ArrayList<String> convertInputToList(String inputSymptoms){
+        ArrayList<String> newSymptoms = new ArrayList<String>();
+        String symptoms = inputSymptoms.replaceAll("[\\[\\](){}]", "");
+        String[] symptomsList = symptoms.split(",");
+        List<String> finalSymptomsList = new ArrayList<String>();
+        // format the spaces
+        for(String symptom: symptomsList) {
+            symptom = symptom.trim();
+            finalSymptomsList.add(symptom);
+        }
+        newSymptoms.addAll(finalSymptomsList);
+        return newSymptoms;
+    }
+
 }

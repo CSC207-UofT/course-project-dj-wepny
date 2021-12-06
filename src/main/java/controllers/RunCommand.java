@@ -3,6 +3,7 @@ package controllers;
 import usecases.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is a Controller class that executes command that are passed from the Console by calling the corresponding use cases
@@ -50,7 +51,7 @@ public class RunCommand {
      * @param responses a list of string containing user's possible symptoms
      * @return the number of diseases the client could potentially have.
      */
-    public int executeCommandDisease(ArrayList<String> responses) throws Exception {
+    public int executeCommandDisease(List<String> responses) throws Exception {
         for (String response : responses) {
             addInfo(response, 4); //adds the symptoms identified by client into their risk factors
         }
