@@ -1,6 +1,9 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import constants.GUIFormatConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 import consoleforgui.HelperConsole;
@@ -8,8 +11,10 @@ import consoleforgui.HelperConsole;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.image.BufferedImage;
 
 public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JPanel DiseaseAnalyzerGUI;
@@ -20,10 +25,15 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JLabel symptomPrompt;
     private JLabel invalidInput;
     private JButton returnToMenu;
+    private JLabel headerImgLabel;
+    private JLabel instructions3;
+    private JLabel instructionsEx;
+    private JLabel instructions4;
     RunCommand commandExecutor = new RunCommand(4);
     private Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
     private String output;
     private static List<String> currentSymptoms;
+    private BufferedImage headerImg;
 
     public DiseaseAnalyzerGUI() throws Exception {
         //initial setup
@@ -38,8 +48,11 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 
         symptomInput.setPreferredSize(new Dimension(250, 60));
         commandExecutor.resetPotentialDisease();
-        instructions.setText(Presenter.DiseasePrompt("start"));
-        instructions2.setText(Presenter.DiseasePrompt("description"));
+        instructions.setText(Presenter.DiseasePrompt("start1"));
+        instructions2.setText(Presenter.DiseasePrompt("start2"));
+        instructions3.setText(Presenter.DiseasePrompt("description1"));
+        instructions4.setText(Presenter.DiseasePrompt("description2"));
+        instructionsEx.setText(Presenter.DiseasePrompt("example"));
 
         commandExecutor.executeCommand();
         output = analyze_results.retrieveOutput();
@@ -86,6 +99,8 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
                         symptomPrompt.setText(output);
                         instructions.setVisible(false);
                         instructions2.setVisible(false);
+                        instructions3.setVisible(false);
+                        instructionsEx.setVisible(false);
                         submitButton.setEnabled(false);
 
                     }
@@ -118,4 +133,15 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 private static boolean checkValidInput(String inputSymptoms, String promptedSymptoms){
 
     return HelperConsole.checkSymptomInput(inputSymptoms, promptedSymptoms);
-}}
+}
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.diseaseAnalyzerImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
+}
