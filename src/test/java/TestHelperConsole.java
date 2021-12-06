@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-
 public class TestHelperConsole {
     User user;
     /*

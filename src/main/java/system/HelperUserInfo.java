@@ -15,7 +15,6 @@
 //     */
 //    public static String activityLevel(Scanner reader) {
 //
-
 ////        System.out.println(Constants.ACTIVITY_MENU);
 //        Presenter.ActivityLevelPrompt("menu");
 //        String userActivityLevel = reader.nextLine();

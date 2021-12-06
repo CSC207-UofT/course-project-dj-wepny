@@ -70,7 +70,6 @@
 //            Presenter.printInvalidPrompt("weight");
 //            weight = reader.nextLine();
 //        }
-
 //
 ////        System.out.println(Constants.AGE_PROMPT);
 //        Presenter.printUserInfo("age");
