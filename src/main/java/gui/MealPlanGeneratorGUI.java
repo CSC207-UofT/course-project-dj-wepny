@@ -1,14 +1,18 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import constants.MealPlanConstants;
 import constants.Exceptions;
 import controllers.Presenter;
 import controllers.RunCommand;
+import constants.GUIFormatConstants;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 /**
  * This class is the page for the MealPlanGenerator function.
@@ -37,6 +41,8 @@ public class MealPlanGeneratorGUI extends JFrame {
     private JButton enterButton;
     private JTextPane intro;
     private JButton returnToMenu;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
     /**
      * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info.
@@ -139,9 +145,9 @@ public class MealPlanGeneratorGUI extends JFrame {
             vegetarianCheckBox.setText(MealPlanConstants.VEG);
             numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
             invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("Enter");
+            enterButton.setText("ENTER");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("Return");
+            returnToMenu.setText("RETURN");
 
             this.invalidInput.setVisible(false);
             this.returnToMenu.setVisible(false);
@@ -184,9 +190,9 @@ public class MealPlanGeneratorGUI extends JFrame {
             vegetarianCheckBox.setText(MealPlanConstants.VEG);
             numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
             invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("Enter");
+            enterButton.setText("ENTER");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("Return to Menu");
+            returnToMenu.setText("RETURN TO MENU");
             returnToMenu.setVisible(false);
 
             this.invalidInput.setVisible(false);
@@ -225,5 +231,15 @@ public class MealPlanGeneratorGUI extends JFrame {
                 }
             });
         }
+    }
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.mealPlanGeneratorImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

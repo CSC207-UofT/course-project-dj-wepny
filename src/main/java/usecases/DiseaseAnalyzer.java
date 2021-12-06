@@ -55,7 +55,6 @@ public class DiseaseAnalyzer implements UserAnalyzer {
             System.out.println("create options");
 
             result = options.toString();
-            System.out.println("result"+result);
         }
         potentialDisease = newDisease;
 

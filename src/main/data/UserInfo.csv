@@ -7,6 +7,7 @@ id, name, gender, weight, height, age, exercise preference, risk factor, activit
 6376,Aidan,M,63,1.7,14,Full Body*Shoulders*Cable/Kettle Bell/Medicine Ball/Band,restlessness,null,null
 648,Bella,F,66,1.8,29,Core*Chest*Band,cramps,Sedentary,null
 5579,Eric,F,76,1.8,30,Full Body*Quads*Bar/Band,internal_itching,Very Active,Y*N*Y*N*10
+8172,wa,F,54,1.8,14,null,null,null,Y*Y*Y*Y*5
 6638,Annie,F,60,1.7,29,null,null,null,null
 8914,Ricky,M,66,1.88,21,null,watering_from_eyes,Active,Y*Y*N*Y*5
 2162,Melany,F,60,1.77,34,Full Body*Bicep*Bar/Dumbbells/Kettle Bell,fatique,null,null
