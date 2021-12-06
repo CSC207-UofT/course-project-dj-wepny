@@ -74,7 +74,8 @@ public class ExercisePreference extends JFrame {
         // Initial setup of the page.
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(exercisePreference);
-        this.setSize(700, 1000);
+        this.setSize(700, 700);
+        this.success.setVisible(false);
         this.setResizable(false);
         this.invalid.setVisible(false);
         this.returnToMenu.setVisible(false);
@@ -82,7 +83,6 @@ public class ExercisePreference extends JFrame {
         this.majorMusclePrompt.setEditable(false);
         this.minorMusclePrompt.setEditable(false);
         this.equipmentPrompt.setEditable(false);
-//        this.pack();
 
         setUpButtons();
 
@@ -116,10 +116,10 @@ public class ExercisePreference extends JFrame {
                 for (Component child : exercisePreference.getComponents()) {
                     child.setVisible(false);
                 }
-                this.setSize(500, 500);
+                this.setSize(700, 500);
                 this.getContentPane().setLayout(new FlowLayout());
 
-                JTextArea textArea = new JTextArea(this.output,20, 40);
+                JTextArea textArea = new JTextArea(this.output,25, 40);
                 JScrollPane scrollableTextArea = new JScrollPane(textArea);
 
                 scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -127,10 +127,8 @@ public class ExercisePreference extends JFrame {
                 this.getContentPane().add(scrollableTextArea);
 
                 this.exerciseWelcome.setAutoscrolls(true);
-//                exerciseWelcome.setText(this.output);
-//                exerciseWelcome.setVisible(true);
+
                 returnToMenu.setVisible(true);
-//                this.setPreferredSize(new Dimension(1000, 500));
             }
         });
 
@@ -163,10 +161,11 @@ public class ExercisePreference extends JFrame {
             for (Component child : exercisePreference.getComponents()) {
                 child.setVisible(false);
             }
-            this.setSize(500, 500);
+
+            this.setSize(700, 500);
             this.getContentPane().setLayout(new FlowLayout());
 
-            JTextArea textArea = new JTextArea(this.output,20, 40);
+            JTextArea textArea = new JTextArea(this.output,25, 40);
             JScrollPane scrollableTextArea = new JScrollPane(textArea);
 
             scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
