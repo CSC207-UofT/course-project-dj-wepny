@@ -12,4 +12,6 @@ toStrings
 
 Collaborators:
 Food
- 
+FoodAPI
+FoodManager
+MealPlanGenerator
