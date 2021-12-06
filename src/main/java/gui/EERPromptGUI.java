@@ -2,11 +2,15 @@ package gui;
 
 
 import constants.EERConstants;
+import constants.GUIFormatConstants;
 import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 /**
  * This class is the page for the EERAnalyzer function.
@@ -23,9 +27,11 @@ public class EERPromptGUI extends JFrame {
     private JLabel invalidInput;
     private JButton returnToMenu;
     private JTextPane success;
+    private JLabel headerImgLabel;
     private String userInput;
     private final RunCommand commandExecutor = new RunCommand(2);
     private String output;
+    private BufferedImage headerImg;
 
     public EERPromptGUI(){
         super("DJ WEPNY Personal Health Aid");
@@ -93,11 +99,18 @@ public class EERPromptGUI extends JFrame {
             commandTwo.setVisible(false);
             commandThree.setVisible(false);
             commandFour.setVisible(false);
+            // execute command
             try {
                 commandExecutor.executeCommand();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
+            });
             Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             this.output = analyze_results.retrieveOutput();
             instruction.setText(this.output);
@@ -202,5 +215,15 @@ public class EERPromptGUI extends JFrame {
                 this.pack();
             }
         }
+    }
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.eerAnalyzerImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

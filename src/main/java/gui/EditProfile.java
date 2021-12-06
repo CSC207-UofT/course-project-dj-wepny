@@ -1,8 +1,12 @@
 package gui;
 
+import constants.GUIFormatConstants;
 import controllers.RunCommand;
 
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 /**
  * This class is the page for Editing user profile.
@@ -23,6 +27,8 @@ public class EditProfile extends JFrame {
     private JRadioButton maleRadioButton;
     private JButton returnButton;
     private JLabel updatedMessage;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
     public EditProfile() {
         super("DJ WEPNY Personal Health Aid");
@@ -105,4 +111,13 @@ public class EditProfile extends JFrame {
     }
 
 
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.introImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
 }

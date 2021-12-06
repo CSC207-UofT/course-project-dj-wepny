@@ -1,6 +1,7 @@
 package gui;
 
 import api.UserParser;
+import constants.GUIFormatConstants;
 import constants.SystemConstants;
 import controllers.RunCommand;
 import controllers.UserController;
@@ -9,6 +10,8 @@ import system.HelperConsole;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 /**
  * This class is the menu page of the program (the page that has all the functionalities as an option).
@@ -26,6 +29,8 @@ public class UserMenu extends JFrame {
     private JButton a3AnalyzeWorkoutButton;
     private JTextPane welcomeMessage;
     private JButton logOutButton;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
 
     public UserMenu(int num){
@@ -152,4 +157,13 @@ public class UserMenu extends JFrame {
     }
 
 
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.loginImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
 }

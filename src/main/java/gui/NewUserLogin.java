@@ -34,9 +34,12 @@ public class NewUserLogin extends JFrame {
     public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
         // Initial settings of the page.
+//        scrollBar1 = new JScrollBar();
+//        scrollBar1.setBounds(100,100, 50,100);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);
-        this.setSize(1000, 700);
+        this.setSize(1000, 2000);
         this.setResizable(false);
         // set invalid output to invisible
         this.invalidGender.setVisible(false);

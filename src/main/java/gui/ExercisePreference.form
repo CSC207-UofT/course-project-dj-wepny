@@ -1,302 +1,416 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.ExercisePreference">
-  <grid id="27dc6" binding="exercisePreference" layout-manager="GridLayoutManager" row-count="14" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="exercisePreference" layout-manager="GridLayoutManager" row-count="15" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="30" left="30" bottom="30" right="30"/>
     <constraints>
-      <xy x="20" y="20" width="629" height="585"/>
+      <xy x="20" y="20" width="629" height="610"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1971201"/>
+      <maximumSize width="1000" height="1000"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="d133d" class="javax.swing.JTextPane" binding="majorMusclePrompt">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Please select only ONE major muscle you want to exercise from the following list:"/>
+        </properties>
+      </component>
+      <component id="d0a5c" class="javax.swing.JCheckBox" binding="armsCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Arms"/>
+        </properties>
+      </component>
+      <component id="6fa60" class="javax.swing.JCheckBox" binding="coreCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Core"/>
+        </properties>
+      </component>
+      <component id="54ec1" class="javax.swing.JCheckBox" binding="fullBodyCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Full Body"/>
+        </properties>
+      </component>
+      <component id="fdba4" class="javax.swing.JCheckBox" binding="legsCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Legs"/>
+        </properties>
+      </component>
+      <component id="d306e" class="javax.swing.JCheckBox" binding="backCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
+          <text value="Back"/>
+        </properties>
+      </component>
+      <component id="b14fc" class="javax.swing.JTextPane" binding="exerciseWelcome">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Please select only ONE major muscle you want to exercise from the following list:"/>
-        </properties>
-      </component>
-      <component id="d0a5c" class="javax.swing.JCheckBox" binding="armsCheckBox" default-binding="true">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Arms"/>
-        </properties>
-      </component>
-      <component id="6fa60" class="javax.swing.JCheckBox" binding="coreCheckBox" default-binding="true">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Core"/>
-        </properties>
-      </component>
-      <component id="54ec1" class="javax.swing.JCheckBox" binding="fullBodyCheckBox" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Full Body"/>
-        </properties>
-      </component>
-      <component id="fdba4" class="javax.swing.JCheckBox" binding="legsCheckBox" default-binding="true">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Legs"/>
-        </properties>
-      </component>
-      <component id="d306e" class="javax.swing.JCheckBox" binding="backCheckBox" default-binding="true">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Back"/>
-        </properties>
-      </component>
-      <component id="b14fc" class="javax.swing.JTextPane" binding="exerciseWelcome">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
+          <background color="-1971201"/>
+          <font name="Montserrat" size="14" style="0"/>
+          <foreground color="-15461356"/>
           <text value="This exercise analyzer generate a list of exercising moves based on your preference."/>
         </properties>
       </component>
       <component id="b3465" class="javax.swing.JButton" binding="enterButton" default-binding="true">
         <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Enter"/>
+          <background color="-10237484"/>
+          <font name="Montserrat" size="16" style="1"/>
+          <text value="ENTER"/>
         </properties>
       </component>
       <component id="ac7fd" class="javax.swing.JTextPane" binding="minorMusclePrompt">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="4" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Please select only ONE minor muscle you want to exercise from the following list:"/>
         </properties>
       </component>
       <component id="cb276" class="javax.swing.JCheckBox" binding="shouldersCheckBox" default-binding="true">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Shoulders"/>
         </properties>
       </component>
       <component id="8a050" class="javax.swing.JCheckBox" binding="outerThighCheckBox" default-binding="true">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Outer Thigh"/>
         </properties>
       </component>
       <component id="18ce3" class="javax.swing.JCheckBox" binding="glutesCheckBox" default-binding="true">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Glutes"/>
         </properties>
       </component>
       <component id="efe1d" class="javax.swing.JCheckBox" binding="hamstringsCheckBox" default-binding="true">
         <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Hamstrings"/>
         </properties>
       </component>
       <component id="4f1e3" class="javax.swing.JCheckBox" binding="quadsCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Quads"/>
         </properties>
       </component>
       <component id="b43c0" class="javax.swing.JCheckBox" binding="calvesCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Calves"/>
         </properties>
       </component>
       <component id="8df9d" class="javax.swing.JCheckBox" binding="chestCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Chest"/>
         </properties>
       </component>
       <component id="373bb" class="javax.swing.JCheckBox" binding="bicepCheckBox" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Bicep"/>
         </properties>
       </component>
       <component id="9ce6b" class="javax.swing.JCheckBox" binding="innerThighCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Inner Thigh"/>
         </properties>
       </component>
       <component id="8f11a" class="javax.swing.JCheckBox" binding="tricepCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Tricep"/>
         </properties>
       </component>
       <component id="bd796" class="javax.swing.JCheckBox" binding="latsCheckBox" default-binding="true">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Lats"/>
         </properties>
       </component>
       <component id="4be53" class="javax.swing.JCheckBox" binding="obliqueCheckBox" default-binding="true">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Oblique"/>
         </properties>
       </component>
       <component id="fed7e" class="javax.swing.JTextPane" binding="equipmentPrompt">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Please select the equipments you have or want to use:"/>
         </properties>
       </component>
       <component id="55d76" class="javax.swing.JCheckBox" binding="dumbbellsCheckBox" default-binding="true">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Dumbbells"/>
         </properties>
       </component>
       <component id="7b021" class="javax.swing.JCheckBox" binding="barCheckBox" default-binding="true">
         <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Bar"/>
         </properties>
       </component>
       <component id="f0e2d" class="javax.swing.JCheckBox" binding="cableCheckBox" default-binding="true">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Cable"/>
         </properties>
       </component>
       <component id="b9c61" class="javax.swing.JCheckBox" binding="bodyWeightCheckBox" default-binding="true">
         <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Body Weight"/>
         </properties>
       </component>
       <component id="8a9c9" class="javax.swing.JCheckBox" binding="platformCheckBox" default-binding="true">
         <constraints>
-          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Platform"/>
         </properties>
       </component>
       <component id="1fe04" class="javax.swing.JCheckBox" binding="machineCheckBox" default-binding="true">
         <constraints>
-          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Machine"/>
         </properties>
       </component>
       <component id="77340" class="javax.swing.JCheckBox" binding="bandCheckBox" default-binding="true">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Band"/>
         </properties>
       </component>
       <component id="e7971" class="javax.swing.JCheckBox" binding="kettleBellCheckBox" default-binding="true">
         <constraints>
-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Kettle Bell"/>
         </properties>
       </component>
       <component id="392f6" class="javax.swing.JCheckBox" binding="medicineBallCheckBox" default-binding="true">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Medicine Ball"/>
         </properties>
       </component>
       <component id="47b08" class="javax.swing.JCheckBox" binding="bosuBallCheckBox" default-binding="true">
         <constraints>
-          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1971201"/>
+          <font name="Century Gothic" size="12" style="0"/>
+          <foreground color="-15461356"/>
           <text value="Bosu Ball"/>
         </properties>
       </component>
       <component id="1cedd" class="javax.swing.JButton" binding="returnToMenu">
         <constraints>
-          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Return"/>
+          <background color="-10237484"/>
+          <font name="Montserrat" size="16" style="1"/>
+          <text value="RETURN"/>
         </properties>
       </component>
       <component id="95197" class="javax.swing.JLabel" binding="invalid">
         <constraints>
-          <grid row="11" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="12" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Courier New" size="10"/>
+          <foreground color="-16777216"/>
           <text value="Invalid selection"/>
         </properties>
       </component>
       <component id="75eb7" class="javax.swing.JTextPane" binding="success">
         <constraints>
-          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
+          <autoscrolls value="true"/>
+          <background color="-1971201"/>
           <editable value="false"/>
+          <font name="Century Gothic" size="14" style="0"/>
+        </properties>
+      </component>
+      <component id="c0935" class="javax.swing.JLabel" binding="headerImgLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1971201"/>
+          <foreground color="-1971201"/>
+          <text value="Label"/>
         </properties>
       </component>
     </children>
