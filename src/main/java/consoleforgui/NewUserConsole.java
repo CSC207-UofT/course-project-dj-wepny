@@ -11,6 +11,8 @@ import java.util.Scanner;
  */
 public class NewUserConsole {
 
+    // TODO: Refactor this class? Only createUser is used.
+
     public static String NewUserMenu(Scanner reader) throws Exception {
         RunCommand infoGetter = new RunCommand();
         String username = (String) infoGetter.retrieveUser("name");

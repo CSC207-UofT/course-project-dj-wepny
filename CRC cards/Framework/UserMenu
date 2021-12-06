@@ -1,0 +1,16 @@
+Responsibilities
+GUI for the user menu.
+
+Collaborators
+RunCommand
+UserController
+UserParser
+SystemConstants
+HelperConsole
+BMIPromptGUI
+ConsoleGUI
+EditProfile
+EERPromptGUI
+ExercisePreference
+MealPlanGeneratorGUI
+NewUserLogin

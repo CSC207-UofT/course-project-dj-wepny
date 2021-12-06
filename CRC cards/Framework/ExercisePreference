@@ -1,0 +1,9 @@
+Responsibilities
+GUI for ExerciseAnalyzer.
+
+Collaborators
+RunCommand
+Presenter
+SystemConstants
+EditProfile
+UserMenu

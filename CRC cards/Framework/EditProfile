@@ -1,0 +1,9 @@
+Responsibilities
+GUI for the Edit Profile page.
+
+Collaborators
+RunCommand
+EERPromptGUI
+ExercisePreference
+MealPlanGeneratorGUI
+UserMenu

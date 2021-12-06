@@ -1,0 +1,8 @@
+Responsibilities
+Runs the program. A login page will be displayed.
+
+Collaborators
+UserParser
+Exceptions
+SystemConstants
+UserController
