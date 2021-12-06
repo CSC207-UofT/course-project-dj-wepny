@@ -26,7 +26,7 @@ public class EERPromptGUI extends JFrame {
     private JButton commandFour;
     private JLabel invalidInput;
     private JButton returnToMenu;
-    private JTextPane success;
+    private JLabel success;
     private JLabel headerImgLabel;
     private String userInput;
     private final RunCommand commandExecutor = new RunCommand(2);
@@ -40,11 +40,11 @@ public class EERPromptGUI extends JFrame {
         EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
+        this.success.setVisible(false);
         this.setResizable(false); // Think we should set this to true, so we can resize the window.
 
         // Hiding this unless the user has the wrong input
         this.invalidInput.setVisible(false);
-
         this.instruction.setEditable(false);
         this.returnToMenu.setVisible(false);
 
@@ -92,8 +92,12 @@ public class EERPromptGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
         this.setResizable(false);
+        this.setSize(1000, 700);
+        EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+
         this.invalidInput.setVisible(false);
         this.success.setVisible(false);
+
         if (userType.equals("existing")) {
             commandOne.setVisible(false);
             commandTwo.setVisible(false);
@@ -115,7 +119,6 @@ public class EERPromptGUI extends JFrame {
             this.output = analyze_results.retrieveOutput();
             instruction.setText(this.output);
             returnToMenu.setVisible(true);
-            this.pack();
         }
         else {
             this.instruction.setEditable(false);
