@@ -1,5 +1,5 @@
 Responsibilities:
-Retrieves the output of the analyzers and returns it to the Console
+Retrieves the output of the analyzers and returns it to the ConsoleGUI
 
 Instance attributes:
 userAnalyzer
@@ -13,3 +13,4 @@ BMIAnalyzer
 EERAnalyzer
 DiseaseAnalyzer
 WorkoutAnalyzer
+ConsoleGUI
