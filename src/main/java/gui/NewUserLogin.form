@@ -63,7 +63,7 @@
         <properties>
           <font name="Montserrat"/>
           <foreground color="-16777216"/>
-          <text value="Age::"/>
+          <text value="Age:"/>
         </properties>
       </component>
       <component id="ab0a2" class="javax.swing.JFormattedTextField" binding="age">
