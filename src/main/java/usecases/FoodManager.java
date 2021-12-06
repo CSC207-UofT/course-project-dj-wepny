@@ -14,6 +14,9 @@ import java.util.List;
  */
 public class FoodManager {
 
+    /**
+     * A list of foods retrieved from the database.
+     */
     private static final List<IFood> foodList = APIController.getFood();
 
     /**

@@ -1,0 +1,10 @@
+Responsibilities
+GUI for EERAnalyzer.
+
+Collaborators
+RunCommand
+Presenter
+SystemConstants
+EERConstants
+EditProfile
+UserMenu

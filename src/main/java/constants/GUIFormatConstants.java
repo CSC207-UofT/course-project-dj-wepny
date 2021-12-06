@@ -2,6 +2,9 @@ package constants;
 
 import java.io.File;
 
+/**
+ * This class contains the constants (file paths) related to GUI.
+ */
 public class GUIFormatConstants {
     public static final File introImgFile = new File("src/main/img/image_label.png");
     public static final File bmiGeneratorImgFile = new File("src/main/img/bmi_generator_label.png");

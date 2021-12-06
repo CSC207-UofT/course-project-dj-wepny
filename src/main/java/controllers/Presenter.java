@@ -9,6 +9,9 @@ import usecases.UserAnalyzer;
  */
 public class Presenter {
 
+    /**
+     * Abstract interface for the use cases that this presenter retrieves the results from.
+     */
     private static UserAnalyzer userAnalyzer;
 
     /**
@@ -31,11 +34,19 @@ public class Presenter {
         return userAnalyzer.getResult();
     }
 
+    /**
+     * Prints a welcome message for the user.
+     * @param username of the user
+     */
     public static void printWelcome(String username) {
         System.out.println(SystemConstants.WELCOME1 + username + SystemConstants.WELCOME2 +
                 SystemConstants.MAIN_MENU);
     }
 
+    /**
+     * Prints the information of the user.
+     * @param infoType what information of the user to print.
+     */
     public static void printUserInfo(String infoType) {
         switch (infoType) {
             case "basic":
@@ -62,15 +73,27 @@ public class Presenter {
         }
     }
 
+    /**
+     * Prints a welcome message with the user's new ID.
+     * @param userID to print
+     * @return the ID message
+     */
     public static String printUserIDMessage(String userID) {
         return SystemConstants.ID_MESSAGE1 + userID + SystemConstants.ID_MESSAGE2;
     }
 
+    /**
+     * Asks the user to enter their ID.
+     */
     public static void printIDPrompt() {
         System.out.println(SystemConstants.ID_PROMPT);
 
     }
 
+    /**
+     * Tells the user their input is invalid.
+     * @param infoType of input the user didn't enter correctly.
+     */
     public static void printInvalidPrompt(String infoType) {
         switch (infoType) {
             case "invalid":
@@ -103,29 +126,49 @@ public class Presenter {
         }
     }
 
+    /**
+     * Prints a welcome message for a returning user.
+     * @param name of the user.
+     */
     public static void printExistingUserWelcome(String name) {
         System.out.println(SystemConstants.WELCOME_EXISTING + name +
                 SystemConstants.WELCOME2 + SystemConstants.EXISTING_USER_MENU);
 
     }
 
+    /**
+     * Tells the user there's not enough information, and asks them to enter their information.
+     */
     public static void printNotEnoughInfoPrompt() {
         System.out.println(Exceptions.NOT_ENOUGH_INFO);
     }
 
+    /**
+     * Asks the user if they're an existing user.
+     */
     public static void printAskExisting() {
         System.out.println(SystemConstants.ASK_EXISTING);
     }
 
+    /**
+     * Asks the user if they want to go back to the main menu.
+     */
     public static void printReturnMenu() {
         System.out.println(SystemConstants.RETURN_MENU);
 
     }
 
+    /**
+     * Asks the user if they want to exit the program.
+     */
     public static void printRestart() {
         System.out.println(SystemConstants.RESTART_PROGRAM);
     }
 
+    /**
+     * Asks the user for their activity level, or tells them their input is invalid.
+     * @param prompt decides whether to print the menu or the invalid input message.
+     */
     public static void ActivityLevelPrompt(String prompt) {
         switch (prompt) {
             case "menu":

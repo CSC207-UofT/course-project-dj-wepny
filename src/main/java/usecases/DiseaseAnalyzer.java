@@ -13,6 +13,9 @@ public class DiseaseAnalyzer implements UserAnalyzer {
 
     private IUser user;
     private String result;
+    /**
+     * Maps the diseases to their symptoms.
+     */
     private static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
     
     public DiseaseAnalyzer(IUser user){

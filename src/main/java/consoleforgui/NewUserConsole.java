@@ -10,11 +10,12 @@ import java.util.Scanner;
  * the inputs to the controller class.
  */
 public class NewUserConsole {
+
+    // TODO: Refactor this class? Only createUser is used.
+
     public static String NewUserMenu(Scanner reader) throws Exception {
         RunCommand infoGetter = new RunCommand();
         String username = (String) infoGetter.retrieveUser("name");
-//        System.out.println(Constants.WELCOME1 + infoGetter.retrieveUser("name") + Constants.WELCOME2 +
-//                Constants.MAIN_MENU);
         Presenter.printWelcome(username);
 
         String input = reader.nextLine();
@@ -46,21 +47,22 @@ public class NewUserConsole {
     }
 
     public static void gatherInfo(String input){
-//        System.out.println(Constants.BASIC_INFO);
         Presenter.printUserInfo("basic");
         String[] basicUserInfo = HelperConsole.getBasicUserInfo(input);
-//        System.out.println(Constants.PERSONAL_INFO);
         Presenter.printUserInfo("personal");
         String[] personalUserInfo = HelperConsole.getPersonalUserInfo(input);
 
         RunCommand.createUser(basicUserInfo, personalUserInfo);
         RunCommand infoGetter = new RunCommand();
         String ID = (String) infoGetter.retrieveUser("id");
-//        System.out.println( Constants.ID_MESSAGE1 + infoGetter.retrieveUser("id") + Constants.ID_MESSAGE2);
         Presenter.printUserIDMessage(ID);
     }
 
-    // added new createUser method for the NewUserLogin of the GUI
+    /**
+     * Creates a new user.
+     * @param basicUserInfo of the new user
+     * @param personalUserInfo of the new user
+     */
     public static void createUser(String[] basicUserInfo, String[] personalUserInfo) {
         RunCommand.createUser(basicUserInfo, personalUserInfo);
     }

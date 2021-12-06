@@ -1,8 +1,10 @@
 package constants;
 
+/**
+ * This class contains the constant variables related to DiseaseAnalyzer.
+ */
 public class DiseaseConstants {
 
-    // Disease
     public static final String DISEASE_START =
             "Welcome to the Disease Analyzer. Given the lists of potential symptoms,\n" +
                     "please enter the ones you are experiencing, and the program will generate potential\n" +
