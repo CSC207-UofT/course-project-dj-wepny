@@ -240,6 +240,7 @@ public class HelperUserInfo {
         int secondCommand = Integer.parseInt(reader.nextLine());
         RunCommand command = new RunCommand(4);
 
+
         if (secondCommand == 1) { // update username
 //            System.out.println(Constants.CHANGE_USERNAME);
             Presenter.updateUser("change name");

@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-
 public class TestDiseaseAnalyzer {
     DiseaseAnalyzer disease;
     User user;
