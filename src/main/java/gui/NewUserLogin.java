@@ -103,7 +103,7 @@ public class NewUserLogin extends JFrame {
                     consoleforgui.HelperConsole.validAge(userAge)) {
                 String[] basic = {name, userGender};
                 String[] personal = {userHeight, userWeight, userAge};
-                consoleforgui.NewUserConsole.createUser(basic,personal);
+                consoleforgui.HelperConsole.createUser(basic,personal);
 
                 this.pack();
                 this.dispose();

@@ -2,6 +2,7 @@ package consoleforgui;
 
 import controllers.Presenter;
 import controllers.RunCommand;
+import controllers.UserController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,70 +14,89 @@ import java.util.Scanner;
  */
 public class HelperConsole {
 // TODO: several methods are never used (or the methods calling them are never used), refactor if time allows.
-    /**
-     * A helper method that prompts the user for their basic information.
-     * Returns an array of strings in the order of [name, age, gender].
-     * Note that this method is subject to change (Maybe ArrayList instead of Array).
-     *
-     * @param input The scanner used for the user input.
-     * @return an array of strings of some basic information about the user.
-     */
-    public static String[] getBasicUserInfo(String input) {
-        Presenter.printUserInfo("name");
-        String name = input;
-
-        Presenter.printUserInfo("gender");
-        String gender = input;
-
-        while (!gender.equals("M") && !gender.equals("F")) {
-            Presenter.printInvalidPrompt("gender");
-            gender = input;
-        }
-
-        return new String[]{name, gender};
-    }
-
 
     /**
-     * A helper method that prompts the user for their personal data such as
-     * height, weight, etc.
-     * Returns an array of strings in the order of [height, weight].
-     * Note that the items in this array will be stored in the information entity class,
-     * and the method is subject to change (Maybe ArrayList instead of Array).
-     *
-     * @param input The scanner used for the user input.
-     * @return an array of strings of the user's height, weight, and age
+     * Checks that the ID input belongs to a valid user.
+     * @param input of the user
+     * @return whether the ID is valid or not.
      */
-    public static String[] getPersonalUserInfo(String input) {
-        Presenter.printUserInfo("height");
-        String height = input;
-
-        // checking to make sure the height input is a number between 0 m to 2.5 m
-        while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
-            Presenter.printInvalidPrompt("height");
-            height = input;
-        }
-
-        Presenter.printUserInfo("weight");
-        String weight = input;
-
-        // checking to make sure the weight input is a number larger than 0
-        while (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
-            Presenter.printInvalidPrompt("weight");
-            weight = input;
-        }
-
-        Presenter.printUserInfo("age");
-        String age = input;
-
-        // checking to make sure the age input is a number larger or equal to 0
-        while (isNotNum(age) || Integer.parseInt(age) < 0) {
-            Presenter.printInvalidPrompt("age");
-            age = input;
-        }
-
-        return new String[]{height, weight, age};
+    public static boolean validID(String input){
+        return !HelperConsole.isNotNum(input) && UserController.checkUserExist(input);
     }
+
+    /**
+     * Creates a new user.
+     * @param basicUserInfo of the new user
+     * @param personalUserInfo of the new user
+     */
+    public static void createUser(String[] basicUserInfo, String[] personalUserInfo) {
+        RunCommand.createUser(basicUserInfo, personalUserInfo);
+    }
+
+//    /**
+//     * A helper method that prompts the user for their basic information.
+//     * Returns an array of strings in the order of [name, age, gender].
+//     * Note that this method is subject to change (Maybe ArrayList instead of Array).
+//     *
+//     * @param input The scanner used for the user input.
+//     * @return an array of strings of some basic information about the user.
+//     */
+//    public static String[] getBasicUserInfo(String input) {
+//        Presenter.printUserInfo("name");
+//        String name = input;
+//
+//        Presenter.printUserInfo("gender");
+//        String gender = input;
+//
+//        while (!gender.equals("M") && !gender.equals("F")) {
+//            Presenter.printInvalidPrompt("gender");
+//            gender = input;
+//        }
+//
+//        return new String[]{name, gender};
+//    }
+//
+//
+//    /**
+//     * A helper method that prompts the user for their personal data such as
+//     * height, weight, etc.
+//     * Returns an array of strings in the order of [height, weight].
+//     * Note that the items in this array will be stored in the information entity class,
+//     * and the method is subject to change (Maybe ArrayList instead of Array).
+//     *
+//     * @param input The scanner used for the user input.
+//     * @return an array of strings of the user's height, weight, and age
+//     */
+//    public static String[] getPersonalUserInfo(String input) {
+//        Presenter.printUserInfo("height");
+//        String height = input;
+//
+//        // checking to make sure the height input is a number between 0 m to 2.5 m
+//        while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
+//            Presenter.printInvalidPrompt("height");
+//            height = input;
+//        }
+//
+//        Presenter.printUserInfo("weight");
+//        String weight = input;
+//
+//        // checking to make sure the weight input is a number larger than 0
+//        while (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
+//            Presenter.printInvalidPrompt("weight");
+//            weight = input;
+//        }
+//
+//        Presenter.printUserInfo("age");
+//        String age = input;
+//
+//        // checking to make sure the age input is a number larger or equal to 0
+//        while (isNotNum(age) || Integer.parseInt(age) < 0) {
+//            Presenter.printInvalidPrompt("age");
+//            age = input;
+//        }
+//
+//        return new String[]{height, weight, age};
+//    }
 
     // check invalid gender input in GUI
     public static boolean validGender(String gender){
@@ -111,39 +131,39 @@ public class HelperConsole {
     }
 
 
-    /**
-     * Returns true if the user wants to log out.
-     *
-     * @param reader reads user info
-     * @return True if the user wants to log out
-     */
-    public static boolean logOut(Scanner reader) {
-        Presenter.printReturnMenu();
-        String logOut = reader.nextLine();
-
-        while (!logOut.equals("Y") && !logOut.equals("N")) {
-            Presenter.printInvalidPrompt("return");
-            logOut = reader.nextLine();
-        }
-        return logOut.equals("N");
-    }
-
-    /**
-     * return true if the user want to return to their main menu and restart
-     *
-     * @param reader reads user info
-     * @return true if the user would like to return to the main menu
-     */
-    public static boolean reStart(Scanner reader) {
-        Presenter.printRestart();
-        String restart = reader.nextLine();
-
-        while (!restart.equals("N") & !restart.equals("Y")) {
-            Presenter.printInvalidPrompt("restart");
-            restart = reader.nextLine();
-        }
-        return restart.equals("Y");
-    }
+//    /**
+//     * Returns true if the user wants to log out.
+//     *
+//     * @param reader reads user info
+//     * @return True if the user wants to log out
+//     */
+//    public static boolean logOut(Scanner reader) {
+//        Presenter.printReturnMenu();
+//        String logOut = reader.nextLine();
+//
+//        while (!logOut.equals("Y") && !logOut.equals("N")) {
+//            Presenter.printInvalidPrompt("return");
+//            logOut = reader.nextLine();
+//        }
+//        return logOut.equals("N");
+//    }
+//
+//    /**
+//     * return true if the user want to return to their main menu and restart
+//     *
+//     * @param reader reads user info
+//     * @return true if the user would like to return to the main menu
+//     */
+//    public static boolean reStart(Scanner reader) {
+//        Presenter.printRestart();
+//        String restart = reader.nextLine();
+//
+//        while (!restart.equals("N") & !restart.equals("Y")) {
+//            Presenter.printInvalidPrompt("restart");
+//            restart = reader.nextLine();
+//        }
+//        return restart.equals("Y");
+//    }
 
     /**
      * Helper function that checks to make sure that the command is within the valid range

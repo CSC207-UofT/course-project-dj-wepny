@@ -45,7 +45,7 @@ public class ConsoleGUI extends JFrame{
             // Gets the text from the text box
             String userInput = UserID.getText();
             // check if the user's input is valid
-            if(!consoleforgui.ExistingUserConsole.validID(userInput)){
+            if(!consoleforgui.HelperConsole.validID(userInput)){
                 // if the input is not valid, show the ID error message
                 IDError.setVisible(true);
             }
