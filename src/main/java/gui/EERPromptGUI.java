@@ -9,6 +9,7 @@ import controllers.RunCommand;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 
@@ -19,7 +20,7 @@ public class EERPromptGUI extends JFrame {
 
     // Components for the page.
     private JPanel EERPromptGUI;
-    private JTextPane instruction;
+    private JTextArea instruction;
     private JButton commandOne;
     private JButton commandTwo;
     private JButton commandThree;
@@ -33,10 +34,12 @@ public class EERPromptGUI extends JFrame {
     private String output;
     private BufferedImage headerImg;
 
+
     public EERPromptGUI(){
         super("DJ WEPNY Personal Health Aid");
         // Initial setting of the page.
         this.setSize(1000, 700);
+//        this.add(scroll);
         EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
@@ -84,6 +87,7 @@ public class EERPromptGUI extends JFrame {
             UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
             Menu.setVisible(true);
         });
+
     }
 
     // Overloaded constructor for existing users. Basically the same as the case of a new user.
@@ -93,7 +97,9 @@ public class EERPromptGUI extends JFrame {
         this.setContentPane(EERPromptGUI);
         this.setResizable(false);
         this.setSize(1000, 700);
-        EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+
+        this.instruction.setAutoscrolls(true);
+        this.EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
 
         this.invalidInput.setVisible(false);
         this.success.setVisible(false);
@@ -171,7 +177,6 @@ public class EERPromptGUI extends JFrame {
                 Menu.setVisible(true);
             });
         }
-
     }
 
     /**

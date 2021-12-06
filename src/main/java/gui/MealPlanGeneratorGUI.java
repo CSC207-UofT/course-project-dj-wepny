@@ -116,10 +116,19 @@ public class MealPlanGeneratorGUI extends JFrame {
                 }
 
                 // display results
-                intro.setText(output);
-                intro.setVisible(true);
+//                intro.setText(output);
+//                intro.setVisible(true);
+                this.getContentPane().setLayout(new FlowLayout());
+                this.setSize(1000, 700);
+
+                JTextArea textArea = new JTextArea(this.output,35, 60);
+                JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+                scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                this.getContentPane().add(scrollableTextArea);
                 returnToMenu.setVisible(true);
-                this.pack();
+//                this.pack();
 
             } else {
                 invalidInput.setVisible(true);
@@ -177,8 +186,16 @@ public class MealPlanGeneratorGUI extends JFrame {
             }
 
             // display results
-            intro.setText(output);
-            intro.setVisible(true);
+//            intro.setText(output);
+//            intro.setVisible(true);
+            this.getContentPane().setLayout(new FlowLayout());
+            this.setSize(1000, 700);
+            JTextArea textArea = new JTextArea(this.output,35, 60);
+            JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+            scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            this.getContentPane().add(scrollableTextArea);
             returnToMenu.setVisible(true);
             this.pack();
         }

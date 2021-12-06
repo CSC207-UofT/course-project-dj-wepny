@@ -8,6 +8,9 @@ import controllers.RunCommand;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
@@ -19,7 +22,7 @@ import java.awt.image.BufferedImage;
 public class ExercisePreference extends JFrame {
     // The components for the page.
     private JPanel exercisePreference;
-    private JTextPane majorMusclePrompt;
+    private JTextArea majorMusclePrompt;
     private JCheckBox armsCheckBox;
     private JCheckBox coreCheckBox;
     private JCheckBox fullBodyCheckBox;
@@ -55,6 +58,7 @@ public class ExercisePreference extends JFrame {
     private JButton returnToMenu;
     private JTextPane success;
     private JLabel headerImgLabel;
+    private JScrollPane scroll;
     private String majorMuscle;
     private String minorMuscle;
     private ArrayList<String> equipments = new ArrayList<>();
@@ -62,6 +66,7 @@ public class ExercisePreference extends JFrame {
     private final RunCommand commandExecutor = new RunCommand(3);
     private String output;
     private BufferedImage headerImg;
+    private JTextArea textArea;
 
     public ExercisePreference() {
         super("DJ WEPNY Personal Health Aid");
@@ -77,7 +82,7 @@ public class ExercisePreference extends JFrame {
         this.majorMusclePrompt.setEditable(false);
         this.minorMusclePrompt.setEditable(false);
         this.equipmentPrompt.setEditable(false);
-        this.pack();
+//        this.pack();
 
         setUpButtons();
 
@@ -111,11 +116,21 @@ public class ExercisePreference extends JFrame {
                 for (Component child : exercisePreference.getComponents()) {
                     child.setVisible(false);
                 }
-                this.setSize(700, 1000);
-                exerciseWelcome.setText(this.output);
-                exerciseWelcome.setVisible(true);
+                this.setSize(500, 500);
+                this.getContentPane().setLayout(new FlowLayout());
+
+                JTextArea textArea = new JTextArea(this.output,20, 40);
+                JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+                scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                this.getContentPane().add(scrollableTextArea);
+
+                this.exerciseWelcome.setAutoscrolls(true);
+//                exerciseWelcome.setText(this.output);
+//                exerciseWelcome.setVisible(true);
                 returnToMenu.setVisible(true);
-                this.setPreferredSize(new Dimension(1000, 1200));
+//                this.setPreferredSize(new Dimension(1000, 500));
             }
         });
 
@@ -127,9 +142,21 @@ public class ExercisePreference extends JFrame {
         super("DJ WEPNY Personal Health Aid");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(exercisePreference);
-        this.setSize(1000, 1200);
-        this.setResizable(false);
+        this.setSize(1000, 500);
+        this.setResizable(true);
         this.success.setVisible(false);
+////        JScrollPane scroll = new JScrollPane();
+//        this.getContentPane().setLayout(new FlowLayout());
+//        this.textArea.setText("12345");
+////        JTextArea textArea = new JTextArea("12345");
+//        this.textArea.setBounds(50,50,500,500);
+//        this.textArea.setAutoscrolls(true);
+//        this.scroll.setBounds(50,50,500,500);
+//        this.scroll.getViewport().add(textArea);
+//        this.getContentPane().add(scroll);
+
+
+
         if (userType.equals("existing")) {
             returnToMenu.addActionListener(e -> {
                 this.dispose();
@@ -146,10 +173,17 @@ public class ExercisePreference extends JFrame {
             for (Component child : exercisePreference.getComponents()) {
                 child.setVisible(false);
             }
-            this.setSize(1000, 1200);
-            exerciseWelcome.setText(this.output);
-            exerciseWelcome.setVisible(true);
+            this.setSize(500, 500);
+            this.getContentPane().setLayout(new FlowLayout());
+
+            JTextArea textArea = new JTextArea(this.output,20, 40);
+            JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+            scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            this.getContentPane().add(scrollableTextArea);
             returnToMenu.setVisible(true);
+
         } else {
 
             this.invalid.setVisible(false);
@@ -164,6 +198,9 @@ public class ExercisePreference extends JFrame {
                 EditProfile Menu = new EditProfile();
                 Menu.setVisible(true);
             });
+
+            this.exerciseWelcome.setAutoscrolls(true);
+
 
             enterButton.addActionListener(e -> {
                 if (this.majorMuscle == null || this.minorMuscle == null || this.equipments == null) {
