@@ -1,6 +1,7 @@
 package gui;
 
 
+import consoleforgui.HelperConsole;
 import constants.EERConstants;
 import constants.GUIFormatConstants;
 import constants.SystemConstants;
@@ -184,23 +185,27 @@ public class EERPromptGUI extends JFrame {
             invalidInput.setVisible(true);
         }
         else{
-            String level = "";
-            switch (userInput) {
-                case "1":
-                    level = EERConstants.SED;
-                    break;
-                case "2":
-                    level = EERConstants.LOW;
-                    break;
-                case "3":
-                    level = EERConstants.MID;
-                    break;
-                case "4":
-                    level = EERConstants.HIGH;
-                    break;
-            }
+
+//            String level = "";
+//            switch (userInput) {
+//                case "1":
+//                    level = EERConstants.SED;
+//                    break;
+//                case "2":
+//                    level = EERConstants.LOW;
+//                    break;
+//                case "3":
+//                    level = EERConstants.MID;
+//                    break;
+//                case "4":
+//                    level = EERConstants.HIGH;
+//                    break;
+//            }
+            String level = HelperConsole.exerciseLevel(userInput);
             commandExecutor.addInfo(level, 2);
             if (type == 1) {
+                this.setSize(1000, 700);
+                EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
                 try {
                     commandExecutor.executeCommand();
                 } catch (Exception ex) {
@@ -210,12 +215,10 @@ public class EERPromptGUI extends JFrame {
                 this.output = analyze_results.retrieveOutput();
                 instruction.setText(this.output);
                 returnToMenu.setVisible(true);
-                this.pack();
                 commandOne.setVisible(false);
                 commandTwo.setVisible(false);
                 commandThree.setVisible(false);
                 commandFour.setVisible(false);
-                this.pack();
             }
         }
     }

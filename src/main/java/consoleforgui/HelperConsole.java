@@ -1,5 +1,6 @@
 package consoleforgui;
 
+import constants.EERConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -279,5 +280,31 @@ public class HelperConsole {
         newSymptoms.addAll(finalSymptomsList);
         return newSymptoms;
     }
+
+    /**
+     * Helper method that returns a String that corresponds to the user's
+     * exercise preference based on the buttons they clicked
+     * @param userInput a string that corresponds to which button the user pressed
+     * @return corresponding activity level
+     */
+    public static String exerciseLevel(String userInput){
+        String level = "";
+        switch (userInput) {
+            case "1":
+                level = EERConstants.SED;
+                break;
+            case "2":
+                level = EERConstants.LOW;
+                break;
+            case "3":
+                level = EERConstants.MID;
+                break;
+            case "4":
+                level = EERConstants.HIGH;
+                break;
+        }
+        return level;
+    }
+
 
 }
