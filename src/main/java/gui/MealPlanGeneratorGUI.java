@@ -3,9 +3,7 @@ package gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import constants.GUIFormatConstants;
-import constants.MealPlanConstants;
-import constants.Exceptions;
+import constants.*;
 import controllers.Presenter;
 import controllers.RunCommand;
 import constants.GUIFormatConstants;
@@ -43,6 +41,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     private JTextPane intro;
     private JButton returnToMenu;
     private JLabel headerImgLabel;
+    private JTextPane success;
     private BufferedImage headerImg;
 
     /**
@@ -54,6 +53,8 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
+        this.success.setVisible(false);
+
 
         //set text
         lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
@@ -146,6 +147,8 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
+        this.success.setVisible(false);
+
 
         if (userType.equals("existing")) {
             //set text
@@ -210,7 +213,7 @@ public class MealPlanGeneratorGUI extends JFrame {
             invalidInput.setText(Exceptions.INVALID_INPUT);
             enterButton.setText("ENTER");
             intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("RETURN TO MENU");
+            returnToMenu.setText("RETURN");
             returnToMenu.setVisible(false);
 
             this.invalidInput.setVisible(false);
@@ -230,7 +233,8 @@ public class MealPlanGeneratorGUI extends JFrame {
             });
 
             enterButton.addActionListener(e -> {
-
+                this.success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                this.success.setVisible(true);
                 String tempNumFoods = numFoodsInput.getText();
                 if (!(consoleforgui.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
                     //set numFoods

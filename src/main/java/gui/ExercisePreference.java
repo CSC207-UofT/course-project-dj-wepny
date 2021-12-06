@@ -145,16 +145,6 @@ public class ExercisePreference extends JFrame {
         this.setSize(1000, 500);
         this.setResizable(true);
         this.success.setVisible(false);
-////        JScrollPane scroll = new JScrollPane();
-//        this.getContentPane().setLayout(new FlowLayout());
-//        this.textArea.setText("12345");
-////        JTextArea textArea = new JTextArea("12345");
-//        this.textArea.setBounds(50,50,500,500);
-//        this.textArea.setAutoscrolls(true);
-//        this.scroll.setBounds(50,50,500,500);
-//        this.scroll.getViewport().add(textArea);
-//        this.getContentPane().add(scroll);
-
 
 
         if (userType.equals("existing")) {
