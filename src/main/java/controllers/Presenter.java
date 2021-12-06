@@ -215,12 +215,21 @@ public class Presenter {
 
     public static String DiseasePrompt(String prompt) {
         switch (prompt) {
-            case "start":
-//                System.out.println(DiseaseConstants.DISEASE_START);
-                return DiseaseConstants.DISEASE_START;
-            case "description":
-//                System.out.println(DiseaseConstants.SYMPTOMS_DESC);
-                return DiseaseConstants.SYMPTOMS_DESC;
+            case "start1":
+//              System.out.println(DiseaseConstants.DISEASE_START1);
+                return DiseaseConstants.DISEASE_START1;
+            case "start2":
+//              System.out.println(DiseaseConstants.DISEASE_START2);
+                return DiseaseConstants.DISEASE_START2;
+            case "description1":
+//              System.out.println(DiseaseConstants.SYMPTOMS_DESC1);
+                return DiseaseConstants.SYMPTOMS_DESC1;
+            case "description2":
+//                System.out.println(DiseaseConstants.SYMPTOMS_DESC2);
+                return DiseaseConstants.SYMPTOMS_DESC2;
+            case "example":
+//                System.out.println(DiseaseConstants.SYMPTOMS_DESC_EX);
+                return DiseaseConstants.SYMPTOMS_DESC_EX;
         }
         return null;
     }
