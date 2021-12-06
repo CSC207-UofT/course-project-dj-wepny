@@ -1,15 +1,20 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import constants.GUIFormatConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.awt.image.BufferedImage;
 
 public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JPanel DiseaseAnalyzerGUI;
@@ -18,10 +23,12 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JButton submitButton;
     private JLabel instructions2;
     private JLabel symptomPrompt;
+    private JLabel headerImgLabel;
     private final RunCommand commandExecutor = new RunCommand(4);
     private Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
     private String output;
     public ArrayList<String> currentSymptoms;
+    private BufferedImage headerImg;
 
     public DiseaseAnalyzerGUI() throws Exception {
         //initial setup
@@ -80,4 +87,15 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
         }
 
     }
-}}
+}
+
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.diseaseAnalyzerImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
+}
