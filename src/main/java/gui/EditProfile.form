@@ -142,7 +142,7 @@
         </constraints>
         <properties>
           <background color="-1971201"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <font name="Century Gothic" size="12" style="0"/>
           <foreground color="-16777216"/>
           <text value="Female"/>
@@ -154,7 +154,7 @@
         </constraints>
         <properties>
           <background color="-1971201"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <font name="Century Gothic" size="12" style="0"/>
           <foreground color="-16777216"/>
           <text value="Male"/>

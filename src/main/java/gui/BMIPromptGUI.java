@@ -30,7 +30,7 @@ public class BMIPromptGUI extends JFrame {
         BMIPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BMIPromptGUI);
-        this.setResizable(true);
+        this.setResizable(false);
         this.result.setEditable(false);
         returnToMenu.setText("Return to Menu");
 

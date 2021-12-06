@@ -8,6 +8,7 @@ import constants.MealPlanConstants;
 import constants.Exceptions;
 import controllers.Presenter;
 import controllers.RunCommand;
+import constants.GUIFormatConstants;
 
 import java.awt.*;
 import java.io.IOException;
