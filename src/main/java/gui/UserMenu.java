@@ -122,7 +122,6 @@ public class UserMenu extends JFrame {
             EditProfile editProfile = new EditProfile();
             editProfile.setVisible(true);
         });
-
         // If the "log out" button is pressed, close the page.
         logOutButton.addActionListener(e -> {
             this.dispose();

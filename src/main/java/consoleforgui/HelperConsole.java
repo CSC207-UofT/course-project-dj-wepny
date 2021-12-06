@@ -254,7 +254,6 @@ public class HelperConsole {
     /**
      * Add the user to existingUser
      */
-
     public static void addToExisting() {
         RunCommand command = new RunCommand();
         if (command.checkExistingUsers()) {

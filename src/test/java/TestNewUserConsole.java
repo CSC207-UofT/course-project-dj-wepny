@@ -12,7 +12,6 @@ public class TestNewUserConsole {
         HelperConsole.createUser(basicUserInfo, personalUserInfo);
 
         RunCommand infoGetter = new RunCommand();
-
         assert "username0991".equals((String) infoGetter.retrieveUser("name"))
                 && "101".equals((String) infoGetter.retrieveUser("weight"))
                 && "1.9".equals((String) infoGetter.retrieveUser("height"))
