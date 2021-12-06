@@ -13,6 +13,7 @@ import java.util.Scanner;
  * command to the controller class.
  */
 public class ExistingUserConsole {
+// TODO: Refactor this class? Only validID is used.
 
     /**
      * Checks that the ID input belongs to a valid user.

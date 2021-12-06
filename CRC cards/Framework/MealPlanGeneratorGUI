@@ -1,0 +1,10 @@
+Responsibilities
+GUI for MealPlanGenerator.
+
+Collaborators
+Presenter
+RunCommand
+MealPlanConstants
+Exceptions
+EditProfile
+UserMenu
