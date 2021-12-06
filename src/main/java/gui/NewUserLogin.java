@@ -1,14 +1,23 @@
 package gui;
 
-import javax.swing.*;
+import constants.GUIFormatConstants;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+
+/**
+ * This class is the page for the Login page of a new user.
+ */
 public class NewUserLogin extends JFrame {
 
+    // Components of the page.
     private JPanel newUserLoginMenu;
-    private JTextPane welcomeMessage;
     private JFormattedTextField username;
     private JButton enterButton;
-    private JFormattedTextField gender;
     private JTextField weight;
     private JTextField height;
     private JLabel invalidGender;
@@ -16,9 +25,15 @@ public class NewUserLogin extends JFrame {
     private JLabel invalidWeight;
     private JFormattedTextField age;
     private JLabel invalidAge;
+    private static ButtonGroup gender;
+    private JRadioButton maleRadioButton;
+    private JRadioButton femaleRadioButton;
+    private JLabel headerImgLabel;
+    private BufferedImage headerImg;
 
     public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
+        // Initial settings of the page.
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);
         this.setSize(1000, 700);
@@ -28,15 +43,26 @@ public class NewUserLogin extends JFrame {
         this.invalidHeight.setVisible(false);
         this.invalidWeight.setVisible(false);
         this.invalidAge.setVisible(false);
-        this.welcomeMessage.setEditable(false);
 
         this.pack();
+        gender = new ButtonGroup();
+        gender.add(maleRadioButton);
+        gender.add(femaleRadioButton);
 
         // what happens when the enter button is pressed
         this.enterButton.addActionListener(e -> {
             // get user input form test field
             String name = username.getText();
-            String userGender = gender.getText();
+            String userGender;
+            if(maleRadioButton.isSelected()){
+                userGender = "M";
+            }
+            else if(femaleRadioButton.isSelected()){
+                userGender = "F";
+            }
+            else{
+                userGender = "";
+            }
             String userHeight = height.getText();
             String userWeight = weight.getText();
             String userAge = age.getText();
@@ -88,4 +114,13 @@ public class NewUserLogin extends JFrame {
 
     }
 
+    private void createUIComponents() {
+        try{
+            headerImg = ImageIO.read(GUIFormatConstants.loginImgFile);
+        }catch (IOException ex){
+            System.out.println("File pathway was not found");
+        }
+
+        headerImgLabel = new JLabel(new ImageIcon(headerImg));
+    }
 }

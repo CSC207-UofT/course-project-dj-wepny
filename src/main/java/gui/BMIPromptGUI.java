@@ -11,8 +11,7 @@ import javax.swing.*;
 
 public class BMIPromptGUI extends JFrame {
 
-    // Components we have for the page: one text pane for displaying the result, one button to
-    // navigate back to the menu, and a command executor to run the BMIAnalyzer.
+    // Components of the page.
     private JPanel BMIPromptGUI;
     private JTextPane result;
     private JButton returnToMenu;
@@ -20,7 +19,7 @@ public class BMIPromptGUI extends JFrame {
 
     public BMIPromptGUI(){
         super("DJ WEPNY Personal Health Aid");
-        // Initial setting of the page
+        // Initial setting of the page.
 //        this.setSize(1000, 1000);
         BMIPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

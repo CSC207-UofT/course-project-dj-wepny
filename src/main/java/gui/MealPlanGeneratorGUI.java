@@ -2,16 +2,21 @@ package gui;
 
 import javax.swing.*;
 
-import constants.*;
+import constants.MealPlanConstants;
+import constants.Exceptions;
 import controllers.Presenter;
 import controllers.RunCommand;
 
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class is the page for the MealPlanGenerator function.
+ */
 public class MealPlanGeneratorGUI extends JFrame {
 
-    RunCommand commandExecutor = new RunCommand(5);
+    // Variables that stores the user's preferences.
+    private final RunCommand commandExecutor = new RunCommand(5);
     private ArrayList<Object> foodPreference = new ArrayList<>();
     private boolean lowCarbs = false;
     private boolean lowFat = false;
@@ -20,6 +25,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     private String numFoods;
     private String output;
 
+    // Components of the page.
     private JPanel MealPlanGUI;
     private JCheckBox lowCarbsCheckBox;
     private JCheckBox lowFatCheckBox;
@@ -33,7 +39,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     private JButton returnToMenu;
 
     /**
-     * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info
+     * MealPlanGeneratorGUI Constructor for a new user/users that have no foodPreferences info.
      */
     public MealPlanGeneratorGUI() {
         super("DJ WEPNY's Meal Plan Generator");
