@@ -105,13 +105,4 @@ public class Food implements IFood{
     public boolean getVegFriendly() {
         return vegFriendly;
     }
-
-    public Integer next () {
-        curr = curr + 2;
-        return curr;
-    }
-    public Integer next2 () {
-        int res = curr + 2;
-        return res;
-    }
 }

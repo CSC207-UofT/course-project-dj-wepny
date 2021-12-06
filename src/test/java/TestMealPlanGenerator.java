@@ -178,6 +178,19 @@ public class TestMealPlanGenerator {
         mealPlanGenerator.analyze();
     }
 
+    @Test(timeout = 500)
+    public void testFoodToString() {
+        Food food8 = new Food("food8", 1, 2, 3, 4, foodType3, "8", true);
+        String foodStr = food8.toStrings().toString();
+        System.out.println(foodStr);
+
+        assert foodStr.contains("food8")
+                && foodStr.contains("1")
+                && foodStr.contains("2")
+                && foodStr.contains("3")
+                && foodStr.contains("4");
+    }
+
     /*
     * Helpers
     * */

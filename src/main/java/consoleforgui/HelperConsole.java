@@ -130,7 +130,6 @@ public class HelperConsole {
         return true;
     }
 
-
 //    /**
 //     * Returns true if the user wants to log out.
 //     *
@@ -173,18 +172,18 @@ public class HelperConsole {
      * @param type   making sure the range is within the specified type
      * @return the first valid input the user inputs
      */
-    public static String checkCommand(String input, Scanner reader, int type) {
-        boolean check = true;
-        while (check) {
-            if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
-                Presenter.printInvalidPrompt("invalid");
-                input = reader.nextLine();
-            } else {
-                check = false;
-            }
-        }
-        return input;
-    }
+//    public static String checkCommand(String input, Scanner reader, int type) {
+//        boolean check = true;
+//        while (check) {
+//            if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
+//                Presenter.printInvalidPrompt("invalid");
+//                input = reader.nextLine();
+//            } else {
+//                check = false;
+//            }
+//        }
+//        return input;
+//    }
 
 
     /**
@@ -255,12 +254,6 @@ public class HelperConsole {
     /**
      * Add the user to existingUser
      */
-    public static void addToExisting() {
-        RunCommand command = new RunCommand();
-        if (command.checkExistingUsers()) {
-            command.setToExisting();
-        }
-    }
 
     /**
      * Checks whether the symptoms the user inputted is correct
