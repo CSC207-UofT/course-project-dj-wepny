@@ -99,11 +99,18 @@ public class EERPromptGUI extends JFrame {
             commandTwo.setVisible(false);
             commandThree.setVisible(false);
             commandFour.setVisible(false);
+            // execute command
             try {
                 commandExecutor.executeCommand();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
+
+            returnToMenu.addActionListener(e -> {
+                this.dispose();
+                UserMenu Menu = new UserMenu(ConsoleGUI.getUserType());
+                Menu.setVisible(true);
+            });
             Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
             this.output = analyze_results.retrieveOutput();
             instruction.setText(this.output);

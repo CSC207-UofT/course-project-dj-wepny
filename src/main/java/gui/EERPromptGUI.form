@@ -8,6 +8,8 @@
     <properties>
       <background color="-1971201"/>
       <enabled value="false"/>
+      <maximumSize width="700" height="1000"/>
+      <preferredSize width="700" height="700"/>
     </properties>
     <border type="none"/>
     <children>
@@ -28,9 +30,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-4463135"/>
           <editable value="false"/>
           <enabled value="true"/>
-          <font name="Inconsolata" size="16"/>
+          <font name="Montserrat" size="16" style="0"/>
           <text value="Please enter your daily activity level: (Please enter a number from 1 to 4) "/>
         </properties>
       </component>
@@ -100,7 +103,10 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-4463135"/>
+          <font name="Century Gothic" size="14" style="0"/>
+        </properties>
       </component>
       <component id="6d112" class="javax.swing.JLabel" binding="headerImgLabel" custom-create="true">
         <constraints>
