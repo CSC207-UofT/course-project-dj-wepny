@@ -1,0 +1,12 @@
+Responsibilities
+GUI for Console.
+
+Collaborators
+RunCommand
+GUIFormatConstants
+BMIPromptGUI
+EditProfile
+EERPromptGUI
+ExercisePreference
+MealPlanGeneratorGUI
+NewUserLogin
