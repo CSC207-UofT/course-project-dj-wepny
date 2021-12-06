@@ -228,7 +228,6 @@ public class HelperConsole {
      *                checking for in the user object
      * @return true if the information is empty in the user object
      */
-    // TODO: Refactor this method if time allows as this violates Open/Close Principle
     public static boolean noInfoFound(int command) {
         RunCommand commandExecutor = new RunCommand();
         if (command == 2) {
@@ -251,9 +250,16 @@ public class HelperConsole {
         }
     }
 
+
     /**
      * Add the user to existingUser
      */
+    public static void addToExisting() {
+        RunCommand command = new RunCommand();
+        if (command.checkExistingUsers()) {
+            command.setToExisting();
+        }
+    }
 
     /**
      * Checks whether the symptoms the user inputted is correct
