@@ -305,6 +305,4 @@ public class HelperConsole {
         }
         return level;
     }
-
-
 }

@@ -185,22 +185,6 @@ public class EERPromptGUI extends JFrame {
             invalidInput.setVisible(true);
         }
         else{
-
-//            String level = "";
-//            switch (userInput) {
-//                case "1":
-//                    level = EERConstants.SED;
-//                    break;
-//                case "2":
-//                    level = EERConstants.LOW;
-//                    break;
-//                case "3":
-//                    level = EERConstants.MID;
-//                    break;
-//                case "4":
-//                    level = EERConstants.HIGH;
-//                    break;
-//            }
             String level = HelperConsole.exerciseLevel(userInput);
             commandExecutor.addInfo(level, 2);
             if (type == 1) {
