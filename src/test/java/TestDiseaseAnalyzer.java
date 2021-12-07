@@ -58,7 +58,7 @@ public class TestDiseaseAnalyzer {
         String[] symptomsList = result.split(",");
         List<String> finalOptionsList;
         finalOptionsList = Arrays.asList(symptomsList);
-        ArrayList<String> finalOptionsList1 = new ArrayList<>();
+        List<String> finalOptionsList1 = new ArrayList<>();
 
         for (String item : finalOptionsList){
            item = item.trim();
@@ -66,7 +66,7 @@ public class TestDiseaseAnalyzer {
         }
 
         HashMap<String, Set<String>> dataset = DiseaseAPI.readFromDiseaseCSV();
-        ArrayList<String> allSymptoms = new ArrayList<>();
+        List<String> allSymptoms = new ArrayList<>();
         //Collect all possible symptoms to be generated in the options by filtering using the risk factors of the user
         for (String disease: dataset.keySet()){
             if(dataset.get(disease).containsAll(user.getRiskFactor())){
@@ -103,7 +103,7 @@ public class TestDiseaseAnalyzer {
 //        List<String> finalOptionsList;
 //
 //        finalOptionsList = Arrays.asList(symptomsList);
-//        ArrayList<String> finalOptionsList1 = new ArrayList<>();
+//        List<String> finalOptionsList1 = new ArrayList<>();
 //
 //        for (String item : finalOptionsList){
 //            item = item.trim();
@@ -111,7 +111,7 @@ public class TestDiseaseAnalyzer {
 //        }
 //        //Get all Diseases from Data set
 //        HashMap<String, Set<String>> dataset = DiseaseAPI.readFromDiseaseCSV();
-//        ArrayList<String> allSymptoms = new ArrayList<>();
+//        List<String> allSymptoms = new ArrayList<>();
 //        //Collect all possible symptoms to be generated in the options
 //        for (String disease: dataset.keySet()){
 //            for(String item: finalOptionsList) {

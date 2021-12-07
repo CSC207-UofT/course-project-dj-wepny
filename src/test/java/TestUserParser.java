@@ -11,8 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -36,7 +36,7 @@ public class TestUserParser {
         // write the information of the new user into TestParser.csv
         UserParser.writeUserInfo("write", SystemConstants.TEST_USER_FILE);
         // read the TestParser.csv and store the information into an ArrayList
-        ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
+        List<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
         // check that the new user is written into file
         assertTrue(userInfo.contains("2030,Frank,M,65,1.88,19,null,null,null,null"));
     }
@@ -44,7 +44,7 @@ public class TestUserParser {
     @Before
     public void setUpNewInfoForUser() throws IOException {
         // read the TestParser.csv and store the information into an ArrayList
-        ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
+        List<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
         // call UserController to read the userInfo to store the information of each user as a User object
         UserController.readExistingUser(userInfo);
         // set current user as the user with id 2021
@@ -61,7 +61,7 @@ public class TestUserParser {
         // update the TestParser.csv
         UserParser.writeUserInfo("update", SystemConstants.TEST_USER_FILE);
         // read the TestParser.csv and store the information into an ArrayList
-        ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
+        List<String> userInfo = UserParser.readUserInfo(SystemConstants.TEST_USER_FILE);
         // check that the information of the user is updated in file
         assertTrue(userInfo.contains("2021,Amy,F,58,1.70,21,Legs*Quads*Bar,null,Active,null"));
     }

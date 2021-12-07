@@ -7,7 +7,7 @@ import controllers.UserController;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is the GUI that runs the program.
@@ -18,7 +18,7 @@ public class MainGUI {
     public static void main(String[] args) throws IOException {
 
         // read userinfo
-        ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+        List<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
 
         try {
             if (!userInfo.isEmpty()) {

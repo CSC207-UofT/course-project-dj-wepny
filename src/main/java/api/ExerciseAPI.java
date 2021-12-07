@@ -64,16 +64,16 @@ public class ExerciseAPI {
     private static IExercise createExercise(String[] data) {
 
         // Initializes the variables needed for Exercise's constructor.
-        ArrayList<String> equipments = new ArrayList<>();
-        ArrayList<String> exerciseType = new ArrayList<>();
-        ArrayList<String> majorMuscle = new ArrayList<>();
-        ArrayList<String> minorMuscle = new ArrayList<>();
+        List<String> equipments = new ArrayList<>();
+        List<String> exerciseType = new ArrayList<>();
+        List<String> majorMuscle = new ArrayList<>();
+        List<String> minorMuscle = new ArrayList<>();
 
         String name = data[0];
 
         // Using a helper method to extract and append corresponding parts into the ArrayLists.
         // Note that if there's no Minor muscles involved in the exercise,
-        // the minorMuscle ArrayList should only contain a single space character.
+        // the minorMuscle list should only contain a single space character.
         addElementToList(data, equipments, 1);
         addElementToList(data, exerciseType, 2);
         addElementToList(data, majorMuscle, 3);
@@ -96,10 +96,10 @@ public class ExerciseAPI {
      * Helper method that adds elements that's in a String array to a corresponding List.
      *
      * @param data     A string of array with elements to be passed into the list.
-     * @param variable An arraylist of strings that will receive inputs.
+     * @param variable An List of strings that will receive inputs.
      * @param index    the index of the string array.
      */
-    private static void addElementToList(String[] data, ArrayList<String> variable, int index) {
+    private static void addElementToList(String[] data, List<String> variable, int index) {
         if (data[index].contains(",")) {
             String[] equipmentInfo = splitting(data[index]);
             variable.addAll(Arrays.asList(equipmentInfo));

@@ -219,7 +219,7 @@
 //            return exerciseData.isEmpty();
 //        }
 //        if (command == 4) {
-//            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
+//            List riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
 //            return riskFactors.isEmpty();
 //        }
 //        if (command == 5) {

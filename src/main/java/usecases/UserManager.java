@@ -30,8 +30,8 @@ public class UserManager {
     /**
      * A static function that creates ca new User object and adds the user to the manager
      *
-     * @param basic    is an arraylist of Strings that contains the user's name and gender
-     * @param personal is an arraylist of Strings that contains the user's weight, height, and age
+     * @param basic    is a List of Strings that contains the user's name and gender
+     * @param personal is a List of Strings that contains the user's weight, height, and age
      */
     public static void createNewUser(String[] basic, String[] personal) {
         HashMap<String, Object> userInfo = new HashMap<>();
@@ -101,7 +101,7 @@ public class UserManager {
             FoodIsLowFat foodIsLowFat = new FoodIsLowFat();
             FoodIsLowSugar foodIsLowSugar = new FoodIsLowSugar();
             FoodIsVegetarian foodIsVegetarian = new FoodIsVegetarian();
-            ArrayList<Boolean> foodFilterCriterion = new ArrayList<>();
+            List<Boolean> foodFilterCriterion = new ArrayList<>();
             for (String criterion : food) {
                 if (criterion.equals("Y")) {
                     foodFilterCriterion.add(true);
@@ -157,7 +157,7 @@ public class UserManager {
             currentUser.addRiskFactor((String) info);
         } else if (command == 5) {
             // adding the user's food preference to its profile
-            ArrayList<Object> foodPreference = (ArrayList<Object>) info;
+            List<Object> foodPreference = (ArrayList<Object>) info;
             boolean lowCarb = (boolean) foodPreference.get(0);
             boolean lowFat = (boolean) foodPreference.get(1);
             boolean lowSugar = (boolean) foodPreference.get(2);

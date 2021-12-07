@@ -11,6 +11,8 @@ import constants.GUIFormatConstants;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import java.awt.image.BufferedImage;
 
 /**
@@ -20,7 +22,7 @@ public class MealPlanGeneratorGUI extends JFrame {
 
     // Variables that stores the user's preferences.
     private final RunCommand commandExecutor = new RunCommand(5);
-    private ArrayList<Object> foodPreference = new ArrayList<>();
+    private List<Object> foodPreference = new ArrayList<>();
     private boolean lowCarbs = false;
     private boolean lowFat = false;
     private boolean lowSugar = false;
@@ -71,7 +73,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.returnToMenu.setVisible(false);
         this.pack();
 
-        // setting up checkboxes and foodPreference arraylist
+        // setting up checkboxes and foodPreference List
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
         lowSugarCheckBox.addActionListener(e -> lowSugar = true);
         lowFatCheckBox.addActionListener(e -> lowFat = true);
@@ -220,7 +222,7 @@ public class MealPlanGeneratorGUI extends JFrame {
             this.returnToMenu.setVisible(false);
             this.pack();
 
-            // setting up checkboxes and foodPreference arraylist
+            // setting up checkboxes and foodPreference List
             lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
             lowSugarCheckBox.addActionListener(e -> lowSugar = true);
             lowFatCheckBox.addActionListener(e -> lowFat = true);

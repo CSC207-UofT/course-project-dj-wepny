@@ -15,7 +15,6 @@ public class Food implements IFood{
     private final String foodType;
     private final String id;
     private final boolean vegFriendly;
-    private int curr;
 
     /**
      * Constructor for the Food Object
@@ -30,7 +29,7 @@ public class Food implements IFood{
      *                 as a ratio of recommended sugar/day
      * @param type     is the type of the food
      * @param id       is a number that is unique to each food
-     * @param veg      indicates whether this food is vegeterianFriendly
+     * @param veg      indicates whether this food is vegeterian Friendly
      */
     public Food(String name, double calories, double carbs, double fat, double sugar,
                 String type, String id, boolean veg) {

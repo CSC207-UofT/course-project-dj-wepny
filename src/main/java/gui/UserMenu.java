@@ -9,8 +9,8 @@ import consoleforgui.HelperConsole;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.awt.image.BufferedImage;
+import java.util.List;
 import javax.imageio.ImageIO;
 
 /**
@@ -144,7 +144,7 @@ public class UserMenu extends JFrame {
                 }
             }
             try {
-                ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+                List<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
                 UserController.readExistingUser(userInfo);
             } catch (IOException ex) {
                 ex.printStackTrace();

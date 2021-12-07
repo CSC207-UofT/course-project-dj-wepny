@@ -1,16 +1,16 @@
 package entities;
 
-import java.util.ArrayList;
+import java.util.List;
 /**
  * This class stores an Exercise Object from the database,
  * describing the characteristics of the workout move
  */
 public class Exercise implements IExercise{
     private final String name;
-    private final ArrayList<String> type;
-    private final ArrayList<String> minorMuscleExercised;
-    private final ArrayList<String> majorMuscleExercised;
-    private final ArrayList<String> equipmentNeeded;
+    private final List<String> type;
+    private final List<String> minorMuscleExercised;
+    private final List<String> majorMuscleExercised;
+    private final List<String> equipmentNeeded;
 
     /**
      * Constructor for the Exercise moves
@@ -20,8 +20,8 @@ public class Exercise implements IExercise{
      * @param majorMuscle is a list of major muscle this moves trains
      * @param equipmentNeeded is a list of equipments this move needs
      */
-    public Exercise(String name, ArrayList<String> type, ArrayList<String> minorMuscle,
-                    ArrayList<String> majorMuscle, ArrayList<String> equipmentNeeded){
+    public Exercise(String name, List<String> type, List<String> minorMuscle,
+                    List<String> majorMuscle, List<String> equipmentNeeded){
         this.name = name;
         this.type = type;
         this.minorMuscleExercised = minorMuscle;
@@ -33,19 +33,19 @@ public class Exercise implements IExercise{
     // getter methods for all its instance attributes
     public String getName() {return name;}
 
-    public ArrayList<String> getType() {
+    public List<String> getType() {
         return type;
     }
 
-    public ArrayList<String> getMinorMuscleExercised() {
+    public List<String> getMinorMuscleExercised() {
         return minorMuscleExercised;
     }
 
-    public ArrayList<String> getEquipmentNeeded() {
+    public List<String> getEquipmentNeeded() {
         return equipmentNeeded;
     }
 
-    public ArrayList<String> getMajorMuscleExercised() {
+    public List<String> getMajorMuscleExercised() {
         return majorMuscleExercised;
     }
 }
