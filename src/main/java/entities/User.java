@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,7 +23,7 @@ public class User implements IUser {
     // stores the part of the muscle the user want to exercise and the equipments they have
     private final HashMap<String, String> exercisePreference;
     // stores the symptoms the user have
-    private ArrayList<String> riskFactor;
+    private List<String> riskFactor;
 
     /**
      * Construct a User, with a username, user's gender and personal data
@@ -66,7 +67,7 @@ public class User implements IUser {
         return exercisePreference;
     }
 
-    public ArrayList<String> getRiskFactor() {
+    public List<String> getRiskFactor() {
         return riskFactor;
     }
 

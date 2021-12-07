@@ -24,7 +24,7 @@ public class DiseaseAnalyzer implements UserAnalyzer {
     public DiseaseAnalyzer(){}
 
     /**
-     * This method analyze the user's potential diseases using their list of symptoms.
+     * This method analyzes the user's potential diseases using their list of symptoms.
      */
     @Override
     public void analyze() {
@@ -37,11 +37,11 @@ public class DiseaseAnalyzer implements UserAnalyzer {
         }
         
         // get the symptoms of user
-        ArrayList<String> userInput = user.getRiskFactor();
+        List<String> userInput = user.getRiskFactor();
 
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         // generate new options for the user
-        ArrayList<String> options = generateOptions(newDisease);
+        List<String> options = generateOptions(newDisease);
         String msg = "These are your potential diseases: (if output = [], " +
                 "there is no disease that match the current symptoms you are experiencing)\n";
         // set result to the string that will be prompt to the user is potential diseases is less than or
@@ -75,14 +75,14 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      * is removed for the potential diseases.
      *
      * @param oldPotentialDisease is a Hashmap of the current of potential diseases.
-     * @param chosenSymptoms      is a ArrayList of the symptoms that the user selected.
+     * @param chosenSymptoms      is a list of the symptoms that the user selected.
      * @return a new hashmap of potential diseases with the unwanted diseases removed.
      */
     private static HashMap<String, Set<String>> newPotentialDiseases(HashMap<String, Set<String>> oldPotentialDisease,
-                                                                     ArrayList<String> chosenSymptoms) {
+                                                                     List<String> chosenSymptoms) {
         // given the chosen symptoms, remove the diseases that don't involve these symptoms and return
         // the possible new HashMap of diseases.
-        ArrayList<String> removeDiseases = new ArrayList<>();
+        List<String> removeDiseases = new ArrayList<>();
         for (String disease : oldPotentialDisease.keySet()) {
             if (!oldPotentialDisease.get(disease).containsAll(chosenSymptoms)) {
                 removeDiseases.add(disease);
@@ -96,11 +96,11 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      * A helper function for analyze. Based on the selected potential diseases, generate a list of possible symptoms
      * for the user to choose from.
      *
-     * @param givenDisease A ArrayList that is the current potential diseases based on the user's previous selection.
+     * @param givenDisease A List that is the current potential diseases based on the user's previous selection.
      * @return A list of symptoms for the user to select.
      */
-    private static ArrayList<String> generateOptions(HashMap<String, Set<String>> givenDisease) {
-        ArrayList<String> Symptoms = new ArrayList<>();
+    private static List<String> generateOptions(HashMap<String, Set<String>> givenDisease) {
+        List<String> Symptoms = new ArrayList<>();
         // generates the options based on the given hashmap of potential diseases
         List<String> allSymptoms = new ArrayList<>();
         // add the symptoms of potential diseases to the list allSymptoms

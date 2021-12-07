@@ -1,5 +1,6 @@
 //package system;
 //
+//import consoleforgui.HelperConsole;
 //import constants.*;
 //import controllers.Presenter;
 //import controllers.RunCommand;
@@ -119,7 +120,7 @@
 //        commandExecutor.resetPotentialDisease();
 //        int potentialDisease;
 //
-//        ArrayList<String> currentSymptoms = new ArrayList<>();
+//        List<String> currentSymptoms = new ArrayList<>();
 //
 ////        System.out.println(Constants.DISEASE_START);
 //        Presenter.DiseasePrompt("start");
@@ -165,7 +166,7 @@
 //     * @param reader read the user input
 //     * @return an array list of foodFilterCriterion
 //     */
-//    public static ArrayList<Object> foodPreference(Scanner reader) {
+//    public static List<Object> foodPreference(Scanner reader) {
 ////        System.out.println(Constants.MEALPLAN_WELCOME);
 //        Presenter.FoodPrompt("welcome");
 ////        System.out.println(Constants.LOWCARBS);
@@ -210,7 +211,7 @@
 //            numFoods = reader.nextLine();
 //        }
 //        String[] foodCriterion = {lowCarb, lowFat, lowSugar, vegetarian};
-//        ArrayList<Object> foodFilterCriterion = new ArrayList<>();
+//        List<Object> foodFilterCriterion = new ArrayList<>();
 //        for (String criterion : foodCriterion) {
 //            if (criterion.equals("Y")) {
 //                foodFilterCriterion.add(true);

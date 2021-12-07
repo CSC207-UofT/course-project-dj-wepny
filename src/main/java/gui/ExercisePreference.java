@@ -14,6 +14,7 @@ import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 /**
  * This class is the page for the ExerciseAnalyzer function.
@@ -61,7 +62,7 @@ public class ExercisePreference extends JFrame {
     private JScrollPane scroll;
     private String majorMuscle;
     private String minorMuscle;
-    private ArrayList<String> equipments = new ArrayList<>();
+    private List<String> equipments = new ArrayList<>();
     private StringBuilder equipment;
     private final RunCommand commandExecutor = new RunCommand(3);
     private String output;

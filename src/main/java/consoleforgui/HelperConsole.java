@@ -106,7 +106,7 @@ public class HelperConsole {
             return exerciseData.isEmpty();
         }
         if (command == 4) {
-            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
+            List riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
             return riskFactors.isEmpty();
         }
         if (command == 5) {
@@ -136,8 +136,8 @@ public class HelperConsole {
      * @return true if user input is a valid input
      */
     public static boolean checkSymptomInput(String symptomList, String promptedSymptoms) {
-        ArrayList<String> newSymptomList = convertInputToList(symptomList);
-        ArrayList<String> newPromptedSymptoms = convertInputToList(promptedSymptoms);
+        List<String> newSymptomList = convertInputToList(symptomList);
+        List<String> newPromptedSymptoms = convertInputToList(promptedSymptoms);
         for (String symptom : newSymptomList) {
             if (!newPromptedSymptoms.contains(symptom)) {
                 return false;
@@ -151,10 +151,10 @@ public class HelperConsole {
      * converts a String into a usable form of List array
      *
      * @param inputSymptoms    a String that contains the information that the user inputs
-     * @return an ArrayList of strings of the user's input
+     * @return an list of strings of the user's input
      */
-    public static ArrayList<String> convertInputToList(String inputSymptoms){
-        ArrayList<String> newSymptoms = new ArrayList<>();
+    public static List<String> convertInputToList(String inputSymptoms){
+        List<String> newSymptoms = new ArrayList<>();
         String symptoms = inputSymptoms.replaceAll("[\\[\\](){}]", "");
         String[] symptomsList = symptoms.split(",");
         List<String> finalSymptomsList = new ArrayList<>();

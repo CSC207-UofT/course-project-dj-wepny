@@ -4,6 +4,7 @@
 //import constants.*;
 //import api.UserParser;
 //
+//import java.util.List;
 //import java.util.Scanner;
 //import java.util.ArrayList;
 //
@@ -17,7 +18,7 @@
 //        while (true) {
 //            try {
 //                // read the userInfo
-//                ArrayList<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+//                List<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
 //                if (!userInfo.isEmpty()) {
 //                    // load all the information stored in the userInfo.csv into
 //                    // existing users in the UserManager

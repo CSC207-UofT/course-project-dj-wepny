@@ -69,7 +69,8 @@ public class MealPlanGenerator implements UserAnalyzer {
      * @return A list of Food.
      */
     public List<IFood> filterFoodMap(HashMap<String, List<IFood>> foodMap, int numFoods) {
-        return generateFoodListGivenKeys(foodMap, numFoods, new ArrayList<>(foodMap.keySet()), new ArrayList<>(), 1);
+        return generateFoodListGivenKeys(foodMap, numFoods, new ArrayList<>(foodMap.keySet()),
+                new ArrayList<>(), 1);
     }
 
     /**
