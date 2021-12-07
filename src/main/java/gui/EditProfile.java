@@ -1,6 +1,7 @@
 package gui;
 
 import constants.GUIFormatConstants;
+import constants.SystemConstants;
 import controllers.RunCommand;
 
 import javax.swing.*;
@@ -38,6 +39,7 @@ public class EditProfile extends JFrame {
         this.setSize(700, 1000);
         this.setResizable(false);
         this.updatedMessage.setVisible(false);
+        updatedMessage.setText(SystemConstants.UPDATED_PROFILE);
         RunCommand infoGetter = new RunCommand();
 
         // Set the text for the text panes
