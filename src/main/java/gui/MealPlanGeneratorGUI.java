@@ -63,9 +63,9 @@ public class MealPlanGeneratorGUI extends JFrame {
         vegetarianCheckBox.setText(MealPlanConstants.VEG);
         numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
         invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText("Enter");
+        enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return");
+        returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
 
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
