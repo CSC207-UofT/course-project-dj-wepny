@@ -1,7 +1,3 @@
-/*
- *This file contains Junit test case for BMIAnalyzer.java
- */
-
 import entities.User;
 import usecases.BMIAnalyzer;
 import org.junit.*;
@@ -9,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
+/**
+ *This file contains Junit test case for BMIAnalyzer.java
+ */
 public class TestBMIAnalyzer {
     BMIAnalyzer bmi_healthy, bmi_underweight, bmi_overweight, bmi_obese;
     User user_healthy, user_underweight, user_overweight, user_obese;

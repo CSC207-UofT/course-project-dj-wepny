@@ -20,7 +20,7 @@ public class BMIAnalyzer implements UserAnalyzer {
     }
 
     /**
-     * An overloading constructor that initiate a BMIAnalyzer which take user as its parameter.
+     * An overloading constructor that initiates a BMIAnalyzer which take user as its parameter.
      *
      * @param user The user that the BMI Analyzer is calculating the BMI for.
      */

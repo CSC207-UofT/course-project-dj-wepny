@@ -6,7 +6,7 @@ import constants.*;
 import java.util.HashMap;
 
 /**
- * This Class Analyzes the Energy Requirement per day (EER) for the user.
+ * This Class analyzes the Energy Requirement per day (EER) for the user.
  */
 public class EERAnalyzer implements UserAnalyzer {
 
@@ -44,7 +44,8 @@ public class EERAnalyzer implements UserAnalyzer {
         double energyRequirement = calculateEER(user);
 
         //Setting the resulting String.
-        result = SystemConstants.DIVIDER + EERConstants.EER_DESCRIPTION + (double) Math.round(energyRequirement * 100) / 100 +
+        result = SystemConstants.DIVIDER + EERConstants.EER_DESCRIPTION +
+                (double) Math.round(energyRequirement * 100) / 100 +
                 SystemConstants.DIVIDER;
     }
 

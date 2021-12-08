@@ -1,3 +1,6 @@
+/**
+ *This file contains Junit test case for MealPlanGenerator.java.
+ **/
 import entities.Food;
 import entities.IFood;
 import entities.User;
@@ -9,9 +12,6 @@ import org.junit.Test;
 
 import java.util.*;
 
-/**
- *This file contains Junit test case for MealPlanGenerator.java.
- **/
 
 public class TestMealPlanGenerator {
     private static final MealPlanGenerator mealPlanGenerator = new MealPlanGenerator();

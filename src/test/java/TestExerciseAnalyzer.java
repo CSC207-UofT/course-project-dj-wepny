@@ -1,8 +1,3 @@
-/*
- *This file contains Junit test case for the ExerciseAnalyzer.java for when
- * an appropriate list of exercises is given
- */
-
 import org.junit.*;
 
 import constants.*;
@@ -10,6 +5,10 @@ import java.util.HashMap;
 import usecases.ExerciseAnalyzer;
 import entities.User;
 import static org.junit.Assert.assertEquals;
+/**
+ *This file contains Junit test case for the ExerciseAnalyzer.java for when
+ * an appropriate list of exercises is given
+ */
 
 public class TestExerciseAnalyzer {
     ExerciseAnalyzer exercises_exist, exercises_no_match;

@@ -46,27 +46,27 @@ public class ExerciseAnalyzer implements UserAnalyzer {
             user = this.user;
         }
 
-        HashMap<String, String> user_preference = user.getExercisePreference();
+        HashMap<String, String> userPreference = user.getExercisePreference();
         // read the exercises from CSV file
         List<IExercise> exercises = ExerciseAPI.readFromExerciseCSV();
-        List<IExercise> user_exercises = new ArrayList<>();
-        StringBuilder exercise_names = new StringBuilder();
+        List<IExercise> userExercises = new ArrayList<>();
+        StringBuilder exerciseNames = new StringBuilder();
 
         // add each exercise to user_exercises and exercise_names
         for (IExercise exercise : exercises) {
-            if (exercise_match(exercise, user_preference)) {
-                user_exercises.add(exercise);
-                exercise_names.append(addNewExercise(exercise));
+            if (exercise_match(exercise, userPreference)) {
+                userExercises.add(exercise);
+                exerciseNames.append(addNewExercise(exercise));
             }
         }
 
         String intro = SystemConstants.DIVIDER +
                 ExerciseConstants.EXERCISE_INTRO1 + user.getUsername() + ExerciseConstants.EXERCISE_INTRO2;
 
-        if (user_exercises.isEmpty()) { // no exercise suggestions :(
+        if (userExercises.isEmpty()) { // no exercise suggestions :(
             this.result = intro + Exceptions.NO_EXERCISES_FOUND + SystemConstants.DIVIDER;
         } else { // return exercise suggestions
-            this.result = intro + exercise_names + SystemConstants.DIVIDER;
+            this.result = intro + exerciseNames + SystemConstants.DIVIDER;
         }
     }
 
@@ -89,11 +89,14 @@ public class ExerciseAnalyzer implements UserAnalyzer {
 
     /**
      * A helper method used to determine if the exercise matches the user's exercise preferences
+     * @param exercise exercise that is inputted
+     * @param userPreference a HashMap of user's exercise's preference
+     * @return true if exercise matches user preferences
      */
-    private boolean exercise_match(IExercise exercise, HashMap<String, String> user_preference) {
-        String majorMuscle = user_preference.get("major muscle");
-        String minorMuscle = user_preference.get("minor muscle");
-        List<String> equipments = Arrays.asList(user_preference.get("equipment").split("/"));
+    private boolean exercise_match(IExercise exercise, HashMap<String, String> userPreference) {
+        String majorMuscle = userPreference.get("major muscle");
+        String minorMuscle = userPreference.get("minor muscle");
+        List<String> equipments = Arrays.asList(userPreference.get("equipment").split("/"));
 
         // check is exercise contains the user's exercise preferences
         boolean hasMajMuscle = exercise.getMajorMuscleExercised().contains(majorMuscle);
