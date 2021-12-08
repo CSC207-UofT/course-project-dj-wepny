@@ -9,10 +9,10 @@ public class EERConstants {
             "Please enter your daily activity level: (Please enter a number from 1 to 4)";
 
     // Activity Level
-    public static final String SED = "1. Sedentary";
-    public static final String LOW = "2. Low Active";
-    public static final String MID = "3. Active";
-    public static final String HIGH = "4. Very Active";
+    public static final String SED = "Sedentary";
+    public static final String LOW = "Low Active";
+    public static final String MID = "Active";
+    public static final String HIGH = "Very Active";
 
     // PAL Constants
     public static final double M_SEDENTARY = 1.0;
