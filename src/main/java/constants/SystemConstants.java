@@ -87,12 +87,11 @@ public class SystemConstants {
     public static final String ID_MESSAGE2 =
             "\nPlease take note of this number as you will need it to access your account in the future.\n";
 
-    public static final String UPDATED_PROFILE = "Your profile has been updated.";
+    public static final String UPDATED_PROFILE = "Your profile has been updated!";
     public static final String UPDATED_USERNAME = "Thank you. Currently updating your new username.";
     public static final String UPDATED_HEIGHT = "Thank you. Currently updating your new height.";
     public static final String UPDATED_WEIGHT = "Thank you. Currently updating your new weight.";
     public static final String UPDATED_GENDER = "Thank you. Currently updating your new gender.";
     public static final String UPDATED_AGE = "Thank you. Currently updating your new age.";
     public static final String UPDATED_SUCCESSFULLY = "Changed Successfully!\nPlease press 'Return' to go back";
-
 }
