@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 /**
@@ -19,7 +19,7 @@ public interface IUser {
 
     HashMap<String, String> getExercisePreference();
 
-    ArrayList<String> getRiskFactor();
+    List<String> getRiskFactor();
 
     HashMap<String, Object> getPersonalData();
 

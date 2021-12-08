@@ -3,8 +3,8 @@ package controllers;
 import entities.IUser;
 import usecases.UserManager;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * This is a Controller class responsible for connecting the UserParser with the UserManager.
@@ -18,9 +18,9 @@ public class UserController {
      * A function called by the UserParser, passes the information read from the userInfo
      * csv into the UserManager to be loaded into a User object
      *
-     * @param allUser an ArrayList with each element containing information about one user
+     * @param allUser an List with each element containing information about one user
      */
-    public static void readExistingUser(ArrayList<String> allUser) {
+    public static void readExistingUser(List<String> allUser) {
         for (String user : allUser) {
             String[] userInfo = user.split(",");
             UserManager.loadExistingUser(userInfo);

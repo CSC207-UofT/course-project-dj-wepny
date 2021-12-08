@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  This is interface is an abstraction of Exercise Entity
@@ -9,11 +9,11 @@ public interface IExercise {
 
     String getName();
 
-    ArrayList<String> getType();
+    List<String> getType();
 
-    ArrayList<String> getMinorMuscleExercised();
+    List<String> getMinorMuscleExercised();
 
-    ArrayList<String> getEquipmentNeeded();
+    List<String> getEquipmentNeeded();
 
-    ArrayList<String> getMajorMuscleExercised();
+    List<String> getMajorMuscleExercised();
 }

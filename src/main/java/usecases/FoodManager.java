@@ -25,7 +25,7 @@ public class FoodManager {
      *
      * @param criteriaList A list of criteria that the food must satisfy.
      * @return A hashmap containing Food objects that meet the criteria.
-     */
+     */ 
     public static HashMap<String, List<IFood>> getFoodByCriteria(List<FoodFilterCriterion> criteriaList) {
         HashMap<String, List<IFood>> filteredFoodMap = new HashMap<>();
 

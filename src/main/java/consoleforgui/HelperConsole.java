@@ -33,158 +33,25 @@ public class HelperConsole {
         RunCommand.createUser(basicUserInfo, personalUserInfo);
     }
 
-//    /**
-//     * A helper method that prompts the user for their basic information.
-//     * Returns an array of strings in the order of [name, age, gender].
-//     * Note that this method is subject to change (Maybe ArrayList instead of Array).
-//     *
-//     * @param input The scanner used for the user input.
-//     * @return an array of strings of some basic information about the user.
-//     */
-//    public static String[] getBasicUserInfo(String input) {
-//        Presenter.printUserInfo("name");
-//        String name = input;
-//
-//        Presenter.printUserInfo("gender");
-//        String gender = input;
-//
-//        while (!gender.equals("M") && !gender.equals("F")) {
-//            Presenter.printInvalidPrompt("gender");
-//            gender = input;
-//        }
-//
-//        return new String[]{name, gender};
-//    }
-//
-//
-//    /**
-//     * A helper method that prompts the user for their personal data such as
-//     * height, weight, etc.
-//     * Returns an array of strings in the order of [height, weight].
-//     * Note that the items in this array will be stored in the information entity class,
-//     * and the method is subject to change (Maybe ArrayList instead of Array).
-//     *
-//     * @param input The scanner used for the user input.
-//     * @return an array of strings of the user's height, weight, and age
-//     */
-//    public static String[] getPersonalUserInfo(String input) {
-//        Presenter.printUserInfo("height");
-//        String height = input;
-//
-//        // checking to make sure the height input is a number between 0 m to 2.5 m
-//        while (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
-//            Presenter.printInvalidPrompt("height");
-//            height = input;
-//        }
-//
-//        Presenter.printUserInfo("weight");
-//        String weight = input;
-//
-//        // checking to make sure the weight input is a number larger than 0
-//        while (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
-//            Presenter.printInvalidPrompt("weight");
-//            weight = input;
-//        }
-//
-//        Presenter.printUserInfo("age");
-//        String age = input;
-//
-//        // checking to make sure the age input is a number larger or equal to 0
-//        while (isNotNum(age) || Integer.parseInt(age) < 0) {
-//            Presenter.printInvalidPrompt("age");
-//            age = input;
-//        }
-//
-//        return new String[]{height, weight, age};
-//    }
-
     // check invalid gender input in GUI
     public static boolean validGender(String gender) {
-        if (!gender.equals("M") && !gender.equals("F")) {
-            return false;
-        }
-        return true;
+        return gender.equals("M") || gender.equals("F");
     }
 
     // check invalid height input in GUI
     public static boolean validHeight(String height) {
-        if (isNotNum(height) || Float.parseFloat(height) <= 0 || Float.parseFloat(height) >= 2.5) {
-            return false;
-        }
-        return true;
+        return !isNotNum(height) && !(Float.parseFloat(height) <= 0) && !(Float.parseFloat(height) >= 2.5);
     }
 
     // check invalid weight input in GUI
     public static boolean validWeight(String weight) {
-        if (isNotNum(weight) || Float.parseFloat(weight) <= 0) {
-            return false;
-        }
-        return true;
+        return !isNotNum(weight) && !(Float.parseFloat(weight) <= 0);
     }
 
     // check invalid age input in GUI
     public static boolean validAge(String age) {
-        if (isNotNum(age) || Integer.parseInt(age) < 0) {
-            return false;
-        }
-        return true;
+        return !isNotNum(age) && Integer.parseInt(age) >= 0;
     }
-
-//    /**
-//     * Returns true if the user wants to log out.
-//     *
-//     * @param reader reads user info
-//     * @return True if the user wants to log out
-//     */
-//    public static boolean logOut(Scanner reader) {
-//        Presenter.printReturnMenu();
-//        String logOut = reader.nextLine();
-//
-//        while (!logOut.equals("Y") && !logOut.equals("N")) {
-//            Presenter.printInvalidPrompt("return");
-//            logOut = reader.nextLine();
-//        }
-//        return logOut.equals("N");
-//    }
-//
-//    /**
-//     * return true if the user want to return to their main menu and restart
-//     *
-//     * @param reader reads user info
-//     * @return true if the user would like to return to the main menu
-//     */
-//    public static boolean reStart(Scanner reader) {
-//        Presenter.printRestart();
-//        String restart = reader.nextLine();
-//
-//        while (!restart.equals("N") & !restart.equals("Y")) {
-//            Presenter.printInvalidPrompt("restart");
-//            restart = reader.nextLine();
-//        }
-//        return restart.equals("Y");
-//    }
-
-    /**
-     * Helper function that checks to make sure that the command is within the valid range
-     *
-     * @param input  the input that needs to be checked
-     * @param reader reads in the user's new input if the previous one is not valid
-     * @param type   making sure the range is within the specified type
-     * @return the first valid input the user inputs
-     */
-//    public static String checkCommand(String input, Scanner reader, int type) {
-//        boolean check = true;
-//        while (check) {
-//            if (isNotNum(input) || notInRange(Integer.parseInt(input), type)) {
-//                Presenter.printInvalidPrompt("invalid");
-//                input = reader.nextLine();
-//            } else {
-//                check = false;
-//            }
-//        }
-//        return input;
-//    }
-
 
     /**
      * Checks if the input is a number of not
@@ -239,7 +106,7 @@ public class HelperConsole {
             return exerciseData.isEmpty();
         }
         if (command == 4) {
-            ArrayList riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
+            List riskFactors = (ArrayList) commandExecutor.retrieveUser("risk");
             return riskFactors.isEmpty();
         }
         if (command == 5) {
@@ -269,8 +136,8 @@ public class HelperConsole {
      * @return true if user input is a valid input
      */
     public static boolean checkSymptomInput(String symptomList, String promptedSymptoms) {
-        ArrayList<String> newSymptomList = convertInputToList(symptomList);
-        ArrayList<String> newPromptedSymptoms = convertInputToList(promptedSymptoms);
+        List<String> newSymptomList = convertInputToList(symptomList);
+        List<String> newPromptedSymptoms = convertInputToList(promptedSymptoms);
         for (String symptom : newSymptomList) {
             if (!newPromptedSymptoms.contains(symptom)) {
                 return false;
@@ -284,13 +151,13 @@ public class HelperConsole {
      * converts a String into a usable form of List array
      *
      * @param inputSymptoms    a String that contains the information that the user inputs
-     * @return an ArrayList of strings of the user's input
+     * @return an list of strings of the user's input
      */
-    public static ArrayList<String> convertInputToList(String inputSymptoms){
-        ArrayList<String> newSymptoms = new ArrayList<String>();
+    public static List<String> convertInputToList(String inputSymptoms){
+        List<String> newSymptoms = new ArrayList<>();
         String symptoms = inputSymptoms.replaceAll("[\\[\\](){}]", "");
         String[] symptomsList = symptoms.split(",");
-        List<String> finalSymptomsList = new ArrayList<String>();
+        List<String> finalSymptomsList = new ArrayList<>();
         // format the spaces
         for(String symptom: symptomsList) {
             symptom = symptom.trim();

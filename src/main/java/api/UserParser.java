@@ -16,17 +16,17 @@ import java.util.*;
 public class UserParser {
 
     /**
-     * Return an ArrayList of user information inside the file.
+     * Return an List of user information inside the file.
      *
-     * @return an ArrayList of strings, each element contains information for 1 unique user.
+     * @return an List of strings, each element contains information for 1 unique user.
      * @throws IOException In case there's something wrong with the file.
      */
-    public static ArrayList<String> readUserInfo(String path) throws IOException {
+    public static List<String> readUserInfo(String path) throws IOException {
         FileReader readInfo;
 
         // initialize a FileReader
         readInfo = new FileReader(path);
-        ArrayList<String> UserInfo = new ArrayList<>();
+        List<String> UserInfo = new ArrayList<>();
         BufferedReader br = new BufferedReader(readInfo);
 
         br.readLine();

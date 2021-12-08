@@ -11,6 +11,8 @@ import constants.GUIFormatConstants;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import java.awt.image.BufferedImage;
 
 /**
@@ -20,7 +22,7 @@ public class MealPlanGeneratorGUI extends JFrame {
 
     // Variables that stores the user's preferences.
     private final RunCommand commandExecutor = new RunCommand(5);
-    private ArrayList<Object> foodPreference = new ArrayList<>();
+    private List<Object> foodPreference = new ArrayList<>();
     private boolean lowCarbs = false;
     private boolean lowFat = false;
     private boolean lowSugar = false;
@@ -63,15 +65,15 @@ public class MealPlanGeneratorGUI extends JFrame {
         vegetarianCheckBox.setText(MealPlanConstants.VEG);
         numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
         invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText("Enter");
+        enterButton.setText(MealPlanConstants.ENTER);
         intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText("Return");
+        returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
 
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
         this.pack();
 
-        // setting up checkboxes and foodPreference arraylist
+        // setting up checkboxes and foodPreference List
         lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
         lowSugarCheckBox.addActionListener(e -> lowSugar = true);
         lowFatCheckBox.addActionListener(e -> lowFat = true);
@@ -211,7 +213,7 @@ public class MealPlanGeneratorGUI extends JFrame {
             this.returnToMenu.setVisible(false);
             this.pack();
 
-            // setting up checkboxes and foodPreference arraylist
+            // setting up checkboxes and foodPreference List
             lowCarbsCheckBox.addActionListener(e -> lowCarbs = true);
             lowSugarCheckBox.addActionListener(e -> lowSugar = true);
             lowFatCheckBox.addActionListener(e -> lowFat = true);

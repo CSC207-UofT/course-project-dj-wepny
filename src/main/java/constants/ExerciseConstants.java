@@ -43,10 +43,4 @@ public class ExerciseConstants {
     public static final String EX_DESC_USES = "\n    -> Uses: ";
     public static final String EX_DESC_MAJOR = ";\n    -> The major muscle exercised is: ";
     public static final String EX_DESC_MINOR = "\n    -> The minor muscle exercised is: ";
-
-    public static final String ALL_MAJOR_MUSCLES = "Arms, Core, Full Body, Legs, Back";
-    public static final String ALL_MINOR_MUSCLES = "Bicep, Shoulders, Outer Thigh, Glutes, Hamstrings, Quads, " +
-            "Calves, Chest, Inner Thigh, Tricep, Lats, Oblique";
-    public static final String ALL_EQUIPMENTS = "Dumbbells, Bar, Cable, Body Weight, Platform, Machine, " +
-            "Band, Kettle Bell, Medicine Ball, Bosu Ball";
 }

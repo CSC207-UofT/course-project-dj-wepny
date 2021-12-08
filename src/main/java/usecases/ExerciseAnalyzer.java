@@ -49,7 +49,7 @@ public class ExerciseAnalyzer implements UserAnalyzer {
         HashMap<String, String> user_preference = user.getExercisePreference();
         // read the exercises from CSV file
         List<IExercise> exercises = ExerciseAPI.readFromExerciseCSV();
-        ArrayList<IExercise> user_exercises = new ArrayList<>();
+        List<IExercise> user_exercises = new ArrayList<>();
         StringBuilder exercise_names = new StringBuilder();
 
         // add each exercise to user_exercises and exercise_names
