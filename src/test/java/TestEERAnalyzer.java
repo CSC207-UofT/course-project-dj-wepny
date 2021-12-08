@@ -28,7 +28,7 @@ public class TestEERAnalyzer {
     }
 
     @Test(timeout = 500)
-    public void testOutput() {
+    public void testEEROutput() {
         eer.analyze();
         assertEquals("\n*****************************************************************************\n" +
                         "The Estimated Energy Requirement (EER) is a predicted average dietary intake \n" +
