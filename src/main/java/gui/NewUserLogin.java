@@ -1,10 +1,8 @@
 package gui;
 
-import constants.GUIFormatConstants;
+import controllers.Presenter;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -34,8 +32,6 @@ public class NewUserLogin extends JFrame {
     public NewUserLogin() {
         super("DJ WEPNY Personal Health Aid");
         // Initial settings of the page.
-//        scrollBar1 = new JScrollBar();
-//        scrollBar1.setBounds(100,100, 50,100);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(newUserLoginMenu);
@@ -119,11 +115,10 @@ public class NewUserLogin extends JFrame {
 
     private void createUIComponents() {
         try{
-            headerImg = ImageIO.read(GUIFormatConstants.loginImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+            headerImg = ImageIO.read(Presenter.printImgFile("login"));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
-
         headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

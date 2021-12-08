@@ -2,15 +2,11 @@ package gui;
 
 
 import consoleforgui.HelperConsole;
-import constants.EERConstants;
-import constants.GUIFormatConstants;
-import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 
@@ -40,7 +36,6 @@ public class EERPromptGUI extends JFrame {
         super("DJ WEPNY Personal Health Aid");
         // Initial setting of the page.
         this.setSize(1000, 700);
-//        this.add(scroll);
         EERPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(EERPromptGUI);
@@ -52,12 +47,12 @@ public class EERPromptGUI extends JFrame {
         this.instruction.setEditable(false);
         this.returnToMenu.setVisible(false);
 
-        instruction.setText("Please select one of the following based on your daily activity level: ");
-        commandOne.setText("1. Sedentary");
-        commandTwo.setText(("2. Low Active"));
-        commandThree.setText("3. Active");
-        commandFour.setText("4. Very Active");
-        returnToMenu.setText("Return to Menu");
+        instruction.setText(Presenter.ActivityLevelPrompt("menu"));
+        commandOne.setText(Presenter.ActivityLevelPrompt("1"));
+        commandTwo.setText(Presenter.ActivityLevelPrompt("2"));
+        commandThree.setText(Presenter.ActivityLevelPrompt("3"));
+        commandFour.setText(Presenter.ActivityLevelPrompt("4"));
+        returnToMenu.setText(Presenter.setTextButtons("return"));
 
         this.pack();
 
@@ -130,12 +125,12 @@ public class EERPromptGUI extends JFrame {
         else {
             this.instruction.setEditable(false);
 
-            instruction.setText("Please select one of the following based on your daily activity level: ");
-            commandOne.setText("1. Sedentary");
-            commandTwo.setText(("2. Low Active"));
-            commandThree.setText("3. Active");
-            commandFour.setText("4. Very Active");
-            returnToMenu.setText("Return to Menu");
+            instruction.setText(Presenter.ActivityLevelPrompt("menu"));
+            commandOne.setText(Presenter.ActivityLevelPrompt("1"));
+            commandTwo.setText(Presenter.ActivityLevelPrompt("2"));
+            commandThree.setText(Presenter.ActivityLevelPrompt("3"));
+            commandFour.setText(Presenter.ActivityLevelPrompt("4"));
+            returnToMenu.setText(Presenter.setTextButtons("return"));
 
             this.pack();
 
@@ -143,7 +138,7 @@ public class EERPromptGUI extends JFrame {
             commandOne.addActionListener(e -> {
                 userInput = "1";
                 helperForDisplay(2);
-                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setText(Presenter.setTextButtons("updated"));
                 success.setVisible(true);
                 this.pack();
             });
@@ -151,7 +146,7 @@ public class EERPromptGUI extends JFrame {
             commandTwo.addActionListener(e -> {
                 userInput = "2";
                 helperForDisplay(2);
-                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setText(Presenter.setTextButtons("updated"));
                 success.setVisible(true);
                 this.pack();
             });
@@ -159,7 +154,7 @@ public class EERPromptGUI extends JFrame {
             commandThree.addActionListener(e -> {
                 userInput = "3";
                 helperForDisplay(2);
-                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setText(Presenter.setTextButtons("updated"));
                 success.setVisible(true);
                 this.pack();
             });
@@ -167,7 +162,7 @@ public class EERPromptGUI extends JFrame {
             commandFour.addActionListener(e -> {
                 userInput = "4";
                 helperForDisplay(2);
-                success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                success.setText(Presenter.setTextButtons("updated"));
                 success.setVisible(true);
                 this.pack();
             });
@@ -214,9 +209,9 @@ public class EERPromptGUI extends JFrame {
 
     private void createUIComponents() {
         try{
-            headerImg = ImageIO.read(GUIFormatConstants.eerAnalyzerImgFile);
+            headerImg = ImageIO.read(Presenter.printImgFile("eer"));
         }catch (IOException ex){
-            System.out.println("File pathway was not found");
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         headerImgLabel = new JLabel(new ImageIcon(headerImg));

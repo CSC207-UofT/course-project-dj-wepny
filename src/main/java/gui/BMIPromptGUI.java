@@ -1,6 +1,5 @@
 package gui;
 
-import constants.GUIFormatConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
@@ -26,13 +25,12 @@ public class BMIPromptGUI extends JFrame {
     public BMIPromptGUI(){
         super("DJ WEPNY Personal Health Aid");
         // Initial setting of the page.
-//        this.setSize(1000, 1000);
         BMIPromptGUI.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BMIPromptGUI);
         this.setResizable(false);
         this.result.setEditable(false);
-        returnToMenu.setText("Return to Menu");
+        returnToMenu.setText(Presenter.setTextButtons("return"));
 
         // Runs BMIAnalyzer
         try {
@@ -62,12 +60,11 @@ public class BMIPromptGUI extends JFrame {
     }
 
     private void createUIComponents() {
-        try{
-            headerImg = ImageIO.read(GUIFormatConstants.bmiGeneratorImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+        try {
+            headerImg = ImageIO.read(Presenter.printImgFile("bmi"));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
-
         headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }
