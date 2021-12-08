@@ -1,8 +1,3 @@
-/*
- *This file contains Junit test case for DiseaseAnalyzer.java
- */
-
-
 import api.DiseaseAPI;
 import entities.User;
 import usecases.DiseaseAnalyzer;
@@ -12,6 +7,9 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
+/**
+ *This file contains Junit test case for DiseaseAnalyzer.java
+ */
 public class TestDiseaseAnalyzer {
     DiseaseAnalyzer disease;
     User user;
@@ -90,38 +88,5 @@ public class TestDiseaseAnalyzer {
                         "the current symptoms you are experiencing)\n" +
                         "[]",
                 disease.getResult());
-    }
+    }}
 
-//    @Test(timeout = 500)
-//    public void testNoRiskFactor() {
-//        disease.analyze();
-//        //These are the options generated
-//        String result = disease.getResult();
-//        result = result.replaceAll("[\\[\\](){}]", "");
-//        String[] symptomsList = result.split(",");
-//        // convert them into list in desired format for program
-//        List<String> finalOptionsList;
-//
-//        finalOptionsList = Arrays.asList(symptomsList);
-//        List<String> finalOptionsList1 = new ArrayList<>();
-//
-//        for (String item : finalOptionsList){
-//            item = item.trim();
-//            finalOptionsList1.add(item);
-//        }
-//        //Get all Diseases from Data set
-//        HashMap<String, Set<String>> dataset = DiseaseAPI.readFromDiseaseCSV();
-//        List<String> allSymptoms = new ArrayList<>();
-//        //Collect all possible symptoms to be generated in the options
-//        for (String disease: dataset.keySet()){
-//            for(String item: finalOptionsList) {
-//                if (dataset.get(disease).contains(item)) {
-//                    allSymptoms.remove(item);
-//                }
-//            }
-//            }
-//        //Check whether the prompted symptoms belong to the data set
-//            assertTrue(allSymptoms.isEmpty());
-//
-//        }
-}

@@ -8,12 +8,12 @@ import java.util.HashMap;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-
+/**
+ *This file contains Junit test case for the HelperConsole.java
+ */
 public class TestHelperConsole {
     User user;
-    /*
-     *This file contains Junit test case for the HelperConsole.java
-     */
+
 
     @Test(timeout = 500)
     public void testIsNotNum() {

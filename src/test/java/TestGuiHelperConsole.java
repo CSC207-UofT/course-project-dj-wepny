@@ -1,7 +1,9 @@
 import consoleforgui.HelperConsole;
 import org.junit.Test;
 
-
+/**
+ *This file contains Junit test case for GuiHelperConsole.java.
+ **/
 public class TestGuiHelperConsole {
 
     @Test(timeout = 500)

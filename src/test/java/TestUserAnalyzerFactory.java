@@ -1,4 +1,4 @@
-/*
+/**
 This class contains the JUnit test cases for UserAnalyzerFactory.
  */
 

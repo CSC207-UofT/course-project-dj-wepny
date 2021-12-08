@@ -5,8 +5,8 @@ import usecases.*;
 import java.util.List;
 
 /**
- * This is a Controller class that executes command that are passed from the Console by calling the corresponding use cases
- * based on command given.
+ * This is a Controller class that executes command that are passed from the Console by calling the corresponding use
+ * cases based on command given.
  */
 public class RunCommand {
 

@@ -1,7 +1,3 @@
-/*
- *This file contains Junit test case for the EERAnalyzer.java
- */
-
 import entities.User;
 import usecases.EERAnalyzer;
 import org.junit.Before;
@@ -11,6 +7,9 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ *This file contains Junit test case for the EERAnalyzer.java
+ */
 public class TestEERAnalyzer {
     EERAnalyzer eer;
     User user;

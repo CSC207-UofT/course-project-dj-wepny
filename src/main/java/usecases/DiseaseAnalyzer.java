@@ -17,10 +17,17 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      * Maps the diseases to their symptoms.
      */
     private static HashMap<String, Set<String>> potentialDisease = DiseaseAPI.readFromDiseaseCSV();
-    
+
+    /**
+     * Initiating a DiseaseAnalyzer with user as the parameter.
+     * @param user the user that is going to use Disease Analyzer
+     */
     public DiseaseAnalyzer(IUser user){
         this.user = user;
     }
+    /**
+     * Initiating a DiseaseAnalyzer with no parameter.
+     */
     public DiseaseAnalyzer(){}
 
     /**
@@ -71,7 +78,8 @@ public class DiseaseAnalyzer implements UserAnalyzer {
     }
 
     /**
-     * A helper method for analyze. For the diseases in the old potential disease list, if the disease does not contain the chosen symptoms it
+     * A helper method for analyze. For the diseases in the old potential disease list,
+     * if the disease does not contain the chosen symptoms it
      * is removed for the potential diseases.
      *
      * @param oldPotentialDisease is a Hashmap of the current of potential diseases.
@@ -152,7 +160,7 @@ public class DiseaseAnalyzer implements UserAnalyzer {
     }
 
     /**
-     * Get the potential diseases from the csv file using the DiseaseAPI.
+     * Method to reset the potential diseases using the DiseaseAPI.
      */
     public static void resetPotentialDisease() {
         potentialDisease = DiseaseAPI.readFromDiseaseCSV();
