@@ -1,6 +1,8 @@
 package gui;
 
+import constants.Exceptions;
 import constants.GUIFormatConstants;
+import constants.MealPlanConstants;
 import constants.SystemConstants;
 import controllers.RunCommand;
 
@@ -29,6 +31,10 @@ public class EditProfile extends JFrame {
     private JButton returnButton;
     private JLabel updatedMessage;
     private JLabel headerImgLabel;
+    private JLabel invalidHeight;
+    private JLabel invalidWeight;
+    private JLabel invalidAge;
+    private JLabel invalidGender;
     private BufferedImage headerImg;
 
     public EditProfile() {
@@ -42,6 +48,21 @@ public class EditProfile extends JFrame {
         updatedMessage.setText(SystemConstants.UPDATED_PROFILE);
         RunCommand infoGetter = new RunCommand();
 
+        // Set text for invalid input
+        this.invalidAge.setText(Exceptions.INVALID_INPUT);
+        this.invalidGender.setText(Exceptions.INVALID_INPUT);
+        this.invalidHeight.setText(Exceptions.INVALID_INPUT);
+        this.invalidWeight.setText(Exceptions.INVALID_INPUT);
+
+        // Set text for update information
+        this.invalidAge.setText(SystemConstants.UPDATED_PROFILE);
+
+        // Set the invalid message to invisible
+        this.invalidAge.setVisible(false);
+        this.invalidGender.setVisible(false);
+        this.invalidHeight.setVisible(false);
+        this.invalidWeight.setVisible(false);
+
         // Set the text for the text panes
         this.username.setText((String) infoGetter.retrieveUser("name"));
         this.weight.setText((String) infoGetter.retrieveUser("weight"));
@@ -53,15 +74,65 @@ public class EditProfile extends JFrame {
 
         maleRadioButton.addActionListener(e -> infoGetter.executeCommandUpdateInfo(5, "M"));
 
-        // After pressing the "update" Button, the new information is saved and a message is displayed.
         updateButton.addActionListener(e -> {
-            infoGetter.executeCommandUpdateInfo(1, this.username.getText());
-            infoGetter.executeCommandUpdateInfo(2, this.height.getText());
-            infoGetter.executeCommandUpdateInfo(3, this.weight.getText());
-            infoGetter.executeCommandUpdateInfo(4, this.age.getText());
-            this.updatedMessage.setVisible(true);
-            this.pack();
+            String gender;
+            if(maleRadioButton.isSelected()){
+                gender = "M";
+            }
+            else if(femaleRadioButton.isSelected()){
+                gender= "F";
+            }
+            else{
+                gender = "";
+            }
+            // if the input is invalid set invalid prompt to visible
+            if(!consoleforgui.HelperConsole.validGender(gender)){
+                this.invalidGender.setVisible(true);
+                this.pack();
+            }
+            // if the input is valid set invalid prompt back to invisible
+            if(consoleforgui.HelperConsole.validGender(gender)){
+                this.invalidGender.setVisible(false);
+            }
+            if(!consoleforgui.HelperConsole.validHeight(height.getText())){
+                this.invalidHeight.setVisible(true);
+                this.pack();
+            }
+            if(consoleforgui.HelperConsole.validHeight(height.getText())){
+                this.invalidHeight.setVisible(false);
+            }
+            if(!consoleforgui.HelperConsole.validWeight(weight.getText())){
+                this.invalidWeight.setVisible(true);
+                this.pack();
+            }
+            if(consoleforgui.HelperConsole.validWeight(weight.getText())){
+                this.invalidWeight.setVisible(false);
+            }
+            if(!consoleforgui.HelperConsole.validAge(age.getText())){
+                this.invalidAge.setVisible(true);
+                this.pack();
+            }
+            if(consoleforgui.HelperConsole.validAge(age.getText())){
+                this.invalidAge.setVisible(false);
+            }
+
+            // After pressing the "update" Button, the new information is saved and a message is displayed.
+            if(consoleforgui.HelperConsole.validGender(gender) &&
+                    consoleforgui.HelperConsole.validHeight(height.getText()) &&
+                    consoleforgui.HelperConsole.validWeight(weight.getText()) &&
+                    consoleforgui.HelperConsole.validAge(age.getText())) {
+                infoGetter.executeCommandUpdateInfo(1, this.username.getText());
+                infoGetter.executeCommandUpdateInfo(2, this.height.getText());
+                infoGetter.executeCommandUpdateInfo(3, this.weight.getText());
+                infoGetter.executeCommandUpdateInfo(4, this.age.getText());
+                this.updatedMessage.setVisible(true);
+                this.pack();
+            }
+
         });
+
+        // if the input is valid set invalid prompt back to invisible
+
 
         // After pressing the "return" button, this page is closed and the menu page is opened.
         returnButton.addActionListener(e -> {
