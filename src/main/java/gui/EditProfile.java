@@ -131,8 +131,6 @@ public class EditProfile extends JFrame {
 
         });
 
-        // if the input is valid set invalid prompt back to invisible
-
 
         // After pressing the "return" button, this page is closed and the menu page is opened.
         returnButton.addActionListener(e -> {
