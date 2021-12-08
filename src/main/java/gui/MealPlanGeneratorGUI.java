@@ -116,20 +116,16 @@ public class MealPlanGeneratorGUI extends JFrame {
                     c.setVisible(false);
                 }
 
-                // display results
-//                intro.setText(output);
-//                intro.setVisible(true);
                 this.getContentPane().setLayout(new FlowLayout());
                 this.setSize(1000, 700);
 
-                JTextArea textArea = new JTextArea(this.output,35, 60);
+                JTextArea textArea = new JTextArea(this.output, 35, 60);
                 JScrollPane scrollableTextArea = new JScrollPane(textArea);
 
                 scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
                 scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
                 this.getContentPane().add(scrollableTextArea);
                 returnToMenu.setVisible(true);
-//                this.pack();
 
             } else {
                 invalidInput.setVisible(true);
@@ -140,7 +136,7 @@ public class MealPlanGeneratorGUI extends JFrame {
     }
 
     /**
-    MealPlanGeneratorGUI Constructor for users that already have foodPreferences info
+     * MealPlanGeneratorGUI Constructor for users that already have foodPreferences info
      */
     public MealPlanGeneratorGUI(String userType) {
         super("DJ WEPNY's Meal Plan Generator");
@@ -148,7 +144,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         this.setContentPane(MealPlanGUI);
         this.setResizable(false);
         this.success.setVisible(false);
-
+        this.invalidInput.setVisible(false);
 
         if (userType.equals("existing")) {
             //set text
@@ -188,12 +184,9 @@ public class MealPlanGeneratorGUI extends JFrame {
                 c.setVisible(false);
             }
 
-            // display results
-//            intro.setText(output);
-//            intro.setVisible(true);
             this.getContentPane().setLayout(new FlowLayout());
             this.setSize(1000, 700);
-            JTextArea textArea = new JTextArea(this.output,35, 60);
+            JTextArea textArea = new JTextArea(this.output, 35, 60);
             JScrollPane scrollableTextArea = new JScrollPane(textArea);
 
             scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -201,9 +194,7 @@ public class MealPlanGeneratorGUI extends JFrame {
             this.getContentPane().add(scrollableTextArea);
             returnToMenu.setVisible(true);
             this.pack();
-        }
-
-        else {
+        } else {
             //set text
             lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
             lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
@@ -233,8 +224,6 @@ public class MealPlanGeneratorGUI extends JFrame {
             });
 
             enterButton.addActionListener(e -> {
-                this.success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
-                this.success.setVisible(true);
                 String tempNumFoods = numFoodsInput.getText();
                 if (!(consoleforgui.HelperConsole.isNotNum(tempNumFoods)) && Integer.parseInt(tempNumFoods) > 0) {
                     //set numFoods
@@ -246,19 +235,27 @@ public class MealPlanGeneratorGUI extends JFrame {
                     foodPreference.add(lowFat);
                     foodPreference.add(vegetarian);
                     foodPreference.add(numFoods);
+                    success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                    success.setVisible(true);
+                    this.returnToMenu.setVisible(true);
+                    invalidInput.setVisible(false);
 
                     // add info to commandExecutor
                     commandExecutor.addInfo(foodPreference, 5);
-                    returnToMenu.setVisible(true);
+
+                } else {
+                    invalidInput.setVisible(true);
                 }
+
             });
+
         }
     }
 
     private void createUIComponents() {
-        try{
+        try {
             headerImg = ImageIO.read(GUIFormatConstants.mealPlanGeneratorImgFile);
-        }catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println("File pathway was not found");
         }
 
