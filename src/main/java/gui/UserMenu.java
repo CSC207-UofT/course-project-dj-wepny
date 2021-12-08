@@ -1,8 +1,7 @@
 package gui;
 
 import api.UserParser;
-import constants.GUIFormatConstants;
-import constants.SystemConstants;
+import controllers.Presenter;
 import controllers.RunCommand;
 import controllers.UserController;
 import consoleforgui.HelperConsole;
@@ -44,7 +43,7 @@ public class UserMenu extends JFrame {
 
         RunCommand infoGetter = new RunCommand();
         if (num == 1) {
-            String output = controllers.Presenter.printUserIDMessage((String) infoGetter.retrieveUser("id"));
+            String output = Presenter.printUserIDMessage((String) infoGetter.retrieveUser("id"));
             welcomeMessage.setText(output);
             this.a6EditProfileButton.setVisible(false);
             this.pack();
@@ -130,7 +129,7 @@ public class UserMenu extends JFrame {
                 HelperConsole.addToExisting();
                 // append the new user's information into the file
                 try {
-                    UserParser.writeUserInfo("write", SystemConstants.USER_FILE);
+                    UserParser.writeUserInfo("write", Presenter.printUserFile());
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -138,13 +137,13 @@ public class UserMenu extends JFrame {
             else {
                 try {
                     //update the file once the user logged out with any changed information
-                    UserParser.writeUserInfo("update", SystemConstants.USER_FILE);
+                    UserParser.writeUserInfo("update", Presenter.printUserFile());
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
             try {
-                List<String> userInfo = UserParser.readUserInfo(SystemConstants.USER_FILE);
+                List<String> userInfo = UserParser.readUserInfo(Presenter.printUserFile());
                 UserController.readExistingUser(userInfo);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -158,9 +157,9 @@ public class UserMenu extends JFrame {
 
     private void createUIComponents() {
         try{
-            headerImg = ImageIO.read(GUIFormatConstants.loginImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+            headerImg = ImageIO.read(Presenter.printImgFile("login"));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         headerImgLabel = new JLabel(new ImageIcon(headerImg));

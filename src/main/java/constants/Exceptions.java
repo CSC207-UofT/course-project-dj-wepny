@@ -5,12 +5,12 @@ package constants;
  */
 public class Exceptions {
 
-    public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again. \n";
+    public static final String INVALID_INPUT = "Sorry, your input is invalid. Please try again.";
+    public static final String INVALID_SHORT = "Invalid input, please try again.";
     public static final String FILE_LOC_ERROR =
             "Uh oh, an error has occurred! Please check that the files exist and are in the specified position.";
-    public static final String NOT_ENOUGH_INFO = "There is currently not enough information " +
-            "in your profile to generate this report.\n" + "Please fill in the following information:\n";
     public static final String NO_EXERCISES_FOUND =
             "\nUnfortunately, we currently do not have any exercises that match these preferences. Please try again.";
-
+    public static final String PATHWAY_NOT_FOUND =
+            "File pathway was not found.";
 }

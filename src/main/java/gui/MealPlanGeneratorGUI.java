@@ -3,10 +3,8 @@ package gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import constants.*;
 import controllers.Presenter;
 import controllers.RunCommand;
-import constants.GUIFormatConstants;
 
 import java.awt.*;
 import java.io.IOException;
@@ -59,15 +57,15 @@ public class MealPlanGeneratorGUI extends JFrame {
 
 
         //set text
-        lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
-        lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
-        lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
-        vegetarianCheckBox.setText(MealPlanConstants.VEG);
-        numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
-        invalidInput.setText(Exceptions.INVALID_INPUT);
-        enterButton.setText(MealPlanConstants.ENTER);
-        intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-        returnToMenu.setText(MealPlanConstants.RETURN_TO_MENU);
+        lowCarbsCheckBox.setText(Presenter.MealPlanPrompt("low carb"));
+        lowFatCheckBox.setText(Presenter.MealPlanPrompt("low fat"));
+        lowSugarCheckBox.setText(Presenter.MealPlanPrompt("low sugar"));
+        vegetarianCheckBox.setText(Presenter.MealPlanPrompt("veg"));
+        numFoodsPrompt.setText(Presenter.MealPlanPrompt("num foods"));
+        invalidInput.setText(Presenter.setTextButtons("invalid"));
+        enterButton.setText(Presenter.setTextButtons("enter"));
+        intro.setText(Presenter.MealPlanPrompt("intro"));
+        returnToMenu.setText(Presenter.setTextButtons("return"));
 
         this.invalidInput.setVisible(false);
         this.returnToMenu.setVisible(false);
@@ -150,15 +148,15 @@ public class MealPlanGeneratorGUI extends JFrame {
 
         if (userType.equals("existing")) {
             //set text
-            lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
-            lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
-            lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
-            vegetarianCheckBox.setText(MealPlanConstants.VEG);
-            numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
-            invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("ENTER");
-            intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("RETURN");
+            lowCarbsCheckBox.setText(Presenter.MealPlanPrompt("low carb"));
+            lowFatCheckBox.setText(Presenter.MealPlanPrompt("low fat"));
+            lowSugarCheckBox.setText(Presenter.MealPlanPrompt("low sugar"));
+            vegetarianCheckBox.setText(Presenter.MealPlanPrompt("veg"));
+            numFoodsPrompt.setText(Presenter.MealPlanPrompt("num foods"));
+            invalidInput.setText(Presenter.setTextButtons("invalid"));
+            enterButton.setText(Presenter.setTextButtons("enter"));
+            intro.setText(Presenter.MealPlanPrompt("intro"));
+            returnToMenu.setText(Presenter.setTextButtons("return"));
 
             this.invalidInput.setVisible(false);
             this.returnToMenu.setVisible(false);
@@ -198,15 +196,15 @@ public class MealPlanGeneratorGUI extends JFrame {
             this.pack();
         } else {
             //set text
-            lowCarbsCheckBox.setText(MealPlanConstants.LOWCARBS);
-            lowFatCheckBox.setText(MealPlanConstants.LOWFAT);
-            lowSugarCheckBox.setText(MealPlanConstants.LOWSUGAR);
-            vegetarianCheckBox.setText(MealPlanConstants.VEG);
-            numFoodsPrompt.setText(MealPlanConstants.NUM_FOODS);
-            invalidInput.setText(Exceptions.INVALID_INPUT);
-            enterButton.setText("ENTER");
-            intro.setText(MealPlanConstants.MEALPLAN_INTRO_GUI);
-            returnToMenu.setText("RETURN");
+            lowCarbsCheckBox.setText(Presenter.MealPlanPrompt("low carb"));
+            lowFatCheckBox.setText(Presenter.MealPlanPrompt("low fat"));
+            lowSugarCheckBox.setText(Presenter.MealPlanPrompt("low sugar"));
+            vegetarianCheckBox.setText(Presenter.MealPlanPrompt("veg"));
+            numFoodsPrompt.setText(Presenter.MealPlanPrompt("num foods"));
+            invalidInput.setText(Presenter.setTextButtons("invalid"));
+            enterButton.setText(Presenter.setTextButtons("enter"));
+            intro.setText(Presenter.MealPlanPrompt("intro"));
+            returnToMenu.setText(Presenter.setTextButtons("return"));
             returnToMenu.setVisible(false);
 
             this.invalidInput.setVisible(false);
@@ -237,7 +235,7 @@ public class MealPlanGeneratorGUI extends JFrame {
                     foodPreference.add(lowFat);
                     foodPreference.add(vegetarian);
                     foodPreference.add(numFoods);
-                    success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                    success.setText(Presenter.setTextButtons("updated"));
                     success.setVisible(true);
                     this.returnToMenu.setVisible(true);
                     invalidInput.setVisible(false);
@@ -256,9 +254,9 @@ public class MealPlanGeneratorGUI extends JFrame {
 
     private void createUIComponents() {
         try {
-            headerImg = ImageIO.read(GUIFormatConstants.mealPlanGeneratorImgFile);
+            headerImg = ImageIO.read(Presenter.printImgFile("meal"));
         } catch (IOException ex) {
-            System.out.println("File pathway was not found");
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         headerImgLabel = new JLabel(new ImageIcon(headerImg));

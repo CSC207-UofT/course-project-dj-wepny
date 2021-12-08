@@ -1,7 +1,7 @@
 package gui;
 
+import controllers.Presenter;
 import controllers.RunCommand;
-import constants.GUIFormatConstants;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -28,7 +28,7 @@ public class ConsoleGUI extends JFrame{
         this.setContentPane(console);
         this.setResizable(false);
         IDError.setVisible(false);
-        welcomeMessage.setText("Please Enter Your Personal Identification Pin if you are an existing User:");
+        welcomeMessage.setText(Presenter.setTextButtons("enterpin"));
         this.pack();
 
         // if the "create new user" button is pressed, close the current page and open the new UserLoginPage
@@ -70,8 +70,7 @@ public class ConsoleGUI extends JFrame{
     public static void setUserType(boolean newUser) {
         if (newUser) {
             userType = 1;
-        }
-        else {
+        } else {
             userType = 2;
         }
     }
@@ -82,10 +81,10 @@ public class ConsoleGUI extends JFrame{
     }
 
     private void createUIComponents() {
-        try{
-            introImg = ImageIO.read(GUIFormatConstants.introImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+        try {
+            introImg = ImageIO.read(Presenter.printImgFile(""));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         imgLabel = new JLabel(new ImageIcon(introImg));

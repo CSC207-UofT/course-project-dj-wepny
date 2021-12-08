@@ -1,11 +1,9 @@
 package consoleforgui;
 
 import constants.EERConstants;
-import controllers.Presenter;
 import controllers.RunCommand;
 import controllers.UserController;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -13,7 +11,6 @@ import java.util.*;
  * by ExistingUserController and NewUserController
  */
 public class HelperConsole {
-// TODO: several methods are never used (or the methods calling them are never used), refactor if time allows.
 
     /**
      * Checks that the ID input belongs to a valid user.
@@ -62,29 +59,10 @@ public class HelperConsole {
     public static boolean isNotNum(String input) {
         try {
             Float.parseFloat(input);
-
         } catch (Exception e) {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Helper function that checks the command the user inputted is correct
-     * and within the range wanted
-     *
-     * @param i    the command the user inputs
-     * @param type specifies the range we want the number i to be in
-     * @return true if int 'i' is within the desired range
-     */
-    public static boolean notInRange(int i, int type) {
-        if (type == 1) {
-            return i <= 0 || i >= 6;
-        } else if (type == 2) {
-            return i <= 0 || i >= 7;
-        } else {
-            return i <= 0 || i >= 5;
-        }
     }
 
     /**

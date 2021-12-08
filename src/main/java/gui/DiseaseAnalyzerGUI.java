@@ -3,7 +3,6 @@ package gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import constants.GUIFormatConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 import consoleforgui.HelperConsole;
@@ -30,9 +29,8 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
     private JLabel instructionsEx;
     private JLabel instructions4;
     RunCommand commandExecutor = new RunCommand(4);
-    private Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
+    private final Presenter analyze_results = new Presenter(commandExecutor.getAnalyzer());
     private String output;
-    private static List<String> currentSymptoms;
     private BufferedImage headerImg;
 
     public DiseaseAnalyzerGUI() throws Exception {
@@ -43,8 +41,8 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
         this.setResizable(true);
         this.setSize(10000,10000);
         invalidInput.setVisible(false);
-        invalidInput.setText("invalid input please enter again");
-        returnToMenu.setText("Return To Menu");
+        invalidInput.setText(Presenter.setTextButtons("invalid"));
+        returnToMenu.setText(Presenter.setTextButtons("return"));
 
         symptomInput.setPreferredSize(new Dimension(250, 60));
         commandExecutor.resetPotentialDisease();
@@ -82,8 +80,9 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 
             }
             else{
+                List<String> currentSymptoms;
                 if(symptoms.equals("N/A")){
-                    currentSymptoms = new ArrayList<String>();
+                    currentSymptoms = new ArrayList<>();
                 }
                 else{
                     currentSymptoms = newInput;
@@ -92,22 +91,15 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
                 try {
                     int diseaseSize = commandExecutor.executeCommandDisease(currentSymptoms);
                     System.out.println("symptom" + output);
+                    output = analyze_results.retrieveOutput();
+                    symptomPrompt.setText(output);
                     if(diseaseSize <= 6){
 
-                        output = analyze_results.retrieveOutput();
-
-                        symptomPrompt.setText(output);
                         instructions.setVisible(false);
                         instructions2.setVisible(false);
                         instructions3.setVisible(false);
                         instructionsEx.setVisible(false);
                         submitButton.setEnabled(false);
-
-                    }
-                    else{
-                        output = analyze_results.retrieveOutput();
-                        symptomPrompt.setText(output);
-
 
                     }
 
@@ -136,10 +128,10 @@ private static boolean checkValidInput(String inputSymptoms, String promptedSymp
 }
 
     private void createUIComponents() {
-        try{
-            headerImg = ImageIO.read(GUIFormatConstants.diseaseAnalyzerImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+        try {
+            headerImg = ImageIO.read(Presenter.printImgFile("disease"));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         headerImgLabel = new JLabel(new ImageIcon(headerImg));

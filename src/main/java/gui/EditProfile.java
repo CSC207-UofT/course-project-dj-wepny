@@ -1,9 +1,7 @@
 package gui;
 
-import constants.Exceptions;
-import constants.GUIFormatConstants;
-import constants.MealPlanConstants;
 import constants.SystemConstants;
+import controllers.Presenter;
 import controllers.RunCommand;
 
 import javax.swing.*;
@@ -49,10 +47,10 @@ public class EditProfile extends JFrame {
         RunCommand infoGetter = new RunCommand();
 
         // Set text for invalid input
-        this.invalidAge.setText(Exceptions.INVALID_INPUT);
-        this.invalidGender.setText(Exceptions.INVALID_INPUT);
-        this.invalidHeight.setText(Exceptions.INVALID_INPUT);
-        this.invalidWeight.setText(Exceptions.INVALID_INPUT);
+        this.invalidAge.setText(Presenter.setTextButtons("invalid2"));
+        this.invalidGender.setText(Presenter.setTextButtons("invalid2"));
+        this.invalidHeight.setText(Presenter.setTextButtons("invalid2"));
+        this.invalidWeight.setText(Presenter.setTextButtons("invalid2"));
 
         // Set text for update information
         this.invalidAge.setText(SystemConstants.UPDATED_PROFILE);
@@ -183,12 +181,11 @@ public class EditProfile extends JFrame {
 
 
     private void createUIComponents() {
-        try{
-            headerImg = ImageIO.read(GUIFormatConstants.introImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+        try {
+            headerImg = ImageIO.read(Presenter.printImgFile(""));
+        } catch (IOException ex) {
+            System.out.println(Presenter.pathwayNotFound());
         }
-
         headerImgLabel = new JLabel(new ImageIcon(headerImg));
     }
 }

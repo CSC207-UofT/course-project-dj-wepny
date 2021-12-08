@@ -1,16 +1,11 @@
 package gui;
 
-import constants.GUIFormatConstants;
-import constants.SystemConstants;
 import controllers.Presenter;
 import controllers.RunCommand;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
@@ -197,7 +192,7 @@ public class ExercisePreference extends JFrame {
                     this.invalid.setVisible(true);
                 } else {
                     this.returnToMenu.setVisible(true);
-                    this.success.setText(SystemConstants.UPDATED_SUCCESSFULLY);
+                    this.success.setText(Presenter.setTextButtons("updated"));
                     this.success.setVisible(true);
                     this.equipment = new StringBuilder(this.equipments.get(0));
                     if (this.equipments.size() > 1) {
@@ -274,9 +269,9 @@ public class ExercisePreference extends JFrame {
 
     private void createUIComponents() {
         try{
-            headerImg = ImageIO.read(GUIFormatConstants.workoutAnalyzerImgFile);
-        }catch (IOException ex){
-            System.out.println("File pathway was not found");
+            headerImg = ImageIO.read(Presenter.printImgFile("workout"));
+        } catch (IOException ex){
+            System.out.println(Presenter.pathwayNotFound());
         }
 
         headerImgLabel = new JLabel(new ImageIcon(headerImg));

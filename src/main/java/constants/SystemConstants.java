@@ -5,6 +5,10 @@ package constants;
  */
 public class SystemConstants {
 
+    //GUI
+    public static final String RETURN_TO_MENU = "RETURN TO MENU";
+    public static final String ENTER = "ENTER";
+
     // UserParser
     public static final String USER_FILE = "src/main/data/UserInfo.csv";
     public static final String TEST_USER_FILE = "src/test/data/TestParser.csv";
@@ -27,6 +31,7 @@ public class SystemConstants {
     public static final String WELCOME1 = "Welcome, ";
     public static final String WELCOME_EXISTING = "Welcome back, ";
     public static final String WELCOME2 = ", What would you like to do today? \n";
+    public static final String ENTER_PIN = "Please Enter Your Personal Identification Pin if you are an existing User:";
 
     //Prompts
     public static final String NAME_PROMPT = "Please enter your name:";
@@ -47,12 +52,6 @@ public class SystemConstants {
                     "3. Analyze Workout \n " +
                     "4. Analyze Disease \n " +
                     "5. Generate a meal plan \n";
-    public static final String ACTIVITY_MENU =
-            "Please enter your daily activity level: (Please enter a number from 1 to 4) \n " +
-                    "1. Sedentary \n " +
-                    "2. Low Active \n " +
-                    "3. Active \n " +
-                    "4. Very Active \n";
     public static final String EXISTING_USER_MENU =
             " You may choose the following options: (Please enter a number from 1 to 6) \n " +
                     "1. Analyze Body Mass Index (BMI) \n " +
