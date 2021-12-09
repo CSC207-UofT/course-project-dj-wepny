@@ -61,7 +61,7 @@ public class MealPlanGeneratorGUI extends JFrame {
         lowFatCheckBox.setText(Presenter.MealPlanPrompt("low fat"));
         lowSugarCheckBox.setText(Presenter.MealPlanPrompt("low sugar"));
         vegetarianCheckBox.setText(Presenter.MealPlanPrompt("veg"));
-        numFoodsPrompt.setText(Presenter.MealPlanPrompt("num foods"));
+        numFoodsPrompt.setText(Presenter.MealPlanPrompt("num food"));
         invalidInput.setText(Presenter.setTextButtons("invalid"));
         enterButton.setText(Presenter.setTextButtons("enter"));
         intro.setText(Presenter.MealPlanPrompt("intro"));
