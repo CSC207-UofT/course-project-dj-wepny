@@ -1,6 +1,7 @@
 package usecases;
 
 import api.DiseaseAPI;
+import constants.DiseaseConstants;
 import entities.IUser;
 import java.util.*;
 
@@ -35,11 +36,8 @@ public class DiseaseAnalyzer implements UserAnalyzer {
      */
     @Override
     public void analyze() {
-        System.out.println("run here");
         IUser user = UserManager.getCurrentUser();
         if(user == null){
-            System.out.println("run user null");
-
             user = this.user;
         }
         
@@ -49,18 +47,14 @@ public class DiseaseAnalyzer implements UserAnalyzer {
         HashMap<String, Set<String>> newDisease = newPotentialDiseases(potentialDisease, userInput);
         // generate new options for the user
         List<String> options = generateOptions(newDisease);
-        String msg = "These are your potential diseases: (if output = [], " +
-                "there is no disease that match the current symptoms you are experiencing)\n";
         // set result to the string that will be prompt to the user is potential diseases is less than or
         // equal to 6
         if (potentialDisease.size() <= 6) {
 
-            result = msg + newDisease.keySet();
+            result = DiseaseConstants.DISEASE_MSG + newDisease.keySet();
         }
         // set result to the new options of symptoms for the user to select
         else {
-            System.out.println("create options");
-
             result = options.toString();
         }
         potentialDisease = newDisease;
