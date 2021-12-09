@@ -54,7 +54,6 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 
         commandExecutor.executeCommand();
         output = analyze_results.retrieveOutput();
-        System.out.println("output2" + output);
         symptomPrompt.setText(output);
 
         submitButton.addActionListener(this);
@@ -90,7 +89,6 @@ public class DiseaseAnalyzerGUI extends JFrame implements ActionListener{
 
                 try {
                     int diseaseSize = commandExecutor.executeCommandDisease(currentSymptoms);
-                    System.out.println("symptom" + output);
                     output = analyze_results.retrieveOutput();
                     symptomPrompt.setText(output);
                     if(diseaseSize <= 6){

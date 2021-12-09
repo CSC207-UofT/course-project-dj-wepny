@@ -13,4 +13,6 @@ public class DiseaseConstants {
     public static final String SYMPTOMS_DESC2 = "If you are currently experiencing more than one symptom, " +
             "separate the input using a comma ','";
     public static final String SYMPTOMS_DESC_EX = "For example, 'high_fever,back_pain'";
+    public static final String DISEASE_MSG = "These are your potential diseases: (if output = [], " +
+            "there is no disease that match the current symptoms you are experiencing)\n";
 }
