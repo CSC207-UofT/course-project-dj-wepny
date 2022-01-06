@@ -3,6 +3,8 @@
 CSC207 Project by DJ WEPNY. This project encodes for a Personal Health system that can create a meal plan, output BMI and EER, suggest workout ideas,
 and calculate risk factors for certain diseases through based on information provided by the user.
 
+All relevant code can be found in the "src" file of the main branch. Folders such as "CRC Cards", "phase 0(written)", and "Phase2" include the written portions that were submitted as part of the coursework and can provide more details and insights regarding the project itself. 
+
 ## Table of contents
 * [General guide](#general-guide)
 * [BMI](#bmi)
